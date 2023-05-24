@@ -1,5 +1,5 @@
 @include('header')
-<div class="container">
+<div class="right_col" role="main">
 @yield('main-section')
 </div>
 @include('footer')
