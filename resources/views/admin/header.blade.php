@@ -11,6 +11,7 @@
     <title>Gentelella Alela! | </title>
 
     <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
         <!-- Font Awesome -->
          <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
@@ -18,7 +19,8 @@
           <link rel="stylesheet" href="{{ asset('css/nprogress.css') }}">
        
         <!-- Custom Theme Style -->
-        <link rel="stylesheet" href="{{ asset('css/custom.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+        <link rel="stylesheet" href="{{asset('css/custom.min.css')}}">
   </head>
 
   <body class="nav-md">
@@ -51,14 +53,14 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a><x-heroicon-s-home style="width: 20px;"/> Home <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="index.html">Dashboard</a></li>
                       <li><a href="index2.html">Dashboard2</a></li>
                       <li><a href="index3.html">Dashboard3</a></li>
                     </ul>
                   </li>
-                  <li><a>Forms <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="form.html">General Form</a></li>
                       <li><a href="form_advanced.html">Advanced Components</a></li>
@@ -68,7 +70,7 @@
                       <li><a href="form_buttons.html">Form Buttons</a></li>
                     </ul>
                   </li>
-                  <li><a>UI Elements <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-desktop"></i> UI Elements <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="general_elements.html">General Elements</a></li>
                       <li><a href="media_gallery.html">Media Gallery</a></li>
@@ -81,13 +83,13 @@
                       <li><a href="calendar.html">Calendar</a></li>
                     </ul>
                   </li>
-                  <li><a>Tables <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-table"></i> Tables <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="tables.html">Tables</a></li>
                       <li><a href="tables_dynamic.html">Table Dynamic</a></li>
                     </ul>
                   </li>
-                  <li><a> Data Presentation <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-bar-chart-o"></i> Data Presentation <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="chartjs.html">Chart JS</a></li>
                       <li><a href="chartjs2.html">Chart JS2</a></li>
@@ -96,7 +98,7 @@
                       <li><a href="other_charts.html">Other Charts</a></li>
                     </ul>
                   </li>
-                  <li><a>Layouts <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-clone"></i>Layouts <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
                       <li><a href="fixed_footer.html">Fixed Footer</a></li>
@@ -107,7 +109,7 @@
               <div class="menu_section">
                 <h3>Live On</h3>
                 <ul class="nav side-menu">
-                  <li><a> Additional Pages <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-bug"></i> Additional Pages <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="e_commerce.html">E-commerce</a></li>
                       <li><a href="projects.html">Projects</a></li>
@@ -116,7 +118,7 @@
                       <li><a href="profile.html">Profile</a></li>
                     </ul>
                   </li>
-                  <li><a> Extras <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-windows"></i> Extras <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="page_403.html">403 Error</a></li>
                       <li><a href="page_404.html">404 Error</a></li>
@@ -126,7 +128,7 @@
                       <li><a href="pricing_tables.html">Pricing Tables</a></li>
                     </ul>
                   </li>
-                  <li><a></i> Multilevel Menu <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-sitemap"></i> Multilevel Menu <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                         <li><a href="#level1_1">Level One</a>
                         <li><a>Level One<span class="fa fa-chevron-down"></span></a>
@@ -143,7 +145,7 @@
                         </li>
                     </ul>
                   </li>                  
-                  <li><a href="javascript:void(0)">Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
+                  <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
                 </ul>
               </div>
 
@@ -202,10 +204,12 @@
                       onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
                        {{ __('Logout') }}
+                       
                    </a>
 
                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                        @csrf
+                       
                    </form>
                     </div>
                   </li>
