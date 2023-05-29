@@ -3,9 +3,18 @@
 @section('content')
 <body class="login">
     <div>
-
+      <div class="col-md-12 col-sm-12  ">
       <div class="login_wrapper">
+      
         <div class="animate form login_form">
+         
+            <div class="x_panel">
+            
+    
+              <div class="x_content">
+    
+    
+                <div class="table-responsive">
           <section class="login_content">
             <form method="POST" action="{{ route('login') }}">
                 @csrf
@@ -55,7 +64,7 @@
                 <br />
 
                 <div>
-                  <h1><i class="fa fa-paw"></i> Direct KSA</h1>
+                  <h1><i class="fa-regular fa-paw"></i> Direct KSA</h1>
                   <p>©2023 All Rights Reserved. Direct KSA . Privacy and Terms</p>
                 </div>
               </div>

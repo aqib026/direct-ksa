@@ -55,7 +55,7 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="{{url('admin/dashboard')}}">Dashboard</a></li>
+                      <li><a href="{{url('/dashboard')}}">Dashboard</a></li>
                       <li><a href="index2.html">Dashboard2</a></li>
                       <li><a href="index3.html">Dashboard3</a></li>
                     </ul>
@@ -101,7 +101,7 @@
                   <li><a><i class="fa fa-clone"></i>Layouts <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="fixed_sidebar.html">Layout 1</a></li>
-                      <li><a href="{{url('admin/users')}}">Users</a></li>
+                      <li><a href="{{url('/users')}}">Users</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -154,7 +154,7 @@
 
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
-              <a data-toggle="{{url('admin/setting')}}" data-placement="top" title="Settings">
+              <a data-toggle="{{url('/setting')}}" data-placement="top" title="Settings">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
               </a>
               <a data-toggle="tooltip" data-placement="top" title="FullScreen">
@@ -194,7 +194,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item"  href="javascript:;"> Profile</a>
-                        <a class="dropdown-item"  href="{{url('admin/setting')}}">
+                        <a class="dropdown-item"  href="{{url('/setting')}}">
                           <span class="badge bg-red pull-right">50%</span>
                           <span>Settings</span>
                         </a>
