@@ -4,9 +4,16 @@
 
 <body class="login">
     <div>
-
+      <div class="col-md-12 col-sm-12  ">
       <div class="login_wrapper">
         <div class="animate form login_form">
+          <div class="x_panel">
+            
+    
+            <div class="x_content">
+  
+  
+              <div class="table-responsive">
           <section class="login_content">
             <form method="POST" action="{{ route('register') }}">
                 @csrf
@@ -43,7 +50,7 @@
             </div>
             <div class="">
                 <div class="">
-                    <button type="submit" class="btn btn-default submit">
+                    <button type="submit" class="btn btn-dark submit">
                         {{ __('Register') }}
                     </button>
                 </div>

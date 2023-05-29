@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Admin;
 use App\Models\image;
 use App\Http\Controllers\Controller;
+use link;
 
 
 
@@ -14,42 +15,54 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
 
-    public function view(request $request){
+    public function view(request $request)
+    {
+        $search =$request["search"]?? "";
+        if($search != "")
+        {
+          $users = admin:: where('name','like',"%$search%")->orwhere('email','like',"%$search%")->get();
+        } 
+        else{
+          $users = admin::paginate(10);
+        }
+        $data=compact('users','search');
+       return view('admin.users')->with($data);
+      }
+ 
 
-        $users = admin :: all();
-        $data=compact('users');
 
-        return view('admin.users')->with($data);
-    }
 
-    public function delete($id){
+    public function delete($id)
+    {
 
-        $user=admin::find($id);
-        if(!is_null($user));
-            $user->delete();
+        $user = admin::find($id);
+        if (!is_null($user));
+        $user->delete();
 
         return redirect()->back();
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
 
-        $user= admin::find($id);
+        $user = admin::find($id);
 
-        if(is_null($user))
+        if (is_null($user))
             redirect('admin/users');
 
-        $title="Edit User Registration";
-        $url=url('admin/user/update')."/".$id;
-        $data=compact('url','user','title');
+        $title = "Edit User Registration";
+        $url = url('admin/user/update') . "/" . $id;
+        $data = compact('url', 'user', 'title');
 
-        return view('auth.editregister')->with($data);            
+        return view('auth.editregister')->with($data);
     }
 
-    public function update($id , request $request){
+    public function update($id, request $request)
+    {
 
-        $user= admin::find($id);
+        $user = admin::find($id);
 
-        $user->name     = $request ['name'];
+        $user->name     = $request['name'];
         $user->email    = $request['email'];
         $user->password = bcrypt($request['password']);
         $user->usertype = $request['usertype'];
@@ -61,13 +74,8 @@ class AdminController extends Controller
     public function setting()
     {
         $url = url('/admin/setting');    // we have to do this for update form
-        $data = compact ('url'); 
-        
+        $data = compact('url');
+
         return view('admin.setting')->with($data);
     }
-
-
-
 }
-
-

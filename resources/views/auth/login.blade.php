@@ -40,7 +40,7 @@
             </div>
             <div class="">
                 <div class="">
-                    <button type="submit" class="btn btn-default submit">
+                    <button type="submit" class="btn btn-dark submit">
                         {{ __('Login') }}
                     </button>
 

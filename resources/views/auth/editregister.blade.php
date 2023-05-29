@@ -1,76 +1,96 @@
-@extends('layouts.app')
+@extends('...admin.main')
 
-@section('content')
+@section('main-section')
 
 <body class="login">
-    <div>
-
-      <div class="login_wrapper">
-        <div class="animate form login_form">
-          <section class="login_content">
-            <form method="POST" action="{{$url}}">
-                @csrf
-              <h1>{{$title}}</h1>
-              <div class="">
-                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user->name}}" required autocomplete="name" placeholder="Enter Your Name" autofocus>
-    
-                @error('name')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
-            <div class="">
-                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}" placeholder="Enter Your Email" required autocomplete="email">
-    
-                @error('email')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
-            <div class="">
-                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Enter Password" required autocomplete="new-password">
-    
-                @error('password')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
-            <div class="">
-                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password" required autocomplete="new-password">
-            </div>
-            <div class="">
-<select class="form-control" name="usertype" id="usertype">
-  <option value="users">User</option>
-  <option value="admin">Admin</option>
-  </select>  
-          
-          </div>
-            <div class="">
-                <div class="">
-                    <button type="submit" class="btn btn-default submit">
-                        {{ __('Register') }}
-                    </button>
-                </div>
-            </div>
-           
-
-              <div class="clearfix"></div>
-
-              <div class="separator">
-              
-      
-                <div class="clearfix"></div>
-                <br />
-      
-                <div>
-                  <h1><i class="fa fa-paw"></i> Direct KSA</h1>
-                  <p>©2023 All Rights Reserved. Direct KSA . Privacy and Terms</p>
-                </div>
-              </div>
-            </form>
-          </section>
+  <div class="right_col" role="main">
+    <div class="">
+      <div class="page-title">
+        <div class="title_left">
+          <h3>Update User</h3>
         </div>
+
+        <div class="title_right">
+          <div class="col-md-5 col-sm-5  form-group pull-right top_search">
+
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="row">
+        <div class="col-md-12 col-sm-12 ">
+          <div class="x_panel">
+            <div class="x_title">
+              <h2>Update User <small>Direct KSA</small></h2>
+              
+              <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+              <br />
+              <form method="POST" action="{{$url}}">
+                @csrf
+                <div class="item form-group">
+                  <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">First Name <span class="required">*</span>
+                  </label>
+                  <div class="col-md-6 col-sm-6 ">
+                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user->name}}" required autocomplete="name" placeholder="Enter Your Name" autofocus>
+                    @error('name')
+                    <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                    </span>
+                  @enderror
+                  </div>
+                </div>
+                <div class="item form-group">
+                  <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Email <span class="required">*</span>
+                  </label>
+                  <div class="col-md-6 col-sm-6 ">
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}" placeholder="Enter Your Email" required autocomplete="email">
+                    @error('email')
+                    <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                    </span>
+                  @enderror
+                  </div>
+                </div>
+                <div class="item form-group">
+                  <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Password</label>
+                  <div class="col-md-6 col-sm-6 ">
+                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Enter Password" required autocomplete="new-password">
+
+                    @error('password')
+                      <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                      </span>
+                    @enderror											</div>
+                </div>
+                <div class="item form-group">
+                  <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Confirm Password</label>
+                  <div class="col-md-6 col-sm-6 ">
+                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password" required autocomplete="new-password">
+                  </div>
+                </div>
+                <div class="item form-group">
+                  <label class="col-form-label col-md-3 col-sm-3 label-align">Gender</label>
+                  <div class="col-md-6 col-sm-6 ">
+                    <select class="form-control" name="usertype" id="usertype">
+                      <option value="users">User</option>
+                      <option value="admin">Admin</option>
+                      </select>  
+                  </div>
+                </div>
+              
+                <div class="ln_solid"></div>
+                <div class="item form-group">
+                  <div class="col-md-6 col-sm-6 offset-md-3">
+                   <a href="{{url('../admin/users')}}"> <button class="btn btn-primary" type="button">Cancel</button></a>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                  </div>
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
 @endsection

@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Country\CountryController;
 
 
 /*
@@ -33,5 +34,14 @@ Route::group(['prefix'=>'/admin'],function(){
     Route::get('/user/edit/{id}',[AdminController::class, 'edit'])->middleware(['auth','admin']);
     Route::POST('/user/update/{id}',[AdminController::class, 'update'])->middleware(['auth','admin']);
     Route::get('/setting',[AdminController::class, 'setting'])->middleware(['auth','admin']);
+    Route::get('/countries',[CountryController::class, 'view'])->middleware(['auth','admin']);
+    Route::get('/country-form',[CountryController::class, 'form'])->middleware(['auth','admin']);
+    Route::POST('/country-form',[CountryController::class, 'store'])->middleware(['auth', 'admin']);
+    Route::Get('/countries/delete/{id}',[CountryController::class, 'delete'])->middleware(['auth','admin']);
+    Route::get('/country-form/edit/{id}',[CountryController::class, 'edit'])->middleware(['auth','admin']);
+    Route::POST('/country-form/update/{id}',[CountryController::class, 'update'])->middleware(['auth','admin']);
+   
+
+
 
 });

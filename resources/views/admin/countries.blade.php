@@ -1,7 +1,7 @@
 @extends('admin.main')
 @section('main-section')
 @push('title')
-<title>Users</title>
+<title>Country</title>
     
 @endpush
 
@@ -10,12 +10,16 @@
       <form action="">
       <div class="page-title">
         <div class="title_left">
-          <h3>Users </h3>
+          <h3>Countries </h3>
         </div>
 
         <div class="title_right">
-          <div class="col-md-5 col-sm-5   form-group pull-right top_search">
+          <div class="col-md-7 col-sm-7   form-group pull-right top_search">
+
             <div class="input-group">
+               <div>
+                <a href="{{url('admin/country-form')}}"  class="btn btn-dark"> Add Country</a>
+                </div>
               <input type="search" name="search" class="form-control" placeholder="Search for...">
               <span class="input-group-btn">
                 <button class="btn btn-default" type="button">Go!</button>
@@ -46,39 +50,46 @@
                 <table class="table table-striped jambo_table bulk_action">
                   <thead>
                     <tr class="headings">
-                        <th>User Name</th>
-                        <th>Email</th>
-                        <th>User Type</th>
+                        <th>Country Name</th>
+                        <th>Flag</th>
+                        <th>Cover Pic</th>
                         <th>Action</th>
                     </tr>
                   </thead>
 
+    
+
                   <tbody>
                     <tr class="even pointer">
-                        @foreach ($users as $user)
+                        @foreach ($countries as $country)
                 
            
-                        <td scope="row">{{$user->name }}</td>
-                        <td>{{$user->email}}</td>
-                        <td>{{$user->usertype}}</td>
+                        <td scope="row">{{$country->name }}</td>
+                        <td><img src="{{asset($country->flag_pic)}}"  style="width:130px;height:80px" alt="Flag-Pic"></td>
+                        <td><img src="{{asset($country->cover_pic)}}" style="width:130px;height:80px" alt="Cover-Pic"></td>
                         <td>
-                            <a href="{{url('admin/user/delete/')}}/{{$user->id}}">
+                            <a href="{{url('admin/countries/delete/')}}/{{$country->id}}">
                                 <button class="btn btn-danger">Delete</button></a>
-                                <a href="{{url('admin/user/edit/')}}/{{$user->id}}">
+                                <a href="{{url('admin/country-form/edit/')}}/{{$country->id}}">
                                 <button class="btn btn-success">Edit</button>
                         </td>
                     </tr>
                     @endforeach
+                    
                   </tbody>
+                
                 </table>
               </div>
                       
                   
             </div>
+        
+      
           </div>
-        
+        </div>
+       
  
-        
+    
     
 
 

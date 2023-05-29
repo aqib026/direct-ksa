@@ -100,7 +100,7 @@
                   </li>
                   <li><a><i class="fa fa-clone"></i>Layouts <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="fixed_sidebar.html">Layout 1</a></li>
+                      <li><a href="{{url('admin/countries')}}">Country</a></li>
                       <li><a href="{{url('admin/users')}}">Users</a></li>
                     </ul>
                   </li>
