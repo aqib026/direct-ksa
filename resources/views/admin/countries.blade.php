@@ -4,7 +4,19 @@
 <title>Country</title>
     
 @endpush
+@push('style')
+    <style>
+      .my-image {
+  width: 2000px;
+  height: 2000px;
+  transition: all 0.5s;
+}
 
+.my-image:hover {
+  transform: scale(2.2);
+}
+    </style>
+@endpush
 
     <div class="">
       <form action="">
@@ -66,8 +78,8 @@
                 
            
                         <td scope="row">{{$country->name }}</td>
-                        <td><img src="{{asset($country->flag_pic)}}"  style="width:130px;height:80px" alt="Flag-Pic"></td>
-                        <td><img src="{{asset($country->cover_pic)}}" style="width:130px;height:80px" alt="Cover-Pic"></td>
+                        <td><img src="{{asset($country->flag_pic)}}" class="me-4 border my-image"  style="width:130px;height:80px" alt="Flag-Pic"></td>
+                        <td><img src="{{asset($country->cover_pic)}}" class="me-4 border my-image" style="width:130px;height:80px" alt="Cover-Pic"></td>
                         <td>@if($country->status=="active")
                    
                             <span class="badge badge-success bg-success">Active</span>
