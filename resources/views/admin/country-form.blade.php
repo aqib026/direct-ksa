@@ -1,7 +1,10 @@
 @extends('admin.main')
 
 @section('main-section')
-
+@push('title')
+<title>Country</title>
+    
+@endpush
 <body class="login">
   <div class="right_col" role="main">
     <div class="">
@@ -11,8 +14,8 @@
         </div>
 
         <div class="title_right">
-          <div class="col-md-5 col-sm-5  form-group pull-right top_search">
-
+          <div class="col-md-2 col-sm-2  form-group pull-right top_search">
+<a href="{{url('admin/countries')}}"><button class="btn btn-danger">Back</button></a>
           </div>
         </div>
       </div>
@@ -54,6 +57,16 @@
                   <div class="col-md-6 col-sm-6 ">
                     <input id="" type="file" class="form-control @error('password') is-invalid @enderror" name="cover_pic" placeholder="Enter Password" required autocomplete="new-password">
 									</div>
+                </div>
+                <div class="item form-group">
+                  <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Status</label>
+                  <div class="col-md-6 col-sm-6 ">
+
+                <select name="status" class="form-control" id="">
+                  <option value="active">Active</option>
+                  <option value="inactive">InActive</option>
+                </select>
+                  </div>
                 </div>
                
                 <div class="ln_solid"></div>

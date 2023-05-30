@@ -12,7 +12,7 @@
 
         <div class="title_right">
           <div class="col-md-5 col-sm-5  form-group pull-right top_search">
-
+<a href="{{url('admin/users')}}"><button class="btn btn-danger">Back</button></a>
           </div>
         </div>
       </div>

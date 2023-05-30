@@ -18,7 +18,7 @@
             <div class="input-group">
               <input type="search" name="search" class="form-control" placeholder="Search for...">
               <span class="input-group-btn">
-                <button class="btn btn-default" type="button">Go!</button>
+                <button class="btn btn-default" type="submit">Go!</button>
               </span>
             </div>
           </div>
@@ -72,7 +72,9 @@
                   </tbody>
                 </table>
               </div>
-                      
+                  <div class="row">
+                 
+                  </div>    
                   
             </div>
           </div>

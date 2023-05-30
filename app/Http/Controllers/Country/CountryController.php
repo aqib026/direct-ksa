@@ -36,6 +36,8 @@ class CountryController extends Controller
       $countries->flag_pic = $request->file('flag_pic')->storeas('flagpic', $filename);
       $countryname = time() . "cp." . $request->file('cover_pic')->getClientOriginalExtension();
       $countries->cover_pic = $request->file('cover_pic')->storeAs('coverpic', $countryname);
+     $countries->status=$request ['status'];
+
       $countries->save();
       return redirect('admin/countries');
    }
@@ -48,7 +50,7 @@ class CountryController extends Controller
       if ($search != "") {
          $countries = countries::where('name', 'like', "%$search%")->get();
       } else {
-         $countries = countries::paginate(10);
+         $countries = countries::all();
       }
       $data = compact('countries', 'search');
       return view('admin.countries')->with($data);
@@ -94,6 +96,7 @@ class CountryController extends Controller
      $countries->flag_pic = $request->file('flag_pic')->storeas('flagpic', $filename);
      $countryname = time() . "cp." . $request->file('cover_pic')->getClientOriginalExtension();
      $countries->cover_pic = $request->file('cover_pic')->storeAs('coverpic', $countryname);
+     $countries->status=$request ['status'];
    
    
    $countries->save();

@@ -22,7 +22,7 @@
                 </div>
               <input type="search" name="search" class="form-control" placeholder="Search for...">
               <span class="input-group-btn">
-                <button class="btn btn-default" type="button">Go!</button>
+                <button class="btn btn-default" type="submit">Go!</button>
               </span>
             </div>
           </div>
@@ -53,6 +53,7 @@
                         <th>Country Name</th>
                         <th>Flag</th>
                         <th>Cover Pic</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                   </thead>
@@ -67,7 +68,15 @@
                         <td scope="row">{{$country->name }}</td>
                         <td><img src="{{asset($country->flag_pic)}}"  style="width:130px;height:80px" alt="Flag-Pic"></td>
                         <td><img src="{{asset($country->cover_pic)}}" style="width:130px;height:80px" alt="Cover-Pic"></td>
-                        <td>
+                        <td>@if($country->status=="active")
+                   
+                            <span class="badge badge-success bg-success">Active</span>
+                            @else
+                            <span class="badge  bg-danger">InActive</span>
+        
+                            @endif
+                        </td>   <td>
+                      
                             <a href="{{url('admin/countries/delete/')}}/{{$country->id}}">
                                 <button class="btn btn-danger">Delete</button></a>
                                 <a href="{{url('admin/country-form/edit/')}}/{{$country->id}}">

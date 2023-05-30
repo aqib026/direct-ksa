@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Admin;
 use App\Models\image;
 use App\Http\Controllers\Controller;
-use link;
 
 
 
@@ -23,7 +22,7 @@ class AdminController extends Controller
           $users = admin:: where('name','like',"%$search%")->orwhere('email','like',"%$search%")->get();
         } 
         else{
-          $users = admin::paginate(10);
+          $users = admin::all();
         }
         $data=compact('users','search');
        return view('admin.users')->with($data);
