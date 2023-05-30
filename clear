@@ -1,0 +1,59 @@
+[33mcommit d06e0e2e9e0b926d1d69e05f39419966806c037b[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: sherry <sherry@gmail.com>
+Date:   Tue May 30 16:34:22 2023 +0500
+
+    improve
+
+[33mcommit 7b5f3a2d97faca9b30ee350a72ee90870bd61f50[m
+Author: sherry <sherry@gmail.com>
+Date:   Tue May 30 11:59:27 2023 +0500
+
+    Add css in image
+
+[33mcommit 47c1a289b291079434c5502eb469150f12860b24[m
+Author: sherry <sherry@gmail.com>
+Date:   Tue May 30 11:52:50 2023 +0500
+
+    Done with countries crud
+
+[33mcommit cddd10f20d1ab3a3052ecfc06300f94737d55cf3[m
+Author: sherry <sherry@gmail.com>
+Date:   Mon May 29 21:30:28 2023 +0500
+
+    Done with Crud operation of Conutry
+
+[33mcommit eb19069669611c21b9c5352ac54ff747f0eb64c5[m
+Author: aaqib javed <aqib026@gmail.com>
+Date:   Mon May 29 14:53:28 2023 +0500
+
+    remove d
+
+[33mcommit bd5f35e572da3f8d7add93f57c205ff594257469[m
+Author: sherry <sherry@gmail.com>
+Date:   Mon May 29 14:29:36 2023 +0500
+
+    made new changes the users
+
+[33mcommit 27182f3db74629faf5cd0cb3a526b9ac9299e2ed[m
+Author: sherry <sherry@gmail.com>
+Date:   Thu May 25 19:45:23 2023 +0500
+
+    Done wit Login Page
+
+[33mcommit 420f5c8208a259680cb0a6f98e8a4e0842e32590[m
+Author: sherry <sherry@gmail.com>
+Date:   Wed May 24 21:48:36 2023 +0500
+
+    Done With Login Page
+
+[33mcommit fbe69727ea003be57fd5caf374081d16bfc08723[m
+Author: sherry <sherry@gmail.com>
+Date:   Wed May 24 19:10:59 2023 +0500
+
+    modifications to the header layout blade file
+
+[33mcommit d81acbfb4579ab01b37e4572b3bba56ba7038f3e[m
+Author: sherry <sherry@gmail.com>
+Date:   Wed May 24 19:00:06 2023 +0500
+
+    initial commit
