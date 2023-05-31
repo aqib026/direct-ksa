@@ -48,7 +48,7 @@
                   <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Banner <span class="required"></span>
                   </label>
                   <div class="col-md-6 col-sm-6 ">
-                    <input id="" type="file" class="form-control" name="banner" value="{{$accreditation->banner}}" placeholder="" required autocomplete="">
+                    <input id="" type="file" class="form-control" name="banner" value="" placeholder="" required autocomplete="">
                 
                   </div>
                 </div>

@@ -50,7 +50,7 @@ class CountryController extends Controller
       if ($search != "") {
          $countries = countries::where('name', 'like', "%$search%")->get();
       } else {
-         $countries = countries::all();
+         $countries = countries::paginate(6);
       }
       $data = compact('countries', 'search');
       return view('admin.countries')->with($data);
@@ -109,5 +109,13 @@ class CountryController extends Controller
 /////////////////////////////////////////////////////////////
 
 
+public function slider()
+{
 
+      $countries = countries::paginate(1);
+   
+   $data = compact('countries');
+  
+    return view('admin.slider')->with($data);
+}
 }

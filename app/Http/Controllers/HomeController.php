@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\country;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,8 +27,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
- 
-    
+
+
     public function index()
     {
         if(Auth::id())
@@ -45,13 +46,14 @@ class HomeController extends Controller
                 return redirect()->back();
             }
         }
-       
+
+
     }
 
-
-
  
-    
+
+
+
 }
 
 

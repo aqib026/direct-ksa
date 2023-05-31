@@ -32,6 +32,7 @@ route::get('/dashboard',[HomeController::class, 'index']);
 
 Auth::routes();
 Route::group(['prefix'=>'/admin'],function(){
+    Route::get('/slider', [CountryController::class, 'slider']);
 
     Route::get('/users',[AdminController::class, 'view'])->middleware(['auth','admin']);
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');

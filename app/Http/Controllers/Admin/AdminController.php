@@ -22,7 +22,7 @@ class AdminController extends Controller
           $users = admin:: where('name','like',"%$search%")->orwhere('email','like',"%$search%")->get();
         } 
         else{
-          $users = admin::all();
+          $users = admin::paginate(6);
         }
         $data=compact('users','search');
        return view('admin.users')->with($data);

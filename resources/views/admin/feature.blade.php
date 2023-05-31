@@ -61,14 +61,14 @@
 
                   <tbody>
                     <tr class="even pointer">
-                      @foreach ( $feature as $feature )
+                      @foreach ( $feature as $features )
 
 
 
 
-                        <td scope="row">{{$feature->name}}</td>
+                        <td scope="row">{{$features->name}}</td>
                         <td>
-                            @if($feature->status == 1)
+                            @if($features->status == 1)
 
                             <span class="badge badge-success bg-success" >Active</span>
 
@@ -81,10 +81,10 @@
 
                         <td>
 
-                            <a href="{{url('admin/feature/delete/')}}/{{$feature->id}}">
+                            <a href="{{url('admin/feature/delete/')}}/{{$features->id}}">
                                 <button class="btn btn-danger">Delete</button></a>
-                                <a href="{{url('admin/feature-form/edit/')}}/{{$feature->id}}">
-                                <button class="btn btn-success">Edit</button>
+                                  <a href="{{url('admin/feature-form/edit/')}}/{{$features->id}}">
+                              <button class="btn btn-success">Edit</button>
                         </td>
                     </tr>
                     @endforeach
@@ -99,12 +99,19 @@
 
 
           </div>
-        </div>
+          <div class="row">
+            {{$feature->links('pagination::bootstrap-4')}};
+          </div>
+ 
+           </div>
 
     </div>
 
 
 
+         
+    
+  
 
 
 

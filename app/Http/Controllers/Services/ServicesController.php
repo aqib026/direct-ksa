@@ -48,7 +48,7 @@ class ServicesController extends Controller
     if ($search != "") {
        $services = services::where('name', 'like', "%$search%")->get();
     } else {
-       $services = services::all();
+       $services = services::paginate(6);
     }
     $data = compact('services', 'search');
     return view('admin.special_services')->with($data);

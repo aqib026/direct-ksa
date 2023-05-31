@@ -22,6 +22,8 @@ class Admin
         {
         return $next($request);
         }
+        echo "<h3>YOU ARE NOT ALLOW IN THIS PAGE</h3>";
         abort(401);
+
     }
 }

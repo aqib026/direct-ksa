@@ -40,12 +40,12 @@ public function view(request $request)
 $search=$request['search'] ?? "";
 if($search != "")
 {
-    $feature =feature::where('name','like',"%$search%");
+    $feature = feature::where('name','like',"%$search%");
 }
 
     else
     {
-$feature =feature::all();
+$feature = feature::paginate(6);
     }
     $data=compact('feature','search');
     return view('admin.feature')->with($data);

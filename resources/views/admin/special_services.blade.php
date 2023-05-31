@@ -100,6 +100,9 @@
         
       
           </div>
+          <div class="row">
+            {{$services->links('pagination::bootstrap-4')}}
+          </div>
         </div>
        
     </div>

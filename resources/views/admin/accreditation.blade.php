@@ -105,6 +105,9 @@
         
       
           </div>
+          <div class="row">
+            {{$accreditation->links('pagination::bootstrap-4')}}
+          </div>
         </div>
        
     </div>

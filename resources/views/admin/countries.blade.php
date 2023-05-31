@@ -107,12 +107,17 @@
         
       
           </div>
+         
+            <div class="row">
+              {{$countries->links('pagination::bootstrap-4')}}
+            </div>
+          
         </div>
-       
+   
+        
     </div>
   
-    
-    
+
 
 
 
