@@ -22,7 +22,7 @@
       <form action="">
       <div class="page-title">
         <div class="title_left">
-          <h3>Countries </h3>
+          <h3>Accreditation </h3>
         </div>
 
         <div class="title_right">
@@ -30,7 +30,7 @@
 
             <div class="input-group">
                <div>
-                <a href="{{url('admin/country-form')}}"  class="btn btn-dark"> Add Country</a>
+                <a href="{{url('admin/accreditation-form')}}"  class="btn btn-dark"> Add</a>
                 </div>
               <input type="search" name="search" class="form-control" placeholder="Search for...">
               <span class="input-group-btn">
@@ -62,9 +62,8 @@
                 <table class="table table-striped jambo_table bulk_action">
                   <thead>
                     <tr class="headings">
-                        <th>Country Name</th>
-                        <th>Flag</th>
-                        <th>Cover Pic</th>
+                        <th>Name</th>
+                        <th>Banner</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -74,24 +73,23 @@
 
                   <tbody>
                     <tr class="even pointer">
-                        @foreach ($countries as $country)
+                        @foreach ($accreditation as $accre)
                 
            
-                        <td scope="row">{{$country->name }}</td>
-                        <td><img src="{{asset($country->flag_pic)}}" class="me-4 border my-image"  style="width:130px;height:80px" alt="Flag-Pic"></td>
-                        <td><img src="{{asset($country->cover_pic)}}" class="me-4 border my-image" style="width:130px;height:80px" alt="Cover-Pic"></td>
-                        <td>@if($country->status=="active")
+                        <td scope="row">{{$accre->name }}</td>
+                        <td><img src="{{asset($accre->banner)}}" class="me-4 border my-image"  style="width:130px;height:80px" alt="Flag-Pic"></td>
+                        <td>@if($accre->status==1)
                    
                             <span class="badge badge-success bg-success">Active</span>
                             @else
-                            <span class="badge badge-danger  bg-danger">InActive</span>
+                            <span class="badge badge-danger  bg-danger">In Active</span>
         
                             @endif
                         </td>   <td>
                       
-                            <a href="{{url('admin/countries/delete/')}}/{{$country->id}}">
+                            <a href="{{url('admin/accreditation/delete/')}}/{{$accre->id}}">
                                 <button class="btn btn-danger">Delete</button></a>
-                                <a href="{{url('admin/country-form/edit/')}}/{{$country->id}}">
+                                <a href="{{url('admin/accreditation-form/edit/')}}/{{$accre->id}}">
                                 <button class="btn btn-success">Edit</button>
                         </td>
                     </tr>

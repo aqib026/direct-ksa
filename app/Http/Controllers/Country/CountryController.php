@@ -89,16 +89,19 @@ class CountryController extends Controller
 
    public function update ($id, Request $request)
    {
+       $request->validate([
+           'name'=>'required'
+       ]);
      $countries= countries::find($id);
-   
+
      $countries->name=$request ['name'];
      $filename = time() . "fp." . $request->file('flag_pic')->getClientOriginalExtension();
      $countries->flag_pic = $request->file('flag_pic')->storeas('flagpic', $filename);
      $countryname = time() . "cp." . $request->file('cover_pic')->getClientOriginalExtension();
      $countries->cover_pic = $request->file('cover_pic')->storeAs('coverpic', $countryname);
      $countries->status=$request ['status'];
-   
-   
+
+
    $countries->save();
    return redirect('admin/countries');
    }

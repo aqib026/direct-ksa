@@ -17,7 +17,7 @@
          <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
         <!-- NProgress -->
           <link rel="stylesheet" href="{{ asset('css/nprogress.css') }}">
-       
+
         <!-- Custom Theme Style -->
         <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
         <link rel="stylesheet" href="{{asset('css/custom.min.css')}}">
@@ -100,8 +100,14 @@
                   </li>
                   <li><a><i class="fa fa-clone"></i>Layouts <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
+                      <li><a href="{{url('admin/accreditation')}}">Accreditation</a></li>
                       <li><a href="{{url('admin/countries')}}">Country</a></li>
+                      <li><a href="{{url('admin/feature')}}">Feature</a></li>
+
                       <li><a href="{{url('admin/users')}}">Users</a></li>
+
+                        <li><a href="{{url('admin/special_services')}}">Special Services</a></li>
+
                     </ul>
                   </li>
                 </ul>
@@ -144,7 +150,7 @@
                         <li><a href="#level1_2">Level One</a>
                         </li>
                     </ul>
-                  </li>                  
+                  </li>
                   <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
                 </ul>
               </div>
@@ -163,8 +169,8 @@
               <a data-toggle="tooltip" data-placement="top" title="Lock">
                 <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
               </a>
-          
-             
+
+
                 <a data-toggle="tooltip" data-placement="top" title="Logout"href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                                  document.getElementById('logout-form').submit();">
@@ -174,7 +180,7 @@
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
                 </form>
-            
+
             </div>
             <!-- /menu footer buttons -->
           </div>
@@ -199,21 +205,21 @@
                           <span>Settings</span>
                         </a>
                     <a class="dropdown-item"  href="javascript:;">Help</a>
-                     
+
                       <a class="dropdown-item" href="{{ route('logout') }}"
                       onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
                        {{ __('Logout') }}
-                       
+
                    </a>
 
                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                        @csrf
-                       
+
                    </form>
                     </div>
                   </li>
-  
+
                   <li role="presentation" class="nav-item dropdown open">
                     <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1" data-toggle="dropdown" aria-expanded="false">
                       <x-heroicon-o-envelope  style="width:25px;"/>
@@ -272,10 +278,10 @@
                         <div class="text-center">
                           <a class="dropdown-item">
                             <strong>See All Alerts</strong>
-                          
 
 
-                            
+
+
                           </a>
                         </div>
                       </li>
@@ -285,4 +291,3 @@
               </nav>
             </div>
           </div>
-         

@@ -15,7 +15,7 @@
 
         <div class="title_right">
           <div class="col-md-2 col-sm-2  form-group pull-right top_search">
-<a href="{{url('admin/countries')}}"><button class="btn btn-danger">Back</button></a>
+<a href="{{url('admin/accreditation')}}"><button class="btn btn-danger">Back</button></a>
           </div>
         </div>
       </div>
@@ -33,10 +33,10 @@
               <form method="POST" action="{{$url}}" enctype="multipart/form-data">
                 @csrf
                 <div class="item form-group">
-                  <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Country Name <span class="required"></span>
+                  <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Name <span class="required"></span>
                   </label>
                   <div class="col-md-6 col-sm-6 ">
-                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{old('name',isset($countries)?$countries->name:'')}}" required autocomplete="name" placeholder="Enter Name" autofocus>
+                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{old('name',isset($accreditation)?$accreditation->name:'')}}" required autocomplete="name" placeholder="Enter Name" autofocus>
                     @error('name')
                     <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
@@ -45,26 +45,21 @@
                   </div>
                 </div>
                 <div class="item form-group">
-                  <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Flag Pic <span class="required"></span>
+                  <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Banner <span class="required"></span>
                   </label>
                   <div class="col-md-6 col-sm-6 ">
-                    <input id="" type="file" class="form-control" name="flag_pic" value="" placeholder="" required autocomplete="">
+                    <input id="" type="file" class="form-control" name="banner" value="{{$accreditation->banner}}" placeholder="" required autocomplete="">
                 
                   </div>
                 </div>
-                <div class="item form-group">
-                  <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Cover Pic</label>
-                  <div class="col-md-6 col-sm-6 ">
-                    <input id="" type="file" class="form-control" name="cover_pic" placeholder="" required autocomplete="">
-									</div>
-                </div>
+                
                 <div class="item form-group">
                   <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Status</label>
                   <div class="col-md-6 col-sm-6 ">
 
                 <select name="status" class="form-control" id="">
-                  <option value="active">Active</option>
-                  <option value="inactive">InActive</option>
+                  <option value="1">Active</option>
+                  <option value="0">InActive</option>
                 </select>
                   </div>
                 </div>
@@ -72,7 +67,7 @@
                 <div class="ln_solid"></div>
                 <div class="item form-group">
                   <div class="col-md-6 col-sm-6 offset-md-3">
-                   <a href="{{url('../admin/countries')}}"> <button class="btn btn-primary" type="button">Cancel</button></a>
+                   <a href="{{url('../admin/accreditation')}}"> <button class="btn btn-primary" type="button">Cancel</button></a>
                     <button type="submit" class="btn btn-success">Submit</button>
                   </div>
                 </div>
