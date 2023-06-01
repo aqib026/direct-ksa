@@ -1,4 +1,4 @@
-@extends('admin.main')
+@extends('admin.include.main')
 @section('main-section')
 @push('title')
 <title>Country</title>
@@ -22,7 +22,7 @@
       <form action="">
       <div class="page-title">
         <div class="title_left">
-          <h3>Accreditation </h3>
+          <h3>Countries </h3>
         </div>
 
         <div class="title_right">
@@ -30,7 +30,7 @@
 
             <div class="input-group">
                <div>
-                <a href="{{url('admin/accreditation-form')}}"  class="btn btn-dark"> Add</a>
+                <a href="{{url('admin/country-form')}}"  class="btn btn-dark"> Add Country</a>
                 </div>
               <input type="search" name="search" class="form-control" placeholder="Search for...">
               <span class="input-group-btn">
@@ -62,8 +62,9 @@
                 <table class="table table-striped jambo_table bulk_action">
                   <thead>
                     <tr class="headings">
-                        <th>Name</th>
-                        <th>Banner</th>
+                        <th>Country Name</th>
+                        <th>Flag</th>
+                        <th>Cover Pic</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -73,23 +74,24 @@
 
                   <tbody>
                     <tr class="even pointer">
-                        @foreach ($accreditation as $accre)
+                        @foreach ($countries as $country)
                 
            
-                        <td scope="row">{{$accre->name }}</td>
-                        <td><img src="{{asset($accre->banner)}}" class="me-4 border my-image"  style="width:130px;height:80px" alt="Flag-Pic"></td>
-                        <td>@if($accre->status==1)
+                        <td scope="row">{{$country->name }}</td>
+                        <td><img src="{{asset($country->flag_pic)}}" class="me-4 border my-image"  style="width:130px;height:80px" alt="Flag-Pic"></td>
+                        <td><img src="{{asset($country->cover_pic)}}" class="me-4 border my-image" style="width:130px;height:80px" alt="Cover-Pic"></td>
+                        <td>@if($country->status=="active")
                    
                             <span class="badge badge-success bg-success">Active</span>
                             @else
-                            <span class="badge badge-danger  bg-danger">In Active</span>
+                            <span class="badge badge-danger  bg-danger">InActive</span>
         
                             @endif
                         </td>   <td>
                       
-                            <a href="{{url('admin/accreditation/delete/')}}/{{$accre->id}}">
+                            <a href="{{url('admin/countries/delete/')}}/{{$country->id}}">
                                 <button class="btn btn-danger">Delete</button></a>
-                                <a href="{{url('admin/accreditation-form/edit/')}}/{{$accre->id}}">
+                                <a href="{{url('admin/country-form/edit/')}}/{{$country->id}}">
                                 <button class="btn btn-success">Edit</button>
                         </td>
                     </tr>
@@ -105,15 +107,17 @@
         
       
           </div>
-          <div class="row">
-            {{$accreditation->links('pagination::bootstrap-4')}}
-          </div>
+         
+            <div class="row">
+              {{$countries->links('pagination::bootstrap-4')}}
+            </div>
+          
         </div>
-       
+   
+        
     </div>
   
-    
-    
+
 
 
 

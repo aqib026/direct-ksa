@@ -1,5 +1,5 @@
-@include('admin.header')
+@include('admin.include.header')
 <div class="right_col" role="main">
 @yield('main-section')
 </div>
-@include('admin.footer')
+@include('admin.include.footer')

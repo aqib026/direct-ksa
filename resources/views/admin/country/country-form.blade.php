@@ -1,4 +1,4 @@
-@extends('admin.main')
+@extends('admin.include.main')
 
 @section('main-section')
 @push('title')
@@ -49,13 +49,15 @@
                   </label>
                   <div class="col-md-6 col-sm-6 ">
                     <input id="" type="file" class="form-control" name="flag_pic" value="" placeholder="" required autocomplete="">
-                
+                {{-- <img src="{{old('flag_pic',isset($countries)?asset($countries->flag_pic):'')}}" alt="" width="70px" height="70px"> --}}
                   </div>
                 </div>
                 <div class="item form-group">
                   <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Cover Pic</label>
                   <div class="col-md-6 col-sm-6 ">
-                    <input id="" type="file" class="form-control" name="cover_pic" placeholder="" required autocomplete="">
+                    <input id="" type="file" class="form-control" name="cover_pic" value="" placeholder="" required autocomplete="">
+                    {{-- <img src="{{old('cover_pic',isset($countries)?asset($countries->cover_pic):'')}}" alt="" width="70px" height="70px"> --}}
+
 									</div>
                 </div>
                 <div class="item form-group">

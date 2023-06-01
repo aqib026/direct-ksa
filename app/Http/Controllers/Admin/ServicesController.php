@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Services;
+namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Services;
 
@@ -9,12 +9,12 @@ use Illuminate\Http\Request;
 
 class ServicesController extends Controller
 {
-    public function form()
+    public function create()
    {
       $url = url('admin/special_services_form');
       $title = "Add Special Services";
       $data = compact('url', 'title');
-      return view('admin.special_services_form')->with($data);
+      return view('admin.special_services.special_services_form')->with($data);
    }
    ///////////////////////////////////////////////////////////////////////////
 
@@ -41,7 +41,7 @@ class ServicesController extends Controller
 
    /////////////////////////////////////////////////////////////////////////////////////
 
-   public function view()
+   public function show()
    {
   
     $search = $request["search"] ?? "";
@@ -51,11 +51,11 @@ class ServicesController extends Controller
        $services = services::paginate(6);
     }
     $data = compact('services', 'search');
-    return view('admin.special_services')->with($data);
+    return view('admin.special_services.special_services')->with($data);
    }
    /////////////////////////////////////////////////////////////////
 
-   public function delete($id)
+   public function destroy($id)
    {
       $services = services::find($id);
       if (!is_null($services)) {
@@ -77,7 +77,7 @@ class ServicesController extends Controller
          $title = "Update Special Services";
 
          $data = compact('services', 'url', 'title');
-         return view('admin/special_services_form')->with($data);
+         return view('admin/special_services/special_services_form')->with($data);
       }
    }
 

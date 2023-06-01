@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
 
-    public function view(request $request)
+    public function show(request $request)
     {
         $search =$request["search"]?? "";
         if($search != "")
@@ -31,7 +31,7 @@ class AdminController extends Controller
 
 
 
-    public function delete($id)
+    public function destroy($id)
     {
 
         $user = admin::find($id);

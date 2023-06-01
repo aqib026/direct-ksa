@@ -1,4 +1,4 @@
-@extends('admin.main')
+@extends('admin.include.main')
 @section('main-section')
 @push('title')
 <title>Country</title>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\feature;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\feature;
@@ -13,12 +13,12 @@ class FeatureController extends Controller
 {
 
 
-public function form()
+public function create()
 {
    $url =url('admin/feature-form');
    $title="Add Feature";
    $data =compact('url','title');
-   return view('admin.feature-form')->with($data);
+   return view('admin.feature.feature-form')->with($data);
 }
 //////////////////////////////////////////////////////////////////////////////////////
 public function store(request $request)
@@ -35,7 +35,7 @@ $feature->save();
 return redirect('admin/feature');
 }
 //////////////////////////////////////////////////////////////////////////////////////
-public function view(request $request)
+public function show(request $request)
 {
 $search=$request['search'] ?? "";
 if($search != "")
@@ -48,13 +48,13 @@ if($search != "")
 $feature = feature::paginate(6);
     }
     $data=compact('feature','search');
-    return view('admin.feature')->with($data);
+    return view('admin.feature.feature')->with($data);
 
 
 
 }
 //////////////////////////////////////////////////////////////////////////////
-public function delete($id)
+public function destroy($id)
 {
     $feature = feature::find($id);
     if(!is_null($feature))
@@ -78,7 +78,7 @@ public function edit($id)
         $url=url('admin/feature-form/update/')."/".$id;
         $title= "Edit Feature";
         $data =compact('url','title','feature');
-        return view('admin/feature-form')->with($data);
+        return view('admin/feature/feature-form')->with($data);
     }
 
 
@@ -98,3 +98,6 @@ public function update($id ,request $request)
 }
 ///////////////////////////////////////////////////////////////////////////////
 }
+
+
+

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Country;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -11,12 +11,12 @@ class CountryController extends Controller
 {
 
    /////////////////////////////////////////////////
-   public function form()
+   public function create()
    {
       $url = url('admin/country-form');
       $title = "Add Country";
       $data = compact('url', 'title');
-      return view('admin.country-form')->with($data);
+      return view('admin.country.country-form')->with($data);
    }
    ///////////////////////////////////////////////////////////////////////////
 
@@ -44,7 +44,7 @@ class CountryController extends Controller
 
    /////////////////////////////////////////////////////////////////////////////////////
 
-   public function view(request $request)
+   public function show(request $request)
    {
       $search = $request["search"] ?? "";
       if ($search != "") {
@@ -53,11 +53,11 @@ class CountryController extends Controller
          $countries = countries::paginate(6);
       }
       $data = compact('countries', 'search');
-      return view('admin.countries')->with($data);
+      return view('admin.country.countries')->with($data);
    }
    /////////////////////////////////////////////////////////////////
 
-   public function delete($id)
+   public function destroy($id)
    {
       $countries = countries::find($id);
       if (!is_null($countries)) {
@@ -79,7 +79,7 @@ class CountryController extends Controller
          $title = "Update Country";
 
          $data = compact('countries', 'url', 'title');
-         return view('admin/country-form')->with($data);
+         return view('admin/country/country-form')->with($data);
       }
    }
 

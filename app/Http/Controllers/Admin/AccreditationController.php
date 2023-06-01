@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Accreditation;
+namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Accreditation;
 use Illuminate\Http\Request;
@@ -13,7 +13,7 @@ class AccreditationController extends Controller
        $url = url('admin/accreditation-form');
        $title = "Add accreditation";
        $data = compact('url', 'title');
-       return view('admin.accreditation-form')->with($data);
+       return view('admin.accreditation.accreditation-form')->with($data);
     }
     ///////////////////////////////////////////////////////////////////////////
  
@@ -40,7 +40,7 @@ class AccreditationController extends Controller
  
     /////////////////////////////////////////////////////////////////////////////////////
  
-    public function view(request $request)
+    public function show(request $request)
     {
        $search = $request["search"] ?? "";
        if ($search != "") {
@@ -49,7 +49,7 @@ class AccreditationController extends Controller
           $accreditation = accreditation::paginate(6);
        }
        $data = compact('accreditation', 'search');
-       return view('admin.accreditation')->with($data);
+       return view('admin.accreditation.accreditation')->with($data);
     }
     /////////////////////////////////////////////////////////////////
  
@@ -75,7 +75,7 @@ class AccreditationController extends Controller
           $title = "Update accreditation";
  
           $data = compact('accreditation', 'url', 'title');
-          return view('admin/accreditation-form')->with($data);
+          return view('admin/accreditation/accreditation-form')->with($data);
        }
     }
  
