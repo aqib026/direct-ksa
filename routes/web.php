@@ -9,6 +9,11 @@ use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\FeatureController;
 use App\Http\Controllers\Admin\ServicesController;
 use App\Http\Controllers\Admin\AccreditationController;
+use App\Http\Controllers\Admin\VisaController;
+use App\Http\Controllers\FrontendController;
+
+
+
 
 
 
@@ -34,10 +39,14 @@ route::get('/dashboard',[HomeController::class, 'index']);
 
 Auth::routes();
 Route::group(['prefix'=>'/admin'],function(){
-    Route::get('/slider', [CountryController::class, 'slider']);
-
-    Route::get('/users',[AdminController::class, 'show'])->middleware(['auth','admin']);
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+
+    Route::get('/slider', [CountryController::class, 'slider']);
+    Route::get('/add-user',[AdminController::class, 'create'])->middleware(['auth','admin']);
+    Route::POST('/add-user',[AdminController::class, 'store'])->middleware(['auth','admin']);
+    Route::get('/profile/edit/{id}',[AdminController::class, 'new']);
+    Route::POST('/profile/update/{id}',[AdminController::class, 'add']);
+    Route::get('/users',[AdminController::class, 'show'])->middleware(['auth','admin']);
     Route::get('/user/delete/{id}',[AdminController::class, 'destroy'])->middleware(['auth','admin']);
     Route::get('/user/edit/{id}',[AdminController::class, 'edit'])->middleware(['auth','admin']);
     Route::POST('/user/update/{id}',[AdminController::class, 'update'])->middleware(['auth','admin']);
@@ -71,9 +80,16 @@ Route::group(['prefix'=>'/admin'],function(){
     Route::get('/accreditation-form/edit/{id}',[AccreditationController::class, 'edit'])->middleware(['auth','admin']);
     Route::Post('/accreditation-form/update/{id}',[AccreditationController::class, 'update'])->middleware(['auth','admin']);
 
-
-
-
+    Route::get('/visa_form',[VisaController::class, 'create'])->middleware(['auth','admin']);
+    Route::Post('/visa_form',[VisaController::class, 'store'])->middleware(['auth','admin']);
+    Route::get('/visa_requirement',[VisaController::class, 'show'])->middleware(['auth','admin']);
+    Route::get('/visa_requirement/delete/{id}',[VisaController::class, 'destroy'])->middleware(['auth','admin']);
+    Route::get('/visa_form/edit/{id}',[VisaController::class, 'edit'])->middleware(['auth','admin']);
+    Route::Post('/visa_form/update/{id}',[VisaController::class, 'update'])->middleware(['auth','admin']);
 
 
 });
+
+
+
+Route::get('/index',[FrontendController::class, 'index']);

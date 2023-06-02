@@ -1,58 +1,127 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - codingnepalweb.com -->
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Responsive Card Slider</title>
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
-
-<!doctype html>
-<html lang="en">
-    @foreach ($countries as $country )
-  <head>
-    <style>
-        .as{
-            border-radius: 121px;
-    height: 68px;
-    width: 73px;
-        }
-        .background{
-            background: url({{asset($country->cover_pic)}}) no-repeat ;
-            width:100%;
-        }
-        .wd
-        {
-    
-        }
-    </style>
-    <title>Title</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
-  <body>
-  
+        <!-- Swiper CSS -->
+        <link rel="stylesheet" href="{{asset('css/slide.css')}}">
+        <!-- CSS -->
+        <link rel="stylesheet" href="{{asset('css/slider.css')}}">
+                                        
+    </head>
+    <body>
         
-  
-<div class="">
-    <div class="wd">
-    <div class=" col-md-2 w-100 h-100 background">
-        <div></div>
-        <div class="">
-            <img src="{{asset($country->flag_pic)}}" class="as" alt="">
+        <div class="slide-container ">
+            <div class="slide-content ">
+                <div class="card-wrapper swiper-wrapper slides ">
+                  
+                    <input type="radio" name="radio-btn" id="radio1">
+                    <input type="radio" name="radio-btn" id="radio2">
+                    <input type="radio" name="radio-btn" id="radio3">
+                    <input type="radio" name="radio-btn" id="radio4">
+                  
+                    <div class="card swiper-slide slide first">
+                        <div class="image-content">
+                            <span class="overlay"></span>
+                            <div class="card-image">
+                                <img src="https://www.w3schools.com/css/img_5terre.jpg" alt="" class="card-img">
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h2 class="name">David Dell</h2>
+                            <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
+                            <button class="button">View More</button>
+                        </div>
+                    </div>
+                
+                
+                    <div class="card swiper-slide slide">
+                        <div class="image-content">
+                            <span class="overlay"></span>
+                            <div class="card-image">
+                            <img src="https://www.w3schools.com/css/img_5terre.jpg" alt="" class="card-img">
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h2 class="name">David Dell</h2>
+                            <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
+                            <button class="button">View More</button>
+                        </div>
+                    </div>
+                
+            
+                    <div class="card swiper-slide slide">
+                        <div class="image-content">
+                            <span class="overlay"></span>
+                            <div class="card-image">
+                                <img src="https://www.w3schools.com/css/img_5terre.jpg" alt="" class="card-img">
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h2 class="name">David Dell</h2>
+                            <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
+                            <button class="button">View More</button>
+                        </div>
+                    </div>
+              
+            
+                    <div class="card swiper-slide slide">
+                        <div class="image-content">
+                            <span class="overlay"></span>
+                            <div class="card-image">
+                                <img src="https://www.w3schools.com/css/img_5terre.jpg" alt="" class="card-img">
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h2 class="name">David Dell</h2>
+                            <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
+                            <button class="button">View More</button>
+                        </div>
+                    </div>
+             
+                   
+                   
+                    <div class="navigation-auto">
+                        <div class="auto-btn1"></div>
+                        <div class="auto-btn2"></div>
+                        <div class="auto-btn3"></div>
+                        <div class="auto-btn4"></div>
+                      </div>
+                      <!--automatic navigation end-->
+                    </div>
+                    <!--manual navigation start-->
+                    <div class="navigation-manual">
+                      <label for="radio1" class="manual-btn"></label>
+                      <label for="radio2" class="manual-btn"></label>
+                      <label for="radio3" class="manual-btn"></label>
+                      <label for="radio4" class="manual-btn"></label>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-button-next swiper-navBtn"></div>
+            <div class="swiper-button-prev swiper-navBtn"></div>
+            <div class="swiper-pagination"></div>
         </div>
-        <div>
-
-
-        </div>
-    </div>
-        <div>
-            Pakistan
-        </div>
-    </div>
-</div>
-        @endforeach
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+        
+    </body>
+    <script>
+        type="text/javascript">
+    var counter = 1;
+    setInterval(function(){
+      document.getElementById('radio' + counter).checked = true;
+      counter++;
+      if(counter > 4){
+        counter = 1;
+      }
+    }, 2000);
+    </script>
+    <!-- Swiper JS -->
+      <script src="{{asset('js/slider.js')}}"></script>
+    <!-- JavaScript -->
+    <script src="{{asset('js/slide.js')}}"></script>
 </html>

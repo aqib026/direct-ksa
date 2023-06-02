@@ -1,13 +1,15 @@
-@extends('...admin.main')
+@extends('...admin.include.main')
 
 @section('main-section')
-
+@push('title')
+<title>Add-User</title>  
+@endpush
 <body class="login">
   <div class="right_col" role="main">
     <div class="">
       <div class="page-title">
         <div class="title_left">
-          <h3>Update User</h3>
+          <h3>{{$title}}</h3>
         </div>
 
         <div class="title_right">
@@ -21,7 +23,7 @@
         <div class="col-md-12 col-sm-12 ">
           <div class="x_panel">
             <div class="x_title">
-              <h2>Update User <small>Direct KSA</small></h2>
+              <h2>{{$title}} <small>Direct KSA</small></h2>
               
               <div class="clearfix"></div>
             </div>
@@ -30,10 +32,10 @@
               <form method="POST" action="{{$url}}">
                 @csrf
                 <div class="item form-group">
-                  <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">First Name <span class="required">*</span>
+                  <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Name <span class="required">*</span>
                   </label>
                   <div class="col-md-6 col-sm-6 ">
-                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user->name}}" required autocomplete="name" placeholder="Enter Your Name" autofocus>
+                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{old('name',isset($user)?$user->name:'')}}" required autocomplete="name" placeholder="Enter Your Name" autofocus>
                     @error('name')
                     <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
@@ -45,7 +47,7 @@
                   <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Email <span class="required">*</span>
                   </label>
                   <div class="col-md-6 col-sm-6 ">
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}" placeholder="Enter Your Email" required autocomplete="email">
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{old('name',isset($user)?$user->email:'')}}" placeholder="Enter Your Email" required autocomplete="email">
                     @error('email')
                     <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
