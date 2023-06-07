@@ -32,14 +32,16 @@ use App\Http\Controllers\FrontendController;
 */
 
 
-Route::get('/', function () {
-    return view('auth.login');
-});
 
 route::get('/dashboard',[HomeController::class, 'index']);
 
 Auth::routes();
 Route::group(['prefix'=>'/admin'],function(){
+
+    Route::get('/login', function () {
+        return view('auth.login');
+    });
+    
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 
     Route::get('/slider', [CountryController::class, 'slider']);
@@ -93,6 +95,6 @@ Route::group(['prefix'=>'/admin'],function(){
 
 
 
-Route::get('/index',[FrontendController::class, 'index']);
+Route::get('/',[FrontendController::class, 'index']);
 Route::get('/featured_sales',[FeaturedSalesController::class, 'index'])->name('featured_sales');
 Route::Post('/featured_sales',[FeaturedSalesController::class, 'store'])->name('featured_sales_post');
