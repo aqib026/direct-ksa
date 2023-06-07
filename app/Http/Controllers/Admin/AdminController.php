@@ -13,6 +13,38 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $url = url('admin/add-user');
+        $title = "Add User";
+        $data = compact('url', 'title');
+        return view('auth.editregister')->with($data);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $user = new admin;
+
+        $user->name     = $request['name'];
+        $user->email    = $request['email'];
+        $user->password = bcrypt($request['password']);
+        $user->usertype = $request['usertype'];
+        $user->save();
+
+        return redirect('admin/users');
+    }
+
 
     public function show(request $request)
     {
@@ -76,5 +108,42 @@ class AdminController extends Controller
         $data = compact('url');
 
         return view('admin.setting')->with($data);
+    }
+
+
+
+
+    public function new($id)
+    {
+        $user = admin::find($id);
+
+        if (is_null($user))
+            redirect('admin/dashboard');
+
+        $title = "Edit Profile";
+        $url = url('admin/profile/update') . "/" . $id;
+        $data = compact('url', 'user', 'title');
+
+        return view('auth.profile')->with($data);
+
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function add($id ,Request $request)
+    {
+        $user = admin::find($id);
+
+        $user->name     = $request['name'];
+        $profile = time() . "p." . $request->file('profile_pic')->getClientOriginalExtension();
+        $user->profile_pic = $request->file('profile_pic')->storeas('profile', $profile);
+       
+        $user->save();
+
+        return redirect('admin/dashboard');
     }
 }

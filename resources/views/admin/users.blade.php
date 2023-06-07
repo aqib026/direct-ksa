@@ -14,8 +14,11 @@
         </div>
 
         <div class="title_right">
-          <div class="col-md-5 col-sm-5   form-group pull-right top_search">
+          <div class="col-md-7 col-sm-7   form-group pull-right top_search">
             <div class="input-group">
+              <div>
+                <a href="{{url('admin/add-user')}}"  class="btn btn-dark"> Add User</a>
+                </div>
               <input type="search" name="search" class="form-control" placeholder="Search for...">
               <span class="input-group-btn">
                 <button class="btn btn-default" type="submit">Go!</button>
