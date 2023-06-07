@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\FeatureController;
 use App\Http\Controllers\Admin\ServicesController;
 use App\Http\Controllers\Admin\AccreditationController;
 use App\Http\Controllers\Admin\VisaController;
+use App\Http\Controllers\FeaturedSalesController;
 use App\Http\Controllers\FrontendController;
 
 
@@ -93,3 +94,5 @@ Route::group(['prefix'=>'/admin'],function(){
 
 
 Route::get('/index',[FrontendController::class, 'index']);
+Route::get('/featured_sales',[FeaturedSalesController::class, 'index'])->name('featured_sales');
+Route::Post('/featured_sales',[FeaturedSalesController::class, 'store'])->name('featured_sales_post');
