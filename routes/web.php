@@ -94,4 +94,5 @@ Route::group(['prefix'=>'/admin'],function(){
 
 
 Route::get('/index',[FrontendController::class, 'index']);
-Route::get('/featured_sales',[FeaturedSalesController::class, 'index']);
+Route::get('/featured_sales',[FeaturedSalesController::class, 'index'])->name('featured_sales');
+Route::Post('/featured_sales',[FeaturedSalesController::class, 'store'])->name('featured_sales_post');
