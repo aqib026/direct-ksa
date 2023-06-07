@@ -13,7 +13,7 @@ class FrontendController extends Controller
      */
     public function index()
     {
-       return view('user.front-end');
+       return view('home');
     }
 
     /**

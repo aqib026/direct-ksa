@@ -78,7 +78,7 @@
                 
 
                     
-                         <td scope="row">{{$visa->visa->name }}</td>
+                         <td scope="row">{{$visa->countries_id  }}</td>
                         
                        
                       
