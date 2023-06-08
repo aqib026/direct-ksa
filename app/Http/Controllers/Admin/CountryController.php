@@ -61,8 +61,10 @@ class CountryController extends Controller
    {
       $countries = countries::find($id);
       if (!is_null($countries)) {
+        
          $countries->delete();
       }
+
 
       return redirect('admin/countries');
    }

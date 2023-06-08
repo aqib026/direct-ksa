@@ -13,7 +13,7 @@ class Visa extends Model
 
     public function visa()
     {
-        return $this->belongsTo(countries::class,'id');
+        return $this->belongsTo(countries::class, 'countries_id', 'id');
     }
     use HasFactory;
 }

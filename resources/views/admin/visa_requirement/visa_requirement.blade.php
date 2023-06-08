@@ -4,19 +4,7 @@
 <title>Visa Requirement</title>
     
 @endpush
-@push('style')
-    <style>
-      .my-image {
-  width: 2000px;
-  height: 2000px;
-  transition: all 0.5s;
-}
 
-.my-image:hover {
-  transform: scale(2.2);
-}
-    </style>
-@endpush
 
     <div class="">
       <form action="">
@@ -73,17 +61,17 @@
 
                   <tbody>
                     <tr class="even pointer">
-                        @foreach ($visa as $visa)
+                        @foreach ($visa as $visas)
                 
                 
 
                     
-                         <td scope="row">{{$visa->countries_id  }}</td>
+                         <td scope="row">{{$visas->visa->name  }}</td>
                         
                        
                       
-                       <td> {{$visa->detail}}</td>
-                       <td>@if($visa->status==1)
+                       <td> {{$visas->detail}}</td>
+                       <td>@if($visas->status==1)
                    
                             <span class="badge badge-success bg-success">Active</span>
                             @else
@@ -92,9 +80,9 @@
                             @endif
                         </td>   <td>
                       
-                            <a href="{{url('admin/visa_requirement/delete/')}}/{{$visa->id}}">
+                            <a href="{{url('admin/visa_requirement/delete/')}}/{{$visas->id}}">
                                 <button class="btn btn-danger">Delete</button></a>
-                                <a href="{{url('admin/visa_form/edit/')}}/{{$visa->id}}">
+                                <a href="{{url('admin/visa_form/edit/')}}/{{$visas->id}}">
                                 <button class="btn btn-success">Edit</button>
                         </td>
                     </tr>
@@ -111,9 +99,9 @@
       
           </div>
          
-            <div class="row">
-              
-            </div>
+          <div class="row">
+            {{$visa->links('pagination::bootstrap-4')}}
+          </div>
           
         </div>
    

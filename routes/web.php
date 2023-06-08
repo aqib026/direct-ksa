@@ -12,6 +12,8 @@ use App\Http\Controllers\Admin\AccreditationController;
 use App\Http\Controllers\Admin\VisaController;
 use App\Http\Controllers\FeaturedSalesController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\Admin\LocationController;
+
 
 
 
@@ -87,8 +89,13 @@ Route::group(['prefix'=>'/admin'],function(){
     Route::get('/visa_requirement/delete/{id}',[VisaController::class, 'destroy'])->middleware(['auth','admin']);
     Route::get('/visa_form/edit/{id}',[VisaController::class, 'edit'])->middleware(['auth','admin']);
     Route::Post('/visa_form/update/{id}',[VisaController::class, 'update'])->middleware(['auth','admin']);
-
-
+    
+    Route::get('/location_form',[LocationController::class, 'create'])->middleware(['auth','admin']);
+    Route::Post('/location_form',[LocationController::class, 'store'])->middleware(['auth','admin']);
+    Route::get('/contact_location',[LocationController::class, 'show'])->middleware(['auth','admin']);
+    Route::get('/contact_location/delete/{id}',[LocationController::class, 'destroy'])->middleware(['auth','admin']);
+    Route::get('/location_form/edit/{id}',[LocationController::class, 'edit'])->middleware(['auth','admin']);
+    Route::Post('/location_form/update/{id}',[LocationController::class, 'update'])->middleware(['auth','admin']);
 });
 
 

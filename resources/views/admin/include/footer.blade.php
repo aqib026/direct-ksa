@@ -17,7 +17,7 @@
 <script src="'{{asset('js/fastclick.js')}}'"></script>
 <!-- NProgress -->
 <script src="{{asset('js/nprogress.js')}}"></script>
-<script src="{{asset('js/tinymce.js')}}"></script>
+@stack('script')
 <!-- Custom Theme Scripts -->
 <script src="{{asset('js/custom.min.js')}}"></script>
 </body>

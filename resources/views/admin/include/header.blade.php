@@ -70,11 +70,8 @@
                       <li><a href="{{url('admin/countries')}}">Country</a></li>
                       <li><a href="{{url('admin/feature')}}">Feature</a></li>
                       <li><a href="{{url('admin/visa_requirement')}}">Visa Requirement</a></li>
-
-
-                     
-
-                        <li><a href="{{url('admin/special_services')}}">Special Services</a></li>
+                      <li><a href="{{url('admin/contact_location')}}">Contact Location</a></li>
+                      <li><a href="{{url('admin/special_services')}}">Special Services</a></li>
 
                     </ul>
                   </li>
@@ -203,7 +200,7 @@
                           <span>
                             <span>John Smith</span>
                             <span class="time">3 mins ago</span>
-                          </span>
+                          </span> 
                           <span class="message">
                             Film festivals used to be do-or-die moments for movie makers. They were where...
                           </span>

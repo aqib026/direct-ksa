@@ -4,19 +4,7 @@
 <title>Country</title>
     
 @endpush
-@push('style')
-    <style>
-      .my-image {
-  width: 2000px;
-  height: 2000px;
-  transition: all 0.5s;
-}
 
-.my-image:hover {
-  transform: scale(2.2);
-}
-    </style>
-@endpush
 
     <div class="">
       <form action="">
