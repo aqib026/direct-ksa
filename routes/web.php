@@ -45,6 +45,8 @@ Route::group(['prefix'=>'/admin'],function(){
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 
     Route::get('/slider', [CountryController::class, 'slider']);
+    Route::get('/slider/show/{id}', [VisaController::class, 'one']);
+
     Route::get('/add-user',[AdminController::class, 'create'])->middleware(['auth','admin']);
     Route::POST('/add-user',[AdminController::class, 'store'])->middleware(['auth','admin']);
     Route::get('/profile/edit/{id}',[AdminController::class, 'new']);

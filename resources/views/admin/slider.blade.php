@@ -12,80 +12,44 @@
         <link rel="stylesheet" href="{{asset('css/slide.css')}}">
         <!-- CSS -->
         <link rel="stylesheet" href="{{asset('css/slider.css')}}">
-                                        
+
     </head>
     <body>
-        
+
         <div class="slide-container ">
             <div class="slide-content ">
                 <div class="card-wrapper swiper-wrapper slides ">
-                  
+
                     <input type="radio" name="radio-btn" id="radio1">
                     <input type="radio" name="radio-btn" id="radio2">
                     <input type="radio" name="radio-btn" id="radio3">
                     <input type="radio" name="radio-btn" id="radio4">
-                  
+                  @foreach ($countries as $country )
+                         
+
                     <div class="card swiper-slide slide first">
                         <div class="image-content">
-                            <span class="overlay"></span>
+                            <a href="{{url('admin/slider/show/')}}/{{$country->visa->countries_id}}">
+                                <div >
+                            <span class="overlay" style="background-image: url('{{ asset($country->cover_pic) }}')"></span>
+                                </div>
                             <div class="card-image">
-                                <img src="https://www.w3schools.com/css/img_5terre.jpg" alt="" class="card-img">
+                                <img src="{{asset($country->flag_pic)}}" alt="" class="card-img">
                             </div>
+                            </a>
                         </div>
                         <div class="card-content">
-                            <h2 class="name">David Dell</h2>
-                            <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
-                            <button class="button">View More</button>
+               <button class="button"> {{$country->name}}</button>
                         </div>
                     </div>
-                
-                
-                    <div class="card swiper-slide slide">
-                        <div class="image-content">
-                            <span class="overlay"></span>
-                            <div class="card-image">
-                            <img src="https://www.w3schools.com/css/img_5terre.jpg" alt="" class="card-img">
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <h2 class="name">David Dell</h2>
-                            <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
-                            <button class="button">View More</button>
-                        </div>
-                    </div>
-                
-            
-                    <div class="card swiper-slide slide">
-                        <div class="image-content">
-                            <span class="overlay"></span>
-                            <div class="card-image">
-                                <img src="https://www.w3schools.com/css/img_5terre.jpg" alt="" class="card-img">
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <h2 class="name">David Dell</h2>
-                            <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
-                            <button class="button">View More</button>
-                        </div>
-                    </div>
+
               
-            
-                    <div class="card swiper-slide slide">
-                        <div class="image-content">
-                            <span class="overlay"></span>
-                            <div class="card-image">
-                                <img src="https://www.w3schools.com/css/img_5terre.jpg" alt="" class="card-img">
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <h2 class="name">David Dell</h2>
-                            <p class="description">The lorem text the section that contains header with having open functionality. Lorem dolor sit amet consectetur adipisicing elit.</p>
-                            <button class="button">View More</button>
-                        </div>
-                    </div>
-             
-                   
-                   
+
+                    @endforeach
+
+
+
+
                     <div class="navigation-auto">
                         <div class="auto-btn1"></div>
                         <div class="auto-btn2"></div>
@@ -107,7 +71,7 @@
             <div class="swiper-button-prev swiper-navBtn"></div>
             <div class="swiper-pagination"></div>
         </div>
-        
+
     </body>
     <script>
         type="text/javascript">

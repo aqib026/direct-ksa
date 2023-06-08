@@ -1,7 +1,7 @@
 @extends('admin.include.main')
 @section('main-section')
 @push('title')
-<title>Country</title>
+<title>Special Services</title>
     
 @endpush
 

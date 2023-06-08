@@ -2,7 +2,7 @@
 
 @section('main-section')
 @push('title')
-<title>Country</title>
+<title>Accreditation</title>
     
 @endpush
 <body class="login">

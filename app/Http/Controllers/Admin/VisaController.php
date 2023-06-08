@@ -145,9 +145,10 @@ class VisaController extends Controller
 
 
 
-    // public function one($id)
-    // {
-    //     return countries::find($id)->visa;   used to show one to one relation 
+    public function one($id)
+    {
+        return countries::find($id)->visa;   
+        die;
       
-    // }
+    }
 }

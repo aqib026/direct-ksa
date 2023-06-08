@@ -61,7 +61,7 @@ class CountryController extends Controller
    {
       $countries = countries::find($id);
       if (!is_null($countries)) {
-        
+
          $countries->delete();
       }
 
@@ -114,10 +114,10 @@ class CountryController extends Controller
 public function slider()
 {
 
-      $countries = countries::paginate(1);
-   
+      $countries = countries::all();
+
    $data = compact('countries');
-  
+
     return view('admin.slider')->with($data);
 }
 }
