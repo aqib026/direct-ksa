@@ -23,6 +23,23 @@ class FeaturedSalesController extends Controller
     }
 
     /**
+     * Display a listing of the resource in admin.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function list(Request $request)
+    {
+        $search = $request["search"] ?? "";
+        if ($search != "") {
+           $featured_sales = FeaturedSales::where('name', 'like', "%$search%")->get();
+        } else {
+           $featured_sales = FeaturedSales::paginate(6);
+        }
+        $data = compact('featured_sales', 'search'); 
+        return view ('admin.featured_sales.featured_sales')->with($data);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -97,12 +114,16 @@ class FeaturedSalesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\FeaturedSales  $featuredSales
+     * @param  \App\Models\FeaturedSales  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(FeaturedSales $featuredSales)
+    public function show(FeaturedSales $id)
     {
-        //
+        if ($id != "") {
+            return view ('admin.featured_sales.featured_sale_show')->with('featured_sale',$id); 
+        }else{
+            return redirect('admin/featured_sales');
+        }
     }
 
     /**
@@ -131,11 +152,16 @@ class FeaturedSalesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\FeaturedSales  $featuredSales
+     * @param  int  $id
      * @return \Illuminate\Http\Response
-     */
-    public function destroy(FeaturedSales $featuredSales)
+     */ 
+    public function destroy($id)
     {
-        //
+        $FeaturedSales = FeaturedSales::find($id);
+        if (!is_null($FeaturedSales)) {
+           $FeaturedSales->delete();
+        }
+  
+        return redirect('admin/featured_sales');
     }
 }

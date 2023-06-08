@@ -90,6 +90,9 @@ Route::group(['prefix'=>'/admin'],function(){
     Route::get('/visa_form/edit/{id}',[VisaController::class, 'edit'])->middleware(['auth','admin']);
     Route::Post('/visa_form/update/{id}',[VisaController::class, 'update'])->middleware(['auth','admin']);
 
+    Route::get('/featured_sales',[FeaturedSalesController::class, 'list'])->middleware(['auth','admin'])->name('featured_sales_list');
+    Route::get('/featured_sales/view/{id}',[FeaturedSalesController::class, 'show'])->middleware(['auth','admin'])->name('featured_sales_show');
+    Route::get('/featured_sales/delete/{id}',[FeaturedSalesController::class, 'destroy'])->middleware(['auth','admin']);
 
 });
 
@@ -98,3 +101,4 @@ Route::group(['prefix'=>'/admin'],function(){
 Route::get('/',[FrontendController::class, 'index']);
 Route::get('/featured_sales',[FeaturedSalesController::class, 'index'])->name('featured_sales');
 Route::Post('/featured_sales',[FeaturedSalesController::class, 'store'])->name('featured_sales_post');
+

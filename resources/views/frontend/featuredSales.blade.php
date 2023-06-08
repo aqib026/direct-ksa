@@ -46,12 +46,12 @@
                     <label for="translation_content">Translation Content</label>
                     <select class="form-control" name="translation_content" id="translation_content">
                         <option disabled selected></option>    
-                        <option value="job_letter">Job Letter</option>
-                        <option value="medical_report">Medical Report</option>
-                        <option value="legal_documents">Legal Documents</option>
-                        <option value="university_research">University Research</option>
-                        <option value="official_documents">Official Documents</option>
-                        <option value="others">Others</option>
+                        <option value="Job Letter">Job Letter</option>
+                        <option value="Medical Report">Medical Report</option>
+                        <option value="Legal Documents">Legal Documents</option>
+                        <option value="University Research">University Research</option>
+                        <option value="Official Documents">Official Documents</option>
+                        <option value="Others">Others</option>
                     </select>
                 </div>
             </div>
@@ -83,12 +83,12 @@
                     <label for="lic_col_choice">License Collection Choice</label>
                     <select class="form-control" name="lic_col_choice" id="lic_col_choice">
                         <option disabled selected></option>    
-                        <option value="riyadh_safarat">Riyadh (As Safarat) Branch</option>
-                        <option value="riyadh_hamam">Riyadh (Umm Ul Hamam) Branch</option>
-                        <option value="jaddah_branch">Jaddah Branch</option>
-                        <option value="jaddah_branch">Buraydah Branch</option>
-                        <option value="alkhobar_branch">AlKhobar Branch</option>
-                        <option value="by_courier">By Courier (with Additional Charges)</option>
+                        <option value="Riyadh (As Safarat) Branch">Riyadh (As Safarat) Branch</option>
+                        <option value="Riyadh (Umm Ul Hamam) Branch">Riyadh (Umm Ul Hamam) Branch</option>
+                        <option value="Jaddah Branch">Jaddah Branch</option>
+                        <option value="Buraydah Branch">Buraydah Branch</option>
+                        <option value="AlKhobar Branch">AlKhobar Branch</option>
+                        <option value="By Courier (with Additional Charges)">By Courier (with Additional Charges)</option>
                     </select>
                 </div>
             </div>
@@ -98,10 +98,10 @@
                     <label for="univ_adm_country">Country</label>
                     <select class="form-control" name="univ_adm_country" id="univ_adm_country">
                         <option disabled selected></option>    
-                        <option value="uk">United Kindom</option>
-                        <option value="usa">USA</option>
-                        <option value="canada">Canada</option>
-                        <option value="australia">Australia</option>
+                        <option value="United Kindom">United Kindom</option>
+                        <option value="USA">USA</option>
+                        <option value="Canada">Canada</option>
+                        <option value="Australia">Australia</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -112,8 +112,8 @@
                     <label for="mode_of_finance">Mode of Finance</label>
                     <select class="form-control" name="mode_of_finance" id="mode_of_finance">
                         <option disabled selected></option>    
-                        <option value="govt">Govt, Employer Scholarship</option>
-                        <option value="self">Self-Finance</option>
+                        <option value="Govt, Employer Scholarship">Govt, Employer Scholarship</option>
+                        <option value="Self-Finance">Self-Finance</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -124,38 +124,38 @@
                     <label for="current_qualification">Current Qualification</label>
                     <select class="form-control" name="current_qualification" id="current_qualification">
                         <option disabled selected></option>    
-                        <option value="high_school">High School</option>
-                        <option value="bachelors">Bachelors</option>
-                        <option value="masters">Masters</option>
+                        <option value="High School">High School</option>
+                        <option value="Bachelors">Bachelors</option>
+                        <option value="Masters">Masters</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="last_qualification_grade">Last Qualification Grade</label>
                     <select class="form-control" name="last_qualification_grade" id="last_qualification_grade">
                         <option disabled selected></option>    
-                        <option value="weak">Weak</option>
-                        <option value="fair">Fair/Acceptable</option>
-                        <option value="good">Good</option>
-                        <option value="very_good">Very Good</option>
-                        <option value="excellent">Excellent</option>
+                        <option value="Weak">Weak</option>
+                        <option value="Fair/Acceptable">Fair/Acceptable</option>
+                        <option value="Good">Good</option>
+                        <option value="Very Good">Very Good</option>
+                        <option value="Excellent">Excellent</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="certification">Do you have IELTS or TOEFL Certification?</label>
                     <select class="form-control" name="certification" id="certification">
                         <option disabled selected></option>    
-                        <option value="no">I Don't Have Certification</option>
-                        <option value="ielts">IELTS</option>
-                        <option value="toefl">TOEFL</option>
+                        <option value="I Don't Have Certification">I Don't Have Certification</option>
+                        <option value="IELTS">IELTS</option>
+                        <option value="TOEFL">TOEFL</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="call_time">Select the Best time to call you</label>
                     <select class="form-control" name="call_time" id="call_time">
                         <option disabled selected></option>    
-                        <option value="10_to_02">10:00 AM to 02:00 PM</option>
-                        <option value="03_to_06">03:00 PM to 06:00 PM</option>
-                        <option value="06_to_09">06:00 PM to 09:00 PM</option>
+                        <option value="10:00 AM to 02:00 PM">10:00 AM to 02:00 PM</option>
+                        <option value="03:00 PM to 06:00 PM">03:00 PM to 06:00 PM</option>
+                        <option value="06:00 PM to 09:00 PM">06:00 PM to 09:00 PM</option>
                     </select>
                 </div>
             </div>
@@ -165,11 +165,11 @@
                     <label for="form_type">Form Type</label>
                     <select class="form-control" name="form_type" id="form_type">
                         <option disabled selected></option>    
-                        <option value="singapore_entry_form">Singapore Entry Form</option>
-                        <option value="embassay_application">Embassy Application</option>
-                        <option value="hotel_reservation">Hotel Reservation</option>
-                        <option value="airline_reservation">Airline Reservation</option>
-                        <option value="airline_hotel_reservation">Airline + Hotel Reservation</option>
+                        <option value="Singapore Entry Form">Singapore Entry Form</option>
+                        <option value="Embassy Application">Embassy Application</option>
+                        <option value="Hotel Reservation">Hotel Reservation</option>
+                        <option value="Airline Reservation">Airline Reservation</option>
+                        <option value="Airline + Hotel Reservation">Airline + Hotel Reservation</option>
                     </select>
                 </div>
             </div>
@@ -190,9 +190,9 @@
                     <label for="country">Country</label>
                     <select class="form-control" name="country" id="country">
                         <option disabled selected>Select country for worker</option>    
-                        <option value="india">India</option>
-                        <option value="indonesia">Indonesia</option>
-                        <option value="philippines">Philippines</option>
+                        <option value="India">India</option>
+                        <option value="Indonesia">Indonesia</option>
+                        <option value="Philippines">Philippines</option>
                     </select>
                 </div>
             </div>
