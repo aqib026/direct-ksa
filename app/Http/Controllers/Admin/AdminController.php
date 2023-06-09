@@ -48,20 +48,15 @@ class AdminController extends Controller
 
     public function show(request $request)
     {
-        $search =$request["search"]?? "";
-        if($search != "")
-        {
-          $users = admin:: where('name','like',"%$search%")->orwhere('email','like',"%$search%")->get();
-        } 
-        else{
-          $users = admin::paginate(6);
+        $search = $request["search"] ?? "";
+        if ($search != "") {
+            $users = admin::where('name', 'like', "%$search%")->orwhere('email', 'like', "%$search%")->get();
+        } else {
+            $users = admin::paginate(6);
         }
-        $data=compact('users','search');
-       return view('admin.users')->with($data);
-      }
- 
-
-
+        $data = compact('users', 'search');
+        return view('admin.users')->with($data);
+    }
 
     public function destroy($id)
     {
@@ -110,9 +105,6 @@ class AdminController extends Controller
         return view('admin.setting')->with($data);
     }
 
-
-
-
     public function new($id)
     {
         $user = admin::find($id);
@@ -125,7 +117,6 @@ class AdminController extends Controller
         $data = compact('url', 'user', 'title');
 
         return view('auth.profile')->with($data);
-
     }
 
     /**
@@ -134,14 +125,14 @@ class AdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function add($id ,Request $request)
+    public function add($id, Request $request)
     {
         $user = admin::find($id);
 
         $user->name     = $request['name'];
         $profile = time() . "p." . $request->file('profile_pic')->getClientOriginalExtension();
         $user->profile_pic = $request->file('profile_pic')->storeas('profile', $profile);
-       
+
         $user->save();
 
         return redirect('admin/dashboard');

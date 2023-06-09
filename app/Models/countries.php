@@ -9,8 +9,8 @@ use App\Models\Visa;
 class countries extends Model
 {
     use HasFactory;
-    protected $table="countries";
-    protected $primarykey="id"; 
+    protected $table = "countries";
+    protected $primarykey = "id";
 
 
 

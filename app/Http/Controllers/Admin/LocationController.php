@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class LocationController extends Controller
 {
-  /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -29,7 +29,7 @@ class LocationController extends Controller
     {
         $url = url('admin/location_form');
         $title = "Add Contact Location ";
-       
+
         $data = compact('url', 'title');
         return view('admin.contact_location.location_form')->with($data);
     }
@@ -44,25 +44,25 @@ class LocationController extends Controller
     {
         $request->validate([
             'name' => 'required',
-             'address'=>'required',
-             'lat'=>'required',
-             'lang'=>'required'
-             
-   
-         ]);
-   
-   
-         $location = new location;
-        
-         $location->name=$request ['name'];
-   
-        $location->address =$request['address'];
-        $location->lat =$request['lat'];
-        $location->lang =$request['lang'];
-        $location->status=$request ['status'];
-   
-         $location->save();
-         return redirect('admin/contact_location');
+            'address' => 'required',
+            'lat' => 'required',
+            'lang' => 'required'
+
+
+        ]);
+
+
+        $location = new location;
+
+        $location->name = $request['name'];
+
+        $location->address = $request['address'];
+        $location->lat = $request['lat'];
+        $location->lang = $request['lang'];
+        $location->status = $request['status'];
+
+        $location->save();
+        return redirect('admin/contact_location');
     }
 
     /**
@@ -77,9 +77,9 @@ class LocationController extends Controller
         // die;
         $search = $request["search"] ?? "";
         if ($search != "") {
-           $location = location::where('name', 'like', "%$search%")->get();
+            $location = location::where('name', 'like', "%$search%")->get();
         } else {
-           $location = location::paginate(6);
+            $location = location::paginate(6);
         }
         $data = compact('location', 'search');
         return view('admin.contact_location.contact_location')->with($data);
@@ -94,15 +94,15 @@ class LocationController extends Controller
     public function edit($id)
     {
         $location = location::find($id);
-      if (is_null($location)) {    //not found
-         return redirect('admin/contact_location');
-      } else {
-         $url = url('admin/location_form/update') . "/" . $id;
-         $title = "Update Contact Location";
-       
-         $data = compact('location', 'url', 'title');
-         return view('admin/contact_location/location_form')->with($data);
-      }
+        if (is_null($location)) {    //not found
+            return redirect('admin/contact_location');
+        } else {
+            $url = url('admin/location_form/update') . "/" . $id;
+            $title = "Update Contact Location";
+
+            $data = compact('location', 'url', 'title');
+            return view('admin/contact_location/location_form')->with($data);
+        }
     }
 
     /**
@@ -115,19 +115,19 @@ class LocationController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name'=>'required'
+            'name' => 'required'
         ]);
-      $location= location::find($id);
- 
-      $location->name=$request ['name'];
-      $location->address =$request['address'];
-      $location->lat =$request['lat'];
-      $location->lang =$request['lang'];
-      $location->status=$request ['status'];
- 
- 
-    $location->save();
-    return redirect('admin/contact_location');
+        $location = location::find($id);
+
+        $location->name = $request['name'];
+        $location->address = $request['address'];
+        $location->lat = $request['lat'];
+        $location->lang = $request['lang'];
+        $location->status = $request['status'];
+
+
+        $location->save();
+        return redirect('admin/contact_location');
     }
 
     /**
@@ -140,9 +140,9 @@ class LocationController extends Controller
     {
         $location = location::find($id);
         if (!is_null($location)) {
-           $location->delete();
+            $location->delete();
         }
-  
+
         return redirect('admin/contact_location');
     }
 
@@ -151,6 +151,6 @@ class LocationController extends Controller
     // public function one($id)
     // {
     //     return countries::find($id)->location;   used to show one to one relation 
-      
+
     // }
 }

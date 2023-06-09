@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class FeaturedSales extends Model
 {
-    protected $table="featured_sales";
-    protected $Primarykey="id";
+    protected $table = "featured_sales";
+    protected $Primarykey = "id";
     use HasFactory;
 
     public function note()
     {
-        return $this->hasmany('App\Models\Note' ,'id');
+        return $this->hasmany('App\Models\Note', 'id');
     }
 }

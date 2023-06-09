@@ -23,11 +23,11 @@ class NoteController extends Controller
 
             ]);
             return redirect()->back();
-        } 
+        }
     }
 
-   
-/**
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -37,10 +37,9 @@ class NoteController extends Controller
     {
         $note = Note::find($id);
         if (!is_null($note)) {
-           $note->delete();
+            $note->delete();
         }
-  
+
         return redirect()->back();
     }
-
 }
