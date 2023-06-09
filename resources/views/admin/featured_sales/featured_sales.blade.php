@@ -82,11 +82,11 @@
 								<td>	@if($accre->status==0)
 									<span class="badge badge-success bg-success">New</span>
 									@elseif ($accre->status==1)
-									<span class="badge badge-danger bg-danger">In Active</span>
+									<span class="badge badge-warning bg-warning">Pending </span>
 									@elseif ($accre->status==2)
 									<span class="badge badge-success bg-success">Progress</span>
 									@else
-									<span class="badge badge-primary bg-primary">Active</span>
+									<span class="badge badge-primary bg-primary">Delivered</span>
 									@endif
 								</td>
 								<td>

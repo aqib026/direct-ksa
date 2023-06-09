@@ -199,19 +199,20 @@
 									<form action="{{$url}}" method="POST">
 										@csrf
 										<select name="status" class="form-control"  id="">
-											<option value="{{$featured_sale->status}}">	@if($featured_sale->status==0)
+											<option value="{{$featured_sale->status}}">
+											    @if($featured_sale->status==0)
 												<span class="badge badge-success bg-success">New</span>
 												@elseif ($featured_sale->status==1)
-												<span class="badge badge-danger bg-danger">In Active</span>
+												<span class="badge badge-warning bg-warning">Pending</span>
 												@elseif ($featured_sale->status==2)
 												<span class="badge badge-info bg-info">Progress</span>
 												@else
-												<span class="badge badge-primary bg-primary">Active</span>
+												<span class="badge badge-primary bg-primary">delivered</span>
 												@endif</option>
-										<option value="0">In Active</option>
-										<option value="1">New</option>
+										<option value="0">New</option>
+                                        <option value="1">Pending</option>
 										<option value="2">Progress</option>
-										<option value="3">Active</option>
+										<option value="3">Delivered</option>
 									</select>
 								<button type="submit" class="btn btn-success m-2 float-right">Submit</button>
 	
