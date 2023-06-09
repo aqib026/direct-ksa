@@ -36,19 +36,16 @@
                             <div class="card-image">
                                 <img src="{{asset($country->flag_pic)}}" alt="" class="card-img">
                             </div>
-                            </a>
+                          
                         </div>
                         <div class="card-content">
                <button class="button"> {{$country->name}}</button>
                         </div>
                     </div>
-
+                </a>
               
 
                     @endforeach
-
-
-
 
                     <div class="navigation-auto">
                         <div class="auto-btn1"></div>

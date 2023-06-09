@@ -213,7 +213,7 @@
 										<option value="2">Progress</option>
 										<option value="3">Active</option>
 									</select>
-								<button type="submit" class="btn btn-success">Submit</button>
+								<button type="submit" class="btn btn-success m-2 float-right">Submit</button>
 	
 								</form>
 							
@@ -229,14 +229,19 @@
 			</div>
 			<form action="{{url('/admin/notes')}} " method="POST">
 				@csrf
+				<div class="col-md-12">
 				<input type="hidden" name="post_slug" id="" value="{{$featured_sale->id}}">
-				<div>
+				<div class="col-md-6">
 				<label for="">Note</label>
+				
+				<div class="">
 				<textarea name="note" id="" class="form-control" cols="15" rows="5"></textarea>
-			</div>
-			<div>
+			
+		</div>
+			<div class="float-right m-3">
 				<button type="submit" class="btn btn-success">ADD</button>
-			</div>
+			</div></div>
+		</div>
 			</form>
 
 			<div class="">
@@ -272,7 +277,7 @@
 								  <tr class="headings">
 									  <th>Note</th>
 									 
-									  <th>Action</th>
+									  <th class="text-center">Action</th>
 								  </tr>
 								</thead>
 			  
@@ -284,7 +289,7 @@
 							  
 						 
 									  <td scope="row">{{$note->note}}</td>
-									   <td>
+									   <td class="text-center">
 									
 										  <a href="{{url('admin/notes/delete/')}}/{{$note->id}}">
 											  <button class="btn btn-danger">Delete</button></a>
