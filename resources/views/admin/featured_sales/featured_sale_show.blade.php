@@ -9,6 +9,7 @@
 		<div class="title_left">
 			<h3>Featured Sale</h3>
 		</div>
+		<a href="{{url('admin/featured_sales')}}"><button class="float-right btn btn-danger">Back</button></a>
 	</div>
 	<div class="clearfix"></div>
 	<div class="col-md-12 col-sm-12">
@@ -23,7 +24,9 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
+							<tr> 
+								
+							
 								<td>Required Service</td>
 								<td>@switch($featured_sale->required_service)
 										@case('translation')
@@ -188,19 +191,128 @@
 								<td>{{ $featured_sale->service_cost }}</td>
 							</tr>
 							<tr>
+								
 								<td>Status</td>
+								<div class="row col-md-12">
 								<td>
-									@if($featured_sale->status==1)
-									<span class="badge badge-success bg-success">New</span>
-									@else
-									<span class="badge badge-danger bg-danger">In Active</span>
-									@endif
+									<div class="col-md-4">
+									<form action="{{$url}}" method="POST">
+										@csrf
+										<select name="status" class="form-control"  id="">
+											<option value="{{$featured_sale->status}}">	@if($featured_sale->status==0)
+												<span class="badge badge-success bg-success">New</span>
+												@elseif ($featured_sale->status==1)
+												<span class="badge badge-danger bg-danger">In Active</span>
+												@elseif ($featured_sale->status==2)
+												<span class="badge badge-info bg-info">Progress</span>
+												@else
+												<span class="badge badge-primary bg-primary">Active</span>
+												@endif</option>
+										<option value="0">In Active</option>
+										<option value="1">New</option>
+										<option value="2">Progress</option>
+										<option value="3">Active</option>
+									</select>
+								<button type="submit" class="btn btn-success">Submit</button>
+	
+								</form>
+							
+							</div>
 								</td>
+							</div>
 							</tr>
+							
+					
 						</tbody>
 					</table>
 				</div>
 			</div>
+			<form action="{{url('/admin/notes')}} " method="POST">
+				@csrf
+				<input type="hidden" name="post_slug" id="" value="{{$featured_sale->id}}">
+				<div>
+				<label for="">Note</label>
+				<textarea name="note" id="" class="form-control" cols="15" rows="5"></textarea>
+			</div>
+			<div>
+				<button type="submit" class="btn btn-success">ADD</button>
+			</div>
+			</form>
+
+			<div class="">
+				<form action="">
+				<div class="page-title">
+				  <div class="title_left">
+					<h3>NOTE </h3>
+				  </div>
+		  
+				  <div class="title_right">
+					<div class="col-md-7 col-sm-7   form-group pull-right top_search">
+		  
+					 
+					</div>
+				  </div>
+				</div>
+			  </form>
+		  
+			
+				  <div class="clearfix"></div>
+		  
+				  <div class="col-md-12 col-sm-12  ">
+					<div class="x_panel">
+					
+		  
+					  <div class="x_content">
+					
+		  
+						<div class="table-responsive">
+						
+							<table class="table table-striped jambo_table bulk_action">
+								<thead>
+								  <tr class="headings">
+									  <th>Note</th>
+									 
+									  <th>Action</th>
+								  </tr>
+								</thead>
+			  
+				  
+			  
+								<tbody>
+								  <tr class="even pointer">
+									  @foreach ($note as $note)
+							  
+						 
+									  <td scope="row">{{$note->note}}</td>
+									   <td>
+									
+										  <a href="{{url('admin/notes/delete/')}}/{{$note->id}}">
+											  <button class="btn btn-danger">Delete</button></a>
+											
+									  </td>
+								  </tr>
+								  @endforeach
+								  
+								</tbody>
+							  
+							  </table>
+						</div>
+					
+					
+								
+				</div>	
+					
+				  
+				
+					</div>
+				   
+				
+					
+				  </div>
+			 
+				  
+			  </div>
+			
 		</div>
 	</div>
 </div>

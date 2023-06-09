@@ -79,14 +79,18 @@
 								<td>{{$accre->applicant_name}}</td>
 								<td>+966{{$accre->mobile_number}}</td>
 								<td>{{$accre->email}}</td>
-								<td>@if($accre->status==1)
+								<td>	@if($accre->status==0)
 									<span class="badge badge-success bg-success">New</span>
-									@else
+									@elseif ($accre->status==1)
 									<span class="badge badge-danger bg-danger">In Active</span>
+									@elseif ($accre->status==2)
+									<span class="badge badge-success bg-success">Progress</span>
+									@else
+									<span class="badge badge-primary bg-primary">Active</span>
 									@endif
 								</td>
 								<td>
-									<a href="{{url('admin/featured_sales/view/')}}/{{$accre->id}}">
+									<a href="{{url('admin/featured_sales/edit/')}}/{{$accre->id}}">
 										<button class="btn btn-success">View</button>
 									<a href="{{url('admin/featured_sales/delete/')}}/{{$accre->id}}">
 										<button class="btn btn-danger">Delete</button></a>

@@ -19,7 +19,7 @@
                <div>
                 <a href="{{url('admin/accreditation-form')}}"  class="btn btn-dark"> Add</a>
                 </div>
-              <input type="search" name="search" class="form-control" placeholder="Search for...">
+              <input type="search" name="search" value="{{old('search')}}"  class="form-control" placeholder="Search for...">
               <span class="input-group-btn">
                 <button class="btn btn-default" type="submit">Go!</button>
               </span>
@@ -93,7 +93,7 @@
       
           </div>
           <div class="row">
-            {{$accreditation->links('pagination::bootstrap-4')}}
+            {{-- {{$accreditation->links('pagination::bootstrap-4')}} --}}
           </div>
         </div>
        

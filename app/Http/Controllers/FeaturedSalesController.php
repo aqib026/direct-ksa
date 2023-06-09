@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\FeaturedSales;
+use App\Models\Note;
 use Illuminate\Http\Request;
+
 
 class FeaturedSalesController extends Controller
 {
@@ -103,6 +105,8 @@ class FeaturedSalesController extends Controller
         $FeaturedSales->applicant_name              = $request->applicant_name;
         $FeaturedSales->mobile_number               = $request->mobile_number;
         $FeaturedSales->email                       = $request->email;
+                         
+
         $FeaturedSales->service_cost                = $request->service_cost;  
 
         $FeaturedSales->save();
@@ -119,7 +123,9 @@ class FeaturedSalesController extends Controller
      */
     public function show(FeaturedSales $id)
     {
+        
         if ($id != "") {
+            
             return view ('admin.featured_sales.featured_sale_show')->with('featured_sale',$id); 
         }else{
             return redirect('admin/featured_sales');
@@ -132,9 +138,22 @@ class FeaturedSalesController extends Controller
      * @param  \App\Models\FeaturedSales  $featuredSales
      * @return \Illuminate\Http\Response
      */
-    public function edit(FeaturedSales $featuredSales)
+    public function edit($id )
     {
-        //
+        {
+            $featured_sale = FeaturedSales::find($id);
+           
+          if (is_null($featured_sale)) {    //not found
+             return redirect('admin/featured_sales');
+          } else {
+            
+            $url = url('admin/featured_sale/update') . "/" . $id;
+            
+         $note = Note::where('featured_id',$id)->get();  
+             $data = compact('featured_sale', 'url', 'note');
+             return view('admin.featured_sales.featured_sale_show')->with($data);
+          }
+        }
     }
 
     /**
@@ -144,9 +163,14 @@ class FeaturedSalesController extends Controller
      * @param  \App\Models\FeaturedSales  $featuredSales
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, FeaturedSales $featuredSales)
+    public function update(Request $request, $id)
     {
-        //
+        $FeaturedSales = FeaturedSales::find($id);                                                      
+        $FeaturedSales->status=$request['status'];
+ 
+ 
+        $FeaturedSales->save();
+        return redirect()->back();
     }
 
     /**
