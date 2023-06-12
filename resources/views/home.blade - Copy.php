@@ -5,6 +5,7 @@
 <section class="section border-0 m-0 bg-color-quaternary p-relative">
 	<div class="container">
 		<div class="row custom-hero-row">
+
 			<div class="col">
 				<div class="row pt-5 mt-5 mb-5 pb-5">
 					<div class="col-12 col-lg-6 p-relative pt-5 mt-5">
@@ -12,11 +13,11 @@
 							<hr class="bg-primary border-radius">
 						</div>
 						<div class="overflow-hidden mb-1">
-							<h2 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-3 text-4-5 line-height-2 line-height-sm-7 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">Apply for your Visa Now!</h2>
+							<h2 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-3 text-4-5 line-height-2 line-height-sm-7 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">A leading consulting firm</h2>
 						</div>
-						<h1 class="text-color-dark font-weight-bold text-9 pb-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">With Direct, you can get your Visa at all ease</h1>
+						<h1 class="text-color-dark font-weight-bold text-9 pb-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">Digital, business and technology<br>consulting for growth.</h1>
 						<div class="d-block appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">
-							<a href="#start" data-hash data-hash-offset="0" data-hash-offset-lg="100" class="btn btn-modern btn-primary btn-arrow-effect-1 text-capitalize text-2-5 px-5 py-3 anim-hover-translate-top-5px transition-2ms">APPLY NOW<i class="fas fa-arrow-right ms-2"></i></a>
+							<a href="#start" data-hash data-hash-offset="0" data-hash-offset-lg="100" class="btn btn-modern btn-primary btn-arrow-effect-1 text-capitalize text-2-5 px-5 py-3 anim-hover-translate-top-5px transition-2ms">Learn More <i class="fas fa-arrow-right ms-2"></i></a>
 						</div>
 						<div class="pt-5 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">
 							<span class="d-inline-block anim-hover-translate-bottom-5px transition-2ms">
@@ -24,7 +25,7 @@
 							</span>
 						</div>
 					</div>
-					<!--<div class="col-12 col-lg-6 p-relative text-end">
+					<div class="col-12 col-lg-6 p-relative text-end">
 
 						<div class="appear-animation custom-element-wrapper custom-element-6" data-appear-animation="expandIn" data-appear-animation-delay="500">
 							<div class="bg-color-primary particle particle-dots w-100 h-100 opacity-3"></div>	
@@ -42,7 +43,51 @@
 
 						<img class="appear-animation img-fluid custom-element-wrapper custom-element-8" data-appear-animation="fadeIn" data-appear-animation-delay="900" src="{{ asset('img/demos/business-consulting-4/generic/generic-1.png') }}" alt="">
 
-					</div>-->
+					</div>
+				</div>
+				<div class="row align-items-end justify-content-end pt-5">
+					<div class="col-lg-9 text-end pt-5">
+						<div class="appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="800">
+							<div class="owl-carousel owl-theme stage-margin rounded-nav nav-dark nav-icon-1 nav-size-md nav-position-1" data-plugin-options="{'responsive': {'0': {'items': 1}, '479': {'items': 1}, '768': {'items': 2}, '979': {'items': 2}, '1199': {'items': 2}}, 'margin': 10, 'loop': true, 'nav': true, 'dots': false, 'stagePadding': 40}">
+								<div class="overlay overlay-color-primary overlay-show overlay-op-8 rounded overflow-hidden">
+									<img alt="" class="img-fluid rounded" src="{{ asset('img/demos/business-consulting-4/generic/generic-2.jpg') }} ">
+									<a href="#" class="p-absolute z-index-2 top-0 left-0 w-100 h-100 anim-hover-translate-top-5px transition-2ms">
+										<span class="p-absolute left-0 bottom-0 text-color-light text-start ms-4 mb-3 ps-2 pb-1">
+											<strong class="text-5 negative-ls-05 font-weight-bold">Why Choose Us</strong>
+											<p class="font-weight-medium text-color-light opacity-7 p-relative bottom-4 mb-0">Lorem ipsum dolor sit amet...</p>
+										</span>
+									</a>
+								</div>
+								<div class="overlay overlay-color-dark overlay-show overlay-op-9 rounded overflow-hidden">
+									<img alt="" class="img-fluid rounded" src="{{ asset('img/demos/business-consulting-4/generic/generic-3.jpg') }} ">
+									<a href="#" class="p-absolute z-index-2 top-0 left-0 w-100 h-100 anim-hover-translate-top-5px transition-2ms">
+										<span class="p-absolute left-0 bottom-0 text-color-light text-start ms-4 mb-3 ps-2 pb-1">
+											<strong class="text-5 negative-ls-05 font-weight-bold">Consulting for Growth</strong>
+											<p class="font-weight-medium text-color-light opacity-7 p-relative bottom-4 mb-0">Lorem ipsum dolor sit amet...</p>
+										</span>
+									</a>
+								</div>
+								<div class="overlay overlay-color-primary overlay-show overlay-op-8 rounded overflow-hidden">
+									<img alt="" class="img-fluid rounded" src="{{ asset('img/demos/business-consulting-4/generic/generic-4.jpg') }} ">
+									<a href="#" class="p-absolute z-index-2 top-0 left-0 w-100 h-100 anim-hover-translate-top-5px transition-2ms">
+										<span class="p-absolute left-0 bottom-0 text-color-light text-start ms-4 mb-3 ps-2 pb-1">
+											<strong class="text-5 negative-ls-05 font-weight-bold">Why Choose Us</strong>
+											<p class="font-weight-medium text-color-light opacity-7 p-relative bottom-4 mb-0">Lorem ipsum dolor sit amet...</p>
+										</span>
+									</a>
+								</div>
+								<div class="overlay overlay-color-dark overlay-show overlay-op-9 rounded overflow-hidden">
+									<img alt="" class="img-fluid rounded" src="{{ asset('img/demos/business-consulting-4/generic/generic-5.jpg') }} ">
+									<a href="#" class="p-absolute z-index-2 top-0 left-0 w-100 h-100 anim-hover-translate-top-5px transition-2ms">
+										<span class="p-absolute left-0 bottom-0 text-color-light text-start ms-4 mb-3 ps-2 pb-1">
+											<strong class="text-5 negative-ls-05 font-weight-bold">Consulting for Growth</strong>
+											<p class="font-weight-medium text-color-light opacity-7 p-relative bottom-4 mb-0">Lorem ipsum dolor sit amet...</p>
+										</span>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -71,131 +116,7 @@
 			<div class="custom-element rotate-r-45"></div>
 		</div>
 	</div>
-</section>
 
-<section class="section border-0 bg-transparent m-0" id="start">
-	<div class="row">
-		<div class="col text-center">
-			<div class="divider divider-small divider-small-lg mt-0 text-center appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="0">
-				<hr class="bg-primary border-radius m-auto">
-			</div>
-			<div class="overflow-hidden mb-1">
-				<h3 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-3 text-4 line-height-2 line-height-sm-7 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">Special Services</h3>
-			</div>
-			<h2 class="text-color-dark font-weight-bold text-8 pb-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">Find out more with our special services</h2>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col">
-			<div class="row align-items-end justify-content-end pt-5">
-				<div class="col-lg-12 text-end pt-5">
-					<div class="appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="800">
-						<div class="owl-carousel owl-theme stage-margin rounded-nav nav-dark nav-icon-1 nav-size-md nav-position-1" data-plugin-options="{'responsive': {'0': {'items': 1}, '479': {'items': 1}, '768': {'items': 2}, '979': {'items': 3}, '1199': {'items': 3}}, 'margin': 10, 'loop': true, 'nav': true, 'dots': false, 'stagePadding': 40}">
-							<div class="overlay overlay-color-primary overlay-show overlay-op-8 rounded overflow-hidden">
-								<img alt="" class="img-fluid rounded" src="{{ asset('img/demos/business-consulting-4/generic/generic-2.jpg') }} ">
-								<a href="#" class="p-absolute z-index-2 top-0 left-0 w-100 h-100 anim-hover-translate-top-5px transition-2ms">
-									<span class="p-absolute left-0 bottom-0 text-color-light text-start ms-4 mb-3 ps-2 pb-1">
-										<strong class="text-5 negative-ls-05 font-weight-bold">Why Choose Us</strong>
-										<p class="font-weight-medium text-color-light opacity-7 p-relative bottom-4 mb-0">Lorem ipsum dolor sit amet...</p>
-									</span>
-								</a>
-							</div>
-							<div class="overlay overlay-color-dark overlay-show overlay-op-9 rounded overflow-hidden">
-								<img alt="" class="img-fluid rounded" src="{{ asset('img/demos/business-consulting-4/generic/generic-3.jpg') }} ">
-								<a href="#" class="p-absolute z-index-2 top-0 left-0 w-100 h-100 anim-hover-translate-top-5px transition-2ms">
-									<span class="p-absolute left-0 bottom-0 text-color-light text-start ms-4 mb-3 ps-2 pb-1">
-										<strong class="text-5 negative-ls-05 font-weight-bold">Consulting for Growth</strong>
-										<p class="font-weight-medium text-color-light opacity-7 p-relative bottom-4 mb-0">Lorem ipsum dolor sit amet...</p>
-									</span>
-								</a>
-							</div>
-							<div class="overlay overlay-color-primary overlay-show overlay-op-8 rounded overflow-hidden">
-								<img alt="" class="img-fluid rounded" src="{{ asset('img/demos/business-consulting-4/generic/generic-4.jpg') }} ">
-								<a href="#" class="p-absolute z-index-2 top-0 left-0 w-100 h-100 anim-hover-translate-top-5px transition-2ms">
-									<span class="p-absolute left-0 bottom-0 text-color-light text-start ms-4 mb-3 ps-2 pb-1">
-										<strong class="text-5 negative-ls-05 font-weight-bold">Why Choose Us</strong>
-										<p class="font-weight-medium text-color-light opacity-7 p-relative bottom-4 mb-0">Lorem ipsum dolor sit amet...</p>
-									</span>
-								</a>
-							</div>
-							<div class="overlay overlay-color-dark overlay-show overlay-op-9 rounded overflow-hidden">
-								<img alt="" class="img-fluid rounded" src="{{ asset('img/demos/business-consulting-4/generic/generic-5.jpg') }} ">
-								<a href="#" class="p-absolute z-index-2 top-0 left-0 w-100 h-100 anim-hover-translate-top-5px transition-2ms">
-									<span class="p-absolute left-0 bottom-0 text-color-light text-start ms-4 mb-3 ps-2 pb-1">
-										<strong class="text-5 negative-ls-05 font-weight-bold">Consulting for Growth</strong>
-										<p class="font-weight-medium text-color-light opacity-7 p-relative bottom-4 mb-0">Lorem ipsum dolor sit amet...</p>
-									</span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-
-<section class="section border-0 bg-quaternary m-0">
-	<div class="container py-5">
-		<div class="row justify-content-center">
-			<div class="col col-lg-9 text-center">
-
-				<div class="divider divider-small divider-small-lg mt-0 text-center appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="0">
-					<hr class="bg-primary border-radius m-auto">
-				</div>
-				<div class="overflow-hidden mb-1">
-					<h3 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-3 text-4 line-height-2 line-height-sm-7 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">Why Direct?</h3>
-				</div>
-				<h2 class="text-color-dark font-weight-bold text-8 pb-4 mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">Our Amazing Services</h2>
-			</div>
-		</div>
-
-		<div class="row py-5 appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="300">
-			<div class="col-md-4 mb-4 mb-md-0">
-				<div class="card card-border card-border-top card-border-hover bg-color-light border-0 box-shadow-6 box-shadow-hover anim-hover-translate-top-10px transition-3ms anim-hover-inner-wrapper">
-					<div class="card-body p-relative zindex-1 p-5 text-center">
-						<div class="anim-hover-inner-translate-top-20px transition-3ms">
-							<img width="72" height="73" src="{{ asset('img/demos/business-consulting-4/icons/icon-1.svg') }}" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary'}" />
-							<h4 class="card-title mt-4 mb-2 text-5 font-weight-bold">Apply for your Visa with Ease</h4>
-							<p class="card-text text-3-5">Submit your visa request with ease within 2 minutes, from anywhere in the world at competitive prices</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4 mb-4 mb-md-0">
-				<div class="card card-border card-border-top card-border-hover bg-color-light border-0 box-shadow-6 box-shadow-hover anim-hover-translate-top-10px transition-3ms anim-hover-inner-wrapper">
-					<div class="card-body p-relative zindex-1 p-5 text-center">
-						<div class="anim-hover-inner-translate-top-20px transition-3ms">
-							<img width="72" height="73" src="{{ asset('img/demos/business-consulting-4/icons/icon-2.svg') }}" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary'}" />
-							<h4 class="card-title mt-4 mb-2 text-5 font-weight-bold">Best Schools Around the World</h4>
-							<p class="card-text text-3-5">Enjoy an Interactive search experience and Excellent services including Tuition fees, Accommodation and meals at an affordable cost</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="card card-border card-border-top card-border-hover bg-color-light border-0 box-shadow-6 box-shadow-hover anim-hover-translate-top-10px transition-3ms anim-hover-inner-wrapper">
-					<div class="card-body p-relative zindex-1 p-5 text-center">
-						<div class="anim-hover-inner-translate-top-20px transition-3ms">
-							<img width="72" height="73" src="{{ asset('img/demos/business-consulting-4/icons/icon-3.svg') }}" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary'}" />
-							<h4 class="card-title mt-4 mb-2 text-5 font-weight-bold">Your Documents are Ready & Complete</h4>
-							<p class="card-text text-3-5">No need to worry at the time of application, We take care for the appointment, application, insurance, and translation</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- <div class="row justify-content-center">
-			<div class="col col-lg-9 text-center">
-
-				<div class="d-block pt-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">
-					<a href="demo-business-consulting-4-services.html" class="btn btn-modern btn-primary btn-arrow-effect-1 text-capitalize text-2-5 px-5 py-3 anim-hover-translate-top-5px transition-2ms">Learn More <i class="fas fa-arrow-right ms-2"></i></a>
-				</div>
-
-			</div>
-		</div> -->
-	</div>
 </section>
 
 <section class="section border-0 bg-transparent m-0" id="start">
@@ -250,6 +171,81 @@
 				<div class="d-block pt-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">
 					<a href="demo-business-consulting-4-about-us.html" class="btn btn-modern btn-primary btn-arrow-effect-1 text-capitalize text-2-5 px-5 py-3 anim-hover-translate-top-5px transition-2ms">Learn More <i class="fas fa-arrow-right ms-2"></i></a>
 				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="section border-0 bg-quaternary m-0">
+	<div class="container py-5">
+		<div class="row justify-content-center">
+			<div class="col col-lg-9 text-center">
+
+				<div class="divider divider-small divider-small-lg mt-0 text-center appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="0">
+					<hr class="bg-primary border-radius m-auto">
+				</div>
+				<div class="overflow-hidden mb-1">
+					<h3 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-3 text-4 line-height-2 line-height-sm-7 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">How We Can Help</h3>
+				</div>
+				<h2 class="text-color-dark font-weight-bold text-8 pb-4 mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">Our Amazing Services</h2>
+
+				<p class="font-weight-medium text-4-5 line-height-5 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">Cras a elit sit amet leo accumsan volutpat. Suspendisse hendrerit vehicula leo, vel efficitur felis ultrices non.</p>
+
+			</div>
+		</div>
+
+		<div class="row py-5 appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="300">
+			<div class="col-md-4 mb-4 mb-md-0">
+				<div class="card card-border card-border-top card-border-hover bg-color-light border-0 box-shadow-6 box-shadow-hover anim-hover-translate-top-10px transition-3ms anim-hover-inner-wrapper">
+					<div class="card-body p-relative zindex-1 p-5 text-center">
+						<div class="anim-hover-inner-translate-top-20px transition-3ms">
+							<img width="72" height="73" src="{{ asset('img/demos/business-consulting-4/icons/icon-1.svg') }}" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary'}" />
+							<h4 class="card-title mt-4 mb-2 text-5 font-weight-bold">Strategic Planning</h4>
+							<p class="card-text text-3-5">Lorem ipsum dolor sit amet, consectetur elit.</p>
+						</div>
+						<div class="w-100 text-center p-absolute opacity-0 bottom-30 left-0 transformY-p100 anim-hover-inner-opacity-10 anim-hover-inner-translate-top-0px transition-4ms">
+							<a href="demo-business-consulting-4-services-detail.html" class="read-more text-color-primary font-weight-semibold mt-2 text-2">Learn More <i class="fas fa-angle-right position-relative top-1 ms-1"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 mb-4 mb-md-0">
+				<div class="card card-border card-border-top card-border-hover bg-color-light border-0 box-shadow-6 box-shadow-hover anim-hover-translate-top-10px transition-3ms anim-hover-inner-wrapper">
+					<div class="card-body p-relative zindex-1 p-5 text-center">
+						<div class="anim-hover-inner-translate-top-20px transition-3ms">
+							<img width="72" height="73" src="{{ asset('img/demos/business-consulting-4/icons/icon-2.svg') }}" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary'}" />
+							<h4 class="card-title mt-4 mb-2 text-5 font-weight-bold">Financial Clean-Up</h4>
+							<p class="card-text text-3-5">Lorem ipsum dolor sit amet, consectetur elit.</p>
+						</div>
+						<div class="w-100 text-center p-absolute opacity-0 bottom-30 left-0 transformY-p100 anim-hover-inner-opacity-10 anim-hover-inner-translate-top-0px transition-4ms">
+							<a href="demo-business-consulting-4-services-detail.html" class="read-more text-color-primary font-weight-semibold mt-2 text-2">Learn More <i class="fas fa-angle-right position-relative top-1 ms-1"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="card card-border card-border-top card-border-hover bg-color-light border-0 box-shadow-6 box-shadow-hover anim-hover-translate-top-10px transition-3ms anim-hover-inner-wrapper">
+					<div class="card-body p-relative zindex-1 p-5 text-center">
+						<div class="anim-hover-inner-translate-top-20px transition-3ms">
+							<img width="72" height="73" src="{{ asset('img/demos/business-consulting-4/icons/icon-3.svg') }}" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary'}" />
+							<h4 class="card-title mt-4 mb-2 text-5 font-weight-bold">Cash Flow Planning</h4>
+							<p class="card-text text-3-5">Lorem ipsum dolor sit amet, consectetur elit.</p>
+						</div>
+						<div class="w-100 text-center p-absolute opacity-0 bottom-30 left-0 transformY-p100 anim-hover-inner-opacity-10 anim-hover-inner-translate-top-0px transition-4ms">
+							<a href="demo-business-consulting-4-services-detail.html" class="read-more text-color-primary font-weight-semibold mt-2 text-2">Learn More <i class="fas fa-angle-right position-relative top-1 ms-1"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row justify-content-center">
+			<div class="col col-lg-9 text-center">
+
+				<div class="d-block pt-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">
+					<a href="demo-business-consulting-4-services.html" class="btn btn-modern btn-primary btn-arrow-effect-1 text-capitalize text-2-5 px-5 py-3 anim-hover-translate-top-5px transition-2ms">Learn More <i class="fas fa-arrow-right ms-2"></i></a>
+				</div>
+
 			</div>
 		</div>
 	</div>
