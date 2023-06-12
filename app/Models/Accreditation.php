@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Accreditation extends Model
 {
-    protected $table="accreditation";
-    protected $Primarykey="id";
+    protected $table = "accreditation";
+    protected $Primarykey = "id";
     use HasFactory;
 }

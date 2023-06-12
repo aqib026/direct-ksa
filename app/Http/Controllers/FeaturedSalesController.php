@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\FeaturedSales;
+use App\Models\Note;
 use Illuminate\Http\Request;
+
 
 class FeaturedSalesController extends Controller
 {
@@ -14,12 +16,12 @@ class FeaturedSalesController extends Controller
      */
     public function index(Request $request)
     {
-        if(isset($request->service)){
+        if (isset($request->service)) {
             $service = $request->service;
-        }else{
+        } else {
             $service = '';
         }
-        return view ('frontend.featuredSales', compact('service'));
+        return view('frontend.featuredSales', compact('service'));
     }
 
     /**
@@ -31,12 +33,12 @@ class FeaturedSalesController extends Controller
     {
         $search = $request["search"] ?? "";
         if ($search != "") {
-           $featured_sales = FeaturedSales::where('name', 'like', "%$search%")->get();
+            $featured_sales = FeaturedSales::where('name', 'like', "%$search%")->get();
         } else {
-           $featured_sales = FeaturedSales::paginate(6);
+            $featured_sales = FeaturedSales::paginate(6);
         }
-        $data = compact('featured_sales', 'search'); 
-        return view ('admin.featured_sales.featured_sales')->with($data);
+        $data = compact('featured_sales', 'search');
+        return view('admin.featured_sales.featured_sales')->with($data);
     }
 
     /**
@@ -71,12 +73,12 @@ class FeaturedSalesController extends Controller
 
         $input = $request->all();
 
-        $images=array();
-        if($files=$request->file('documents')){
-            foreach($files as $file){
-                $name=$file->getClientOriginalName();
-                $file->move('image',$name);
-                $images[]=$name;
+        $images = array();
+        if ($files = $request->file('documents')) {
+            foreach ($files as $file) {
+                $name = $file->getClientOriginalName();
+                $file->move('image', $name);
+                $images[] = $name;
             }
         }
 
@@ -103,7 +105,9 @@ class FeaturedSalesController extends Controller
         $FeaturedSales->applicant_name              = $request->applicant_name;
         $FeaturedSales->mobile_number               = $request->mobile_number;
         $FeaturedSales->email                       = $request->email;
-        $FeaturedSales->service_cost                = $request->service_cost;  
+
+
+        $FeaturedSales->service_cost                = $request->service_cost;
 
         $FeaturedSales->save();
         if ($FeaturedSales) {
@@ -119,9 +123,11 @@ class FeaturedSalesController extends Controller
      */
     public function show(FeaturedSales $id)
     {
+
         if ($id != "") {
-            return view ('admin.featured_sales.featured_sale_show')->with('featured_sale',$id); 
-        }else{
+
+            return view('admin.featured_sales.featured_sale_show')->with('featured_sale', $id);
+        } else {
             return redirect('admin/featured_sales');
         }
     }
@@ -132,9 +138,21 @@ class FeaturedSalesController extends Controller
      * @param  \App\Models\FeaturedSales  $featuredSales
      * @return \Illuminate\Http\Response
      */
-    public function edit(FeaturedSales $featuredSales)
-    {
-        //
+    public function edit($id)
+    { {
+            $featured_sale = FeaturedSales::find($id);
+
+            if (is_null($featured_sale)) {    //not found
+                return redirect('admin/featured_sales');
+            } else {
+
+                $url = url('admin/featured_sale/update') . "/" . $id;
+
+                $note = Note::where('featured_id', $id)->get();
+                $data = compact('featured_sale', 'url', 'note');
+                return view('admin.featured_sales.featured_sale_show')->with($data);
+            }
+        }
     }
 
     /**
@@ -144,9 +162,14 @@ class FeaturedSalesController extends Controller
      * @param  \App\Models\FeaturedSales  $featuredSales
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, FeaturedSales $featuredSales)
+    public function update(Request $request, $id)
     {
-        //
+        $FeaturedSales = FeaturedSales::find($id);
+        $FeaturedSales->status = $request['status'];
+
+
+        $FeaturedSales->save();
+        return redirect()->back();
     }
 
     /**
@@ -154,14 +177,14 @@ class FeaturedSalesController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */ 
+     */
     public function destroy($id)
     {
         $FeaturedSales = FeaturedSales::find($id);
         if (!is_null($FeaturedSales)) {
-           $FeaturedSales->delete();
+            $FeaturedSales->delete();
         }
-  
+
         return redirect('admin/featured_sales');
     }
 }

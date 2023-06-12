@@ -8,8 +8,8 @@ use App\Models\countries;
 
 class Visa extends Model
 {
-    protected $table="visa_requirement";
-    protected $Primarykey="id";
+    protected $table = "visa_requirement";
+    protected $Primarykey = "id";
 
     public function visa()
     {

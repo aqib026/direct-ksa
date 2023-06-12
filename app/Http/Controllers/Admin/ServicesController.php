@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Controller;
 use App\Models\Services;
 
@@ -9,7 +10,7 @@ use Illuminate\Http\Request;
 
 class ServicesController extends Controller
 {
-    public function create()
+   public function create()
    {
       $url = url('admin/special_services_form');
       $title = "Add Special Services";
@@ -32,8 +33,8 @@ class ServicesController extends Controller
 
       $filename = time() . "bn." . $request->file('banner')->getClientOriginalExtension();
       $services->banner = $request->file('banner')->storeas('banner', $filename);
-  
-     
+
+
 
       $services->save();
       return redirect('admin/special_services');
@@ -43,15 +44,15 @@ class ServicesController extends Controller
 
    public function show()
    {
-  
-    $search = $request["search"] ?? "";
-    if ($search != "") {
-       $services = services::where('name', 'like', "%$search%")->get();
-    } else {
-       $services = services::paginate(6);
-    }
-    $data = compact('services', 'search');
-    return view('admin.special_services.special_services')->with($data);
+
+      $search = $request["search"] ?? "";
+      if ($search != "") {
+         $services = services::where('name', 'like', "%$search%")->get();
+      } else {
+         $services = services::paginate(6);
+      }
+      $data = compact('services', 'search');
+      return view('admin.special_services.special_services')->with($data);
    }
    /////////////////////////////////////////////////////////////////
 
@@ -85,18 +86,17 @@ class ServicesController extends Controller
 
 
 
-   public function update ($id, Request $request)
+   public function update($id, Request $request)
    {
-     $services= services::find($id);
-   
-     $services->name=$request ['name'];
-     $filename = time() . "bn" . $request->file('banner')->getClientOriginalExtension();
-     $services->banner = $request->file('banner')->storeas('banner', $filename);
-    
-   
-   
-   $services->save();
-   return redirect('admin/special_services');
-   }
+      $services = services::find($id);
 
+      $services->name = $request['name'];
+      $filename = time() . "bn" . $request->file('banner')->getClientOriginalExtension();
+      $services->banner = $request->file('banner')->storeas('banner', $filename);
+
+
+
+      $services->save();
+      return redirect('admin/special_services');
+   }
 }

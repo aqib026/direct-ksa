@@ -36,7 +36,7 @@ class CountryController extends Controller
       $countries->flag_pic = $request->file('flag_pic')->storeas('flagpic', $filename);
       $countryname = time() . "cp." . $request->file('cover_pic')->getClientOriginalExtension();
       $countries->cover_pic = $request->file('cover_pic')->storeAs('coverpic', $countryname);
-     $countries->status=$request ['status'];
+      $countries->status = $request['status'];
 
       $countries->save();
       return redirect('admin/countries');
@@ -89,35 +89,35 @@ class CountryController extends Controller
 
 
 
-   public function update ($id, Request $request)
+   public function update($id, Request $request)
    {
-       $request->validate([
-           'name'=>'required'
-       ]);
-     $countries= countries::find($id);
+      $request->validate([
+         'name' => 'required'
+      ]);
+      $countries = countries::find($id);
 
-     $countries->name=$request ['name'];
-     $filename = time() . "fp." . $request->file('flag_pic')->getClientOriginalExtension();
-     $countries->flag_pic = $request->file('flag_pic')->storeas('flagpic', $filename);
-     $countryname = time() . "cp." . $request->file('cover_pic')->getClientOriginalExtension();
-     $countries->cover_pic = $request->file('cover_pic')->storeAs('coverpic', $countryname);
-     $countries->status=$request ['status'];
+      $countries->name = $request['name'];
+      $filename = time() . "fp." . $request->file('flag_pic')->getClientOriginalExtension();
+      $countries->flag_pic = $request->file('flag_pic')->storeas('flagpic', $filename);
+      $countryname = time() . "cp." . $request->file('cover_pic')->getClientOriginalExtension();
+      $countries->cover_pic = $request->file('cover_pic')->storeAs('coverpic', $countryname);
+      $countries->status = $request['status'];
 
 
-   $countries->save();
-   return redirect('admin/countries');
+      $countries->save();
+      return redirect('admin/countries');
    }
 
-/////////////////////////////////////////////////////////////
+   /////////////////////////////////////////////////////////////
 
 
-public function slider()
-{
+   public function slider()
+   {
 
       $countries = countries::all();
 
-   $data = compact('countries');
+      $data = compact('countries');
 
-    return view('admin.slider')->with($data);
-}
+      return view('admin.slider')->with($data);
+   }
 }
