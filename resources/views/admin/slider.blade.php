@@ -30,9 +30,9 @@
                     <div class="card swiper-slide slide first">
                         <div class="image-content">
                             <a href="{{ url('admin/slider/show/') }}/{{ $country->visa->countries_id }}">
-                                <div>
+                                <div style="">
                                     <span class="overlay"
-                                        style="background-image: url('{{ asset($country->cover_pic) }}')"></span>
+                                        style=" background-size: cover; background-image: url('{{ asset($country->cover_pic) }}')"></span>
                                 </div>
                                 <div class="card-image">
                                     <img src="{{ asset($country->flag_pic) }}" alt="" class="card-img">
@@ -40,12 +40,14 @@
 
                         </div>
                         <div class="card-content">
+                            <a href="{{ url('admin/slider/show/') }}/{{ $country->visa->countries_id }}">
                             <button class="button"> {{ $country->name }}</button>
+                            </a>
                         </div>
                     </div>
-                    </a>
+          
                 @endforeach
-
+            </a>
                 <div class="navigation-auto">
                     <div class="auto-btn1"></div>
                     <div class="auto-btn2"></div>
@@ -62,11 +64,16 @@
                 <label for="radio4" class="manual-btn"></label>
             </div>
         </div>
+          
     </div>
     <div class="swiper-button-next swiper-navBtn"></div>
     <div class="swiper-button-prev swiper-navBtn"></div>
     <div class="swiper-pagination"></div>
     </div>
+
+
+
+    
 
 </body>
 <script>

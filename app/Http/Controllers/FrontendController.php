@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\countries;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -13,7 +14,11 @@ class FrontendController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $countries = countries::all();
+
+      $data = compact('countries');
+
+      return view('home')->with($data);
     }
 
     /**

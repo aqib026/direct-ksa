@@ -48,6 +48,7 @@
 
 		<!-- Head Libs -->
 		<script src="{{ asset('front-end/vendor/modernizr/modernizr.min.js') }}"></script>
+@stack('link')
 
 	</head>
 	<body>
@@ -304,5 +305,8 @@
 		<!-- Theme Initialization Files -->
 		<script src="{{ asset('front-end/js/theme.init.js') }}"></script>
 
+		 <!--Slider-->
+		@stack('script')
+		
 	</body>
 </html>
