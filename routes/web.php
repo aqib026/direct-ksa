@@ -93,7 +93,6 @@ Route::group(['prefix'=>'/admin'],function(){
     Route::get('/visa_requirement/delete/{id}',[VisaController::class, 'destroy'])->middleware(['auth','admin']);
     Route::get('/visa_form/edit/{id}',[VisaController::class, 'edit'])->middleware(['auth','admin']);
     Route::Post('/visa_form/update/{id}',[VisaController::class, 'update'])->middleware(['auth','admin']);
-<<<<<<< HEAD
     
     Route::get('/location_form',[LocationController::class, 'create'])->middleware(['auth','admin']);
     Route::Post('/location_form',[LocationController::class, 'store'])->middleware(['auth','admin']);
@@ -101,13 +100,11 @@ Route::group(['prefix'=>'/admin'],function(){
     Route::get('/contact_location/delete/{id}',[LocationController::class, 'destroy'])->middleware(['auth','admin']);
     Route::get('/location_form/edit/{id}',[LocationController::class, 'edit'])->middleware(['auth','admin']);
     Route::Post('/location_form/update/{id}',[LocationController::class, 'update'])->middleware(['auth','admin']);
-=======
 
     Route::get('/featured_sales',[FeaturedSalesController::class, 'list'])->middleware(['auth','admin'])->name('featured_sales_list');
     Route::get('/featured_sales/view/{id}',[FeaturedSalesController::class, 'show'])->middleware(['auth','admin'])->name('featured_sales_show');
     Route::get('/featured_sales/delete/{id}',[FeaturedSalesController::class, 'destroy'])->middleware(['auth','admin']);
 
->>>>>>> 0d8d39db76376762d6e1a335a6c42cae6e0f8c5d
 });
 
 
