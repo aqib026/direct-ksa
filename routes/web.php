@@ -86,19 +86,19 @@ Route::group(['prefix' => '/admin'], function () {
     Route::get('/accreditation-form/edit/{id}', [AccreditationController::class, 'edit'])->middleware(['auth', 'admin']);
     Route::Post('/accreditation-form/update/{id}', [AccreditationController::class, 'update'])->middleware(['auth', 'admin']);
 
-    Route::get('/visa_form', [VisaController::class, 'create'])->middleware(['auth', 'admin']);
-    Route::Post('/visa_form', [VisaController::class, 'store'])->middleware(['auth', 'admin']);
-    Route::get('/visa_requirement', [VisaController::class, 'show'])->middleware(['auth', 'admin']);
-    Route::get('/visa_requirement/delete/{id}', [VisaController::class, 'destroy'])->middleware(['auth', 'admin']);
-    Route::get('/visa_form/edit/{id}', [VisaController::class, 'edit'])->middleware(['auth', 'admin']);
-    Route::Post('/visa_form/update/{id}', [VisaController::class, 'update'])->middleware(['auth', 'admin']);
-
-    Route::get('/location_form', [LocationController::class, 'create'])->middleware(['auth', 'admin']);
-    Route::Post('/location_form', [LocationController::class, 'store'])->middleware(['auth', 'admin']);
-    Route::get('/contact_location', [LocationController::class, 'show'])->middleware(['auth', 'admin']);
-    Route::get('/contact_location/delete/{id}', [LocationController::class, 'destroy'])->middleware(['auth', 'admin']);
-    Route::get('/location_form/edit/{id}', [LocationController::class, 'edit'])->middleware(['auth', 'admin']);
-    Route::Post('/location_form/update/{id}', [LocationController::class, 'update'])->middleware(['auth', 'admin']);
+    Route::get('/visa_form',[VisaController::class, 'create'])->middleware(['auth','admin']);
+    Route::Post('/visa_form',[VisaController::class, 'store'])->middleware(['auth','admin']);
+    Route::get('/visa_requirement',[VisaController::class, 'show'])->middleware(['auth','admin']);
+    Route::get('/visa_requirement/delete/{id}',[VisaController::class, 'destroy'])->middleware(['auth','admin']);
+    Route::get('/visa_form/edit/{id}',[VisaController::class, 'edit'])->middleware(['auth','admin']);
+    Route::Post('/visa_form/update/{id}',[VisaController::class, 'update'])->middleware(['auth','admin']);
+    
+    Route::get('/location_form',[LocationController::class, 'create'])->middleware(['auth','admin']);
+    Route::Post('/location_form',[LocationController::class, 'store'])->middleware(['auth','admin']);
+    Route::get('/contact_location',[LocationController::class, 'show'])->middleware(['auth','admin']);
+    Route::get('/contact_location/delete/{id}',[LocationController::class, 'destroy'])->middleware(['auth','admin']);
+    Route::get('/location_form/edit/{id}',[LocationController::class, 'edit'])->middleware(['auth','admin']);
+    Route::Post('/location_form/update/{id}',[LocationController::class, 'update'])->middleware(['auth','admin']);
 
     Route::get('/featured_sales', [FeaturedSalesController::class, 'list'])->middleware(['auth', 'admin'])->name('featured_sales_list');
     Route::get('/featured_sales/view/{id}', [FeaturedSalesController::class, 'show'])->middleware(['auth', 'admin'])->name('featured_sales_show');
@@ -110,10 +110,8 @@ Route::group(['prefix' => '/admin'], function () {
 
     Route::POST('/notes', [NoteController::class, 'store'])->middleware(['auth', 'admin']);
     Route::get('/notes/delete/{id}', [NoteController::class, 'destroy'])->middleware(['auth', 'admin']);
+
 });
 
 
 
-Route::get('/', [FrontendController::class, 'index']);
-Route::get('/featured_sales', [FeaturedSalesController::class, 'index'])->name('featured_sales');
-Route::Post('/featured_sales', [FeaturedSalesController::class, 'store'])->name('featured_sales_post');
