@@ -54,18 +54,10 @@ class FrontendController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(countries $country)
-    {
-    //     
-            $countries=countries::all();
-    //         $visa=visa::all();
+    {  
+        $countries=countries::all();
 
-    //     $data=compact('countries');
-    
-    // return view('requirement')->with($data);
-
-       
         if ($countries) {
-     
             return view('requirement', compact('countries', 'country' ));
         } else {
             return redirect('home');

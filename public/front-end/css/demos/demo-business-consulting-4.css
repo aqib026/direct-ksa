@@ -8,6 +8,10 @@
 		position: absolute;
 }
 
+.visa_detail p{
+	color: black !important
+}
+
 .custom-element-wrapper.custom-element-1 {
 		top: 25%;
 		left: 45%;
