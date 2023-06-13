@@ -48,8 +48,13 @@
 
 		<!-- Head Libs -->
 		<script src="{{ asset('front-end/vendor/modernizr/modernizr.min.js') }}"></script>
+		<link rel="stylesheet" href="https://cdn.usebootstrap.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    
+		<!-- Font Awesome -->
+    	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" integrity="sha512-SgaqKKxJDQ/tAUAAXzvxZz33rmn7leYDYfBP+YoMRSENhf3zJyx3SBASt/OfeQwBHA1nxMis7mM3EV/oYT6Fdw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/solid.min.js" integrity="sha512-apZ8JDL5kA1iqvafDdTymV4FWUlJd8022mh46oEMMd/LokNx9uVAzhHk5gRll+JBE6h0alB2Upd3m+ZDAofbaQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
 		@stack('link')
-
 	</head>
 	<body>
 
@@ -104,7 +109,7 @@
 							<div class="header-column">
 								<div class="header-row">
 									<div class="header-logo">
-										<a href="index.html">
+										<a href="{{ route('home') }}">
 											<img alt="Direct" width="123" height="32" src="{{ asset('img/demos/business-consulting-4/logo.png') }}">
 										</a>
 									</div>
@@ -117,23 +122,18 @@
 											<nav class="collapse">
 												<ul class="nav nav-pills" id="mainNav">
 													<li class="dropdown">
-														<a href="demo-business-consulting-4.html" class="nav-link active">
+														<a href="{{ route('home') }}" class="nav-link active">
 															Home
 														</a>
 													</li>
 													<li class="dropdown dropdown-mega">
-														<a class="dropdown-item" href="elements.html">
+														<a class="dropdown-item" href="">
 															Visas
 														</a>
 													</li>
 													<li>
-														<a class="nav-link" href="demo-business-consulting-4-about-us.html">
+														<a class="nav-link" href="">
 															Schools
-														</a>
-													</li>
-													<li class="dropdown">
-														<a class="nav-link" href="demo-business-consulting-4-services.html">
-															Hotels
 														</a>
 													</li>
 												</ul>
@@ -166,17 +166,13 @@
 				</div>
 			</header>
 
-			<div role="main" class="main">
-
-                @yield('content')
-
-			</div>
+			<div role="main" class="main" style="padding-top: 100px;">@yield('content')</div>
 
 			<footer id="footer" class="position-relative bg-dark border-top-0">		
 				<div class="container pt-5 pb-3">
 					<div class="row pt-5">
 						<div class="col-lg-4">
-							<a href="demo-business-consulting-4.html" class="text-decoration-none">
+							<a href="{{ route('home') }}" class="text-decoration-none">
 								<img src="{{ asset('img/demos/business-consulting-4/logo-light.png') }} " width="123" height="32" class="img-fluid mb-4" alt="Porto" />
 							</a>
 							<p class="text-3-5 font-weight-medium pe-lg-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit quisque rutrum pellentesqu. </p>
@@ -237,7 +233,7 @@
 									</ul>
 								</div>
 							</div>
-							<div class="row">
+							<!-- <div class="row">
 								<div class="col">
 									<div class="alert alert-success d-none" id="newsletterSuccess">
 										<strong>Success!</strong> You've been added to our email list.
@@ -255,7 +251,7 @@
 										</form>
 									</div>
 								</div>
-							</div>
+							</div> -->
 						</div>
 					</div>
 				</div>
@@ -290,6 +286,6 @@
 
 		 <!--Slider-->
 		@stack('script')
-		
+		@yield('custom-scripts')
 	</body>
 </html>

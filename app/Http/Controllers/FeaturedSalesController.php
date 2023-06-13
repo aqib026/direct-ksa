@@ -14,13 +14,8 @@ class FeaturedSalesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request, $service = '')
     {
-        if (isset($request->service)) {
-            $service = $request->service;
-        } else {
-            $service = '';
-        }
         return view('frontend.featuredSales', compact('service'));
     }
 

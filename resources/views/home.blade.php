@@ -1,6 +1,10 @@
 @extends('layouts.front-end')
 @section('content')
 
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="{{ asset('css/slide.css') }}">
+<!-- CSS -->
+<link rel="stylesheet" href="{{ asset('css/slider.css') }}">
 
 <section class="section border-0 m-0 bg-color-quaternary p-relative">
 	<div class="container">
@@ -90,43 +94,57 @@
 			<div class="row align-items-end justify-content-end pt-5">
 				<div class="col-lg-12 text-end pt-5">
 					<div class="appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="800">
-						<div class="owl-carousel owl-theme stage-margin rounded-nav nav-dark nav-icon-1 nav-size-md nav-position-1" data-plugin-options="{'responsive': {'0': {'items': 1}, '479': {'items': 1}, '768': {'items': 2}, '979': {'items': 3}, '1199': {'items': 3}}, 'margin': 10, 'loop': true, 'nav': true, 'dots': false, 'stagePadding': 40}">
-							<div class="overlay overlay-color-primary overlay-show overlay-op-8 rounded overflow-hidden">
-								<img alt="" class="img-fluid rounded" src="{{ asset('img/demos/business-consulting-4/generic/generic-2.jpg') }} ">
-								<a href="#" class="p-absolute z-index-2 top-0 left-0 w-100 h-100 anim-hover-translate-top-5px transition-2ms">
-									<span class="p-absolute left-0 bottom-0 text-color-light text-start ms-4 mb-3 ps-2 pb-1">
-										<strong class="text-5 negative-ls-05 font-weight-bold">Why Choose Us</strong>
-										<p class="font-weight-medium text-color-light opacity-7 p-relative bottom-4 mb-0">Lorem ipsum dolor sit amet...</p>
-									</span>
-								</a>
-							</div>
-							<div class="overlay overlay-color-dark overlay-show overlay-op-9 rounded overflow-hidden">
-								<img alt="" class="img-fluid rounded" src="{{ asset('img/demos/business-consulting-4/generic/generic-3.jpg') }} ">
-								<a href="#" class="p-absolute z-index-2 top-0 left-0 w-100 h-100 anim-hover-translate-top-5px transition-2ms">
-									<span class="p-absolute left-0 bottom-0 text-color-light text-start ms-4 mb-3 ps-2 pb-1">
-										<strong class="text-5 negative-ls-05 font-weight-bold">Consulting for Growth</strong>
-										<p class="font-weight-medium text-color-light opacity-7 p-relative bottom-4 mb-0">Lorem ipsum dolor sit amet...</p>
-									</span>
-								</a>
-							</div>
-							<div class="overlay overlay-color-primary overlay-show overlay-op-8 rounded overflow-hidden">
-								<img alt="" class="img-fluid rounded" src="{{ asset('img/demos/business-consulting-4/generic/generic-4.jpg') }} ">
-								<a href="#" class="p-absolute z-index-2 top-0 left-0 w-100 h-100 anim-hover-translate-top-5px transition-2ms">
-									<span class="p-absolute left-0 bottom-0 text-color-light text-start ms-4 mb-3 ps-2 pb-1">
-										<strong class="text-5 negative-ls-05 font-weight-bold">Why Choose Us</strong>
-										<p class="font-weight-medium text-color-light opacity-7 p-relative bottom-4 mb-0">Lorem ipsum dolor sit amet...</p>
-									</span>
-								</a>
-							</div>
-							<div class="overlay overlay-color-dark overlay-show overlay-op-9 rounded overflow-hidden">
-								<img alt="" class="img-fluid rounded" src="{{ asset('img/demos/business-consulting-4/generic/generic-5.jpg') }} ">
-								<a href="#" class="p-absolute z-index-2 top-0 left-0 w-100 h-100 anim-hover-translate-top-5px transition-2ms">
-									<span class="p-absolute left-0 bottom-0 text-color-light text-start ms-4 mb-3 ps-2 pb-1">
-										<strong class="text-5 negative-ls-05 font-weight-bold">Consulting for Growth</strong>
-										<p class="font-weight-medium text-color-light opacity-7 p-relative bottom-4 mb-0">Lorem ipsum dolor sit amet...</p>
-									</span>
-								</a>
-							</div>
+						<div class="owl-carousel owl-theme stage-margin rounded-nav nav-dark nav-icon-1 nav-size-md nav-position-1" data-plugin-options="{'responsive': {'0': {'items': 1}, '479': {'items': 2}, '768': {'items': 3}, '979': {'items': 4}, '1199': {'items': 4}}, 'margin': 10, 'loop': true, 'nav': true, 'dots': false, 'stagePadding': 40}">
+							@php $service_url = ''; @endphp	
+							@foreach ($services as $service)	
+								@switch($service->name)
+									@case('Translation')
+										@php $service_url = 'translation' @endphp
+									@break
+
+									@case('Passport Renewals')
+										@php $service_url = 'passport_renewals' @endphp
+									@break
+
+									@case('Intl Driving License - Card')
+										@php $service_url = 'intl_dl_card' @endphp
+									@break
+
+									@case('Intl Driving License - Booklet')
+										@php $service_url = 'intl_dl_booklet' @endphp
+									@break
+
+									@case('University Admissions')
+										@php $service_url = 'uni_adm' @endphp
+									@break
+
+									@case('UAE Visa for KSA Residents')
+										@php $service_url = 'uae_visa' @endphp
+									@break
+
+									@case('Forms Filling')
+										@php $service_url = 'forms_filling' @endphp
+									@break
+
+									@case('Bahrain Visa for KSA Residents')
+										@php $service_url = 'bahrain_visa' @endphp
+									@break
+
+									@case('Premium Service (VIP)')
+										@php $service_url = 'vip' @endphp
+									@break
+
+									@default
+								@endswitch
+								<div class="rounded overflow-hidden">
+									<img alt="" class="img-fluid rounded" width="250" height="250" src="{{ asset($service->banner) }}">
+									<a href="{{ route('featured_sales',$service_url) }}" class="p-absolute z-index-2 top-0 left-0 w-100 h-100 anim-hover-translate-top-5px transition-2ms">
+										<span class="p-absolute left-0 bottom-0 text-color-light text-start ms-4 mb-3 ps-2 pb-1">
+											<strong class="text-5 negative-ls-05 font-weight-bold">{{ $service->name }}</strong>
+										</span>
+									</a>
+								</div>
+							@endforeach
 						</div>
 					</div>
 				</div>
@@ -197,6 +215,60 @@
 		</div> -->
 	</div>
 </section>
+
+<section class="section border-0 bg-transparent m-0">
+	<div class="container py-5 mb-3">
+		<div class="row">
+			<div class="col text-center">
+				<div class="divider divider-small divider-small-lg mt-0 text-center appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="0">
+					<hr class="bg-primary border-radius m-auto">
+				</div>
+				<div class="overflow-hidden mb-1">
+					<h3 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-3 text-4 line-height-2 line-height-sm-7 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">Visa Requirements</h3>
+				</div>
+				<h2 class="text-color-dark font-weight-bold text-8 pb-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">Know the Requirements with a click</h2>
+
+			</div>
+		</div>
+		<div class="row pt-4 pb-5">
+			<div class="col-lg-12 text-center p-relative pt-5">
+				<div class="slide-container ">
+					<div class="slide-content ">
+						<div class="card-wrapper swiper-wrapper slides ">
+							@foreach ($countries as $country)
+								<div class="card swiper-slide slide first">
+									<div class="image-content">
+										<a href="{{ url('admin/slider/show/') }}/{{ $country->visa->countries_id }}">
+										<div><span class="overlay" style=" background-size: cover; background-image: url('{{ asset($country->cover_pic) }}')"></span></div>
+										<div class="card-image">
+											<img src="{{ asset($country->flag_pic) }}" alt="" class="card-img">
+										</div>
+										</a>
+									</div>
+									<div class="card-content">
+										<a href="{{ url('admin/slider/show/') }}/{{ $country->visa->countries_id }}">
+										<button class="button"> {{ $country->name }}</button>
+										</a>
+									</div>
+								</div>
+							@endforeach
+							<div class="navigation-auto">
+								<div class="auto-btn1"></div>
+								<div class="auto-btn2"></div>
+								<div class="auto-btn3"></div>
+								<div class="auto-btn4"></div>
+							</div>
+							<!--automatic navigation end-->
+						</div>
+					</div>
+				</div>
+				<div class="swiper-button-next swiper-navBtn"></div>
+				<div class="swiper-button-prev swiper-navBtn"></div>
+				<div class="swiper-pagination"></div>
+			</div>
+		</div>
+	</div>
+</section>	
 
 <section class="section border-0 bg-transparent m-0" id="start">
 	<div class="container py-5 mb-3">
@@ -576,3 +648,17 @@
 </section>
 
 @endsection
+<script type = "text/javascript" >
+    var counter = 1;
+    setInterval(function() {
+        document.getElementById('radio' + counter).checked = true;
+        counter++;
+        if (counter > 4) {
+            counter = 1;
+        }
+    }, 2000);
+</script>
+<!-- Swiper JS -->
+<script src="{{ asset('js/slider.js') }}"></script>
+<!-- JavaScript -->
+<script src="{{ asset('js/slide.js') }}"></script>

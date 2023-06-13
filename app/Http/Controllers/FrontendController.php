@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\countries;
+use App\Models\Services;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -16,9 +17,11 @@ class FrontendController extends Controller
     {
         $countries = countries::all();
 
-      $data = compact('countries');
+        $services = Services::all();
 
-      return view('home')->with($data);
+        $data = compact('countries', 'services');
+
+        return view('home')->with($data);
     }
 
     /**
