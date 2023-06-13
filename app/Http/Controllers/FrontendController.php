@@ -53,11 +53,10 @@ class FrontendController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(countries $id)
+    public function show(countries $country)
     {
-        
     //     
-    //         $countries=countries::all();
+            $countries=countries::all();
     //         $visa=visa::all();
 
     //     $data=compact('countries');
@@ -65,9 +64,9 @@ class FrontendController extends Controller
     // return view('requirement')->with($data);
 
        
-        if ($id != "") {
+        if ($countries) {
      
-            return view('requirement')->with('countries', $id );
+            return view('requirement', compact('countries', 'country' ));
         } else {
             return redirect('home');
         }
