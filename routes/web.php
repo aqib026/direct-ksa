@@ -123,3 +123,9 @@ Route::get('/', [FrontendController::class, 'index'])->name('home');
 Route::get('/featured_sales/{service?}', [FeaturedSalesController::class, 'index'])->name('featured_sales');
 Route::Post('/featured_sales', [FeaturedSalesController::class, 'store'])->name('featured_sales_post');
 Route::get('/requirement/{country}',[FrontendController::class, 'show']);
+
+
+
+
+
+Route::get('/visa_request', [VisaRequestController::class, 'index'])->name('visa_request');
