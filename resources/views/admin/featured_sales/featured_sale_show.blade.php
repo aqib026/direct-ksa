@@ -26,8 +26,6 @@
                             </thead>
                             <tbody>
                                 <tr>
-
-
                                     <td>Required Service</td>
                                     <td>
                                         @switch($featured_sale->required_service)

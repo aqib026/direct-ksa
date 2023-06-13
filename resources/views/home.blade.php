@@ -1,30 +1,26 @@
 @extends('layouts.front-end')
 @section('content')
 
-<!-- Swiper CSS -->
-<link rel="stylesheet" href="{{ asset('css/slide.css') }}">
-<!-- CSS -->
-<link rel="stylesheet" href="{{ asset('css/slider.css') }}">
 
 <section class="section border-0 m-0 bg-color-quaternary p-relative">
 	<div class="container">
-		<div class="row custom-hero-row">
-			<div class="col">
-				<div class="row pt-5 mt-5 mb-5 pb-5">
-					<div class="col-12 col-lg-6 p-relative pt-5 mt-5">
-						<div class="divider divider-small divider-small-lg appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="0">
-							<hr class="bg-primary border-radius">
+		<div class="row text-center custom-hero-row">
+			<div class="col text-center">
+				<div class="row">
+					<div class="offset-2 col-lg-8 p-relative pt-5"> 
+						<div class="divider divider-small divider-small-lg mt-0 text-center appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="0">
+							<hr class="bg-primary border-radius m-auto">
 						</div>
 						<div class="overflow-hidden mb-1">
 							<h2 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-3 text-4-5 line-height-2 line-height-sm-7 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">Apply for your Visa Now!</h2>
 						</div>
 						<h1 class="text-color-dark font-weight-bold text-9 pb-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">With Direct, you can get your Visa at all ease</h1>
 						<div class="d-block appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">
-							<a href="#start" data-hash data-hash-offset="0" data-hash-offset-lg="100" class="btn btn-modern btn-primary btn-arrow-effect-1 text-capitalize text-2-5 px-5 py-3 anim-hover-translate-top-5px transition-2ms">APPLY NOW<i class="fas fa-arrow-right ms-2"></i></a>
+							<a href="#visa" data-hash data-hash-offset="0" data-hash-offset-lg="100" class="btn btn-modern btn-primary btn-arrow-effect-1 text-capitalize text-2-5 px-5 py-3 anim-hover-translate-top-5px transition-2ms">APPLY NOW<i class="fas fa-arrow-right ms-2"></i></a>
 						</div>
 						<div class="pt-5 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">
 							<span class="d-inline-block anim-hover-translate-bottom-5px transition-2ms">
-								<a href="#start" data-hash data-hash-offset="0" data-hash-offset-lg="100" class="btn btn-default text-color-primary border-color-primary bg-transparent rotate-r-90 btn-circle border-width-2 btn-lg"><i class="fas fa-arrow-right"></i></a>
+								<a href="#visa" data-hash data-hash-offset="0" data-hash-offset-lg="100" class="btn btn-default text-color-primary border-color-primary bg-transparent rotate-r-90 btn-circle border-width-2 btn-lg"><i class="fas fa-arrow-right"></i></a>
 							</span>
 						</div>
 					</div>
@@ -77,7 +73,7 @@
 	</div>
 </section>
 
-<section class="section border-0 bg-transparent m-0" id="start">
+<section class="section border-0 bg-transparent m-0" id="services">
 	<div class="row">
 		<div class="col text-center">
 			<div class="divider divider-small divider-small-lg mt-0 text-center appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="0">
@@ -91,8 +87,8 @@
 	</div>
 	<div class="row">
 		<div class="col">
-			<div class="row align-items-end justify-content-end pt-5">
-				<div class="col-lg-12 text-end pt-5">
+			<div class="row align-items-center justify-content-center pt-5">
+				<div class="col-lg-10 text-center pt-5">
 					<div class="appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="800">
 						<div class="owl-carousel owl-theme stage-margin rounded-nav nav-dark nav-icon-1 nav-size-md nav-position-1" data-plugin-options="{'responsive': {'0': {'items': 1}, '479': {'items': 2}, '768': {'items': 3}, '979': {'items': 4}, '1199': {'items': 4}}, 'margin': 10, 'loop': true, 'nav': true, 'dots': false, 'stagePadding': 40}">
 							@php $service_url = ''; @endphp	
@@ -216,7 +212,7 @@
 	</div>
 </section>
 
-<section class="section border-0 bg-transparent m-0">
+<section class="section border-0 bg-transparent m-0" id="visa">
 	<div class="container py-5 mb-3">
 		<div class="row">
 			<div class="col text-center">
@@ -230,46 +226,34 @@
 
 			</div>
 		</div>
-		<div class="row pt-4 pb-5">
-			<div class="col-lg-12 text-center p-relative pt-5">
-				<div class="slide-container ">
-					<div class="slide-content ">
-						<div class="card-wrapper swiper-wrapper slides ">
-							@foreach ($countries as $country)
-								<div class="card swiper-slide slide first">
-									<div class="image-content">
-										<a href="{{ url('admin/slider/show/') }}/{{ $country->visa->countries_id }}">
-										<div><span class="overlay" style=" background-size: cover; background-image: url('{{ asset($country->cover_pic) }}')"></span></div>
-										<div class="card-image">
+		<div class="row">
+			<div class="col">
+				<div class="row align-items-end justify-content-end pt-5">
+					<div class="col-lg-12 text-end pt-5">
+						<div class="appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="800">
+							<div class="owl-carousel owl-theme stage-margin rounded-nav nav-dark nav-icon-1 nav-size-md nav-position-1" data-plugin-options="{'responsive': {'0': {'items': 1}, '479': {'items': 2}, '768': {'items': 3}, '979': {'items': 4}, '1199': {'items': 4}}, 'margin': 10, 'loop': true, 'nav': true, 'dots': false, 'stagePadding': 40}">
+								@foreach ($countries as $country)	
+									<div class="rounded overflow-hidden">
+										<img alt="" class="img-fluid rounded" width="250" height="250" src="{{ asset($country->cover_pic) }}">
+										<div class="card-image" style="margin:auto; margin-top: -50px; margin-bottom: 50px; width: 100px;">
 											<img src="{{ asset($country->flag_pic) }}" alt="" class="card-img">
 										</div>
+										<a href="{{ url('admin/slider/show/') }}/{{ $country->visa->countries_id }}" class="p-absolute z-index-2 top-20 left-0 w-100 h-100 anim-hover-translate-top-5px transition-2ms">
+											<span class="p-absolute left-0 bottom-0 text-color-dark text-center mb-3 pb-1" style="width: 100%;">
+												<strong class="text-5 negative-ls-05 font-weight-bold">{{ $country->name }}</strong>
+											</span>
 										</a>
 									</div>
-									<div class="card-content">
-										<a href="{{ url('admin/slider/show/') }}/{{ $country->visa->countries_id }}">
-										<button class="button"> {{ $country->name }}</button>
-										</a>
-									</div>
-								</div>
-							@endforeach
-							<div class="navigation-auto">
-								<div class="auto-btn1"></div>
-								<div class="auto-btn2"></div>
-								<div class="auto-btn3"></div>
-								<div class="auto-btn4"></div>
+								@endforeach
 							</div>
-							<!--automatic navigation end-->
 						</div>
 					</div>
 				</div>
-				<div class="swiper-button-next swiper-navBtn"></div>
-				<div class="swiper-button-prev swiper-navBtn"></div>
-				<div class="swiper-pagination"></div>
 			</div>
 		</div>
 	</div>
 </section>	
-
+<!--
 <section class="section border-0 bg-transparent m-0" id="start">
 	<div class="container py-5 mb-3">
 		<div class="row">
@@ -646,19 +630,5 @@
 		</div>
 	</div>
 </section>
-
+-->
 @endsection
-<script type = "text/javascript" >
-    var counter = 1;
-    setInterval(function() {
-        document.getElementById('radio' + counter).checked = true;
-        counter++;
-        if (counter > 4) {
-            counter = 1;
-        }
-    }, 2000);
-</script>
-<!-- Swiper JS -->
-<script src="{{ asset('js/slider.js') }}"></script>
-<!-- JavaScript -->
-<script src="{{ asset('js/slide.js') }}"></script>
