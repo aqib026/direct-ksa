@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\countries;
 use App\Models\Services;
+use App\Models\Visa;
+
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -51,9 +53,25 @@ class FrontendController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(countries $id)
     {
-        //
+        
+    //     
+    //         $countries=countries::all();
+    //         $visa=visa::all();
+
+    //     $data=compact('countries');
+    
+    // return view('requirement')->with($data);
+
+       
+        if ($id != "") {
+     
+            return view('requirement')->with('countries', $id );
+        } else {
+            return redirect('home');
+        }
+        
     }
 
     /**
@@ -62,9 +80,9 @@ class FrontendController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+    
     }
 
     /**

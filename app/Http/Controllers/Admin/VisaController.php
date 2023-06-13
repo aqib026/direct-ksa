@@ -140,7 +140,7 @@ class VisaController extends Controller
             $visa->delete();
         }
 
-        return redirect('admin/visa_requirement');
+        return redirect()->back();
     }
 
 
