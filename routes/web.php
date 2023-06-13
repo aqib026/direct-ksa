@@ -15,7 +15,6 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\VisaRequestController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\NoteController;
-use App\Http\Controllers\StepsController;
 
 
 
@@ -110,6 +109,13 @@ Route::group(['prefix'=>'/admin'],function(){
     Route::get('/featured_sales/edit/{id}',[FeaturedSalesController::class, 'edit'])->middleware(['auth','admin']);
     Route::Post('/featured_sale/update/{id}',[FeaturedSalesController::class, 'update'])->middleware(['auth','admin']);
     Route::get('/featured_sales/edit',[FeaturedSalesController::class, 'create'])->middleware(['auth','admin']);
+
+    Route::get('/visarequest_form',[VisaRequestController::class, 'create'])->middleware(['auth','admin']);
+    Route::get('/visarequest',[VisaRequestController::class, 'show'])->middleware(['auth','admin']);
+    Route::POST('visarequest_form',[VisaRequestController::class, 'store'])->middleware(['auth', 'admin']);
+    Route::Get('/visarequest/delete/{id}',[VisaRequestController::class, 'destroy'])->middleware(['auth','admin']);
+    Route::get('/visarequest_form/edit/{id}',[VisaRequestController::class, 'edit'])->middleware(['auth','admin']);
+    Route::POST('/visarequest_form/update/{id}',[VisaRequestController::class, 'update'])->middleware(['auth','admin']);
 
     
     Route::POST('/notes',[NoteController::class, 'store'])->middleware(['auth', 'admin']);

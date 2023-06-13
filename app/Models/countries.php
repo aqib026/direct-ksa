@@ -18,4 +18,8 @@ class countries extends Model
     {
         return $this->hasone('App\Models\Visa');
     }
+    public function visatype()
+    {
+        return $this->hasmany('App\Models\VisaRequest');
+    }
 }

@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('visa_requests', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('countries_id');
+            $table->foreign('countries_id')->references('id')->on('countries');
+            $table->STRING('visa_type');
+           
             $table->timestamps();
         });
     }
