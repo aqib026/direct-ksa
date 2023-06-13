@@ -6,11 +6,11 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<title>Demo Business Consulting 4 | Porto - Multipurpose Website Template</title>	
+		<title>Direct-KSA</title>	
 
-		<meta name="keywords" content="WebSite Template" />
-		<meta name="description" content="Porto - Multipurpose Website Template">
-		<meta name="author" content="okler.net">
+		<meta name="keywords" content="Visa" />
+		<meta name="description" content="Direct-KSA">
+		<meta name="author" content="Brantum">
 
 		<!-- Favicon -->
 		<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
@@ -48,7 +48,7 @@
 
 		<!-- Head Libs -->
 		<script src="{{ asset('front-end/vendor/modernizr/modernizr.min.js') }}"></script>
-@stack('link')
+		@stack('link')
 
 	</head>
 	<body>
@@ -56,7 +56,7 @@
 		<div class="body">
 			<header id="header" class="header-transparent" data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': false, 'stickyChangeLogo': false, 'stickyStartAt': 53, 'stickySetTop': '-53px'}">
 				<div class="header-body border-top-0 h-auto box-shadow-none">
-					<div class="header-top header-top-borders">
+					<!-- <div class="header-top header-top-borders">
 						<div class="container h-100">
 							<div class="header-row h-100">
 								<div class="header-column justify-content-start">
@@ -98,14 +98,14 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> -->
 					<div class="header-container header-container-height-sm container p-static">
 						<div class="header-row">
 							<div class="header-column">
 								<div class="header-row">
 									<div class="header-logo">
 										<a href="index.html">
-											<img alt="Porto" width="123" height="32" src="{{ asset('img/demos/business-consulting-4/logo.png') }}">
+											<img alt="Direct" width="123" height="32" src="{{ asset('img/demos/business-consulting-4/logo.png') }}">
 										</a>
 									</div>
 								</div>
@@ -123,45 +123,28 @@
 													</li>
 													<li class="dropdown dropdown-mega">
 														<a class="dropdown-item" href="elements.html">
-															Elements
+															Visas
 														</a>
 													</li>
 													<li>
 														<a class="nav-link" href="demo-business-consulting-4-about-us.html">
-															About Us
+															Schools
 														</a>
 													</li>
 													<li class="dropdown">
 														<a class="nav-link" href="demo-business-consulting-4-services.html">
-															Services
-														</a>
-													</li>
-													<li class="dropdown">
-														<a class="dropdown-item" href="#">
-
-															Portfolio
-
-														</a>
-													</li>
-													<li>
-														<a class="nav-link" href="demo-business-consulting-4-team.html">
-															Team
-														</a>
-													</li>
-													<li>
-														<a class="nav-link" href="demo-business-consulting-4-blog.html">
-															Blog
+															Hotels
 														</a>
 													</li>
 												</ul>
 											</nav>
 										</div>
-										<a href="demo-business-consulting-4-contact-us.html" class="btn btn-modern btn-primary btn-outline btn-arrow-effect-1 text-capitalize text-2-5 ms-3 me-2 d-block d-md-none d-xl-block anim-hover-translate-right-5px transition-2ms">Contact Us <i class="fas fa-arrow-right ms-2"></i></a>
+										<!-- <a href="demo-business-consulting-4-contact-us.html" class="btn btn-modern btn-primary btn-outline btn-arrow-effect-1 text-capitalize text-2-5 ms-3 me-2 d-block d-md-none d-xl-block anim-hover-translate-right-5px transition-2ms">Contact Us <i class="fas fa-arrow-right ms-2"></i></a>
 										<button class="btn header-btn-collapse-nav" data-bs-toggle="collapse" data-bs-target=".header-nav-main nav">
 											<i class="fas fa-bars"></i>
-										</button>
+										</button> -->
 									</div>
-									<div class="header-nav-features header-nav-features-no-border ps-2 order-1 order-lg-2">
+									<!-- <div class="header-nav-features header-nav-features-no-border ps-2 order-1 order-lg-2">
 										<div class="header-nav-feature header-nav-features-search d-inline-flex">
 											<a href="#" class="header-nav-features-toggle text-decoration-none" data-focus="headerSearch" aria-label="Search"><i class="fas fa-search header-nav-top-icon text-3"></i></a>
 											<div class="header-nav-features-dropdown" id="headerTopSearchDropdown">
@@ -175,7 +158,7 @@
 												</form>
 											</div>
 										</div>
-									</div>
+									</div> -->
 								</div>
 							</div>
 						</div>

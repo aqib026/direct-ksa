@@ -76,7 +76,7 @@
     
 
 </body>
-<script>
+<script
     type = "text/javascript" >
         var counter = 1;
     setInterval(function() {
@@ -85,7 +85,7 @@
         if (counter > 4) {
             counter = 1;
         }
-    }, 2000);
+    }, 2000);>
 </script>
 <!-- Swiper JS -->
 <script src="{{ asset('js/slider.js') }}"></script>

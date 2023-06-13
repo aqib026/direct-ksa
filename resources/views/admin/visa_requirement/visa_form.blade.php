@@ -39,7 +39,10 @@
                                     <select name="name" id=""
                                         value="{{ old('name', isset($visa) ? $visa->name : '') }}" class="form-control">
 
+                                        <option value="{{ old('name', isset($visa) ? $visa->visa->id : '') }}">{{ old('name', isset($visa) ? $visa->visa->name : '') }}</option>
+                                       
                                         @foreach ($countries as $country)
+                                       
                                             <option value="{{ $country->id }}">{{ $country->name }}</option>
                                         @endforeach
 

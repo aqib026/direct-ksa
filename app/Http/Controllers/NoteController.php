@@ -22,6 +22,7 @@ class NoteController extends Controller
                 "note" => $request->note
 
             ]);
+            dd($request);
             return redirect()->back();
         }
     }
