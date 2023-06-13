@@ -238,7 +238,7 @@
 										<div class="card-image" style="margin:auto; margin-top: -50px; margin-bottom: 50px; width: 100px;">
 											<img src="{{ asset($country->flag_pic) }}" alt="" class="card-img">
 										</div>
-										<a href="{{ url('admin/slider/show/') }}/{{ $country->visa->countries_id }}" class="p-absolute z-index-2 top-20 left-0 w-100 h-100 anim-hover-translate-top-5px transition-2ms">
+										<a href="{{ url('requirement/') }}/{{ $country->visa->countries_id }}" class="p-absolute z-index-2 top-20 left-0 w-100 h-100 anim-hover-translate-top-5px transition-2ms">
 											<span class="p-absolute left-0 bottom-0 text-color-dark text-center mb-3 pb-1" style="width: 100%;">
 												<strong class="text-5 negative-ls-05 font-weight-bold">{{ $country->name }}</strong>
 											</span>
