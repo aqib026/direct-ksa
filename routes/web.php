@@ -14,6 +14,9 @@ use App\Http\Controllers\FeaturedSalesController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\NoteController;
+use App\Http\Controllers\StepsController;
+
+
 
 
 
@@ -119,3 +122,6 @@ Route::get('/', [FrontendController::class, 'index'])->name('home');
 Route::get('/featured_sales/{service?}', [FeaturedSalesController::class, 'index'])->name('featured_sales');
 Route::Post('/featured_sales', [FeaturedSalesController::class, 'store'])->name('featured_sales_post');
 Route::get('/requirement/{country}',[FrontendController::class, 'show']);
+
+
+Route::get('user/stepone', [StepsController::class, 'index']);
