@@ -16,7 +16,7 @@
 						</div>
 						<h1 class="text-color-dark font-weight-bold text-9 pb-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">With Direct, you can get your Visa at all ease</h1>
 						<div class="d-block appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">
-							<a href="#visa" data-hash data-hash-offset="0" data-hash-offset-lg="100" class="btn btn-modern btn-primary btn-arrow-effect-1 text-capitalize text-2-5 px-5 py-3 anim-hover-translate-top-5px transition-2ms">APPLY NOW<i class="fas fa-arrow-right ms-2"></i></a>
+							<a href="{{ route('visa_request') }}" data-hash data-hash-offset="0" data-hash-offset-lg="100" class="btn btn-modern btn-primary btn-arrow-effect-1 text-capitalize text-2-5 px-5 py-3 anim-hover-translate-top-5px transition-2ms">APPLY NOW<i class="fas fa-arrow-right ms-2"></i></a>
 						</div>
 						<div class="pt-5 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">
 							<span class="d-inline-block anim-hover-translate-bottom-5px transition-2ms">

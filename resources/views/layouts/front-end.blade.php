@@ -127,7 +127,7 @@
 														</a>
 													</li>
 													<li class="dropdown dropdown-mega">
-														<a class="dropdown-item" href="">
+														<a class="dropdown-item" href="{{ route('visa_request') }}">
 															Visas
 														</a>
 													</li>

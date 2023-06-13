@@ -2,7 +2,7 @@
 @section('content')
 	<section class="section border-0 bg-quaternary m-0 p-0 border-1">
 		<div class="steps w-100 text-center">
-			<a class="col-lg-3 col-xs-3 step  active"><span>Step 1: <strong>Country &amp; Visa Type</strong></span></a> 
+			<a class="col-lg-3 col-xs-3 step active"><span>Step 1: <strong>Country &amp; Visa Type</strong></span></a> 
 			<a class="col-lg-3 col-xs-3 step"><span>Step 2: <strong>Travel Information</strong></span></a> 
 			<a class="col-lg-3 col-xs-3 step"><span>Step 3: <strong>Application Form(s)</strong></span></a>
 			<a class="col-lg-3 col-xs-3 step step-last"><span>Step 4: <strong>Payment</strong></span></a>
