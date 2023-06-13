@@ -8,6 +8,27 @@
 		position: absolute;
 }
 
+.visa_detail p{
+	color: black !important
+}
+.steps {
+    border: 1px solid #0000003d;
+    background: #fff;
+}
+.steps .step {
+    border-right: 1px solid #0000003d;;
+    height: 56px;
+    line-height: 60px;
+    text-align: center;
+    cursor: pointer;
+}
+.steps .step-last{
+	border-right: none !important;
+}
+.steps .active{
+	color: #0052CC !important;
+}
+
 .custom-element-wrapper.custom-element-1 {
 		top: 25%;
 		left: 45%;

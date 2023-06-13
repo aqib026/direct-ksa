@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\countries;
-use App\Models\Services;
-use App\Models\Visa;
-
+use App\Models\VisaRequest;
 use Illuminate\Http\Request;
+use App\Models\countries;
 
-class FrontendController extends Controller
+class VisaRequestController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,11 +17,9 @@ class FrontendController extends Controller
     {
         $countries = countries::all();
 
-        $services = Services::all();
+        $data = compact('countries');
 
-        $data = compact('countries', 'services');
-
-        return view('home')->with($data);
+        return view('frontend.visa_request_stepone')->with($data);
     }
 
     /**
@@ -50,40 +46,33 @@ class FrontendController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\VisaRequest  $visaRequest
      * @return \Illuminate\Http\Response
      */
-    public function show(countries $country)
-    {  
-        $countries=countries::all();
-
-        if ($countries) {
-            return view('requirement', compact('countries', 'country' ));
-        } else {
-            return redirect('home');
-        }
-        
+    public function show(VisaRequest $visaRequest)
+    {
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\VisaRequest  $visaRequest
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit(VisaRequest $visaRequest)
     {
-    
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\VisaRequest  $visaRequest
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, VisaRequest $visaRequest)
     {
         //
     }
@@ -91,10 +80,10 @@ class FrontendController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\VisaRequest  $visaRequest
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(VisaRequest $visaRequest)
     {
         //
     }
