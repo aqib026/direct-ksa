@@ -36,7 +36,7 @@
           <!-- menu profile quick info -->
           <div class="profile clearfix">
             <div class="profile_pic">
-              <img src="{{asset( Auth::user()->profile_pic )}}" alt="Profile Pic" class="img-circle profile_img">
+              <img src="{{asset( 'images/user.png' )}}" alt="Profile Pic" class="img-circle profile_img">
             </div>
             <div class="profile_info">
               <span>Welcome,</span>
@@ -57,7 +57,9 @@
                     <li><a href="{{{url('admin/users')}}}">View Users</a></li>
                   </ul>
                 </li>
-                <li><a><i class="fa fa-clone"></i>Layouts <span class="fa fa-chevron-down"></span></a>
+
+                <li>
+                  <a><i class="fa fa-clone"></i>Settings <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
                     <li><a href="{{url('admin/accreditation')}}">Accreditation</a></li>
                     <li><a href="{{url('admin/countries')}}">Country</a></li>
@@ -67,26 +69,17 @@
                     <li><a href="{{url('admin/contact_location')}}">Contact Location</a></li>
                     <li><a href="{{url('admin/special_services')}}">Special Services</a></li>
                     <li><a href="{{url('admin/visarequest')}}">Visa Request</a></li>
-
-
                   </ul>
                 </li>
-              </ul>
-            </div>
-            <div class="menu_section">
-              <h3>Live On</h3>
-              <ul class="nav side-menu">
-                <li><a><i class="fa fa-bug"></i> Additional Pages <span class="fa fa-chevron-down"></span></a>
+
+                <li>
+                  <a><i class="fa fa-clone"></i>Content Pages <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
-                    <li><a href="e_commerce.html">E-commerce</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="project_detail.html">Project Detail</a></li>
-                    <li><a href="contacts.html">Contacts</a></li>
-                    <li><a href="contacts.html">Profile</a></li>
+                    <li><a href="{{ route('content_pages', 'about_us') }}">About us</a></li>
+                    <li><a href="{{ route('content_pages', 'terms_conditions') }}">Terms & Conditions</a></li>
                   </ul>
                 </li>
-                <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Landing Page <span
-                      class="label label-success pull-right">Coming Soon</span></a></li>
+                
               </ul>
             </div>
           </div>

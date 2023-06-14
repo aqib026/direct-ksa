@@ -14,6 +14,7 @@ use App\Http\Controllers\FeaturedSalesController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\VisaRequestController;
 use App\Http\Controllers\Admin\LocationController;
+use App\Http\Controllers\Admin\ContentPageController;
 use App\Http\Controllers\NoteController;
 
 
@@ -47,6 +48,9 @@ Route::group(['prefix'=>'/admin'],function(){
     });
     
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+
+    Route::get('/content_pages/{page_type}', [ContentPageController::class, 'edit'])->name('content_pages');
+    Route::post('/content_pages/{page_type}', [ContentPageController::class, 'update'])->name('content_pages_post');
 
     Route::get('/slider', [CountryController::class, 'slider']);
     Route::get('/slider/show/{id}', [VisaController::class, 'one']);
