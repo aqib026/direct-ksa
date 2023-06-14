@@ -40,6 +40,16 @@ use App\Http\Controllers\NoteController;
 
 route::get('/dashboard',[HomeController::class, 'index']);
 
+route::get('/config-clear', function () {
+    $exitCode = Artisan::call('migrate');
+    $exitCode = Artisan::call('config:clear');
+    $exitCode = Artisan::call('cache:clear');
+    $exitCode = Artisan::call('view:clear');
+
+    return 'Config cache cleared';
+});
+
+
 Auth::routes();
 Route::group(['prefix'=>'/admin'],function(){
 
