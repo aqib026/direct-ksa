@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\ContactController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
@@ -121,6 +122,13 @@ Route::group(['prefix'=>'/admin'],function(){
     Route::Get('/visarequest/delete/{id}',[VisaRequestController::class, 'destroy'])->middleware(['auth','admin']);
     Route::get('/visarequest_form/edit/{id}',[VisaRequestController::class, 'edit'])->middleware(['auth','admin']);
     Route::POST('/visarequest_form/update/{id}',[VisaRequestController::class, 'update'])->middleware(['auth','admin']);
+
+    Route::get('/contact_form',[ContactController::class, 'create'])->middleware(['auth','admin']);
+    Route::get('/contact_location',[ContactController::class, 'show'])->middleware(['auth','admin']);
+    Route::POST('contact_form',[ContactController::class, 'store'])->middleware(['auth', 'admin']);
+    Route::Get('/contact_location/delete/{id}',[ContactController::class, 'destroy'])->middleware(['auth','admin']);
+    Route::get('/contact_form/edit/{id}',[ContactController::class, 'edit'])->middleware(['auth','admin']);
+    Route::POST('/contact_form/update/{id}',[ContactController::class, 'update'])->middleware(['auth','admin']);
 
     
     Route::POST('/notes',[NoteController::class, 'store'])->middleware(['auth', 'admin']);

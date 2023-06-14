@@ -17,7 +17,7 @@
 
                         <div class="input-group">
                             <div>
-                                <a href="{{ url('admin/location_form') }}" class="btn btn-dark"> Add Contact Location</a>
+                                <a href="{{ url('admin/contact_form') }}" class="btn btn-dark"> Add Contact Location</a>
                             </div>
                             <input type="search" name="search" class="form-control" placeholder="Search for...">
                             <span class="input-group-btn">
@@ -68,8 +68,8 @@
 
 
                                         <td> {{ $locations->address }}</td>
-                                        <td>{{ $locations->lat }}</td>
-                                        <td>{{ $locations->lang }}</td>
+                                        <td>{{ $locations->latitude }}</td>
+                                        <td>{{ $locations->longitude }}</td>
 
                                         <td>
                                             @if ($locations->status == 1)
@@ -82,7 +82,7 @@
 
                                             <a href="{{ url('admin/contact_location/delete/') }}/{{ $locations->id }}">
                                                 <button class="btn btn-danger">Delete</button></a>
-                                            <a href="{{ url('admin/location_form/edit/') }}/{{ $locations->id }}">
+                                            <a href="{{ url('admin/contact_form/edit/') }}/{{ $locations->id }}">
                                                 <button class="btn btn-success">Edit</button>
                                         </td>
                                 </tr>

@@ -6,7 +6,7 @@
     @endpush
 
     <body class="login">
-        <div class="right_col" role="main">
+        
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
@@ -30,7 +30,7 @@
                             </div>
                             <div class="x_content">
                                 <br />
-                                <form method="POST" action="{{ $url }}" enctype="multipart/form-data">
+                                <form method="POST" action="{{$url}}" enctype="multipart/form-data">
                                     @csrf
                                     <div class="item form-group">
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">City
@@ -53,27 +53,42 @@
                                             <span class="required"></span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <textarea class="form-control" name="address" id="" cols="10" rows="5">{{ old('address', isset($location) ? $location->address : '') }}</textarea>
+                                            <textarea class="form-control @error('address') is-invalid @enderror" name="address" id="" cols="10" rows="5">{{ old('address', isset($location) ? $location->address : '') }}</textarea>
+                                        </div>
+                                        @error('address')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                    </div>
+                                    <div class="item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Lat
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 ">
+                                            <input id="name" type="text"
+                                                class="form-control @error('name') is-invalid @enderror" name="lat"
+                                                value="{{ old('lat', isset($location) ? $location->latitude : '') }}" required
+                                                autocomplete="name" placeholder="Enter Latitude" autofocus>
+                                            @error('lat')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="item form-group">
-                                        <label for="middle-name"
-                                            class="col-form-label col-md-3 col-sm-3 label-align">Lat</label>
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Long<span class="required"></span>
+                                        </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input id="" type="text" class="form-control" name="lat"
-                                                value="{{ old('lat', isset($location) ? $location->lat : '') }}" placeholder=""
-                                                required autocomplete="">
-
-                                        </div>
-                                    </div>
-                                    <div class="item form-group">
-                                        <label for="middle-name"
-                                            class="col-form-label col-md-3 col-sm-3 label-align">Lang</label>
-                                        <div class="col-md-6 col-sm-6 ">
-                                            <input id="" type="text" class="form-control" name="lang"
-                                                value="{{ old('lang', isset($location) ? $location->lang : '') }}" placeholder=""
-                                                required autocomplete="">
-
+                                            <input id="name" type="text"
+                                                class="form-control @error('long') is-invalid @enderror" name="long"
+                                                value="{{ old('long', isset($location) ? $location->longitude : '') }}" required
+                                                autocomplete="name" placeholder="Enter Longitude" autofocus>
+                                            @error('long')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="item form-group">
@@ -91,7 +106,7 @@
                                     <div class="ln_solid"></div>
                                     <div class="item form-group">
                                         <div class="col-md-6 col-sm-6 offset-md-3">
-                                            <a href="{{ url('../admin/countries') }}"> <button class="btn btn-primary"
+                                            <a href="{{ url('../admin/contact_location') }}"> <button class="btn btn-primary"
                                                     type="button">Cancel</button></a>
                                             <button type="submit" class="btn btn-success">Submit</button>
                                         </div>
