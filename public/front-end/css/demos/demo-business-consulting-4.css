@@ -29,6 +29,13 @@
 	color: #0052CC !important;
 }
 
+a.btn-popover-custom {
+    padding: 5px !important;
+    margin: 5px;
+    width: 100%;
+    font-size: 12px !important;
+}
+
 .custom-element-wrapper.custom-element-1 {
 		top: 25%;
 		left: 58%;

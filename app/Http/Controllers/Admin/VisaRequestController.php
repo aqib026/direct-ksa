@@ -26,6 +26,16 @@ class VisaRequestController extends Controller
         return view('frontend.visa_request_stepone')->with($data);
     }
 
+    /**
+     * Second Step.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function steptwo(Request $request){
+
+    }
+
     public function create()
     {
         $url = url('admin/visarequest_form');
@@ -47,9 +57,6 @@ class VisaRequestController extends Controller
         $request->validate([
             'name' => 'required',
             'visa_type' => 'required',
-          
-
-
         ]);
 
 

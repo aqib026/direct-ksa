@@ -22,14 +22,19 @@
 				</div>
 			</div>
 			<div class="row py-5 appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="300">
-				@foreach ($countries as $country)	
+				@foreach ($countries as $country)
 					<div class="col-md-4 mb-4">
 						<div class="card card-border card-border-top card-border-hover bg-color-light border-0 box-shadow-6 box-shadow-hover anim-hover-translate-top-10px transition-3ms anim-hover-inner-wrapper">
 							<div class="card-body p-relative zindex-1 p-5 text-center">
 								<div class="anim-hover-inner-translate-top-20px transition-3ms">
 									<img width="100" height="100" src="{{ asset($country->flag_pic) }}" alt=""/>
 									<h4 class="card-title mt-4 mb-5 text-5 font-weight-bold">{{ $country->name }}</h4>
-									<a tabindex="0" class="btn btn-lg btn-primary" role="button" data-bs-placement="bottom" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-title="Select Visa Type" data-bs-content="And here's some amazing content. It's very engaging. Right?">Start Visa Request</a>
+									@php $content = "<div class='visa-type-btn-div'>"; @endphp
+									@foreach ($country->visatype as $visatype)
+										@php $content .= "<a href='' class='btn btn-popover-custom btn-lg btn-primary'>$visatype->visa_type</a>"; @endphp
+									@endforeach
+									@php $content .= "</div>"; @endphp
+									<a tabindex="0" class="btn btn-lg btn-primary" role="button" data-bs-sanitize="false" data-bs-placement="bottom" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-title="Select Visa Type" data-bs-html="true" data-bs-content="{!! $content !!}">Start Visa Request</a>
 								</div>
 							</div>
 						</div>
@@ -43,6 +48,6 @@
 	<script src="{{ asset('front-end/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 	<script type="text/javascript">
 		const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
-		const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))	
+		const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
 	</script>
 @endsection
