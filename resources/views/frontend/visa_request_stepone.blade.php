@@ -29,7 +29,8 @@
 								<div class="anim-hover-inner-translate-top-20px transition-3ms">
 									<img width="100" height="100" src="{{ asset($country->flag_pic) }}" alt=""/>
 									<h4 class="card-title mt-4 mb-5 text-5 font-weight-bold">{{ $country->name }}</h4>
-									<a tabindex="0" class="btn btn-lg btn-primary" role="button" data-bs-placement="bottom" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-title="Select Visa Type" data-bs-content="And here's some amazing content. It's very engaging. Right?">Start Visa Request</a>
+									@php $content = '<div class="visa-type-btn-div"><input name="" type="button" class="visa-type-button newcustomcheckbox" value="Visit" con_id="1" typeid="1"><input name="" type="button" class="visa-type-button newcustomcheckbox" value="Study (Incl. SEVIS)" con_id="1" typeid="15"></div>'; @endphp
+									<a tabindex="0" class="btn btn-lg btn-primary" role="button" data-bs-placement="bottom" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-title="Select Visa Type" data-bs-html="true" data-bs-sanitize="false" data-bs-content="{{ $content }}">Start Visa Request</a>
 								</div>
 							</div>
 						</div>
@@ -43,6 +44,6 @@
 	<script src="{{ asset('front-end/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 	<script type="text/javascript">
 		const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
-		const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))	
+		const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
 	</script>
 @endsection
