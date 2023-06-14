@@ -65,7 +65,6 @@
 										<li><a href="{{url('admin/feature')}}">Feature</a></li>
 										<li><a href="{{url('admin/featured_sales')}}">Featured Sales</a></li>
 										<li><a href="{{url('admin/visa_requirement')}}">Visa Requirement</a></li>
-										<li><a href="{{url('admin/contact_location')}}">Contact Location</a></li>
 										<li><a href="{{url('admin/special_services')}}">Special Services</a></li>
 										<li><a href="{{url('admin/visarequest')}}">Visa Request</a></li>
 									</ul>
@@ -75,6 +74,8 @@
 									<a><i class="fa fa-clone"></i>Content Pages <span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a href="{{ route('content_pages', 'about_us') }}">About us</a></li>
+										<li><a href="{{url('admin/contact_location')}}">Contact Location</a></li>
+										<li><a href="{{url('admin/faqs')}}">FAQs</a></li>
 										<li><a href="{{ route('content_pages', 'terms_conditions') }}">Terms & Conditions</a></li>
 									</ul>
 								</li>

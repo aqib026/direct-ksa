@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\FaqsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
@@ -104,8 +105,8 @@ Route::group(['prefix'=>'/admin'],function(){
     
     Route::get('/location_form',[LocationController::class, 'create'])->middleware(['auth','admin']);
     Route::Post('/location_form',[LocationController::class, 'store'])->middleware(['auth','admin']);
-    Route::get('/contact_location',[LocationController::class, 'show'])->middleware(['auth','admin']);
-    Route::get('/contact_location/delete/{id}',[LocationController::class, 'destroy'])->middleware(['auth','admin']);
+    Route::get('/contact',[LocationController::class, 'show'])->middleware(['auth','admin']);
+    Route::get('/contact/delete/{id}',[LocationController::class, 'destroy'])->middleware(['auth','admin']);
     Route::get('/location_form/edit/{id}',[LocationController::class, 'edit'])->middleware(['auth','admin']);
     Route::Post('/location_form/update/{id}',[LocationController::class, 'update'])->middleware(['auth','admin']);
 
@@ -124,11 +125,18 @@ Route::group(['prefix'=>'/admin'],function(){
     Route::POST('/visarequest_form/update/{id}',[VisaRequestController::class, 'update'])->middleware(['auth','admin']);
 
     Route::get('/contact_form',[ContactController::class, 'create'])->middleware(['auth','admin']);
-    Route::get('/contact_location',[ContactController::class, 'show'])->middleware(['auth','admin']);
+    Route::get('/contact',[ContactController::class, 'show'])->middleware(['auth','admin']);
     Route::POST('contact_form',[ContactController::class, 'store'])->middleware(['auth', 'admin']);
-    Route::Get('/contact_location/delete/{id}',[ContactController::class, 'destroy'])->middleware(['auth','admin']);
+    Route::Get('/contact/delete/{id}',[ContactController::class, 'destroy'])->middleware(['auth','admin']);
     Route::get('/contact_form/edit/{id}',[ContactController::class, 'edit'])->middleware(['auth','admin']);
     Route::POST('/contact_form/update/{id}',[ContactController::class, 'update'])->middleware(['auth','admin']);
+
+    Route::get('/faqs_form',[FaqsController::class, 'create'])->middleware(['auth','admin']);
+    Route::get('/faqs',[FaqsController::class, 'show'])->middleware(['auth','admin']);
+    Route::POST('faqs_form',[FaqsController::class, 'store'])->middleware(['auth', 'admin']);
+    Route::Get('/faqs/delete/{id}',[FaqsController::class, 'destroy'])->middleware(['auth','admin']);
+    Route::get('/faqs_form/edit/{id}',[FaqsController::class, 'edit'])->middleware(['auth','admin']);
+    Route::POST('/faqs_form/update/{id}',[FaqsController::class, 'update'])->middleware(['auth','admin']);
 
     
     Route::POST('/notes',[NoteController::class, 'store'])->middleware(['auth', 'admin']);
