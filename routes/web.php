@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\ServicesController;
 use App\Http\Controllers\Admin\AccreditationController;
 use App\Http\Controllers\Admin\VisaController;
 use App\Http\Controllers\FeaturedSalesController;
+use App\Http\Controllers\PagesController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\VisaRequestController;
 use App\Http\Controllers\Admin\LocationController;
@@ -139,3 +140,4 @@ Route::get('/requirement/{country}',[FrontendController::class, 'show']);
 
 
 Route::get('/visa_request', [VisaRequestController::class, 'index'])->name('visa_request');
+Route::get('/page/{slug?}', [PagesController::class, 'index'])->name('content_page');

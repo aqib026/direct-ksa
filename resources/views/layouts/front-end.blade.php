@@ -224,10 +224,10 @@
 								<div class="col-lg-6">
 									<h4 class="text-color-light font-weight-bold mb-3">Extra Links</h4>
 									<ul class="list list-unstyled columns-lg-2">
-										<li><a href="#" class="text-color-grey text-color-hover-primary">About Us</a></li>
+										<li><a href="{{ route('content_page') }}/about_us" class="text-color-grey text-color-hover-primary">About Us</a></li>
 										<li><a href="#" class="text-color-grey text-color-hover-primary">Contact Us</a></li>
 										<li><a href="#" class="text-color-grey text-color-hover-primary">Faq's</a></li>
-										<li><a href="#" class="text-color-grey text-color-hover-primary">Careers</a></li>
+										<li><a href="{{ route('content_page') }}/terms_conditions" class="text-color-grey text-color-hover-primary">Terms & Conditions</a></li>
 									</ul>
 								</div>
 							</div>
