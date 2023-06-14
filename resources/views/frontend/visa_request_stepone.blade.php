@@ -29,8 +29,9 @@
 								<div class="anim-hover-inner-translate-top-20px transition-3ms">
 									<img width="100" height="100" src="{{ asset($country->flag_pic) }}" alt=""/>
 									<h4 class="card-title mt-4 mb-5 text-5 font-weight-bold">{{ $country->name }}</h4>
-									@php $content = '<div class="visa-type-btn-div"><input name="" type="button" class="visa-type-button newcustomcheckbox" value="Visit" con_id="1" typeid="1"><input name="" type="button" class="visa-type-button newcustomcheckbox" value="Study (Incl. SEVIS)" con_id="1" typeid="15"></div>'; @endphp
-									<a tabindex="0" class="btn btn-lg btn-primary" role="button" data-bs-placement="bottom" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-title="Select Visa Type" data-bs-html="true" data-bs-sanitize="false" data-bs-content="{{ $content }}">Start Visa Request</a>
+									<input name='' type='button' class='visa-type-button newcustomcheckbox' value='Visit Visa' con_id='1' typeid='1'>
+									@php $content = "<div class='visa-type-btn-div'><a>Hello Button Buddy</a></div>"; @endphp
+									<a tabindex="0" class="btn btn-lg btn-primary" role="button" data-bs-sanitize="false" data-bs-placement="bottom" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-title="Select Visa Type" data-bs-html="true" data-bs-content="{!! $content !!}">Start Visa Request</a>
 								</div>
 							</div>
 						</div>
