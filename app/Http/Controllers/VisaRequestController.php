@@ -45,9 +45,6 @@ class VisaRequestController extends Controller
         $request->validate([
             'name' => 'required',
             'visa_type' => 'required',
-          
-
-
         ]);
 
 

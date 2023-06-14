@@ -110,7 +110,7 @@
 								<div class="header-row">
 									<div class="header-logo">
 										<a href="{{ route('home') }}">
-											<img alt="Direct" width="123" height="32" src="{{ asset('img/demos/business-consulting-4/logo.png') }}">
+											<img alt="Direct" width="150" height="42" src="{{ asset('img/logo.png') }}">
 										</a>
 									</div>
 								</div>
@@ -173,13 +173,13 @@
 					<div class="row pt-5">
 						<div class="col-lg-4">
 							<a href="{{ route('home') }}" class="text-decoration-none">
-								<img src="{{ asset('img/demos/business-consulting-4/logo-light.png') }} " width="123" height="32" class="img-fluid mb-4" alt="Porto" />
+								<img src="{{ asset('img/logo.png') }} " width="150" height="42" class="img-fluid mb-4" alt="Direct" />
 							</a>
 							<p class="text-3-5 font-weight-medium pe-lg-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit quisque rutrum pellentesqu. </p>
 							<ul class="list list-unstyled">
 								<li class="d-flex align-items-center mb-4">
 									<i class="icon icon-envelope text-color-light text-5 font-weight-bold position-relative top-1 me-3-5"></i>
-									<a href="mailto:porto@business-consulting-4.com" class="d-inline-flex align-items-center text-decoration-none text-color-light text-color-hover-primary font-weight-semibold text-4-5">porto@domain.com</a>
+									<a href="mailto:company@business-consulting-4.com" class="d-inline-flex align-items-center text-decoration-none text-color-light text-color-hover-primary font-weight-semibold text-4-5">company@domain.com</a>
 								</li>
 								<li class="d-flex align-items-center mb-4">
 									<i class="icon icon-phone text-color-light text-5 font-weight-bold position-relative top-1 me-3-5"></i>
@@ -214,22 +214,20 @@
 								<div class="col-lg-6 mb-4 mb-lg-0">
 									<h4 class="text-color-light font-weight-bold mb-3">Navigation</h4>
 									<ul class="list list-unstyled columns-lg-2">
-										<li><a href="#" class="text-color-grey text-color-hover-primary">Home</a></li>
-										<li><a href="#" class="text-color-grey text-color-hover-primary">About Us</a></li>
-										<li><a href="#" class="text-color-grey text-color-hover-primary">Our Services</a></li>
-										<li><a href="#" class="text-color-grey text-color-hover-primary">Consultants</a></li>
-										<li><a href="#" class="text-color-grey text-color-hover-primary">Blog</a></li>
-										<li><a href="#" class="text-color-grey text-color-hover-primary">Contact Us</a></li>
+										<li><a href="{{ route('home') }}" class="text-color-grey text-color-hover-primary">Home</a></li>
+										<li><a href="{{ route('featured_sales') }}" class="text-color-grey text-color-hover-primary">Our Services</a></li>
+										<li><a href="{{ route('visa_request') }}" class="text-color-grey text-color-hover-primary">Visas</a></li>
+										<li><a href="#" class="text-color-grey text-color-hover-primary">Schools</a></li>
+										
 									</ul>
 								</div>
 								<div class="col-lg-6">
 									<h4 class="text-color-light font-weight-bold mb-3">Extra Links</h4>
 									<ul class="list list-unstyled columns-lg-2">
-										<li><a href="#" class="text-color-grey text-color-hover-primary">Elements</a></li>
-										<li><a href="#" class="text-color-grey text-color-hover-primary">Portfolio</a></li>
+										<li><a href="#" class="text-color-grey text-color-hover-primary">About Us</a></li>
+										<li><a href="#" class="text-color-grey text-color-hover-primary">Contact Us</a></li>
+										<li><a href="#" class="text-color-grey text-color-hover-primary">Faq's</a></li>
 										<li><a href="#" class="text-color-grey text-color-hover-primary">Careers</a></li>
-										<li><a href="#" class="text-color-grey text-color-hover-primary">Shop Pages</a></li>
-										<li><a href="#" class="text-color-grey text-color-hover-primary">Testimonials</a></li>
 									</ul>
 								</div>
 							</div>
@@ -260,7 +258,7 @@
 						<hr class="bg-color-light opacity-1">
 						<div class="row">
 							<div class="col mt-4 mb-4 pb-5">
-								<p class="text-center text-3 mb-0">Porto © 2023. All Rights Reserved.</p>
+								<p class="text-center text-3 mb-0">Company © 2023. All Rights Reserved.</p>
 							</div>
 						</div>
 					</div>
