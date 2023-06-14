@@ -12,7 +12,7 @@ use App\Http\Controllers\Admin\AccreditationController;
 use App\Http\Controllers\Admin\VisaController;
 use App\Http\Controllers\FeaturedSalesController;
 use App\Http\Controllers\FrontendController;
-use App\Http\Controllers\VisaRequestController;
+use App\Http\Controllers\Admin\VisaRequestController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\NoteController;
 

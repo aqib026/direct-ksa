@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\VisaRequest;
+
 use Illuminate\Http\Request;
 use App\Models\countries;
 use Illuminate\Support\Facades\DB;
