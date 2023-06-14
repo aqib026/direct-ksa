@@ -39,16 +39,11 @@ class ContentPageController extends Controller
          'title' => 'required'
       ]);
 
-      $accreditation = accreditation::where('page_type', $id);
+      $page = Page::where('page', $page_type)->first();
+      $page->title    = $request['title'];
+      $page->content  = $request['content'];
+      $page->save();
 
-      $accreditation->name = $request['name'];
-      $filename = time() . "acc." . $request->file('banner')->getClientOriginalExtension();
-      $accreditation->banner = $request->file('banner')->storeas('banner', $filename);
-
-      $accreditation->status = $request['status'];
-
-
-      $accreditation->save();
-      return redirect('admin/accreditation');
+      return redirect( route('content_pages',$page_type));
    }
 }

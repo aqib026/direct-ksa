@@ -28,7 +28,7 @@
                             </div>
                             <div class="x_content">
                                 <br />
-                                <form method="POST" action="{{ $url }}" enctype="multipart/form-data">
+                                <form method="POST" action="{{ route('content_pages_post', ['page_type' => $page->page]) }}">
                                     @csrf
                                     <div class="item form-group">
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Title
@@ -47,6 +47,19 @@
                                         </div>
                                     </div>
 
+                                    <div class="item form-group">
+                                        <div class="item form-group">
+                                            <label class="col-form-label col-md-1 col-sm-1 label-align" for="first-name"> Detail<span
+                                                    class="required"></span>
+                                            </label>
+                                            <div class="col-md-11 col-sm-11 ">
+                                                <textarea name="content">{{ old('content', isset($page) ? $page->content : '') }}</textarea>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
                                     <div class="ln_solid"></div>
                                     <div class="item form-group">
                                         <div class="col-md-6 col-sm-6 offset-md-3">
@@ -61,3 +74,7 @@
                 </div>
             </div>
     @endsection
+    @push('script')
+        <script src="{{ asset('js/tinymce.js') }}"></script>
+    @endpush
+
