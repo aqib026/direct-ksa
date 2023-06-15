@@ -44,10 +44,10 @@
 									<td>{{ $user->email }}</td>
 									<td>{{ $user->usertype }}</td>
 									<td>
-										<a href="{{ url('admin/user/edit/') }}/{{ $user->id }}">
-											<i class="btn btn-success fa fa-edit"></i>
 										<a href="{{ url('admin/user/delete/') }}/{{ $user->id }}">
-											<i class="btn btn-danger fa fa-trash"></i></a>
+											<button class="btn btn-danger">Delete</button></a>
+										<a href="{{ url('admin/user/edit/') }}/{{ $user->id }}">
+											<button class="btn btn-success">Edit</button>
 									</td>
 								</tr>
 								@endforeach

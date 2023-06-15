@@ -1,0 +1,42 @@
+.datepickercustom{
+	background-color: #FFF;
+}
+.datepickercustom .table-condensed{
+	width: 100% !important;
+}
+.table-condensed th{
+    font-size: 26px;
+    padding: 10px;
+}
+
+.table-condensed th:hover{
+    cursor: pointer;
+}
+
+.table-condensed td{
+    font-size: 24px;
+    padding: 10px;
+}
+
+.table-condensed td span{
+    font-size: 24px;
+    padding: 10px;
+}
+.table-condensed td.active{
+    background: #28a745!important;
+    border-radius: 30px;
+}
+
+.form-check-label-custom{
+    font-size: xx-large;
+}
+
+.form-check-input-custom{
+    margin-top: 10px !important;
+    margin-right: 10px !important;
+}
+.adult_counter, .child_counter, .adult_counter_sum, .child_counter_sum{
+    padding: 50px;
+    font-size: 20px;
+    font-weight: 600;
+}
