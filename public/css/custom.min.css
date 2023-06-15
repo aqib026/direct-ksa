@@ -2600,7 +2600,7 @@ table.display thead td:active {
 }
 
 .dataTables_scrollBody {
-	*margin-top: -1px;
+	margin-top: -1px;
 	-webkit-overflow-scrolling: touch
 }
 
