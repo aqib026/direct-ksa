@@ -67,6 +67,8 @@
 										<li><a href="{{url('admin/visa_requirement')}}">Visa Requirement</a></li>
 										<li><a href="{{url('admin/special_services')}}">Special Services</a></li>
 										<li><a href="{{url('admin/visarequest')}}">Visa Request</a></li>
+										<li><a href="{{url('admin/categorie')}}">Categorie</a></li>
+
 									</ul>
 								</li>
 

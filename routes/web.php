@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\FeatureController;
 use App\Http\Controllers\Admin\ServicesController;
 use App\Http\Controllers\Admin\AccreditationController;
+use App\Http\Controllers\Admin\CategorieController;
 use App\Http\Controllers\Admin\VisaController;
 use App\Http\Controllers\FeaturedSalesController;
 use App\Http\Controllers\PagesController;
@@ -137,6 +138,13 @@ Route::group(['prefix'=>'/admin'],function(){
     Route::Get('/faqs/delete/{id}',[FaqsController::class, 'destroy'])->middleware(['auth','admin']);
     Route::get('/faqs_form/edit/{id}',[FaqsController::class, 'edit'])->middleware(['auth','admin']);
     Route::POST('/faqs_form/update/{id}',[FaqsController::class, 'update'])->middleware(['auth','admin']);
+
+    Route::get('/categorie-form',[CategorieController::class, 'create'])->middleware(['auth','admin']);
+    Route::Post('/categorie-form',[CategorieController::class, 'store'])->middleware(['auth','admin']);
+    Route::get('/categorie',[CategorieController::class, 'show'])->middleware(['auth','admin']);
+    Route::get('/categorie/delete/{id}',[CategorieController::class, 'destroy'])->middleware(['auth','admin']);
+    Route::get('/categorie-form/edit/{id}',[CategorieController::class, 'edit'])->middleware(['auth','admin']);
+    Route::Post('/categorie-form/update/{id}',[CategorieController::class, 'update'])->middleware(['auth','admin']);
 
     
     Route::POST('/notes',[NoteController::class, 'store'])->middleware(['auth', 'admin']);

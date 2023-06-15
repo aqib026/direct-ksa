@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Categorie;
 use App\Models\Faqs;
 
 
@@ -24,8 +25,10 @@ class FaqsController extends Controller
    {
        $url = url('admin/faqs_form');
        $title = "Add FAQs ";
+       $categorie= categorie::all();
 
-       $data = compact('url', 'title');
+
+       $data = compact('url', 'title','categorie');
        return view('admin.faqs.faqs_form')->with($data);
      
    }
@@ -49,14 +52,14 @@ class FaqsController extends Controller
 
        $faqs = new Faqs();
 
-       $faqs->categorie = $request['categorie'];
+       $faqs->categorie_id = $request['categorie'];
        $faqs->question = $request['question'];
        $faqs->answer = $request['answer'];
       
        $faqs->status = $request['status'];
        $faqs->save();
       
-       return redirect('admin/faqs');
+       return redirect('admin/faqs_form');
    }
 
    /**
@@ -93,9 +96,10 @@ class FaqsController extends Controller
        } else {
            $url = url('admin/faqs_form/update') . "/" . $id;
            $title = "Update Faqs faqs";
+           $categorie= categorie::all();
 
 
-           $data = compact('faqs', 'url', 'title');
+           $data = compact('faqs', 'url', 'title','categorie');
            return view('admin/faqs/faqs_form')->with($data);
        }
    }
@@ -118,7 +122,7 @@ class FaqsController extends Controller
 
        $faqs = Faqs::find($id);
 
-       $faqs->categorie = $request['categorie'];
+       $faqs->categorie_id = $request['categorie'];
        $faqs->answer = $request['answer'];
        $faqs->question = $request['question'];
        $faqs->status = $request['status'];

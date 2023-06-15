@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Faqs extends Model
+class Categorie extends Model
 {
-    protected $table = "faqs";
-    protected $Primarykey = 'id';
+    protected $table="categorie";
+    protected $PrimaryKey='id';
 
     public function categorie()
     {
-        return $this->belongsTo(categorie::class, 'categorie_id', 'id');
+        return $this->hasmany('App\Models\categorie');
     }
     use HasFactory;
 }

@@ -33,13 +33,21 @@
                                 <form method="POST" action="{{$url}}" enctype="multipart/form-data">
                                     @csrf
                                     <div class="item form-group">
-                                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Categorie <span class="required"></span>
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Select
+                                            categorie<span class="required"></span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input id="name" type="text"
-                                                class="form-control @error('name') is-invalid @enderror" name="categorie"
-                                                value="{{ old('name', isset($faqs) ? $faqs->categorie : '') }}" required
-                                                autocomplete="name" placeholder="Enter Name" autofocus>
+                                            <select name="categorie" id=""
+                                                value="{{ old('categorie', isset($faqs) ? $faqs->categorie->id : '') }}" class="form-control">
+        
+                                                <option value="{{ old('name', isset($faqs) ? $faqs->categorie->id : '') }}">{{ old('name', isset($faqs) ? $faqs->categorie->name : '') }}</option>
+                                               
+                                                @foreach ($categorie as $categories)
+                                               
+                                                    <option value="{{ $categories->id }}">{{ $categories->name }}</option>
+                                                @endforeach
+        
+                                            </select>
                                             @error('categorie')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -68,10 +76,10 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Answer<span class="required"></span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input id="" type="text"
+                                            <textarea id="" type="text"
                                                 class="form-control @error('answer') is-invalid @enderror" name="answer"
-                                                value="{{ old('long', isset($faqs) ? $faqs->answer : '') }}" required
-                                                autocomplete="name" placeholder="Enter Answer" autofocus>
+                                                value="" required
+                                                autocomplete="name" placeholder="Enter Answer" autofocus>{{ old('long', isset($faqs) ? $faqs->answer : '') }}</textarea>
                                             @error('answer')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
