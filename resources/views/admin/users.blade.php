@@ -44,10 +44,9 @@
 									<td>{{ $user->email }}</td>
 									<td>{{ $user->usertype }}</td>
 									<td>
-										<a href="{{ url('admin/user/delete/') }}/{{ $user->id }}">
-											<button class="btn btn-danger">Delete</button></a>
-										<a href="{{ url('admin/user/edit/') }}/{{ $user->id }}">
-											<button class="btn btn-success">Edit</button>
+										
+										<a class="btn btn-success" href="{{ url('admin/user/edit/') }}/{{ $user->id }}"><i class="fa fa-edit"></i></a>
+										<a class="btn btn-danger" href="{{ url('admin/user/delete/') }}/{{ $user->id }}"><i class="fa fa-trash"></i></a>
 									</td>
 								</tr>
 								@endforeach
