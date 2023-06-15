@@ -6,7 +6,7 @@
 	<div class="container">
         <div class="align-items-center d-flex justify-content-center m-1 pb-5 py-4 row">
             <div class="p-75 bg-white shadow rounded col-lg-8" style="padding: 50px 20px;">
-                <form action="" role="form" method="post" class="form-horizontal" enctype="multipart/form-data">
+                <form action="{{ route('featured_sales_post') }}" role="form" method="post" class="form-horizontal" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="required_service">Required Service</label>
