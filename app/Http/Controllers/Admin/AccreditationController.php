@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Accreditation;
+use Illuminate\Support\Facades\File;
+
+
 use Illuminate\Http\Request;
 
 
@@ -117,6 +120,8 @@ class AccreditationController extends Controller
       $accreditation = accreditation::find($id);
 
       $accreditation->name = $request['name'];
+
+
       $filename = time() . "acc." . $request->file('banner')->getClientOriginalExtension();
       $accreditation->banner = $request->file('banner')->storeas('banner', $filename);
 

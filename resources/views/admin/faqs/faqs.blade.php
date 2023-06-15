@@ -52,10 +52,11 @@
 											@endif
 										</td>
 										<td>
-											<a href="{{ url('admin/faqs/delete/') }}/{{ $faqss->id }}">
-												<button class="btn btn-danger">Delete</button></a>
 											<a href="{{ url('admin/faqs_form/edit/') }}/{{ $faqss->id }}">
-												<button class="btn btn-success">Edit</button>
+												<i class="btn btn-success fa fa-edit"></i>
+											<a href="{{ url('admin/faqs/delete/') }}/{{ $faqss->id }}">
+												<i class="btn btn-danger fa fa-trash"></i></a>
+											
 										</td>
 									</tr>
 									@endforeach

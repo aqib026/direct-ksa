@@ -4,7 +4,8 @@
         <title>Accreditation</title>
     @endpush
 
-    <div class="">
+    <div class="row">
+        <div class="col-md-12">
         <form action="">
             <div class="page-title">
                 <div class="title_left">
@@ -28,23 +29,10 @@
                 </div>
             </div>
         </form>
-
-
-
-
-
-
-
-
         <div class="clearfix"></div>
-
         <div class="col-md-12 col-sm-12  ">
             <div class="x_panel">
-
-
                 <div class="x_content">
-
-
                     <div class="table-responsive">
                         <table class="table table-striped jambo_table bulk_action">
                             <thead>
@@ -55,9 +43,6 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
-
-
-
                             <tbody>
                                 <tr class="even pointer">
                                     @foreach ($accreditation as $accre)
@@ -72,29 +57,24 @@
                                             @endif
                                         </td>
                                         <td>
-
-                                            <a href="{{ url('admin/accreditation/delete/') }}/{{ $accre->id }}">
-                                                <button class="btn btn-danger">Delete</button></a>
                                             <a href="{{ url('admin/accreditation-form/edit/') }}/{{ $accre->id }}">
-                                                <button class="btn btn-success">Edit</button>
+                                                <i class="btn btn-success fa fa-edit"></i></a>
+                                            <a href="{{ url('admin/accreditation/delete/') }}/{{ $accre->id }}">
+                                                <i class="btn btn-danger fa fa-trash"></i></a>                        
                                         </td>
                                 </tr>
                                 @endforeach
-
                             </tbody>
-
                         </table>
                     </div>
-
-
                 </div>
-
-
             </div>
             <div class="row">
-                {{-- {{$accreditation->links('pagination::bootstrap-4')}} --}}
+                <div class="col-md-12">
+                {{$accreditation->links('pagination::bootstrap-4')}}
+            </div>
             </div>
         </div>
-
+    </div>
     </div>
 @endsection

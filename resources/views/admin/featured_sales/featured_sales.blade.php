@@ -4,7 +4,8 @@
         <title>Featured Sales</title>
     @endpush
 
-    <div class="">
+    <div class="row">
+        <div class="col-md-12">
         <form action="">
             <div class="page-title">
                 <div class="title_left">
@@ -100,9 +101,9 @@
                                         </td>
                                         <td>
                                             <a href="{{ url('admin/featured_sales/edit/') }}/{{ $accre->id }}">
-                                                <button class="btn btn-success">View</button>
+                                                <i class="btn btn-success fa fa-eye"></i>
                                                 <a href="{{ url('admin/featured_sales/delete/') }}/{{ $accre->id }}">
-                                                    <button class="btn btn-danger">Delete</button></a>
+                                                    <i class="btn btn-danger fa fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -111,9 +112,12 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row float-right">
+                <div class="col-md-12">
                 {{ $featured_sales->links('pagination::bootstrap-4') }}
+            </div>
             </div>
         </div>
     </div>
+</div>
 @endsection
