@@ -59,7 +59,7 @@ class FaqsController extends Controller
        $faqs->status = $request['status'];
        $faqs->save();
       
-       return redirect('admin/faqs_form');
+       return redirect('admin/faqs');
    }
 
    /**
