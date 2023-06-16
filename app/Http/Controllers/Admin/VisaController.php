@@ -91,6 +91,7 @@ class VisaController extends Controller
     public function edit($id)
     {
         $visa = visa::find($id);
+
         if (is_null($visa)) {    //not found
             return redirect('admin/visa_requirement');
         } else {

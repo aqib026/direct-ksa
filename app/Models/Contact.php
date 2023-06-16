@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Location extends Model
+class Contact extends Model
 {
-    protected $table = "location";
-    protected $Primarykey = "id";
+    protected $table = "contact_location";
+    protected $Primarykey = 'id';
     use HasFactory;
 }

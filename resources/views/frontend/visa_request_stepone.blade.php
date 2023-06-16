@@ -31,7 +31,10 @@
 									<h4 class="card-title mt-4 mb-5 text-5 font-weight-bold">{{ $country->name }}</h4>
 									@php $content = "<div class='visa-type-btn-div'>"; @endphp
 									@foreach ($country->visatype as $visatype)
-										@php $content .= "<a href='' class='btn btn-popover-custom btn-lg btn-primary'>$visatype->visa_type</a>"; @endphp
+										@php
+											$url = route('visa_request_steptwo', [$visatype->countries_id, $visatype->visa_type]); 
+											$content .= "<a href='". $url ."' class='btn btn-popover-custom btn-lg btn-primary'>$visatype->visa_type</a>"; 
+										@endphp
 									@endforeach
 									@php $content .= "</div>"; @endphp
 									<a tabindex="0" class="btn btn-lg btn-primary" role="button" data-bs-sanitize="false" data-bs-placement="bottom" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-title="Select Visa Type" data-bs-html="true" data-bs-content="{!! $content !!}">Start Visa Request</a>

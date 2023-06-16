@@ -13,9 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('featured_sales', function (Blueprint $table) {
-            $table->boolean('status')->default(1)->after('documents');
-        });
+        if (!Schema::hasColumn('countries','status')) {
+            Schema::table('countries', function (Blueprint $table) {
+                $table->boolean('status')->after('cover_pic')->default(true);
+            });
+        }
     }
 
     /**
@@ -25,7 +27,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('featured_sales', function (Blueprint $table) {
+        Schema::table('countries', function (Blueprint $table) {
             //
         });
     }

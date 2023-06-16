@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\VisaRequest;
+
 use Illuminate\Http\Request;
 use App\Models\countries;
 use Illuminate\Support\Facades\DB;
@@ -31,13 +33,17 @@ class VisaRequestController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function steptwo(Request $request){
+        $countries = countries::all();
 
+        $data = compact('countries');
+
+        return view('frontend.visa_request_steptwo')->with($data);
     }
 
     public function create()
     {
         $url = url('admin/visarequest_form');
-        $title = "Add VisaRequest ";
+        $title = "Add Visa Request ";
         $countries = DB::table('countries')->get();
 
         $data = compact('url', 'title','countries');
@@ -101,7 +107,7 @@ class VisaRequestController extends Controller
             return redirect('admin/visarequest');
         } else {
             $url = url('admin/visarequest_form/update') . "/" . $id;
-            $title = "Update Contact VisaRequest";
+            $title = "Update Visa Request";
         $countries = DB::table('countries')->get();
 
 

@@ -4,17 +4,12 @@
     @push('title')
         <title>Country</title>
     @endpush
-
-    <body class="login">
-        <div class="right_col" role="main">
-            <div class="">
                 <div class="page-title">
                     <div class="title_left">
                         <h3>{{ $title }}</h3>
                     </div>
-
                     <div class="title_right">
-                        <div class="col-md-2 col-sm-2  form-group pull-right top_search">
+                        <div class="col-md-1 col-sm-6  form-group pull-right top_search">
                             <a href="{{ url('admin/countries') }}"><button class="btn btn-danger">Back</button></a>
                         </div>
                     </div>
@@ -24,7 +19,7 @@
                     <div class="col-md-12 col-sm-12 ">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>{{ $title }} <small>Direct KSA</small></h2>
+                                <h2>{{ $title }} </h2>
 
                                 <div class="clearfix"></div>
                             </div>
@@ -54,28 +49,44 @@
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
                                             <input id="" type="file" class="form-control" name="flag_pic"
-                                                value="" placeholder="" required autocomplete="">
-                                            {{-- <img src="{{old('flag_pic',isset($countries)?asset($countries->flag_pic):'')}}" alt="" width="70px" height="70px"> --}}
+                                                value="" placeholder="" {{ isset($countries->flag_pic) ? '' : 'required' }} autocomplete="">
+                                                <input type="hidden" name="previous_avatar" value="{{ old('flag_pic', isset($countries) ? $countries->flag_pic : '') }}">
+                                                @if (old('flag_pic', isset($countries) ? $countries->flag_pic : ''))
+                                                    <p> Image: <span id="previous-image">{{ old('flag_pic', isset($countries) ? $countries->flag_pic : '') }}</span></p>
+                                            </div>
+            
+                                            <img src="{{ old('flag_pic', isset($countries) ? asset($countries->flag_pic) : '')}}" alt="Img" style="width:80px;height:80px"
+                                                class="me-4 border">
+                                        @else
+                                            <p>No Image Uploaded.</p>
                                         </div>
+                                            @endif
                                     </div>
                                     <div class="item form-group">
                                         <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Cover
                                             Pic</label>
                                         <div class="col-md-6 col-sm-6 ">
                                             <input id="" type="file" class="form-control" name="cover_pic"
-                                                value="" placeholder="" required autocomplete="">
-                                            {{-- <img src="{{old('cover_pic',isset($countries)?asset($countries->cover_pic):'')}}" alt="" width="70px" height="70px"> --}}
-
-                                        </div>
+                                                value="" placeholder="" {{ isset($countries->cover_pic) ? '' : 'required' }} autocomplete="">
+                                                <input type="hidden" name="previous_avatar" value="{{ old('cover_pic', isset($countries) ? $countries->cover_pic : '') }}">
+                                                @if (old('cover_pic', isset($countries) ? $countries->cover_pic : ''))
+                                                    <p> Image: <span id="previous-image">{{ old('cover_pic', isset($countries) ? $countries->cover_pic : '') }}</span></p>
+                                            </div>
+            
+                                            <img src="{{old('cover_pic', isset($countries) ? asset($countries->cover_pic) : '') }}" alt="Img" style="width:80px;height:80px"
+                                                class="me-4 border">
+                                        @else
+                                            <p>No Image Uploaded.</p>
+                                    </div>
+                                            @endif
                                     </div>
                                     <div class="item form-group">
                                         <label for="middle-name"
                                             class="col-form-label col-md-3 col-sm-3 label-align">Status</label>
                                         <div class="col-md-6 col-sm-6 ">
-
                                             <select name="status" class="form-control" id="">
-                                                <option value="active">Active</option>
-                                                <option value="inactive">InActive</option>
+                                                <option value="1"  @isset($countries) @if ($countries->status == 1) selected @endif @endisset>Active</option>
+                                                <option value="0" @isset($countries) @if ($countries->status == 0) selected @endif @endisset>InActive</option>
                                             </select>
                                         </div>
                                     </div>
@@ -88,12 +99,10 @@
                                             <button type="submit" class="btn btn-success">Submit</button>
                                         </div>
                                     </div>
-
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+          
     @endsection

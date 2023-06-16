@@ -1733,7 +1733,7 @@ a:focus {
 }
 
 .top_nav .navbar-right {
-	margin: 13px;
+	margin: 19px;
 	width: auto;
 	float: right
 }
@@ -1973,7 +1973,7 @@ a:focus {
 }
 
 .toggle a {
-	padding: 15px 15px 0;
+	padding: 15px;
 	margin: 0;
 	cursor: pointer
 }
@@ -2022,8 +2022,8 @@ a:focus {
 }
 
 footer {
-	background: #fff;
-	padding: 10px 20px;
+	background: #2A3F54;
+	padding: 10px 20px 5px 20px;
 	display: block
 }
 
@@ -2600,7 +2600,7 @@ table.display thead td:active {
 }
 
 .dataTables_scrollBody {
-	*margin-top: -1px;
+	margin-top: -1px;
 	-webkit-overflow-scrolling: touch
 }
 
@@ -2928,7 +2928,7 @@ span.right {
 .sidebar-footer a {
 	padding: 7px 0 3px;
 	text-align: center;
-	width: 25%;
+	width: 100%;
 	font-size: 17px;
 	display: block;
 	float: left;
