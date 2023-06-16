@@ -34,13 +34,9 @@
                                 Country<span class="required"></span>
                             </label>
                             <div class="col-md-6 col-sm-6 ">
-                                <select name="name" id=""
-                                    value="{{ old('name', isset($visa) ? $visa->name : '') }}" class="form-control">
-
-                                    <option value="{{ old('name', isset($visa) ? $visa->visa->id : '') }}">
-                                        {{ old('name', isset($visa) ? $visa->visa->name : '') }}</option>
+                                <select name="name" id="" value="{{ old('name', isset($visa) ? $visa->name : '') }}" class="form-control">
                                     @foreach ($countries as $country)
-                                        <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                        <option value="{{ $country->id }}" @isset($visa) @if ($visa->countries_id == $country->id) selected @endif @endisset>{{ $country->name }}</option>
                                     @endforeach
                                 </select>
                                 @error('name')
@@ -63,15 +59,8 @@
                             <div class="col-md-6 col-sm-6 ">
 
                                 <select name="status" class="form-control" id="">
-                                    <option value="{{ old('status', isset($visa) ? $visa->status : '') }}">
-                                        @if (old('status', isset($visa) ? $visa->status == 1 : ''))
-                                            <span>Active</span>
-                                        @else
-                                            <span>InActive</span>
-                                        @endif
-                                    </option>
-                                    <option value="1">Active</option>
-                                    <option value="0">InActive</option>
+                                    <option value="1" @isset($visa) @if ($visa->status == 1) selected @endif @endisset>Active</option>
+                                    <option value="0" @isset($visa) @if ($visa->status == 0) selected @endif @endisset>InActive</option>
                                 </select>
                             </div>
                         </div>

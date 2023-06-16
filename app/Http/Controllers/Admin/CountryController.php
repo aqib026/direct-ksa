@@ -91,16 +91,23 @@ class CountryController extends Controller
 
    public function update($id, Request $request)
    {
+      //flagpic/1686146027fp.png
+      //coverpic/1686146027cp.png
       $request->validate([
          'name' => 'required'
       ]);
       $countries = countries::find($id);
-
+   
       $countries->name = $request['name'];
-      $filename = time() . "fp." . $request->file('flag_pic')->getClientOriginalExtension();
-      $countries->flag_pic = $request->file('flag_pic')->storeas('flagpic', $filename);
-      $countryname = time() . "cp." . $request->file('cover_pic')->getClientOriginalExtension();
-      $countries->cover_pic = $request->file('cover_pic')->storeAs('coverpic', $countryname);
+      if(isset($request) && !empty($request->file('flag_pic'))){
+         $filename = time() . "fp." . $request->file('flag_pic')->getClientOriginalExtension();
+         $countries->flag_pic = $request->file('flag_pic')->storeas('flagpic', $filename);
+      }
+      if(isset($request) && !empty($request->file('cover_pic'))){
+         $countryname = time() . "cp." . $request->file('cover_pic')->getClientOriginalExtension();
+         $countries->cover_pic = $request->file('cover_pic')->storeAs('coverpic', $countryname);
+      }
+      
       $countries->status = $request['status'];
 
 

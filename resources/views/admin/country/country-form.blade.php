@@ -49,7 +49,7 @@
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
                                             <input id="" type="file" class="form-control" name="flag_pic"
-                                                value="" placeholder="" required autocomplete="">
+                                                value="" placeholder="" {{ isset($countries->flag_pic) ? '' : 'required' }} autocomplete="">
                                                 <input type="hidden" name="previous_avatar" value="{{ old('flag_pic', isset($countries) ? $countries->flag_pic : '') }}">
                                                 @if (old('flag_pic', isset($countries) ? $countries->flag_pic : ''))
                                                     <p> Image: <span id="previous-image">{{ old('flag_pic', isset($countries) ? $countries->flag_pic : '') }}</span></p>
@@ -67,7 +67,7 @@
                                             Pic</label>
                                         <div class="col-md-6 col-sm-6 ">
                                             <input id="" type="file" class="form-control" name="cover_pic"
-                                                value="" placeholder="" required autocomplete="">
+                                                value="" placeholder="" {{ isset($countries->cover_pic) ? '' : 'required' }} autocomplete="">
                                                 <input type="hidden" name="previous_avatar" value="{{ old('cover_pic', isset($countries) ? $countries->cover_pic : '') }}">
                                                 @if (old('cover_pic', isset($countries) ? $countries->cover_pic : ''))
                                                     <p> Image: <span id="previous-image">{{ old('cover_pic', isset($countries) ? $countries->cover_pic : '') }}</span></p>
@@ -84,17 +84,9 @@
                                         <label for="middle-name"
                                             class="col-form-label col-md-3 col-sm-3 label-align">Status</label>
                                         <div class="col-md-6 col-sm-6 ">
-
                                             <select name="status" class="form-control" id="">
-                                                <option value="{{ old('status', isset($countries) ? $countries->status : '') }}">                                   
-                                                    @if ( old('status', isset($countries) ? $countries->status == 1  :''))
-                                                        <span>Active</span>
-                                                    @else
-                                                        <span>InActive</span>
-                                                    @endif
-                                                </option>
-                                                <option value="active">Active</option>
-                                                <option value="inactive">InActive</option>
+                                                <option value="1"  @isset($countries) @if ($countries->status == 1) selected @endif @endisset>Active</option>
+                                                <option value="0" @isset($countries) @if ($countries->status == 0) selected @endif @endisset>InActive</option>
                                             </select>
                                         </div>
                                     </div>

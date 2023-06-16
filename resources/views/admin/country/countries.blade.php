@@ -51,7 +51,7 @@
                                             <td><img src="{{ asset($country->cover_pic) }}" class="me-4 border my-image"
                                                     style="width:130px;height:80px" alt="Cover-Pic"></td>
                                             <td>
-                                                @if ($country->status == 1)
+                                                @if ($country->status == 'active')
                                                     <span class="badge badge-success bg-success">Active</span>
                                                 @else
                                                     <span class="badge badge-danger  bg-danger">InActive</span>
