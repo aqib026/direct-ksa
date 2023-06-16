@@ -35,7 +35,7 @@
 					<!-- menu profile quick info -->
 					<div class="profile clearfix">
 						<div class="profile_pic">
-							<img src="{{asset( 'images/user.png' )}}" alt="Profile Pic" class="img-circle profile_img">
+							<img src="{{asset(Auth::user()->profile_pic)}}" alt="Profile Pic" class="img-circle profile_img">
 						</div>
 						<div class="profile_info">
 							<span>Welcome,</span>

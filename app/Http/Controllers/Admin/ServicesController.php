@@ -91,9 +91,10 @@ class ServicesController extends Controller
       $services = services::find($id);
 
       $services->name = $request['name'];
+      if(isset($request) && !empty($request->file('banner'))){
       $filename = time() . "bn" . $request->file('banner')->getClientOriginalExtension();
       $services->banner = $request->file('banner')->storeas('banner', $filename);
-
+      }
 
 
       $services->save();

@@ -2,7 +2,7 @@
 
 @section('main-section')
     @push('title')
-        <title>categorie Form</title>
+        <title>Categories Form</title>
     @endpush
     <div class="page-title">
         <div class="title_left">
@@ -49,15 +49,8 @@
                             </label>
                             <div class="col-md-6 col-sm-6 ">
                                 <select name="status" class="form-control" id="">
-                                    <option value="{{ old('status', isset($categorie) ? $categorie->status : '') }}">
-                                        @if (old('status', isset($categorie) ? $categorie->status == 1 : ''))
-                                            <span>Active</span>
-                                        @else
-                                            <span>InActive</span>
-                                        @endif
-                                    </option>
-                                    <option value="1">Active</option>
-                                    <option value="0">In Active</option>
+                                    <option value="1" @isset($categorie) @if ($categorie->status == 1) selected @endif @endisset>Active</option>
+                                    <option value="0" @isset($categorie) @if ($categorie->status == 0) selected @endif @endisset>In Active</option>
                                 </select>
                             </div>
                         </div>

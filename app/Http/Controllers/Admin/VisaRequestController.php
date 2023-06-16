@@ -43,7 +43,7 @@ class VisaRequestController extends Controller
     public function create()
     {
         $url = url('admin/visarequest_form');
-        $title = "Add VisaRequest ";
+        $title = "Add Visa Request ";
         $countries = DB::table('countries')->get();
 
         $data = compact('url', 'title','countries');
@@ -107,7 +107,7 @@ class VisaRequestController extends Controller
             return redirect('admin/visarequest');
         } else {
             $url = url('admin/visarequest_form/update') . "/" . $id;
-            $title = "Update Contact VisaRequest";
+            $title = "Update Visa Request";
         $countries = DB::table('countries')->get();
 
 

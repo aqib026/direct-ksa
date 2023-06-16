@@ -49,7 +49,7 @@
                                     Pic</label>
                                 <div class="col-md-6 col-sm-6 ">
                                     <input id="" type="file" class="form-control" name="profile_pic"
-                                        value="" placeholder="" required autocomplete="">
+                                        value="" {{ isset($user->profile_pic ) ? '' : 'required' }} placeholder=""  autocomplete="">
                                     <input type="hidden" name="previous_avatar" value="{{ $user->profile_pic }}">
                                     @if ($user->profile_pic)
                                         <p> Image: <span id="previous-image">{{ $user->profile_pic }}</span></p>

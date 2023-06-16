@@ -31,7 +31,7 @@
 							<table class="table table-striped jambo_table bulk_action">
 								<thead>
 									<tr class="headings">
-										<th>City Name</th>
+										<th>Category</th>
 										<th>Question</th>
 										<th>Answer</th>
 										<th>Status</th>

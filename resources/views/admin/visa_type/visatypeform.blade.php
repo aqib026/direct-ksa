@@ -28,7 +28,7 @@
                     <form method="POST" action="{{ $url }}" enctype="multipart/form-data">
                         @csrf
                         <div class="item form-group">
-                            <label class="col-form-label col-md-1 col-sm-1 label-align" for="first-name">Select
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Select
                                 Country<span class="required"></span>
                             </label>
                             <div class="col-md-6 col-sm-6 ">
@@ -36,14 +36,10 @@
                                     value="{{ old('name', isset($VisaRequest) ? $VisaRequest->name : '') }}"
                                     class="form-control">
 
-                                    <option
-                                        value="{{ old('name', isset($VisaRequest) ? $VisaRequest->visatype->id : '') }}">
-                                        {{ old('name', isset($VisaRequest) ? $VisaRequest->visatype->name : '') }}</option>
-
+                                    
                                     @foreach ($countries as $country)
-                                        <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                        <option value="{{ $country->id }}" @isset($VisaRequest) @if ($VisaRequest->countries_id == $country->id) selected @endif @endisset>{{ $country->name }}</option>
                                     @endforeach
-
                                 </select>
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">

@@ -48,8 +48,8 @@
                             </label>
                             <div class="col-md-6 col-sm-6 ">
                                 <input id="" type="file" class="form-control" name="banner"
-                                    value="{{ old('banner', isset($services) ? $services->banner : '') }}" placeholder=""
-                                    required autocomplete="">
+                                    value=""  {{ isset($services->banner) ? '' : 'required' }} placeholder=""
+                                    autocomplete="">
                                     <input type="hidden" name="previous_avatar" value="{{ old('banner', isset($services) ? $services->banner : '') }}">
                                     @if (old('banner', isset($services) ? $services->banner : ''))
                                         <p> Image: <span id="previous-image">{{ old('banner', isset($services) ? $services->banner : '') }}</span></p>

@@ -63,7 +63,7 @@
                             <div class="col-md-6 col-sm-6 ">
                                 <input id="password" type="password"
                                     class="form-control @error('password') is-invalid @enderror" name="password"
-                                    placeholder="Enter Password" value="{{old('name', isset($user) ? $user->email : '')}} " autocomplete="new-password">
+                                    placeholder="Enter Password"  autocomplete="new-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -77,11 +77,10 @@
                                 Password</label>
                             <div class="col-md-6 col-sm-6 ">
                                 <input id="password-confirm" type="password" class="form-control"
-                                    name="password_confirmation" value="{{old('name', isset($user) ? $user->email : '')}}" placeholder="Confirm Password" autocomplete="new-password">
+                                    name="password_confirmation" value="" placeholder="Confirm Password" autocomplete="new-password">
                             </div>
                         </div>
                         <div class="item form-group">
-
                             <label class="col-form-label col-md-3 col-sm-3 label-align">Role</label>
                             <div class="col-md-6 col-sm-6 ">
                                 <select class="form-control" name="usertype" id="usertype">

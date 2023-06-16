@@ -14,7 +14,7 @@ class CategorieController extends Controller
     public function create()
     {
         $url = url('admin/categorie-form');
-        $title = "Add categorie";
+        $title = "Add Category";
         $data = compact('url', 'title');
         return view('admin.categorie.categorie-form')->with($data);
     }
@@ -63,7 +63,7 @@ class CategorieController extends Controller
             return redirect('admin/categorie');
         } else {
             $url = url('admin/categorie-form/update/') . "/" . $id;
-            $title = "Edit categorie";
+            $title = "Edit Category";
             $data = compact('url', 'title', 'categorie');
             return view('admin/categorie/categorie-form')->with($data);
         }

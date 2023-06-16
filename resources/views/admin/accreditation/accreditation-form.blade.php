@@ -45,7 +45,7 @@
                                 </label>
                                 <div class="col-md-6 col-sm-6 ">
                                     <input id="avatar" type="file" class="form-control" name="banner" value=""
-                                        placeholder="" required autocomplete="">
+                                        placeholder=""  {{ isset($accreditation->banner ) ? '' : 'required' }} autocomplete="">
                                     <input type="hidden" name="previous_avatar" value="{{ old('banner', isset($accreditation) ? $accreditation->banner : '') }}">
                                     @if (old('banner', isset($accreditation) ? $accreditation->banner : ''))
                                         <p> Image: <span id="previous-image">{{ old('banner', isset($accreditation) ? $accreditation->banner : '') }}</span></p>
@@ -62,16 +62,9 @@
                                 <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Status</label>
                                 <div class="col-md-6 col-sm-6 ">
                                     <select name="status" class="form-control" id="">
-                                        <option
-                                            value="{{ old('status', isset($accreditation) ? $accreditation->status : '') }}">
-                                            @if (old('status', isset($accreditation) ? $accreditation->status == 1 : ''))
-                                                <span>Active</span>
-                                            @else
-                                                <span>InActive</span>
-                                            @endif
-                                        </option>
-                                        <option value="1">Active</option>
-                                        <option value="0">InActive</option>
+                                     
+                                        <option value="1"  @isset($accreditation) @if ($accreditation->status == 1) selected @endif @endisset>Active</option>
+                                        <option value="0"  @isset($accreditation) @if ($accreditation->status == 0) selected @endif @endisset>InActive</option>
                                     </select>
                                 </div>
                             </div>

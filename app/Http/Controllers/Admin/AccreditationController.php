@@ -121,10 +121,10 @@ class AccreditationController extends Controller
 
       $accreditation->name = $request['name'];
 
-
+      if(isset($request) && !empty($request->file('banner'))){
       $filename = time() . "acc." . $request->file('banner')->getClientOriginalExtension();
       $accreditation->banner = $request->file('banner')->storeas('banner', $filename);
-
+      }
       $accreditation->status = $request['status'];
 
 

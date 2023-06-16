@@ -94,15 +94,9 @@
                             <div class="col-md-6 col-sm-6 ">
 
                                 <select name="status" class="form-control" id="">
-                                    <option value="{{ old('status', isset($location) ? $location->status : '') }}">                                   
-                                        @if (old('status', isset($location) ? $location->status == 1 : ''))
-                                            <span >Active</span>
-                                        @else
-                                            <span >InActive</span>
-                                        @endif
-                                    </option>
-                                    <option value="1">Active</option>
-                                    <option value="0">InActive</option>
+                           
+                                    <option value="1"  @isset($location) @if ($location->status == 1) selected @endif @endisset>Active</option>
+                                    <option value="0" @isset($location) @if ($location->status == 0) selected @endif @endisset>InActive</option>
                                 </select>
                             </div>
                         </div>

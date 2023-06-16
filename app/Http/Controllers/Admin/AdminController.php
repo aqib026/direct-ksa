@@ -85,15 +85,12 @@ class AdminController extends Controller
 
     public function update($id, request $request)
     {
-
         $user = admin::find($id);
-
         $user->name     = $request['name'];
         $user->email    = $request['email'];
-        if($request['password']!== ""){
-        $user->password = bcrypt($request['password']);
+        if ($request['password'] !== "" && $request['password'] == $request['password_confirmation'] && !is_null($request['password'])) {
+            $user->password = bcrypt($request['password']);
         }
-        
         $user->usertype = $request['usertype'];
         $user->save();
 
@@ -133,9 +130,11 @@ class AdminController extends Controller
         $user = admin::find($id);
 
         $user->name     = $request['name'];
-        $profile = time() . "p." . $request->file('profile_pic')->getClientOriginalExtension();
-        $user->profile_pic = $request->file('profile_pic')->storeas('profile', $profile);
+        if (isset($request) && !empty($request->file('profile_pic'))) {
 
+            $profile = time() . "p." . $request->file('profile_pic')->getClientOriginalExtension();
+            $user->profile_pic = $request->file('profile_pic')->storeas('profile', $profile);
+        }
         $user->save();
 
         return redirect('admin/dashboard');

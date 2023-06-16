@@ -47,15 +47,8 @@
                             </label>
                             <div class="col-md-6 col-sm-6 ">
                                 <select name="status" class="form-control" id="">
-                                    <option value="{{ old('status', isset($feature) ? $feature->status : '') }}">
-                                        @if (old('status', isset($feature) ? $feature->status == 1 : ''))
-                                            <span>Active</span>
-                                        @else
-                                            <span>InActive</span>
-                                        @endif
-                                    </option>
-                                    <option value="1">Active</option>
-                                    <option value="0">In Active</option>
+                                    <option value="1" @isset($feature) @if ($feature->status == 1) selected @endif @endisset>Active</option>
+                                    <option value="0" @isset($feature) @if ($feature->status == 0) selected @endif @endisset>In Active</option>
                                 </select>
                             </div>
                         </div>

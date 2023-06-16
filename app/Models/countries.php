@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Visa;
 
-class countries extends Model
+class Countries extends Model
 {
     use HasFactory;
     protected $table = "countries";

@@ -29,18 +29,16 @@
                         @csrf
                         <div class="item form-group">
                             <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Select
-                                categorie<span class="required"></span>
+                                Category<span class="required"></span>
                             </label>
                             <div class="col-md-6 col-sm-6 ">
                                 <select name="categorie" id=""
                                     value="{{ old('categorie', isset($faqs) ? $faqs->categorie->id : '') }}"
                                     class="form-control">
 
-                                    <option value="{{ old('name', isset($faqs) ? $faqs->categorie->id : '') }}">
-                                        {{ old('name', isset($faqs) ? $faqs->categorie->name : '') }}</option>
-
+                                    
                                     @foreach ($categorie as $categories)
-                                        <option value="{{ $categories->id }}">{{ $categories->name }}</option>
+                                        <option value="{{ $categories->id }}"" @isset($faqs) @if ($faqs->categorie_id == $categories->id) selected @endif @endisset>{{ $categories->name }}</option>
                                     @endforeach
                                 </select>
                                 @error('categorie')
@@ -84,15 +82,8 @@
                             <div class="col-md-6 col-sm-6 ">
 
                                 <select name="status" class="form-control" id="">
-                                    <option value="{{ old('status', isset($faqs) ? $faqs->status : '') }}">
-                                        @if (old('status', isset($faqs) ? $faqs->status == 1 : ''))
-                                            <span>Active</span>
-                                        @else
-                                            <span>InActive</span>
-                                        @endif
-                                    </option>
-                                    <option value="1">Active</option>
-                                    <option value="0">InActive</option>
+                                    <option value="1" @isset($faqs) @if ($faqs->status == 1) selected @endif @endisset>Active</option>
+                                    <option value="0" @isset($faqs) @if ($faqs->status == 0) selected @endif @endisset>InActive</option>
                                 </select>
                             </div>
                         </div>
