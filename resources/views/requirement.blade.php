@@ -48,7 +48,7 @@
                 
             </div>
             <div class="text-center py-5">
-                <button class="btn btn-primary w-75">START {{ $country->name }} Visa Request Now!</button>
+                <a href="{{ route('visa_request') }}" class="btn btn-primary w-75">START {{ $country->name }} Visa Request Now!</a>
             </div>
         </div>
     </section>

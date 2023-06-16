@@ -24,7 +24,7 @@ class FaqsController extends Controller
    public function create()
    {
        $url = url('admin/faqs_form');
-       $title = "Add FAQs ";
+       $title = "Add FAQs";
        $categorie= categorie::all();
 
 
@@ -95,7 +95,7 @@ class FaqsController extends Controller
            return redirect('admin/faqs');
        } else {
            $url = url('admin/faqs_form/update') . "/" . $id;
-           $title = "Update Faqs faqs";
+           $title = "Update FAQs";
            $categorie= categorie::all();
 
 
@@ -115,7 +115,6 @@ class FaqsController extends Controller
    {
        $request->validate([
         'categorie' => 'required',
-       
         'answer' => 'required',
         'question' => 'required',
        ]);
