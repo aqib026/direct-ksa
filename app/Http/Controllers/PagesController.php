@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Page;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 
 
@@ -15,9 +16,20 @@ class PagesController extends Controller
      */
     public function index(Page $page, $slug)
     {
-        $page_data = Page::where('page', $slug)->first();
-        $data = compact('page_data');
-        return view('frontend.contentPage')->with($data);
+        if($slug == 'contact'){
+            $page_data = Contact::all();
+            $data = compact('page_data');
+            return view('frontend.contactPage')->with($data);
+        }elseif($slug == 'faq'){
+            $page_data = Page::where('page', $slug)->first();
+            $data = compact('page_data');
+            return view('frontend.faqPage')->with($data);
+        }else{
+            $page_data = Page::where('page', $slug)->first();
+            $data = compact('page_data');
+            return view('frontend.contentPage')->with($data);
+        }
+       
     }
 
     /**
