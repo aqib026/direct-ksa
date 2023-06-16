@@ -63,12 +63,14 @@ class VisaRequestController extends Controller
             'visa_type' => 'required',
         ]);
 
-
         $VisaRequest = new VisaRequest();
 
         $VisaRequest->countries_id = $request['name'];
 
         $VisaRequest->visa_type = $request['visa_type'];
+        $VisaRequest->adult_price = $request['adult_price'];
+        $VisaRequest->child_price = $request['child_price'];
+        $VisaRequest->passport_price = $request['passport_price'];
 
         $VisaRequest->save();
         return redirect('admin/visarequest_form');
@@ -108,9 +110,7 @@ class VisaRequestController extends Controller
         } else {
             $url = url('admin/visarequest_form/update') . "/" . $id;
             $title = "Update Visa Request";
-        $countries = DB::table('countries')->get();
-
-
+            $countries = DB::table('countries')->get();
             $data = compact('VisaRequest', 'url', 'title','countries');
             return view('admin/visa_type/visatypeform')->with($data);
         }
@@ -132,9 +132,10 @@ class VisaRequestController extends Controller
 
         $VisaRequest->Countries_id = $request['name'];
         $VisaRequest->visa_type = $request['visa_type'];
+        $VisaRequest->adult_price = $request['adult_price'];
+        $VisaRequest->child_price = $request['child_price'];
+        $VisaRequest->passport_price = $request['passport_price'];
       
-
-
         $VisaRequest->save();
         return redirect('admin/visarequest');
     }
