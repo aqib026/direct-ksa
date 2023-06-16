@@ -2,7 +2,7 @@
 
 @section('main-section')
     @push('title')
-        <title>Categories Form</title>
+        <title>Category Form</title>
     @endpush
     <div class="page-title">
         <div class="title_left">

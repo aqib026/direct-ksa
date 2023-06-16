@@ -8,7 +8,7 @@
         <form action="">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>Categorie </h3>
+                    <h3>Category</h3>
                 </div>
                 <div class="title_right">
                     <div class="col-md-7 col-sm-7   form-group pull-right top_search">
@@ -35,13 +35,12 @@
                                 <tr class="headings">
                                     <th>Name</th>
                                     <th>Status</th>
-
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="even pointer">
-                                    @foreach ($categorie as $categories)
+                                @foreach ($categorie as $categories)
+                                    <tr class="even pointer">
                                         <td scope="row">{{ $categories->name }}</td>
                                         <td>
                                             @if ($categories->status == 1)
@@ -50,15 +49,13 @@
                                                 <span class="badge badge-danger bg-danger">In Active</span>
                                             @endif
                                         </td>
-
                                         <td>
                                             <a href="{{ url('admin/categorie-form/edit/') }}/{{ $categories->id }}">
                                                 <i class="btn btn-success fa fa-edit"></i>
                                             <a href="{{ url('admin/categorie/delete/') }}/{{ $categories->id }}">
                                                 <i class="btn btn-danger fa fa-trash"></i></a>
-                                          
                                         </td>
-                                </tr>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
