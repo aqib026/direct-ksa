@@ -26,6 +26,9 @@
     background: #28a745!important;
     border-radius: 30px;
 }
+.table-condensed td.disabled{
+    color: #ccc;
+}
 
 .form-check-label-custom{
     font-size: xx-large;

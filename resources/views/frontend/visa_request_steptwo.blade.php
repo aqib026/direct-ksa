@@ -125,9 +125,9 @@
 <script>
 	$(document).ready(function() {
     	// Initialize datepicker
-    	$('#datepicker').datepicker({
-      	format: 'dd-mm-yyyy',
-    	});
+    	// $('#datepicker').datepicker({
+      	// format: 'dd-mm-yyyy',
+    	// });
 
 		$('#adult_counter_minus').on('click', function(){
 			var adult_counter_current_value = parseInt($('.adult_counter').text());
@@ -200,8 +200,19 @@
    		}
    		return a.map(format).join(s);
 	}
-  	
-	$("#datepicker").datepicker().on("changeDate", function(e) {	
+
+	$("#datepicker").datepicker({
+		minDate: 0, // Sets the minimum selectable date to today
+		beforeShowDay: function(date) {
+			var today = new Date(); // Current date
+			var yesterday = new Date(today); // Create a new date object
+			yesterday.setDate(today.getDate() - 1); // Subtract one day
+			if(date < yesterday ) 
+				return false;
+			else
+				return true;	
+		}
+	}).on("changeDate", function(e) {	
 		let a = [{day: 'numeric'}, {month: 'numeric'}, {year: 'numeric'}];
 		let s = join(e.date, a, '-');
 
