@@ -12,7 +12,7 @@ class Faqs extends Model
 
     public function categorie()
     {
-        return $this->belongsTo(categorie::class, 'categorie_id', 'id');
+        return $this->belongsTo(Categorie::class, 'categorie_id', 'id');
     }
     use HasFactory;
 }
