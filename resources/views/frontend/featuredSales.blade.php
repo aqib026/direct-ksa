@@ -4,6 +4,17 @@
 
 <section class="section border-0 m-0 bg-color-quaternary">
 	<div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <div class="divider divider-small divider-small-lg mt-0 text-center appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="0">
+                    <hr class="bg-primary border-radius m-auto">
+                </div>
+                <div class="overflow-hidden mb-1">
+                    <h3 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-3 text-4 line-height-2 line-height-sm-7 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">Special Services</h3>
+                </div>
+                <h2 class="text-color-dark font-weight-bold text-8 pb-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">Fill form to avail our special services</h2>
+            </div>
+        </div>
         <div class="align-items-center d-flex justify-content-center m-1 pb-5 py-4 row">
             <div class="p-75 bg-white shadow rounded col-lg-8" style="padding: 50px 20px;">
                 <form action="{{ route('featured_sales_post') }}" role="form" method="post" class="form-horizontal" enctype="multipart/form-data">
