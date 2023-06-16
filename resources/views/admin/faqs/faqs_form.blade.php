@@ -9,7 +9,7 @@
             <h3>{{ $title }}</h3>
         </div>
         <div class="title_right">
-            <div class="col-md-1 col-sm-6     form-group pull-right top_search">
+            <div class="col-md-1 col-sm-6 form-group pull-right top_search">
                 <a href="{{ url('admin/faqs') }}"><button class="btn btn-danger">Back</button></a>
             </div>
         </div>
@@ -20,7 +20,6 @@
             <div class="x_panel">
                 <div class="x_title">
                     <h2>{{ $title }} </h2>
-
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
@@ -32,13 +31,9 @@
                                 Category<span class="required"></span>
                             </label>
                             <div class="col-md-6 col-sm-6 ">
-                                <select name="categorie" id=""
-                                    value="{{ old('categorie', isset($faqs) ? $faqs->categorie->id : '') }}"
-                                    class="form-control">
-
-                                    
+                                <select name="categorie" value="{{ old('categorie', isset($faqs) ? $faqs->categorie->id : '') }}" class="form-control">
                                     @foreach ($categorie as $categories)
-                                        <option value="{{ $categories->id }}"" @isset($faqs) @if ($faqs->categorie_id == $categories->id) selected @endif @endisset>{{ $categories->name }}</option>
+                                        <option value="{{ $categories->id }}" @isset($faqs) @if ($faqs->categorie_id == $categories->id) selected @endif @endisset>{{ $categories->name }}</option>
                                     @endforeach
                                 </select>
                                 @error('categorie')
@@ -49,10 +44,9 @@
                             </div>
                         </div>
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Question
-                            </label>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Question</label>
                             <div class="col-md-6 col-sm-6 ">
-                                <input id="" type="text"
+                                <input type="text"
                                     class="form-control @error('answer') is-invalid @enderror" name="question"
                                     value="{{ old('lat', isset($faqs) ? $faqs->question : '') }}" required
                                     autocomplete="name" placeholder="Enter Question" autofocus>
@@ -64,9 +58,7 @@
                             </div>
                         </div>
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Answer<span
-                                    class="required"></span>
-                            </label>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Answer<span class="required"></span></label>
                             <div class="col-md-6 col-sm-6 ">
                                 <textarea id="" type="text" class="form-control @error('answer') is-invalid @enderror" name="answer"
                                     value="" required autocomplete="name" placeholder="Enter Answer" autofocus>{{ old('long', isset($faqs) ? $faqs->answer : '') }}</textarea>
@@ -90,7 +82,7 @@
                         <div class="ln_solid"></div>
                         <div class="item form-group">
                             <div class="col-md-6 col-sm-6 offset-md-3">
-                                <a href="{{ url('../admin/contact_faqs') }}"> <button class="btn btn-primary"
+                                <a href="{{ url('../admin/faqs') }}"> <button class="btn btn-primary"
                                         type="button">Cancel</button></a>
                                 <button type="submit" class="btn btn-success">Submit</button>
                             </div>
