@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categorie;
 use App\Models\Page;
 use App\Models\Contact;
 use Illuminate\Http\Request;
@@ -21,7 +22,7 @@ class PagesController extends Controller
             $data = compact('page_data');
             return view('frontend.contactPage')->with($data);
         }elseif($slug == 'faq'){
-            $page_data = Page::where('page', $slug)->first();
+            $page_data =Categorie::all();
             $data = compact('page_data');
             return view('frontend.faqPage')->with($data);
         }else{

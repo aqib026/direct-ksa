@@ -12,7 +12,7 @@ class Categorie extends Model
 
     public function categorie()
     {
-        return $this->hasmany('App\Models\categorie');
+        return $this->hasmany('App\Models\Faqs');
     }
     use HasFactory;
 }
