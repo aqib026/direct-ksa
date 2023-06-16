@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        if (!Schema::hasColumn('countries','status')) {
-            Schema::table('countries', function (Blueprint $table) {
-                $table->boolean('status')->after('cover_pic')->default(true);
-            });
-        }
+        Schema::table('countries', function (Blueprint $table) {
+            $table->softDeletes();
+        });
     }
 
     /**
@@ -28,7 +26,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('countries', function (Blueprint $table) {
-            //
+            $table->dropSoftDeletes();
         });
     }
 };
