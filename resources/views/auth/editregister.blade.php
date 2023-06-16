@@ -81,18 +81,11 @@
                             </div>
                         </div>
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align">Gender</label>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align">Role</label>
                             <div class="col-md-6 col-sm-6 ">
                                 <select class="form-control" name="usertype" id="usertype">
-                                    <option value="{{ old('status', isset($user) ? $user->status : '') }}">
-                                        @if (old('status', isset($user) ? $user->status == 1 : ''))
-                                            <span>Active</span>
-                                        @else
-                                            <span>InActive</span>
-                                        @endif
-                                    </option>
-                                    <option value="users">User</option>
-                                    <option value="admin">Admin</option>
+                                    <option value="users" @isset($user) @if ($user->usertype == 'users') selected @endif @endisset>User</option>
+                                    <option value="admin" @isset($user) @if ($user->usertype == 'admin') selected @endif @endisset>Admin</option>
                                 </select>
                             </div>
                         </div>
