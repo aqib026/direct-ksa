@@ -124,10 +124,6 @@
 <script src="{{ asset('front-end/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
 <script>
 	$(document).ready(function() {
-    	// Initialize datepicker
-    	// $('#datepicker').datepicker({
-      	// format: 'dd-mm-yyyy',
-    	// });
 
 		$('#adult_counter_minus').on('click', function(){
 			var adult_counter_current_value = parseInt($('.adult_counter').text());

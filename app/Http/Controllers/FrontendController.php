@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\countries;
+use App\Models\Countries;
 use App\Models\Services;
 use App\Models\Visa;
 
@@ -17,7 +17,7 @@ class FrontendController extends Controller
      */
     public function index()
     {
-        $countries = countries::all();
+        $countries = Countries::all();
 
         $services = Services::all();
 
@@ -53,9 +53,9 @@ class FrontendController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(countries $country)
+    public function show(Countries $country)
     {  
-        $countries=countries::all();
+        $countries=Countries::all();
 
         if ($countries) {
             return view('requirement', compact('countries', 'country' ));

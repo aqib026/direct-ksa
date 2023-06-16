@@ -26,7 +26,7 @@ class CategorieController extends Controller
         ]);
 
 
-        $categorie = new categorie;
+        $categorie = new Categorie;
         $categorie->name = $request['name'];
         $categorie->status = $request['status'];
         $categorie->save();
@@ -37,9 +37,9 @@ class CategorieController extends Controller
     {
         $search = $request['search'] ?? "";
         if ($search != "") {
-            $categorie = categorie::where('name', 'like', "%$search%");
+            $categorie = Categorie::where('name', 'like', "%$search%");
         } else {
-            $categorie = categorie::paginate(6);
+            $categorie = Categorie::paginate(6);
         }
         $data = compact('categorie', 'search');
         return view('admin.categorie.categorie')->with($data);
@@ -47,7 +47,7 @@ class CategorieController extends Controller
     //////////////////////////////////////////////////////////////////////////////
     public function destroy($id)
     {
-        $categorie = categorie::find($id);
+        $categorie = Categorie::find($id);
         if (!is_null($categorie)) {
             $categorie->delete();
         }
@@ -58,7 +58,7 @@ class CategorieController extends Controller
     public function edit($id)
     {
 
-        $categorie = categorie::find($id);
+        $categorie = Categorie::find($id);
         if (is_null($categorie)) {
             return redirect('admin/categorie');
         } else {
@@ -75,7 +75,7 @@ class CategorieController extends Controller
             'name' => 'required'
         ]);
 
-        $categorie = categorie::find($id);
+        $categorie = Categorie::find($id);
         $categorie->name = $request['name'];
         $categorie->status = $request['status'];
         $categorie->save();

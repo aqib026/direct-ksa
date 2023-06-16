@@ -28,15 +28,9 @@
                     <form method="POST" action="{{ $url }}" enctype="multipart/form-data">
                         @csrf
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Select
-                                Country<span class="required"></span>
-                            </label>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Select Country<span class="required"></span></label>
                             <div class="col-md-6 col-sm-6 ">
-                                <select name="name" id=""
-                                    value="{{ old('name', isset($VisaRequest) ? $VisaRequest->name : '') }}"
-                                    class="form-control">
-
-                                    
+                                <select name="name" value="{{ old('name', isset($VisaRequest) ? $VisaRequest->name : '') }}" class="form-control">
                                     @foreach ($countries as $country)
                                         <option value="{{ $country->id }}" @isset($VisaRequest) @if ($VisaRequest->countries_id == $country->id) selected @endif @endisset>{{ $country->name }}</option>
                                     @endforeach
@@ -63,6 +57,24 @@
                                 </span>
                             @enderror
 
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="adult_price">Adult Person Price</label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input type="text" id="adult_price" class="form-control" name="adult_price" value="{{ old('adult_price', isset($VisaRequest) ? $VisaRequest->adult_price : '') }}">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="child_price">Adult Person Price</label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input type="text" id="child_price" class="form-control" name="child_price" value="{{ old('child_price', isset($VisaRequest) ? $VisaRequest->child_price : '') }}">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="passport_price">Per Passport Price</label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input type="text" id="passport_price" class="form-control" name="passport_price" value="{{ old('passport_price', isset($VisaRequest) ? $VisaRequest->passport_price : '') }}">
+                            </div>
                         </div>
                         <div class="ln_solid"></div>
                         <div class="item form-group">

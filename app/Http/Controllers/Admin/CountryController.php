@@ -29,7 +29,7 @@ class CountryController extends Controller
       ]);
 
 
-      $countries = new countries;
+      $countries = new Countries;
       $countries->name = $request['name'];
 
       $filename = time() . "fp." . $request->file('flag_pic')->getClientOriginalExtension();
@@ -48,9 +48,9 @@ class CountryController extends Controller
    {
       $search = $request["search"] ?? "";
       if ($search != "") {
-         $countries = countries::where('name', 'like', "%$search%")->get();
+         $countries = Countries::where('name', 'like', "%$search%")->get();
       } else {
-         $countries = countries::paginate(6);
+         $countries = Countries::paginate(6);
       }
       $data = compact('countries', 'search');
       return view('admin.country.countries')->with($data);
@@ -59,7 +59,7 @@ class CountryController extends Controller
 
    public function destroy($id)
    {
-      $countries = countries::find($id);
+      $countries = Countries::find($id);
       if (!is_null($countries)) {
 
          $countries->delete();
@@ -73,7 +73,7 @@ class CountryController extends Controller
 
    public function edit($id)
    {
-      $countries = countries::find($id);
+      $countries = Countries::find($id);
       if (is_null($countries)) {    //not found
          return redirect('admin/countries');
       } else {
@@ -96,7 +96,7 @@ class CountryController extends Controller
       $request->validate([
          'name' => 'required'
       ]);
-      $countries = countries::find($id);
+      $countries = Countries::find($id);
    
       $countries->name = $request['name'];
       if(isset($request) && !empty($request->file('flag_pic'))){
@@ -121,7 +121,7 @@ class CountryController extends Controller
    public function slider()
    {
 
-      $countries = countries::all();
+      $countries = Countries::all();
 
       $data = compact('countries');
 
