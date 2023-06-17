@@ -46,6 +46,7 @@ route::get('/dashboard',[HomeController::class, 'index']);
 
 route::get('/config-clear', function () {
     $exitCode = Artisan::call('migrate');
+    $exitCode = Artisan::call('route:cache');
     $exitCode = Artisan::call('config:clear');
     $exitCode = Artisan::call('cache:clear');
     $exitCode = Artisan::call('view:clear');
