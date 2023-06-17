@@ -50,6 +50,16 @@
 							<h3>General</h3>
 							<ul class="nav side-menu">
 								<li><a href="{{url('/dashboard')}}"><i class="fa fa-home"></i> Dashboard </span></a></li>
+
+								<li>
+									<a><i class="fa fa-clone"></i>Special Services <span class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a href="{{url('/admin/featured_sales')}}"><i class="fa fa-home"></i> Special Sales Requests </span></a></li>
+										<li><a href="{{url('admin/special_services')}}">Special Services</a></li>
+									</ul>
+								</li>
+								
+
 								<li><a><i class="fa fa-edit"></i> User <span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a href="{{url('admin/add-user')}}">Add User</a></li>
@@ -63,7 +73,6 @@
 										<li><a href="{{url('admin/accreditation')}}">Accreditation</a></li>
 										<li><a href="{{url('admin/countries')}}">Country</a></li>
 										<li><a href="{{url('admin/feature')}}">Feature</a></li>
-										<li><a href="{{url('admin/featured_sales')}}">Featured Sales</a></li>
 										<li><a href="{{url('admin/visa_requirement')}}">Visa Requirement</a></li>
 										<li><a href="{{url('admin/special_services')}}">Special Services</a></li>
 										<li><a href="{{url('admin/visarequest')}}">Visa Request</a></li>
@@ -77,6 +86,8 @@
 									<ul class="nav child_menu">
 										<li><a href="{{ route('content_pages', 'about_us') }}">About us</a></li>
 										<li><a href="{{url('admin/contact_location')}}">Contact Location</a></li>
+
+										<li><a href="{{url('admin/categorie')}}">FAQs Categories</a></li>
 										<li><a href="{{url('admin/faqs')}}">FAQs</a></li>
 										<li><a href="{{ route('content_pages', 'terms_conditions') }}">Terms & Conditions</a></li>
 									</ul>

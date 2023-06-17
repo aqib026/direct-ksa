@@ -277,8 +277,8 @@
                                                 <td scope="row">{{ $note->note }}</td>
                                                 <td class="text-center">
 
-                                                    <a href="{{ url('admin/notes/delete/') }}/{{ $note->id }}">
-                                                        <i class="btn btn-danger fa fa-trash"></i></a>
+                                                    <!-- <a href="{{ url('admin/notes/delete/') }}/{{ $note->id }}">
+                                                        <i class="btn btn-danger fa fa-trash"></i></a> -->
 
                                                 </td>
                                         </tr>
