@@ -28,9 +28,9 @@ class FeaturedSalesController extends Controller
     {
         $search = $request["search"] ?? "";
         if ($search != "") {
-            $featured_sales = FeaturedSales::where('name', 'like', "%$search%")->get();
+            $featured_sales = FeaturedSales::where('applicant_name', 'like', "%$search%")->orderBy('id', 'DESC')->paginate(20);
         } else {
-            $featured_sales = FeaturedSales::paginate(6);
+            $featured_sales = FeaturedSales::orderBy('id', 'DESC')->paginate(20);
         }
         $data = compact('featured_sales', 'search');
         return view('admin.featured_sales.featured_sales')->with($data);
