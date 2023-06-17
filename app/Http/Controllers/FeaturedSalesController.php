@@ -20,6 +20,19 @@ class FeaturedSalesController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\FeaturedSales  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function thankyou()
+    {
+        return view('frontend.thankyou');
+
+    }
+
+
+    /**
      * Display a listing of the resource in admin.
      *
      * @return \Illuminate\Http\Response
@@ -106,9 +119,11 @@ class FeaturedSalesController extends Controller
 
         $FeaturedSales->save();
         if ($FeaturedSales) {
-            return redirect(route('featured_sales'))->with('success', 'FeaturedSales Added Successfuly.');
+            return redirect(route('featured_sales_thankyou'))->with('success', 'FeaturedSales Added Successfuly.');
         }
     }
+
+    
 
     /**
      * Display the specified resource.
