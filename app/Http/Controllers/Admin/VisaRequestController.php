@@ -82,10 +82,8 @@ class VisaRequestController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show(Request $request)
     {
-        // return countries::find(23)->VisaRequest;
-        // die;
         $search = $request["search"] ?? "";
         if ($search != "") {
             $VisaRequest = VisaRequest::where('name', 'like', "%$search%")->orderby('id', 'desc')->paginate(20);

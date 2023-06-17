@@ -102,8 +102,8 @@
                                         <td>
                                             <a href="{{ url('admin/featured_sales/edit/') }}/{{ $accre->id }}">
                                                 <i class="btn btn-success fa fa-eye"></i>
-                                                <a href="{{ url('admin/featured_sales/delete/') }}/{{ $accre->id }}">
-                                                    <i class="btn btn-danger fa fa-trash"></i></a>
+                                                <!-- <a href="{{ url('admin/featured_sales/delete/') }}/{{ $accre->id }}">
+                                                    <i class="btn btn-danger fa fa-trash"></i></a> -->
                                         </td>
                                     </tr>
                                 @endforeach
