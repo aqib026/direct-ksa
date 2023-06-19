@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('countries', function (Blueprint $table) {
-            $table->string('status')->after('cover_pic');
+           $table->integer('status')->default(1)->after('cover_pic');
         });
     }
 
