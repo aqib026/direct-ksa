@@ -14,7 +14,7 @@
                             data-appear-animation="maskUp" data-appear-animation-delay="100">FAQs</h3>
                     </div>
                     <h2 class="text-color-dark font-weight-bold text-8 pb-2 mb-4 appear-animation"
-                        data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">EVERTING YOU WANT TO KNOW
+                        data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">EVERTHING YOU WANT TO KNOW
                         IS HERE!</h2>
                 </div>
             </div>
