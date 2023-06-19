@@ -43,7 +43,7 @@ class VisaRequestController extends Controller
     public function create()
     {
         $url = url('admin/visarequest_form');
-        $title = "Add Visa Request ";
+        $title = "Add Visa Type";
         $countries = DB::table('countries')->get();
 
         $data = compact('url', 'title','countries');
@@ -79,17 +79,24 @@ class VisaRequestController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $country_id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request)
+    public function show(Request $request, $country_id=null)
     {
+
+        $VisaRequest = new VisaRequest();
+
         $search = $request["search"] ?? "";
         if ($search != "") {
-            $VisaRequest = VisaRequest::where('name', 'like', "%$search%")->orderby('id', 'desc')->paginate(20);
-        } else {
-            $VisaRequest = VisaRequest::orderby('id', 'desc')->paginate(20);
-        }
+            $VisaRequest = $VisaRequest->where('name', 'like', "%$search%");
+        } 
+        if ($country_id != null) {
+            $VisaRequest = $VisaRequest->where('countries_id', $country_id);
+        } 
+        
+        $VisaRequest = $VisaRequest->orderby('id', 'desc')->paginate(20);
+
         $data = compact('VisaRequest', 'search');
         return view('admin.visa_type.visatype')->with($data);
     }
@@ -107,7 +114,7 @@ class VisaRequestController extends Controller
             return redirect('admin/visarequest');
         } else {
             $url = url('admin/visarequest_form/update') . "/" . $id;
-            $title = "Update Visa Request";
+            $title = "Update Visa Type";
             $countries = DB::table('countries')->get();
             $data = compact('VisaRequest', 'url', 'title','countries');
             return view('admin/visa_type/visatypeform')->with($data);

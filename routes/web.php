@@ -71,28 +71,28 @@ Route::group(['prefix'=>'/admin'],function(){
     Route::get('/slider/show/{id}', [VisaController::class, 'one']);
 
     Route::get('/add-user',[AdminController::class, 'create'])->middleware(['auth','admin']);
-    Route::POST('/add-user',[AdminController::class, 'store'])->middleware(['auth','admin']);
+    Route::post('/add-user',[AdminController::class, 'store'])->middleware(['auth','admin']);
     Route::get('/profile/edit/{id}',[AdminController::class, 'new']);
-    Route::POST('/profile/update/{id}',[AdminController::class, 'add']);
+    Route::post('/profile/update/{id}',[AdminController::class, 'add']);
     Route::get('/users',[AdminController::class, 'show'])->middleware(['auth','admin']);
     Route::get('/user/delete/{id}',[AdminController::class, 'destroy'])->middleware(['auth','admin']);
     Route::get('/user/edit/{id}',[AdminController::class, 'edit'])->middleware(['auth','admin']);
-    Route::POST('/user/update/{id}',[AdminController::class, 'update'])->middleware(['auth','admin']);
+    Route::post('/user/update/{id}',[AdminController::class, 'update'])->middleware(['auth','admin']);
     Route::get('/setting',[AdminController::class, 'setting'])->middleware(['auth','admin']);
 
     Route::get('/countries',[CountryController::class, 'show'])->middleware(['auth','admin']);
     Route::get('/country-form',[CountryController::class, 'create'])->middleware(['auth','admin']);
-    Route::POST('/country-form',[CountryController::class, 'store'])->middleware(['auth', 'admin']);
+    Route::post('/country-form',[CountryController::class, 'store'])->middleware(['auth', 'admin']);
     Route::Get('/countries/delete/{id}',[CountryController::class, 'destroy'])->middleware(['auth','admin']);
     Route::get('/country-form/edit/{id}',[CountryController::class, 'edit'])->middleware(['auth','admin']);
-    Route::POST('/country-form/update/{id}',[CountryController::class, 'update'])->middleware(['auth','admin']);
+    Route::post('/country-form/update/{id}',[CountryController::class, 'update'])->middleware(['auth','admin']);
 
     Route::get('/special_services_form',[ServicesController::class, 'create'])->middleware(['auth','admin']);
     Route::get('/special_services',[ServicesController::class, 'show'])->middleware(['auth','admin']);
-    Route::POST('/special_services_form',[ServicesController::class, 'store'])->middleware(['auth', 'admin']);
+    Route::post('/special_services_form',[ServicesController::class, 'store'])->middleware(['auth', 'admin']);
     Route::Get('/special_services/delete/{id}',[ServicesController::class, 'destroy'])->middleware(['auth','admin']);
     Route::get('/special_services_form/edit/{id}',[ServicesController::class, 'edit'])->middleware(['auth','admin']);
-    Route::POST('/special_services_form/update/{id}',[ServicesController::class, 'update'])->middleware(['auth','admin']);
+    Route::post('/special_services_form/update/{id}',[ServicesController::class, 'update'])->middleware(['auth','admin']);
 
     Route::get('/feature-form',[FeatureController::class, 'create'])->middleware(['auth','admin']);
     Route::Post('/feature-form',[FeatureController::class, 'store'])->middleware(['auth','admin']);
@@ -130,25 +130,25 @@ Route::group(['prefix'=>'/admin'],function(){
     Route::get('/featured_sales/edit',[FeaturedSalesController::class, 'create'])->middleware(['auth','admin']);
 
     Route::get('/visarequest_form',[VisaRequestController::class, 'create'])->middleware(['auth','admin']);
-    Route::get('/visarequest',[VisaRequestController::class, 'show'])->middleware(['auth','admin']);
-    Route::POST('visarequest_form',[VisaRequestController::class, 'store'])->middleware(['auth', 'admin']);
+    Route::get('/visarequest/{country_id?}',[VisaRequestController::class, 'show'])->middleware(['auth','admin']);
+    Route::post('visarequest_form',[VisaRequestController::class, 'store'])->middleware(['auth', 'admin']);
     Route::Get('/visarequest/delete/{id}',[VisaRequestController::class, 'destroy'])->middleware(['auth','admin']);
     Route::get('/visarequest_form/edit/{id}',[VisaRequestController::class, 'edit'])->middleware(['auth','admin']);
-    Route::POST('/visarequest_form/update/{id}',[VisaRequestController::class, 'update'])->middleware(['auth','admin']);
+    Route::post('/visarequest_form/update/{id}',[VisaRequestController::class, 'update'])->middleware(['auth','admin']);
 
     Route::get('/contact_form',[ContactController::class, 'create'])->middleware(['auth','admin']);
     Route::get('/contact_location',[ContactController::class, 'show'])->middleware(['auth','admin']);
-    Route::POST('contact_form',[ContactController::class, 'store'])->middleware(['auth', 'admin']);
+    Route::post('contact_form',[ContactController::class, 'store'])->middleware(['auth', 'admin']);
     Route::Get('/contact_location/delete/{id}',[ContactController::class, 'destroy'])->middleware(['auth','admin']);
     Route::get('/contact_form/edit/{id}',[ContactController::class, 'edit'])->middleware(['auth','admin']);
-    Route::POST('/contact_form/update/{id}',[ContactController::class, 'update'])->middleware(['auth','admin']);
+    Route::post('/contact_form/update/{id}',[ContactController::class, 'update'])->middleware(['auth','admin']);
 
     Route::get('/faqs_form',[FaqsController::class, 'create'])->middleware(['auth','admin']);
     Route::get('/faqs',[FaqsController::class, 'show'])->middleware(['auth','admin']);
-    Route::POST('faqs_form',[FaqsController::class, 'store'])->middleware(['auth', 'admin']);
+    Route::post('faqs_form',[FaqsController::class, 'store'])->middleware(['auth', 'admin']);
     Route::Get('/faqs/delete/{id}',[FaqsController::class, 'destroy'])->middleware(['auth','admin']);
     Route::get('/faqs_form/edit/{id}',[FaqsController::class, 'edit'])->middleware(['auth','admin']);
-    Route::POST('/faqs_form/update/{id}',[FaqsController::class, 'update'])->middleware(['auth','admin']);
+    Route::post('/faqs_form/update/{id}',[FaqsController::class, 'update'])->middleware(['auth','admin']);
 
     Route::get('/categorie-form',[CategorieController::class, 'create'])->middleware(['auth','admin']);
     Route::Post('/categorie-form',[CategorieController::class, 'store'])->middleware(['auth','admin']);
@@ -158,7 +158,7 @@ Route::group(['prefix'=>'/admin'],function(){
     Route::Post('/categorie-form/update/{id}',[CategorieController::class, 'update'])->middleware(['auth','admin']);
 
     
-    Route::POST('/notes',[NoteController::class, 'store'])->middleware(['auth', 'admin']);
+    Route::post('/notes',[NoteController::class, 'store'])->middleware(['auth', 'admin']);
     Route::get('/notes/delete/{id}',[NoteController::class, 'destroy'])->middleware(['auth','admin']);
     
 });
