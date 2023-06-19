@@ -50,15 +50,12 @@ class VisaController extends Controller
 
         ]);
 
-
         $visa = new visa;
-
         $visa->countries_id = $request['name'];
-
         $visa->detail = $request['detail'];
         $visa->status = $request['status'];
-
         $visa->save();
+
         return redirect('admin/visa_requirement');
     }
 
@@ -74,7 +71,7 @@ class VisaController extends Controller
         if ($search != "") {
             $visa = visa::where('name', 'like', "%$search%")->get();
         } else {
-            $visa = visa::paginate(6);
+            $visa = visa::paginate(20);
         }
         $data = compact('visa', 'search');
         return view('admin.visa_requirement.visa_requirement')->with($data);
@@ -96,7 +93,6 @@ class VisaController extends Controller
             $url = url('admin/visa_form/update') . "/" . $id;
             $title = "Update Visa Requirement";
             $countries = DB::table('countries')->get();
-
             $data = compact('visa', 'url', 'countries', 'title');
             return view('admin/visa_requirement/visa_form')->with($data);
         }
@@ -114,15 +110,13 @@ class VisaController extends Controller
         $request->validate([
             'name' => 'required'
         ]);
-        $visa = visa::find($id);
 
+        $visa = visa::find($id);
         $visa->countries_id = $request['name'];
         $visa->detail = $request['detail'];
-
         $visa->status = $request['status'];
-
-
         $visa->save();
+
         return redirect('admin/visa_requirement');
     }
 
@@ -138,11 +132,8 @@ class VisaController extends Controller
         if (!is_null($visa)) {
             $visa->delete();
         }
-
         return redirect()->back();
     }
-
-
 
     public function one($id)
     {
