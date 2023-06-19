@@ -85,8 +85,8 @@
                                             class="col-form-label col-md-3 col-sm-3 label-align">Status</label>
                                         <div class="col-md-6 col-sm-6 ">
                                             <select name="status" class="form-control" id="">
-                                                <option value="1"   @if ($countries->status == 1) selected @endif>Active</option>
-                                                <option value= "0"  @if ($countries->status == 0) selected @endif>InActive</option>
+                                                <option value="1"   @isset($countries) @if ($countries->status == 1) selected @endif @endisset>Active</option>
+                                                <option value= "0"  @isset($countries) @if ($countries->status == 0) selected @endif @endisset>InActive</option>
                                             </select>
                                         </div>
                                     </div>
