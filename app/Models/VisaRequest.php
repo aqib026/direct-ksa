@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\countries;
+use App\Models\Countries;
 class VisaRequest extends Model
 {
     protected $table = "visa_requests";
@@ -12,7 +12,7 @@ class VisaRequest extends Model
 
     public function visatype()
     {
-        return $this->belongsTo(countries::class, 'countries_id', 'id');
+        return $this->belongsTo(Countries::class, 'countries_id', 'id');
     }
     use HasFactory;
 }

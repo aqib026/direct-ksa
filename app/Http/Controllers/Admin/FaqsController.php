@@ -70,8 +70,6 @@ class FaqsController extends Controller
     */
    public function show()
    {
-       // return countries::find(23)->faqs;
-       // die;
        $search = $request["search"] ?? "";
        if ($search != "") {
            $faqs =Faqs::where('categorie', 'like', "%$search%")->get();

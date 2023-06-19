@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\countries;
+use App\Models\Countries;
 use App\Models\Visa;
 use Illuminate\Support\Facades\DB;
 
@@ -70,8 +70,6 @@ class VisaController extends Controller
      */
     public function show()
     {
-        // return countries::find(23)->visa;
-        // die;
         $search = $request["search"] ?? "";
         if ($search != "") {
             $visa = visa::where('name', 'like', "%$search%")->get();

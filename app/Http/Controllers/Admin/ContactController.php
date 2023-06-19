@@ -65,8 +65,6 @@ class ContactController extends Controller
     */
    public function show()
    {
-       // return countries::find(23)->location;
-       // die;
        $search = $request["search"] ?? "";
        if ($search != "") {
            $location =Contact::where('name', 'like', "%$search%")->get();

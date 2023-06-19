@@ -2,7 +2,7 @@
 
 namespace App\Observers;
 
-use App\Models\countries;
+use App\Models\Countries;
 use App\Models\VisaRequest;
 use App\Models\Visa;
 
@@ -14,7 +14,7 @@ class CountriesObserver
      * @param  \App\Models\countries  $countries
      * @return void
      */
-    public function created(countries $countries)
+    public function created(Countries $countries)
     {
         //
     }
@@ -25,7 +25,7 @@ class CountriesObserver
      * @param  \App\Models\countries  $countries
      * @return void
      */
-    public function updated(countries $countries)
+    public function updated(Countries $countries)
     {
         //
     }

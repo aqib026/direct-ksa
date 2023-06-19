@@ -73,8 +73,7 @@ class LocationController extends Controller
      */
     public function show()
     {
-        // return countries::find(23)->location;
-        // die;
+
         $search = $request["search"] ?? "";
         if ($search != "") {
             $location = location::where('name', 'like', "%$search%")->get();
@@ -148,9 +147,4 @@ class LocationController extends Controller
 
 
 
-    // public function one($id)
-    // {
-    //     return countries::find($id)->location;   used to show one to one relation 
-
-    // }
 }
