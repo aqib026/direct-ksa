@@ -2021,8 +2021,17 @@ a:focus {
 	padding: 4px 6px
 }
 
+/* .footer-text{
+    width: 100%;
+    display: inline-block;
+    color: #FFF !important;
+    padding: 10px 0px;
+    margin: 0px 0px 0px 0px;
+    background-color: #172D44;
+} */
+
 footer {
-	background: #2A3F54;
+	background: #172D44;
 	padding: 10px 20px 5px 20px;
 	display: block
 }

@@ -34,6 +34,22 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
+
+        $validatedData = $request->validate([
+            'name'                  => 'required',
+            'email'                 => 'required|email',
+            'password'              => 'required|min:8',
+            'password_confirmation' => 'required|same:password'
+        ], [
+            'name.required'                     => 'Name is required',
+            'password.required'                 => 'Password is required',
+            'password.min'                      => 'Minimum 8 Characters are required',
+            'password_confirmation.required'    => 'Confirm password is required',
+            'password_confirmation.same'        => 'Confirm password doesnt matches with password',
+            'email.required'                    => 'Email is required',
+            'email.email'                       => 'Enter a valid Email'
+        ]);
+
         $user = new admin;
 
         $user->name     = $request['name'];
@@ -68,13 +84,17 @@ class AdminController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * Edit resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function edit($id)
     {
-
         $user = admin::find($id);
 
-        if (is_null($user))
-            redirect('admin/users');
+        if (is_null($user)) redirect('admin/users');
 
         $title = "Edit User Registration";
         $url = url('admin/user/update') . "/" . $id;
@@ -85,6 +105,20 @@ class AdminController extends Controller
 
     public function update($id, request $request)
     {
+
+        $validatedData = $request->validate([
+            'name'                  => 'required',
+            'email'                 => 'required|email',
+            'password'              => 'nullable|min:8',
+            'password_confirmation' => 'nullable|same:password'
+        ], [
+            'name.required'                     => 'Name is required',
+            'password.min'                      => 'Minimum 8 Characters are required',
+            'password_confirmation.same'        => 'Confirm password doesnt matches with password',
+            'email.required'                    => 'Email is required',
+            'email.email'                       => 'Enter a valid Email'
+        ]);
+
         $user = admin::find($id);
         $user->name     = $request['name'];
         $user->email    = $request['email'];

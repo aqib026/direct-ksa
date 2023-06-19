@@ -1,7 +1,7 @@
 @extends('admin.include.main')
 @section('main-section')
     @push('title')
-        <title>Featured Sales</title>
+        <title>Service Requests</title>
     @endpush
 
     <div class="row">
@@ -9,7 +9,7 @@
         <form action="">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>Featured Sales</h3>
+                    <h3>Service Requests</h3>
                 </div>
                 <div class="title_right">
                     <div class="col-md-7 col-sm-7 form-group pull-right top_search">
@@ -24,7 +24,7 @@
             </div>
         </form>
         <div class="clearfix"></div>
-        <div class="col-md-12 col-sm-12  ">
+        <div class="col-md-12 col-sm-12">
             <div class="x_panel">
                 <div class="x_content">
                     <div class="table-responsive">
@@ -36,6 +36,7 @@
                                     <th>Applicant Name</th>
                                     <th>Mobile No</th>
                                     <th>Email</th>
+                                    <th>Created Date</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -88,6 +89,7 @@
                                         <td>{{ $accre->applicant_name }}</td>
                                         <td>+966{{ $accre->mobile_number }}</td>
                                         <td>{{ $accre->email }}</td>
+                                        <td>{{ $accre->created_at }}</td>
                                         <td>
                                             @if ($accre->status == 0)
                                                 <span class="badge badge-success bg-success">New</span>

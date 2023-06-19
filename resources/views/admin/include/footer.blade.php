@@ -1,6 +1,6 @@
 
 			<footer>
-				<div class="text-center">Admin Panel</div>
+				<div class="text-center"><strong class="footer-text">Admin Panel</strong></div>
 			</footer>
 			<!-- /footer content -->
 		</div>
