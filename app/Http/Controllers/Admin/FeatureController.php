@@ -28,7 +28,7 @@ class FeatureController extends Controller
         ]);
 
 
-        $feature = new feature;
+        $feature = new Feature;
         $feature->name = $request['name'];
         $feature->status = $request['status'];
         $feature->save();
@@ -39,9 +39,9 @@ class FeatureController extends Controller
     {
         $search = $request['search'] ?? "";
         if ($search != "") {
-            $feature = feature::where('name', 'like', "%$search%");
+            $feature = Feature::where('name', 'like', "%$search%")->orderby('id', 'desc')->paginate(20);
         } else {
-            $feature = feature::paginate(6);
+            $feature = Feature::orderby('id', 'desc')->paginate(20);
         }
         $data = compact('feature', 'search');
         return view('admin.feature.feature')->with($data);
@@ -49,7 +49,7 @@ class FeatureController extends Controller
     //////////////////////////////////////////////////////////////////////////////
     public function destroy($id)
     {
-        $feature = feature::find($id);
+        $feature = Feature::find($id);
         if (!is_null($feature)) {
             $feature->delete();
         }
@@ -60,7 +60,7 @@ class FeatureController extends Controller
     public function edit($id)
     {
 
-        $feature = feature::find($id);
+        $feature = Feature::find($id);
         if (is_null($feature)) {
             return redirect('admin/feature');
         } else {
@@ -77,7 +77,7 @@ class FeatureController extends Controller
             'name' => 'required'
         ]);
 
-        $feature = feature::find($id);
+        $feature = Feature::find($id);
         $feature->name = $request['name'];
         $feature->status = $request['status'];
         $feature->save();

@@ -46,6 +46,7 @@ route::get('/dashboard',[HomeController::class, 'index']);
 
 route::get('/config-clear', function () {
     $exitCode = Artisan::call('migrate');
+    $exitCode = Artisan::call('route:cache');
     $exitCode = Artisan::call('config:clear');
     $exitCode = Artisan::call('cache:clear');
     $exitCode = Artisan::call('view:clear');
@@ -167,6 +168,7 @@ Route::group(['prefix'=>'/admin'],function(){
 Route::get('/', [FrontendController::class, 'index'])->name('home');
 Route::get('/featured_sales/{service?}', [FeaturedSalesController::class, 'index'])->name('featured_sales');
 Route::Post('/featured_sales', [FeaturedSalesController::class, 'store'])->name('featured_sales_post');
+Route::get('/featured_sales_thankyou', [FeaturedSalesController::class, 'thankyou'])->name('featured_sales_thankyou');
 Route::get('/requirement/{country}',[FrontendController::class, 'show']);
 
 

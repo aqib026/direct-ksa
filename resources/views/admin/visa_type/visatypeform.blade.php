@@ -59,13 +59,13 @@
 
                         </div>
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="adult_price">Adult Person Price</label>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="adult_price">Adult Person Charges</label>
                             <div class="col-md-6 col-sm-6 ">
                                 <input type="text" id="adult_price" class="form-control" name="adult_price" value="{{ old('adult_price', isset($VisaRequest) ? $VisaRequest->adult_price : '') }}">
                             </div>
                         </div>
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="child_price">Adult Person Price</label>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="child_price">Single Child Charges</label>
                             <div class="col-md-6 col-sm-6 ">
                                 <input type="text" id="child_price" class="form-control" name="child_price" value="{{ old('child_price', isset($VisaRequest) ? $VisaRequest->child_price : '') }}">
                             </div>

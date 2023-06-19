@@ -19,7 +19,7 @@ class ServicesController extends Controller
    }
    ///////////////////////////////////////////////////////////////////////////
 
-   public function store(request $request)
+   public function store(Request $request)
    {
       $request->validate([
          'name' => 'required'
@@ -28,7 +28,7 @@ class ServicesController extends Controller
       ]);
 
 
-      $services = new services;
+      $services = new Services;
       $services->name = $request['name'];
 
       $filename = time() . "bn." . $request->file('banner')->getClientOriginalExtension();
@@ -42,14 +42,13 @@ class ServicesController extends Controller
 
    /////////////////////////////////////////////////////////////////////////////////////
 
-   public function show()
+   public function show(Request $request)
    {
-
       $search = $request["search"] ?? "";
       if ($search != "") {
-         $services = services::where('name', 'like', "%$search%")->get();
+         $services = Services::where('name', 'like', "%$search%")->orderBy('id', 'DESC')->paginate(20);
       } else {
-         $services = services::paginate(6);
+         $services = Services::orderBy('id', 'DESC')->paginate(20);
       }
       $data = compact('services', 'search');
       return view('admin.special_services.special_services')->with($data);
@@ -88,7 +87,7 @@ class ServicesController extends Controller
 
    public function update($id, Request $request)
    {
-      $services = services::find($id);
+      $services = Services::find($id);
 
       $services->name = $request['name'];
       if(isset($request) && !empty($request->file('banner'))){

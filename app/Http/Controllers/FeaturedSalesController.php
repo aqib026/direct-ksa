@@ -20,6 +20,19 @@ class FeaturedSalesController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\FeaturedSales  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function thankyou()
+    {
+        return view('frontend.thankyou');
+
+    }
+
+
+    /**
      * Display a listing of the resource in admin.
      *
      * @return \Illuminate\Http\Response
@@ -28,9 +41,9 @@ class FeaturedSalesController extends Controller
     {
         $search = $request["search"] ?? "";
         if ($search != "") {
-            $featured_sales = FeaturedSales::where('name', 'like', "%$search%")->get();
+            $featured_sales = FeaturedSales::where('applicant_name', 'like', "%$search%")->orderBy('id', 'DESC')->paginate(20);
         } else {
-            $featured_sales = FeaturedSales::paginate(6);
+            $featured_sales = FeaturedSales::orderBy('id', 'DESC')->paginate(20);
         }
         $data = compact('featured_sales', 'search');
         return view('admin.featured_sales.featured_sales')->with($data);
@@ -106,9 +119,11 @@ class FeaturedSalesController extends Controller
 
         $FeaturedSales->save();
         if ($FeaturedSales) {
-            return redirect(route('featured_sales'))->with('success', 'FeaturedSales Added Successfuly.');
+            return redirect(route('featured_sales_thankyou'))->with('success', 'FeaturedSales Added Successfuly.');
         }
     }
+
+    
 
     /**
      * Display the specified resource.
