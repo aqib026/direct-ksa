@@ -29,13 +29,20 @@
 			<div class="col-md-3 left_col">
 				<div class="left_col scroll-view">
 					<div class="navbar nav_title" style="border: 0;">
-						<a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Direct KSA</span></a>
+						<a href="{{url('/dashboard')}}" class="site_title"><i class="fa fa-paw"></i> <span>Direct KSA</span></a>
 					</div>
 					<div class="clearfix"></div>
 					<!-- menu profile quick info -->
 					<div class="profile clearfix">
 						<div class="profile_pic">
-							<img src="{{asset(Auth::user()->profile_pic)}}" alt="Profile Pic" class="img-circle profile_img">
+							@php 
+								if (!empty(Auth::user()->profile_pic)){
+									$profile_pic = asset(Auth::user()->profile_pic);
+								}else{
+									$profile_pic = asset('images/user.png');
+								}
+							@endphp
+							<img src="@php echo $profile_pic @endphp" alt="Profile Pic" class="img-circle profile_img">
 						</div>
 						<div class="profile_info">
 							<span>Welcome,</span>
@@ -49,24 +56,20 @@
 						<div class="menu_section">
 							<h3>General</h3>
 							<ul class="nav side-menu">
-								<li><a href="{{url('/dashboard')}}"><i class="fa fa-home"></i> Dashboard </span></a></li>
-
+								<li><a href="{{url('/dashboard')}}"><i class="fa fa-home"></i>Dashboard</i></a></li>
 								<li>
 									<a><i class="fa fa-clone"></i>Special Services <span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="{{url('/admin/featured_sales')}}"><i class="fa fa-home"></i> Special Sales Requests </span></a></li>
+										<li><a href="{{url('/admin/featured_sales')}}">Special Sales Requests</a></li>
 										<li><a href="{{url('admin/special_services')}}">Special Services</a></li>
 									</ul>
 								</li>
-								
-
 								<li><a><i class="fa fa-edit"></i> User <span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a href="{{url('admin/add-user')}}">Add User</a></li>
 										<li><a href="{{{url('admin/users')}}}">View Users</a></li>
 									</ul>
 								</li>
-
 								<li>
 									<a><i class="fa fa-clone"></i>Settings <span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
@@ -78,19 +81,16 @@
 
 									</ul>
 								</li>
-
 								<li>
 									<a><i class="fa fa-clone"></i>Content Pages <span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a href="{{ route('content_pages', 'about_us') }}">About us</a></li>
 										<li><a href="{{url('admin/contact_location')}}">Contact Location</a></li>
-
 										<li><a href="{{url('admin/categorie')}}">FAQs Categories</a></li>
 										<li><a href="{{url('admin/faqs')}}">FAQs</a></li>
 										<li><a href="{{ route('content_pages', 'terms_conditions') }}">Terms & Conditions</a></li>
 									</ul>
 								</li>
-
 							</ul>
 						</div>
 					</div>
