@@ -163,13 +163,20 @@
 								</div>
 							</div>
 							<div class="btn-group">
-								<button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-								  {{__('head.lang')}}
+								<button class="btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+									@if(session()->get('locale') == 'en')
+									{{__('head.eng')}}
+								@else
+								{{__('head.arb')}}
+								@endif
 								</button>
-								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="locale/en">{{__('head.eng')}}</a></li>
-									<li><a class="dropdown-item" href="locale/ar">{{__('head.arb')}}</a></li>
-								</ul>
+								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="min-width:80px; width: 80px;">
+									
+									<a class="dropdown-item" href="{{url('/locale/ar')}}" {{ session()->get('locale') == 'ar' ? 'selected' : '' }}>{{__('head.arb')}}</a>
+									
+									<a class="dropdown-item" href="{{url('/locale/en')}}" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>{{__('head.eng')}}</a>
+
+							</div>
 							  </div>
 						</div>
 					</div>

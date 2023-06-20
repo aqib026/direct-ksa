@@ -37,7 +37,7 @@
 										@endphp
 									@endforeach
 									@php $content .= "</div>"; @endphp
-									<a tabindex="0" class="btn btn-lg btn-primary" role="button" data-bs-sanitize="false" data-bs-placement="bottom" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-title="Select Visa Type" data-bs-html="true" data-bs-content="{!! $content !!}">Start Visa Request</a>
+									<a tabindex="0" class="btn btn-lg btn-primary" role="button" data-bs-sanitize="false" data-bs-placement="bottom" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-title="Select Visa Type" data-bs-html="true" data-bs-content="{!! $content !!}">{{__('steps.start')}}</a>
 								</div>
 							</div>
 						</div>

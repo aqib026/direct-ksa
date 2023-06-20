@@ -29,6 +29,8 @@ return[
     "psr"=>"Please Select Relation",
     "fm"=>"Family",
     "fr"=>"Friends",
-    "ot"=>"Others"
+    "ot"=>"Others",
+    "start"=>"Start Visa Request",
+    "total"=>"Total Cost",
 ]
 ?>

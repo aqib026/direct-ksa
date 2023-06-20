@@ -4,7 +4,6 @@
 		<div class="steps w-100 text-center">
 			<a class="col-lg-3 col-xs-3 step"><span class="badge rounded-pill bg-success p-2">{{__('steps.s1')}}: <strong>{{__('steps.s1i')}}</strong>&nbsp;<i class="fa fa-check-circle"></i></span></a> 
 			<a class="col-lg-3 col-xs-3 step active"><span>{{__('steps.s2')}}: <strong>{{__('steps.s2i')}}</strong></span></a> 
-
 			<a class="col-lg-3 col-xs-3 step"><span>{{__('steps.s3')}}: <strong>{{__('steps.s3i')}}</strong></span></a>
 			<a class="col-lg-3 col-xs-3 step step-last"><span>{{__('steps.s4')}}: <strong>{{__('steps.s4i')}}</strong></span></a>
 		</div> 
@@ -96,7 +95,7 @@
 						</tbody>
 					</table>
 					<div class="overflow-hidden mt-5 mb-1">
-						<h3 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-1 text-5 line-height-2 line-height-sm-7 mb-3 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">Total Cost</h3>
+						<h3 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-1 text-5 line-height-2 line-height-sm-7 mb-3 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">{{__('steps.total')}}</h3>
 						<h1 class="font-weight-semi-bold text-5 line-height-2 line-height-sm-7 mb-5 selectedpersons"><span class="passenger_total">0</span> {{__('steps.s')}}</h1>
 					</div>
 				</div>
