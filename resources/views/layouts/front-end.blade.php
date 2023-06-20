@@ -236,8 +236,8 @@
 									<h4 class="text-color-light font-weight-bold mb-3">{{__('head.el')}}</h4>
 									<ul class="list list-unstyled columns-lg-2">
 										<li><a href="{{ route('content_page') }}/about_us" class="text-color-grey text-color-hover-primary">{{__('head.au')}}</a></li>
-										<li><a href="#" class="text-color-grey text-color-hover-primary">{{__('head.cu')}}</a></li>
-										<li><a href="#" class="text-color-grey text-color-hover-primary">{{__('head.faq')}}</a></li>
+										<li><a href="{{url('/page/contact')}}" class="text-color-grey text-color-hover-primary">{{__('head.cu')}}</a></li>
+										<li><a href="{{url('/page/faq')}}" class="text-color-grey text-color-hover-primary">{{__('head.faq')}}</a></li>
 										<li><a href="{{ route('content_page') }}/terms_conditions" class="text-color-grey text-color-hover-primary">{{_('head.tc')}}</a></li>
 									</ul>
 								</div>
