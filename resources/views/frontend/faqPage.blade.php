@@ -44,14 +44,14 @@
                                                 <div class="card-header" id="collapse1HeadingThree">
                                                     <h4 class="card-title m-0">
                                                         <a class="accordion-toggle" data-bs-toggle="collapse"
-                                                            data-bs-target="#collapsechild{{ $key }}"
+                                                            data-bs-target="#collapsechild{{$question->id}}"
                                                             aria-expanded="false"
-                                                            aria-controls="collapsechild{{ $key }}">
+                                                            aria-controls="collapsechild{{$question->id}}">
                                                             {{ $question->question }}
                                                         </a>
                                                     </h4>
                                                 </div>
-                                                <div id="collapsechild{{ $key }}" class="collapse"
+                                                <div id="collapsechild{{$question->id}}" class="collapse"
                                                     aria-labelledby="collapse1HeadingThree">
                                                     <div class="card-body">
                                                         <p class="mb-0">{{ $question->answer }}</p>

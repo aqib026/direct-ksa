@@ -163,7 +163,7 @@
 								</div>
 							</div>
 							<div class="btn-group">
-								<button class="btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+								<button class="btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="">
 									@if(session()->get('locale') == 'en')
 									{{__('head.eng')}}
 								@else
@@ -171,11 +171,8 @@
 								@endif
 								</button>
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="min-width:80px; width: 80px;">
-									
-									<a class="dropdown-item" href="{{url('/locale/ar')}}" {{ session()->get('locale') == 'ar' ? 'selected' : '' }}>{{__('head.arb')}}</a>
-									
 									<a class="dropdown-item" href="{{url('/locale/en')}}" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>{{__('head.eng')}}</a>
-
+									<a class="dropdown-item" href="{{url('/locale/ar')}}" {{ session()->get('locale') == 'ar' ? 'selected' : '' }}>{{__('head.arb')}}</a>
 							</div>
 							  </div>
 						</div>
@@ -245,7 +242,7 @@
 										<li><a href="{{ route('content_page') }}/about_us" class="text-color-grey text-color-hover-primary">{{__('head.au')}}</a></li>
 										<li><a href="{{url('/page/contact')}}" class="text-color-grey text-color-hover-primary">{{__('head.cu')}}</a></li>
 										<li><a href="{{url('/page/faq')}}" class="text-color-grey text-color-hover-primary">{{__('head.faq')}}</a></li>
-										<li><a href="{{ route('content_page') }}/terms_conditions" class="text-color-grey text-color-hover-primary">{{_('head.tc')}}</a></li>
+										<li><a href="{{ route('content_page') }}/terms_conditions" class="text-color-grey text-color-hover-primary">{{__('head.tc')}}</a></li>
 									</ul>
 								</div>
 							</div>
