@@ -100,5 +100,6 @@ return[
     "cwd"=>"Cost will decided one of our educational consultants contact you.",
     "pivf"=>"Price Includes: Visa Fees",
     "cwsg"=>"Cost will decided after one of our support agents contact you.",
+    "sar"=>"SAR",
 ]
 ?>

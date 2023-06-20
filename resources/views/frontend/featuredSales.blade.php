@@ -278,52 +278,52 @@
         switch (required_service) { 
             case 'translation': 
                 $('.service_cost_text_amount').text('');
-                $('.service_cost_text_desc').text('Cost will be determined after reviewing the documents.');
+                $('.service_cost_text_desc').text(@json(__('fetsales.jcdr')));
                 $('#service_cost').val('');
                 break;
             case 'passport_renewals': 
                 var total = passport_calculation($('#passport_quantity').val(), 119);
-                $('.service_cost_text_amount').text(total + ' SAR');
+                $('.service_cost_text_amount').text(total + @json(__('fetsales.sar')));
                 $('#service_cost').val(total);
-                $('.service_cost_text_desc').text('Cost Includes: Service fees, Appointment Booking & Form Filling, DOES NOT include Embassy Fees. (Passport renewal usually takes 15 to 35 days in Embassy)');
+                $('.service_cost_text_desc').text(@json(__('fetsales.coin')));
                 break;
             case 'intl_dl_card': 
                 var total = passport_calculation($('#idl_card_qty').val(), 239);
-                $('.service_cost_text_amount').text(total + ' SAR');
+                $('.service_cost_text_amount').text(total + @json(__('fetsales.sar')));
                 $('#service_cost').val(total);
-                $('.service_cost_text_desc').text('Cost Includes: Service fees, IDL License, Collection from one of our branches. Cost DOES NOT include courier delivery.');
-                break;		
+                $('.service_cost_text_desc').text(@json(__('fetsales.coidl')));
+                break;      
             case 'intl_dl_booklet': 
                 var total = passport_calculation($('#idl_qty').val(), 119);
-                $('.service_cost_text_amount').text(total + ' SAR');
+                $('.service_cost_text_amount').text(total + @json(__('fetsales.sar')));
                 $('#service_cost').val(total);
-                $('.service_cost_text_desc').text('Cost Includes: Service fees, IDL License, Collection from one of our branches. Cost DOES NOT include courier delivery.');
+                $('.service_cost_text_desc').text(@json(__('fetsales.coidl')));
                 break;
             case 'uni_adm': 
                 $('.service_cost_text_amount').text('');
-                $('.service_cost_text_desc').text('Cost will decided one of our educational consultants contact you.');
+                $('.service_cost_text_desc').text(@json(__('fetsales.cwd')));
                 $('#service_cost').val('');
                 break;
             case 'uae_visa': 
                 var total = passport_calculation($('#passport_quantity').val(), 499);
-                $('.service_cost_text_amount').text(total + ' SAR');
+                $('.service_cost_text_amount').text(total + @json(__('fetsales.sar')));
                 $('#service_cost').val(total);
-                $('.service_cost_text_desc').text('Price Includes: Visa Fees');
+                $('.service_cost_text_desc').text(@json(__('fetsales.pivf')));
                 break;
             case 'forms_filling': 
                 $('.service_cost_text_amount').text('');
-                $('.service_cost_text_desc').text('Cost will decided after one of our support agents contact you.');
+                $('.service_cost_text_desc').text(@json(__('fetsales.cwsg')));
                 $('#service_cost').val('');
                 break;  
             case 'bahrain_visa': 
                 var total = passport_calculation($('#passport_quantity').val(), 259);
-                $('.service_cost_text_amount').text(total + ' SAR');
+                $('.service_cost_text_amount').text(total + @json(__('fetsales.sar')));
                 $('#service_cost').val(total);
                 $('.service_cost_text_desc').text('');
                 break;  
             case 'vip': 
                 var total = passport_calculation($('#passport_quantity').val(), 390);
-                $('.service_cost_text_amount').text(total + ' SAR');
+                $('.service_cost_text_amount').text(total + @json(__('fetsales.sar')));
                 $('#service_cost').val(total);
                 $('.service_cost_text_desc').text('');
                 break;
@@ -346,7 +346,7 @@
                 break;
             case 'bahrain_visa': 
                 amount = 259;
-                break;		
+                break;      
             case 'vip': 
                 amount = 390;
                 break;
@@ -355,21 +355,22 @@
         }
 
         var total = passport_calculation($('#passport_quantity').val(), amount);
-        $('.service_cost_text_amount').text(total + ' SAR');
+        $('.service_cost_text_amount').text(total + @json(__('fetsales.sar')));
         $('#service_cost').val(total);
     });
     $('#idl_card_qty').change(function () {
         var total = passport_calculation($('#idl_card_qty').val(), 239);
-        $('.service_cost_text_amount').text(total + ' SAR');
+        $('.service_cost_text_amount').text(total + @json(__('fetsales.sar')));
         $('#service_cost').val(total);
     });
     $('#idl_qty').change(function () {
         var total = passport_calculation($('#idl_qty').val(), 119);
-        $('.service_cost_text_amount').text(total + ' SAR');
+        $('.service_cost_text_amount').text(total + @json(__('fetsales.sar')));
         $('#service_cost').val(total);
     });
     function passport_calculation(passport_qty = 0, amount){
         return passport_qty*amount;
     }
 </script>
+
 @endsection

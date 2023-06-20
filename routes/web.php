@@ -21,7 +21,7 @@ use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\ContentPageController;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\NoteController;
-
+use Illuminate\Support\Facades\Artisan;
 
 
 
