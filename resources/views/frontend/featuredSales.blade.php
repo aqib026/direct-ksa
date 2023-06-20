@@ -10,9 +10,9 @@
                     <hr class="bg-primary border-radius m-auto">
                 </div>
                 <div class="overflow-hidden mb-1">
-                    <h3 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-3 text-4 line-height-2 line-height-sm-7 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">Special Services</h3>
+                    <h3 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-3 text-4 line-height-2 line-height-sm-7 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">{{__('home.ss')}}</h3>
                 </div>
-                <h2 class="text-color-dark font-weight-bold text-8 pb-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">Fill form to avail our special services</h2>
+                <h2 class="text-color-dark font-weight-bold text-8 pb-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">{{__('fetsales.ffa')}}</h2>
             </div>
         </div>
         <div class="align-items-center d-flex justify-content-center m-1 pb-5 py-4 row">
@@ -20,18 +20,18 @@
                 <form action="{{ route('featured_sales_post') }}" role="form" method="post" class="form-horizontal" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label for="required_service">Required Service</label>
+                        <label for="required_service">{{__('fetsales.rs')}}</label>
                         <select class="form-control" name="required_service" id="required_service" required>
                             <option disabled selected></option>    
-                            <option value="translation" @if($service == 'translation') selected @endif>Translation</option>
-                            <option value="passport_renewals" @if($service == 'passport_renewals') selected @endif>Passport Renewals</option>
-                            <option value="intl_dl_card" @if($service == 'intl_dl_card') selected @endif>Intl Driving License - Card</option>
-                            <option value="intl_dl_booklet" @if($service == 'intl_dl_booklet') selected @endif>Intl Driving License - Booklet</option>
-                            <option value="uni_adm" @if($service == 'uni_adm') selected @endif>University Admissions</option>
-                            <option value="uae_visa" @if($service == 'uae_visa') selected @endif>UAE Visa for KSA Residents</option>
-                            <option value="forms_filling" @if($service == 'forms_filling') selected @endif>Forms Filling</option>
-                            <option value="bahrain_visa" @if($service == 'bahrain_visa') selected @endif>Bahrain Visa for KSA Residents</option>
-                            <option value="vip" @if($service == 'vip') selected @endif>Premium Service (VIP)</option>
+                            <option value="translation" @if($service == 'translation') selected @endif>{{__('fetsales.tr')}}</option>
+                            <option value="passport_renewals" @if($service == 'passport_renewals') selected @endif>{{__('fetsales.pr')}}</option>
+                            <option value="intl_dl_card" @if($service == 'intl_dl_card') selected @endif>{{__('fetsales.idlc')}}</option>
+                            <option value="intl_dl_booklet" @if($service == 'intl_dl_booklet') selected @endif>{{__('fetsales.idlb')}}</option>
+                            <option value="uni_adm" @if($service == 'uni_adm') selected @endif>{{__('fetsales.us')}}</option>
+                            <option value="uae_visa" @if($service == 'uae_visa') selected @endif>{{__('fetsales.ukr')}}</option>
+                            <option value="forms_filling" @if($service == 'forms_filling') selected @endif>{{__('fetsales.ff')}}</option>
+                            <option value="bahrain_visa" @if($service == 'bahrain_visa') selected @endif>{{__('fetsales.bv')}}</option>
+                            <option value="vip" @if($service == 'vip') selected @endif>{{__('fetsales.ps')}}</option>
                         </select>
                         @if ($errors->has('required_service'))
                             <span class="text-danger">{{ $errors->first('required_service') }}</span>
@@ -40,7 +40,7 @@
 
                     <div class="d-none translation">
                         <div class="form-group">
-                            <label for="paper_quantity">Paper Quantity</label>
+                            <label for="paper_quantity">{{__('fetsales.pq')}}</label>
                             <select class="form-control" name="paper_quantity" id="paper_quantity">
                                 @for ($i = 0; $i <= 19; $i++)
                                     <option value="{{ $i }}">{{ $i }}</option>
@@ -48,31 +48,31 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="documents">Upload Document for Translation (optional)</label>
+                            <label for="documents">{{__('fetsales.upd')}}</label>
                             <div class="input-group">
                                 <div class="custom-file">
                                     <input type="file" name="documents[]" accept=".jpeg, .jpg, .png, .pdf" multiple="multiple" class="custom-file-input" id="documents" aria-describedby="inputGroupFileAddon04">
-                                    <label class="custom-file-label" for="documents">Choose file</label>
+                                    <label class="custom-file-label" for="documents">{{__('fetsales.cf')}}</label>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="translation_content">Translation Content</label>
+                            <label for="translation_content">{{__('fetsales.tc')}}</label>
                             <select class="form-control" name="translation_content" id="translation_content">
                                 <option disabled selected></option>    
-                                <option value="Job Letter">Job Letter</option>
-                                <option value="Medical Report">Medical Report</option>
-                                <option value="Legal Documents">Legal Documents</option>
-                                <option value="University Research">University Research</option>
-                                <option value="Official Documents">Official Documents</option>
-                                <option value="Others">Others</option>
+                                <option value="Job Letter">{{__('fetsales.jb')}}</option>
+                                <option value="Medical Report">{{{__('fetsales.mr')}}}</option>
+                                <option value="Legal Documents">{{__('fetsales.ld')}}</option>
+                                <option value="University Research">{{__('fetsales.ur')}}</option>
+                                <option value="Official Documents">{{__('fetsales.ofd')}}</option>
+                                <option value="Others">{{__('fetsales.ot')}}</option>
                             </select>
                         </div>
                     </div>
 
                     <div class="d-none intl_dl_card">
                         <div class="form-group">
-                            <label for="idl_card_qty">IDL Card Quantity</label>
+                            <label for="idl_card_qty">{{__('fetsales.idlcq')}}</label>
                             <select class="form-control" name="idl_card_qty" id="idl_card_qty">
                                 @for ($i = 0; $i <= 19; $i++)
                                     <option value="{{ $i }}">{{ $i }}</option>
@@ -83,7 +83,7 @@
 
                     <div class="d-none intl_dl_booklet">
                         <div class="form-group">
-                            <label for="idl_qty">IDL Quantity</label>
+                            <label for="idl_qty">{{__('fetsales.idlq')}}</label>
                             <select class="form-control" name="idl_qty" id="idl_qty">
                                 @for ($i = 0; $i <= 19; $i++)
                                     <option value="{{ $i }}">{{ $i }}</option>
@@ -94,103 +94,103 @@
 
                     <div class="d-none intl_dl_card intl_dl_booklet">
                         <div class="form-group">
-                            <label for="lic_col_choice">License Collection Choice</label>
+                            <label for="lic_col_choice">{{__('fetsales.lcc')}}</label>
                             <select class="form-control" name="lic_col_choice" id="lic_col_choice">
                                 <option disabled selected></option>    
-                                <option value="Riyadh (As Safarat) Branch">Riyadh (As Safarat) Branch</option>
-                                <option value="Riyadh (Umm Ul Hamam) Branch">Riyadh (Umm Ul Hamam) Branch</option>
-                                <option value="Jaddah Branch">Jaddah Branch</option>
-                                <option value="Buraydah Branch">Buraydah Branch</option>
-                                <option value="AlKhobar Branch">AlKhobar Branch</option>
-                                <option value="By Courier (with Additional Charges)">By Courier (with Additional Charges)</option>
+                                <option value="Riyadh (As Safarat) Branch">{{__('fetsales.rsb')}}</option>
+                                <option value="Riyadh (Umm Ul Hamam) Branch">{{__('fetsales.rhb')}}</option>
+                                <option value="Jaddah Branch">{{__('fetsales.jdb')}}</option>
+                                <option value="Buraydah Branch">{{__('fetsales.bb')}}</option>
+                                <option value="AlKhobar Branch">{{__('fetsales.ab')}}</option>
+                                <option value="By Courier (with Additional Charges)">{{__('fetsales.bca')}}</option>
                             </select>
                         </div>
                     </div>
 
                     <div class="d-none uni_adm">
                         <div class="form-group">
-                            <label for="univ_adm_country">Country</label>
+                            <label for="univ_adm_country">{{__('fetsales.cty')}}</label>
                             <select class="form-control" name="univ_adm_country" id="univ_adm_country">
                                 <option disabled selected></option>    
-                                <option value="United Kindom">United Kindom</option>
-                                <option value="USA">USA</option>
-                                <option value="Canada">Canada</option>
-                                <option value="Australia">Australia</option>
+                                <option value="United Kindom">{{__('fetsales.uk')}}</option>
+                                <option value="USA">{{__('fetsales.usa')}}</option>
+                                <option value="Canada">{{__('fetsales.cnd')}}</option>
+                                <option value="Australia">{{__('fetsales.ast')}}</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="nationality">Nationality</label>
+                            <label for="nationality">{{__('fetsales.nty')}}</label>
                             <input type="text" class="form-control" name="nationality" id="nationality" placeholder="Nationality">
                         </div>
                         <div class="form-group">
-                            <label for="mode_of_finance">Mode of Finance</label>
+                            <label for="mode_of_finance">{{__('fetsales.mof')}}</label>
                             <select class="form-control" name="mode_of_finance" id="mode_of_finance">
                                 <option disabled selected></option>    
-                                <option value="Govt, Employer Scholarship">Govt, Employer Scholarship</option>
-                                <option value="Self-Finance">Self-Finance</option>
+                                <option value="Govt, Employer Scholarship">{{__('fetsales.ges')}}</option>
+                                <option value="Self-Finance">{{__('fetsales.sf')}}</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="major_of_study">Major of Study (2 majors maximum)</label>
+                            <label for="major_of_study">{{__('fetsales.mos')}}</label>
                             <input type="text" class="form-control" name="major_of_study" id="major_of_study" placeholder="Major of Study (2 majors maximum)">
                         </div>
                         <div class="form-group">
-                            <label for="current_qualification">Current Qualification</label>
+                            <label for="current_qualification">{{__('fetsales.cq')}}</label>
                             <select class="form-control" name="current_qualification" id="current_qualification">
                                 <option disabled selected></option>    
-                                <option value="High School">High School</option>
-                                <option value="Bachelors">Bachelors</option>
-                                <option value="Masters">Masters</option>
+                                <option value="High School">{{__('fetsales.hs')}}</option>
+                                <option value="Bachelors">{{__('fetsales.bch')}}</option>
+                                <option value="Masters">{{__('fetsales.ms')}}</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="last_qualification_grade">Last Qualification Grade</label>
+                            <label for="last_qualification_grade">{{__('fetsales.lqg')}}</label>
                             <select class="form-control" name="last_qualification_grade" id="last_qualification_grade">
                                 <option disabled selected></option>    
-                                <option value="Weak">Weak</option>
-                                <option value="Fair/Acceptable">Fair/Acceptable</option>
-                                <option value="Good">Good</option>
-                                <option value="Very Good">Very Good</option>
-                                <option value="Excellent">Excellent</option>
+                                <option value="Weak">{{__('fetsales.weak')}}</option>
+                                <option value="Fair/Acceptable">{{__('fetsales.fair')}}</option>
+                                <option value="Good">{{__('fetsales.good')}}</option>
+                                <option value="Very Good">{{__('fetsales.vg')}}</option>
+                                <option value="Excellent">{{__('fetsales.exc')}}</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="certification">Do you have IELTS or TOEFL Certification?</label>
+                            <label for="certification">{{__('fetsales.dhielts')}}</label>
                             <select class="form-control" name="certification" id="certification">
                                 <option disabled selected></option>    
-                                <option value="I Don't Have Certification">I Don't Have Certification</option>
-                                <option value="IELTS">IELTS</option>
-                                <option value="TOEFL">TOEFL</option>
+                                <option value="I Don't Have Certification">{{__('fetsales.idhc')}}</option>
+                                <option value="IELTS">{{__('fetsales.iet')}}</option>
+                                <option value="TOEFL">{{__('fetsales.toefl')}}</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="call_time">Select the Best time to call you</label>
+                            <label for="call_time">{{__('fetsales.stbt')}}</label>
                             <select class="form-control" name="call_time" id="call_time">
                                 <option disabled selected></option>    
-                                <option value="10:00 AM to 02:00 PM">10:00 AM to 02:00 PM</option>
-                                <option value="03:00 PM to 06:00 PM">03:00 PM to 06:00 PM</option>
-                                <option value="06:00 PM to 09:00 PM">06:00 PM to 09:00 PM</option>
+                                <option value="10:00 AM to 02:00 PM">{{__('fetsales.am')}}</option>
+                                <option value="03:00 PM to 06:00 PM">{{__('fetsales.pm')}}</option>
+                                <option value="06:00 PM to 09:00 PM">{{__('fetsales.ap')}}</option>
                             </select>
                         </div>
                     </div>
 
                     <div class="d-none forms_filling">
                         <div class="form-group">
-                            <label for="form_type">Form Type</label>
+                            <label for="form_type">{{__('fetesales.ft')}}</label>
                             <select class="form-control" name="form_type" id="form_type">
                                 <option disabled selected></option>    
-                                <option value="Singapore Entry Form">Singapore Entry Form</option>
-                                <option value="Embassy Application">Embassy Application</option>
-                                <option value="Hotel Reservation">Hotel Reservation</option>
-                                <option value="Airline Reservation">Airline Reservation</option>
-                                <option value="Airline + Hotel Reservation">Airline + Hotel Reservation</option>
+                                <option value="Singapore Entry Form">{{__('fetsales.sef')}}</option>
+                                <option value="Embassy Application">{{__('fetsales.ea')}}</option>
+                                <option value="Hotel Reservation">{{__('fetsales.hr')}}</option>
+                                <option value="Airline Reservation">{{__('fetsales.air')}}</option>
+                                <option value="Airline + Hotel Reservation">{{__('fetsales.aiho')}}</option>
                             </select>
                         </div>
                     </div>
 
                     <div class="d-none passport_renewals uae_visa bahrain_visa vip">
                         <div class="form-group">
-                            <label for="passport_quantity">Passport Quantity</label>
+                            <label for="passport_quantity">{{__('fetsales.pasq')}}</label>
                             <select class="form-control" name="passport_quantity" id="passport_quantity">
                                 @for ($i = 0; $i <= 19; $i++)
                                     <option value="{{ $i }}">{{ $i }}</option>
@@ -201,25 +201,25 @@
 
                     <div class="d-none passport_renewals">
                         <div class="form-group">
-                            <label for="country">Country</label>
+                            <label for="country">{{__('fetsales.cty')}}</label>
                             <select class="form-control" name="country" id="country">
-                                <option disabled selected>Select country for worker</option>    
-                                <option value="India">India</option>
-                                <option value="Indonesia">Indonesia</option>
-                                <option value="Philippines">Philippines</option>
+                                <option disabled selected>{{__('fetsales.scfw')}}</option>    
+                                <option value="India">{{__('fetsales.in')}}</option>
+                                <option value="Indonesia">{{__('fetsales.ind')}}</option>
+                                <option value="Philippines">{{__('fetsales.phi')}}</option>
                             </select>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="applicant_name">Applicant Name</label>
+                        <label for="applicant_name">{{__('fetsales.apn')}}</label>
                         <input type="text" class="form-control" name="applicant_name" id="applicant_name" placeholder="e.g. Ahmed, Abdullah" required>
                         @if ($errors->has('applicant_name'))
                             <span class="text-danger">{{ $errors->first('applicant_name') }}</span>
                         @endif
                     </div>
                     <div class="form-group">
-                        <label for="mobile_number">Mobile Number</label>
+                        <label for="mobile_number">{{__('fetsales.num')}}</label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">+966</span>
@@ -234,7 +234,7 @@
                         @endif
                     </div>
                     <div class="form-group">
-                        <label for="email">Email</label>
+                        <label for="email">{{__('fetsales.email')}}</label>
                         <div class="input-group mb-3">
                             <input type="text" name="email" id="email" class="form-control" aria-label="Email e.g. abc@xyz.com" placeholder="Email e.g. abc@xyz.com" required>
                             <div class="input-group-append">
@@ -247,7 +247,7 @@
                     </div>
                     <fieldset class="form-group text-center">
                         <div>
-                            <label class="font-weight-bold"> Service Cost </label>
+                            <label class="font-weight-bold"> {{__('fetsales.sc')}} </label>
                             <div class="text-primary">
                                 <span class="font-weight-bold service_cost_text_amount">--</span> 
                                 <p class="text-primary service_cost_text_desc"></p>
@@ -256,7 +256,7 @@
                     </fieldset>
                     <input type="hidden" name="service_cost" id="service_cost" value=""/>
                     <div class="b-overlay-wrap position-relative d-flex flex-column">
-                        <button type="submit" class="btn w-100 btn-primary">Submit Now !</button>
+                        <button type="submit" class="btn w-100 btn-primary">{{__('fetsales.subn')}}</button>
                     </div>
                 </form>
             </div>
@@ -278,52 +278,52 @@
         switch (required_service) { 
             case 'translation': 
                 $('.service_cost_text_amount').text('');
-                $('.service_cost_text_desc').text('Cost will be determined after reviewing the documents.');
+                $('.service_cost_text_desc').text(@json(__('fetsales.jcdr')));
                 $('#service_cost').val('');
                 break;
             case 'passport_renewals': 
                 var total = passport_calculation($('#passport_quantity').val(), 119);
-                $('.service_cost_text_amount').text(total + ' SAR');
+                $('.service_cost_text_amount').text(total + @json(__('fetsales.sar')));
                 $('#service_cost').val(total);
-                $('.service_cost_text_desc').text('Cost Includes: Service fees, Appointment Booking & Form Filling, DOES NOT include Embassy Fees. (Passport renewal usually takes 15 to 35 days in Embassy)');
+                $('.service_cost_text_desc').text(@json(__('fetsales.coin')));
                 break;
             case 'intl_dl_card': 
                 var total = passport_calculation($('#idl_card_qty').val(), 239);
-                $('.service_cost_text_amount').text(total + ' SAR');
+                $('.service_cost_text_amount').text(total + @json(__('fetsales.sar')));
                 $('#service_cost').val(total);
-                $('.service_cost_text_desc').text('Cost Includes: Service fees, IDL License, Collection from one of our branches. Cost DOES NOT include courier delivery.');
-                break;		
+                $('.service_cost_text_desc').text(@json(__('fetsales.coidl')));
+                break;      
             case 'intl_dl_booklet': 
                 var total = passport_calculation($('#idl_qty').val(), 119);
-                $('.service_cost_text_amount').text(total + ' SAR');
+                $('.service_cost_text_amount').text(total + @json(__('fetsales.sar')));
                 $('#service_cost').val(total);
-                $('.service_cost_text_desc').text('Cost Includes: Service fees, IDL License, Collection from one of our branches. Cost DOES NOT include courier delivery.');
+                $('.service_cost_text_desc').text(@json(__('fetsales.coidl')));
                 break;
             case 'uni_adm': 
                 $('.service_cost_text_amount').text('');
-                $('.service_cost_text_desc').text('Cost will decided one of our educational consultants contact you.');
+                $('.service_cost_text_desc').text(@json(__('fetsales.cwd')));
                 $('#service_cost').val('');
                 break;
             case 'uae_visa': 
                 var total = passport_calculation($('#passport_quantity').val(), 499);
-                $('.service_cost_text_amount').text(total + ' SAR');
+                $('.service_cost_text_amount').text(total + @json(__('fetsales.sar')));
                 $('#service_cost').val(total);
-                $('.service_cost_text_desc').text('Price Includes: Visa Fees');
+                $('.service_cost_text_desc').text(@json(__('fetsales.pivf')));
                 break;
             case 'forms_filling': 
                 $('.service_cost_text_amount').text('');
-                $('.service_cost_text_desc').text('Cost will decided after one of our support agents contact you.');
+                $('.service_cost_text_desc').text(@json(__('fetsales.cwsg')));
                 $('#service_cost').val('');
                 break;  
             case 'bahrain_visa': 
                 var total = passport_calculation($('#passport_quantity').val(), 259);
-                $('.service_cost_text_amount').text(total + ' SAR');
+                $('.service_cost_text_amount').text(total + @json(__('fetsales.sar')));
                 $('#service_cost').val(total);
                 $('.service_cost_text_desc').text('');
                 break;  
             case 'vip': 
                 var total = passport_calculation($('#passport_quantity').val(), 390);
-                $('.service_cost_text_amount').text(total + ' SAR');
+                $('.service_cost_text_amount').text(total + @json(__('fetsales.sar')));
                 $('#service_cost').val(total);
                 $('.service_cost_text_desc').text('');
                 break;
@@ -346,7 +346,7 @@
                 break;
             case 'bahrain_visa': 
                 amount = 259;
-                break;		
+                break;      
             case 'vip': 
                 amount = 390;
                 break;
@@ -355,21 +355,22 @@
         }
 
         var total = passport_calculation($('#passport_quantity').val(), amount);
-        $('.service_cost_text_amount').text(total + ' SAR');
+        $('.service_cost_text_amount').text(total + @json(__('fetsales.sar')));
         $('#service_cost').val(total);
     });
     $('#idl_card_qty').change(function () {
         var total = passport_calculation($('#idl_card_qty').val(), 239);
-        $('.service_cost_text_amount').text(total + ' SAR');
+        $('.service_cost_text_amount').text(total + @json(__('fetsales.sar')));
         $('#service_cost').val(total);
     });
     $('#idl_qty').change(function () {
         var total = passport_calculation($('#idl_qty').val(), 119);
-        $('.service_cost_text_amount').text(total + ' SAR');
+        $('.service_cost_text_amount').text(total + @json(__('fetsales.sar')));
         $('#service_cost').val(total);
     });
     function passport_calculation(passport_qty = 0, amount){
         return passport_qty*amount;
     }
 </script>
+
 @endsection
