@@ -233,7 +233,7 @@
 						<div class="appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="800">
 							<div class="owl-carousel owl-theme stage-margin rounded-nav nav-dark nav-icon-1 nav-size-md nav-position-1" data-plugin-options="{'responsive': {'0': {'items': 1}, '479': {'items': 2}, '768': {'items': 3}, '979': {'items': 4}, '1199': {'items': 4}}, 'margin': 10, 'loop': true, 'nav': true, 'dots': false, 'stagePadding': 40}">
 								@foreach ($countries as $country)
-									@if($country->visa && $country->status == 'active')
+									@if($country->visa && $country->status == '1')
 										<div class="rounded overflow-hidden">
 											<img alt="" class="img-fluid rounded" width="250" height="250" src="{{ asset($country->cover_pic) }}">
 											<div class="card-image" style="margin:auto; margin-top: -50px; margin-bottom: 50px; width: 100px;">
