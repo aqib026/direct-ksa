@@ -84,13 +84,19 @@ class VisaRequestController extends Controller
      */
     public function show(Request $request)
     {
+        
+
         $search = $request["search"] ?? "";
         if ($search != "") {
+      $status = Countries::where('status', 1)->get();
+
             $VisaRequest = VisaRequest::where('name', 'like', "%$search%")->orderby('id', 'desc')->paginate(20);
         } else {
+      $status = Countries::where('status', 1)->get();
+
             $VisaRequest = VisaRequest::orderby('id', 'desc')->paginate(20);
         }
-        $data = compact('VisaRequest', 'search');
+        $data = compact('VisaRequest', 'search','status');
         return view('admin.visa_type.visatype')->with($data);
     }
 

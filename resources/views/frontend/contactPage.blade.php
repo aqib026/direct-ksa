@@ -10,9 +10,9 @@
                     </div>
                     <div class="overflow-hidden mb-1">
                         <h3 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-3 text-4 line-height-2 line-height-sm-7 mb-0 appear-animation"
-                            data-appear-animation="maskUp" data-appear-animation-delay="100">CONTACt US</h3>
+                            data-appear-animation="maskUp" data-appear-animation-delay="100">{{__('contact.Contact')}}</h3>
                     </div>
-                    <h2 class="text-color-dark font-weight-bold text-8 pb-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200"> Location  </h2>
+                    <h2 class="text-color-dark font-weight-bold text-8 pb-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">{{__('contact.loc')}} </h2>
                 </div>
             </div>
             <div class="row col-md-12">

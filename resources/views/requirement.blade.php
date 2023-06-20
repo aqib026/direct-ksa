@@ -37,10 +37,10 @@
                         <hr class="bg-primary border-radius m-auto">
                     </div>
                     <div class="overflow-hidden mb-1">
-                        <h3 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-3 text-4 line-height-2 line-height-sm-7 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">VISA REQUIREMENTS</h3>
+                        <h3 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-3 text-4 line-height-2 line-height-sm-7 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">{{__('req.vr')}}</h3>
                     </div>
                     <h2 class="text-color-dark font-weight-bold text-8 pb-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">{{ $country->name }}</h2>
-                    <h6 class="text-center text-danger py-2">You can submit your visa application now. The required documents can be prepared two or three days before submission of passport to embassy</h6>
+                    <h6 class="text-center text-danger py-2">{{__('req.vri')}}</h6>
                 </div>
             </div>
             <div class="row">
@@ -48,7 +48,7 @@
                 
             </div>
             <div class="text-center py-5">
-                <a href="{{ route('visa_request') }}" class="btn btn-primary w-75">START {{ $country->name }} Visa Request Now!</a>
+                <a href="{{ route('visa_request') }}" class="btn btn-primary w-75">{{__('req.st')}} {{ $country->name }} {{__('req.vrn')}}</a>
             </div>
         </div>
     </section>

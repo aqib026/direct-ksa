@@ -12,11 +12,11 @@
 							<hr class="bg-primary border-radius m-auto">
 						</div>
 						<div class="overflow-hidden mb-1">
-							<h2 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-3 text-4-5 line-height-2 line-height-sm-7 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">Apply for your Visa Now!</h2>
+							<h2 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-3 text-4-5 line-height-2 line-height-sm-7 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">{{__('home.ti')}}</h2>
 						</div>
-						<h1 class="text-color-dark font-weight-bold text-9 pb-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">With Direct, you can get your Visa at all ease</h1>
+						<h1 class="text-color-dark font-weight-bold text-9 pb-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">{{__('home.in')}}</h1>
 						<div class="d-block appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">
-							<a href="{{ route('visa_request') }}" data-hash data-hash-offset="0" data-hash-offset-lg="100" class="btn btn-modern btn-primary btn-arrow-effect-1 text-capitalize text-3-5 px-5 py-3 anim-hover-translate-top-5px transition-2ms">APPLY NOW<i class="fas fa-arrow-right ms-2"></i></a>
+							<a href="{{ route('visa_request') }}" data-hash data-hash-offset="0" data-hash-offset-lg="100" class="btn btn-modern btn-primary btn-arrow-effect-1 text-capitalize text-3-5 px-5 py-3 anim-hover-translate-top-5px transition-2ms">{{__('home.bu')}}<i class="fas fa-arrow-right ms-2"></i></a>
 						</div>
 						<div class="pt-5 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">
 							<span class="d-inline-block anim-hover-translate-bottom-5px transition-2ms">
@@ -80,9 +80,9 @@
 				<hr class="bg-primary border-radius m-auto">
 			</div>
 			<div class="overflow-hidden mb-1">
-				<h3 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-3 text-4 line-height-2 line-height-sm-7 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">Special Services</h3>
+				<h3 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-3 text-4 line-height-2 line-height-sm-7 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">{{__('home.ss')}}</h3>
 			</div>
-			<h2 class="text-color-dark font-weight-bold text-8 pb-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">Find out more with our special services</h2>
+			<h2 class="text-color-dark font-weight-bold text-8 pb-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">{{__('home.si')}}</h2>
 		</div>
 	</div>
 	<div class="row">
@@ -158,9 +158,9 @@
 					<hr class="bg-primary border-radius m-auto">
 				</div>
 				<div class="overflow-hidden mb-1">
-					<h3 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-3 text-4 line-height-2 line-height-sm-7 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">Why Direct?</h3>
+					<h3 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-3 text-4 line-height-2 line-height-sm-7 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">{{__('home.wd')}}</h3>
 				</div>
-				<h2 class="text-color-dark font-weight-bold text-8 pb-4 mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">Our Amazing Services</h2>
+				<h2 class="text-color-dark font-weight-bold text-8 pb-4 mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">{{__('home.oms')}}</h2>
 			</div>
 		</div>
 
@@ -170,8 +170,8 @@
 					<div class="card-body p-relative zindex-1 p-5 text-center">
 						<div class="anim-hover-inner-translate-top-20px transition-3ms">
 							<img width="72" height="73" src="{{ asset('img/demos/business-consulting-4/icons/icon-1.svg') }}" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary'}" />
-							<h4 class="card-title mt-4 mb-2 text-5 font-weight-bold">Apply for your Visa with Ease</h4>
-							<p class="card-text text-3-5">Submit your visa request with ease within 2 minutes, from anywhere in the world at competitive prices</p>
+							<h4 class="card-title mt-4 mb-2 text-5 font-weight-bold">{{__('home.ave')}}</h4>
+							<p class="card-text text-3-5">{{__('home.avei')}}</p>
 						</div>
 					</div>
 				</div>
@@ -181,8 +181,8 @@
 					<div class="card-body p-relative zindex-1 p-5 text-center">
 						<div class="anim-hover-inner-translate-top-20px transition-3ms">
 							<img width="72" height="73" src="{{ asset('img/demos/business-consulting-4/icons/icon-2.svg') }}" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary'}" />
-							<h4 class="card-title mt-4 mb-2 text-5 font-weight-bold">Best Schools Around the World</h4>
-							<p class="card-text text-3-5">Enjoy an Interactive search experience and Excellent services including Tuition fees, Accommodation and meals at an affordable cost</p>
+							<h4 class="card-title mt-4 mb-2 text-5 font-weight-bold">{{__('home.baw')}}</h4>
+							<p class="card-text text-3-5">{{__('home.bawi')}}</p>
 						</div>
 					</div>
 				</div>
@@ -192,8 +192,8 @@
 					<div class="card-body p-relative zindex-1 p-5 text-center">
 						<div class="anim-hover-inner-translate-top-20px transition-3ms">
 							<img width="72" height="73" src="{{ asset('img/demos/business-consulting-4/icons/icon-3.svg') }}" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary'}" />
-							<h4 class="card-title mt-4 mb-2 text-5 font-weight-bold">Your Documents are Ready & Complete</h4>
-							<p class="card-text text-3-5">No need to worry at the time of application, We take care for the appointment, application, insurance, and translation</p>
+							<h4 class="card-title mt-4 mb-2 text-5 font-weight-bold">{{__('home.ydc')}}</h4>
+							<p class="card-text text-3-5">{{__('home.ydci')}}</p>
 						</div>
 					</div>
 				</div>
@@ -220,9 +220,9 @@
 					<hr class="bg-primary border-radius m-auto">
 				</div>
 				<div class="overflow-hidden mb-1">
-					<h3 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-3 text-4 line-height-2 line-height-sm-7 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">Visa Requirements</h3>
+					<h3 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-3 text-4 line-height-2 line-height-sm-7 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">{{__('home.vr')}}</h3>
 				</div>
-				<h2 class="text-color-dark font-weight-bold text-8 pb-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">Know the Requirements with a click</h2>
+				<h2 class="text-color-dark font-weight-bold text-8 pb-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">{{__('home.vri')}}</h2>
 
 			</div>
 		</div>

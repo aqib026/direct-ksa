@@ -123,22 +123,23 @@
 												<ul class="nav nav-pills" id="mainNav">
 													<li class="dropdown">
 														<a href="{{ route('home') }}" class="nav-link active">
-															Home
+															{{__('head.ho')}}
 														</a>
 													</li>
 													<li class="dropdown dropdown-mega">
 														<a class="dropdown-item" href="{{ route('visa_request') }}">
-															Visas
+															{{__('head.vi')}}
 														</a>
 													</li>
 													<li>
 														<a class="nav-link" href="">
-															Schools
+															{{__('head.sc')}}
 														</a>
 													</li>
 												</ul>
 											</nav>
 										</div>
+									
 										<!-- <a href="demo-business-consulting-4-contact-us.html" class="btn btn-modern btn-primary btn-outline btn-arrow-effect-1 text-capitalize text-2-5 ms-3 me-2 d-block d-md-none d-xl-block anim-hover-translate-right-5px transition-2ms">Contact Us <i class="fas fa-arrow-right ms-2"></i></a>
 										<button class="btn header-btn-collapse-nav" data-bs-toggle="collapse" data-bs-target=".header-nav-main nav">
 											<i class="fas fa-bars"></i>
@@ -161,8 +162,18 @@
 									</div> -->
 								</div>
 							</div>
+							<div class="btn-group">
+								<button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+								  {{__('head.lang')}}
+								</button>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="locale/en">{{__('head.eng')}}</a></li>
+									<li><a class="dropdown-item" href="locale/ar">{{__('head.arb')}}</a></li>
+								</ul>
+							  </div>
 						</div>
 					</div>
+					
 				</div>
 			</header>
 
@@ -175,7 +186,7 @@
 							<a href="{{ route('home') }}" class="text-decoration-none">
 								<img src="{{ asset('img/logo.png') }} " width="150" height="42" class="img-fluid mb-4" alt="Direct" />
 							</a>
-							<p class="text-3-5 font-weight-medium pe-lg-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit quisque rutrum pellentesqu. </p>
+							<p class="text-3-5 font-weight-medium pe-lg-2">{{__('head.lid')}} </p>
 							<ul class="list list-unstyled">
 								<li class="d-flex align-items-center mb-4">
 									<i class="icon icon-envelope text-color-light text-5 font-weight-bold position-relative top-1 me-3-5"></i>
@@ -212,22 +223,22 @@
 						<div class="col-lg-8">
 							<div class="row mb-5-5">
 								<div class="col-lg-6 mb-4 mb-lg-0">
-									<h4 class="text-color-light font-weight-bold mb-3">Navigation</h4>
+									<h4 class="text-color-light font-weight-bold mb-3">{{__('head.nav')}}</h4>
 									<ul class="list list-unstyled columns-lg-2">
-										<li><a href="{{ route('home') }}" class="text-color-grey text-color-hover-primary">Home</a></li>
-										<li><a href="{{ route('featured_sales') }}" class="text-color-grey text-color-hover-primary">Our Services</a></li>
-										<li><a href="{{ route('visa_request') }}" class="text-color-grey text-color-hover-primary">Visas</a></li>
-										<li><a href="#" class="text-color-grey text-color-hover-primary">Schools</a></li>
+										<li><a href="{{ route('home') }}" class="text-color-grey text-color-hover-primary">{{__('head.ho')}}</a></li>
+										<li><a href="{{ route('featured_sales') }}" class="text-color-grey text-color-hover-primary">{{__('head.os')}}</a></li>
+										<li><a href="{{ route('visa_request') }}" class="text-color-grey text-color-hover-primary">{{__('head.vi')}}</a></li>
+										<li><a href="#" class="text-color-grey text-color-hover-primary">{{__('head.sc')}}</a></li>
 										
 									</ul>
 								</div>
 								<div class="col-lg-6">
-									<h4 class="text-color-light font-weight-bold mb-3">Extra Links</h4>
+									<h4 class="text-color-light font-weight-bold mb-3">{{__('head.el')}}</h4>
 									<ul class="list list-unstyled columns-lg-2">
-										<li><a href="{{ route('content_page') }}/about_us" class="text-color-grey text-color-hover-primary">About Us</a></li>
-										<li><a href="#" class="text-color-grey text-color-hover-primary">Contact Us</a></li>
-										<li><a href="#" class="text-color-grey text-color-hover-primary">Faq's</a></li>
-										<li><a href="{{ route('content_page') }}/terms_conditions" class="text-color-grey text-color-hover-primary">Terms & Conditions</a></li>
+										<li><a href="{{ route('content_page') }}/about_us" class="text-color-grey text-color-hover-primary">{{__('head.au')}}</a></li>
+										<li><a href="#" class="text-color-grey text-color-hover-primary">{{__('head.cu')}}</a></li>
+										<li><a href="#" class="text-color-grey text-color-hover-primary">{{__('head.faq')}}</a></li>
+										<li><a href="{{ route('content_page') }}/terms_conditions" class="text-color-grey text-color-hover-primary">{{_('head.tc')}}</a></li>
 									</ul>
 								</div>
 							</div>
@@ -258,7 +269,7 @@
 						<hr class="bg-color-light opacity-1">
 						<div class="row">
 							<div class="col mt-4 mb-4 pb-5">
-								<p class="text-center text-3 mb-0">Company © 2023. All Rights Reserved.</p>
+								<p class="text-center text-3 mb-0">{{__('head.cp')}}</p>
 							</div>
 						</div>
 					</div>

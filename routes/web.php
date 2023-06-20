@@ -19,6 +19,7 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\Admin\VisaRequestController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\ContentPageController;
+use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\NoteController;
 
 
@@ -178,3 +179,6 @@ Route::get('/requirement/{country}',[FrontendController::class, 'show']);
 Route::get('/visa_request', [VisaRequestController::class, 'index'])->name('visa_request');
 Route::get('/visa_request/{country?}/{visatype?}', [VisaRequestController::class, 'steptwo'])->name('visa_request_steptwo');
 Route::get('/page/{slug?}', [PagesController::class, 'index'])->name('content_page');
+
+
+Route::get('/locale/{lange}',[LocalizationController::class,'setlang']);
