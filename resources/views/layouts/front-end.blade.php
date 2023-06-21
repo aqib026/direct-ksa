@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="app()->getlocale()" 
+	dir="{{app()->getlocale()== "en" ? "ltr":"rtl"}}"
+	style="{{app()->getlocale()== "en" ? "ltr":"rtl"}}"
+	direction="{{app()->getlocale()== "en" ? "ltr":"rtl"}}"
+>
 	<head>
 
 		<!-- Basic -->
@@ -11,8 +15,6 @@
 		<meta name="keywords" content="Visa" />
 		<meta name="description" content="Direct-KSA">
 		<meta name="author" content="Brantum">
-
-		<!-- Favicon -->
 		<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
 		<link rel="apple-touch-icon" href="img/apple-touch-icon.png') }} ">
 
@@ -32,7 +34,7 @@
 		<link rel="stylesheet" href="{{ asset('front-end/vendor/magnific-popup/magnific-popup.min.css') }}">
 
 		<!-- Theme CSS -->
-		<link rel="stylesheet" href="{{ asset('front-end/css/theme.css') }}">
+		{{-- <link rel="stylesheet" href="{{ asset('front-end/css/theme.css') }}">this --}}
 		<link rel="stylesheet" href="{{ asset('front-end/css/theme-elements.css') }}">
 		<link rel="stylesheet" href="{{ asset('front-end/css/theme-blog.css') }}">
 		<link rel="stylesheet" href="{{ asset('front-end/css/theme-shop.css') }}">
@@ -48,11 +50,21 @@
 
 		<!-- Head Libs -->
 		<script src="{{ asset('front-end/vendor/modernizr/modernizr.min.js') }}"></script>
-		<link rel="stylesheet" href="https://cdn.usebootstrap.com/bootstrap/4.3.1/css/bootstrap.min.css">
     
 		<!-- Font Awesome -->
     	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" integrity="sha512-SgaqKKxJDQ/tAUAAXzvxZz33rmn7leYDYfBP+YoMRSENhf3zJyx3SBASt/OfeQwBHA1nxMis7mM3EV/oYT6Fdw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/solid.min.js" integrity="sha512-apZ8JDL5kA1iqvafDdTymV4FWUlJd8022mh46oEMMd/LokNx9uVAzhHk5gRll+JBE6h0alB2Upd3m+ZDAofbaQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+		<!-- Favicon -->
+    	@if (app()->getlocale()=="en")
+		<link rel="stylesheet" href="{{ asset('front-end/css/theme.css') }}">
+		<link rel="stylesheet" href="https://cdn.usebootstrap.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		
+		@else
+		<link rel="stylesheet" href="{{ asset('front-end/css/themear.css') }}">
+		<link rel="stylesheet" href="{{ asset('front-end/css/bootstrap.min.css') }}">
+
+		@endif
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/solid.min.js" integrity="sha512-apZ8JDL5kA1iqvafDdTymV4FWUlJd8022mh46oEMMd/LokNx9uVAzhHk5gRll+JBE6h0alB2Upd3m+ZDAofbaQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     
 		@stack('link')
 	</head>
