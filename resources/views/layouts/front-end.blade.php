@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="app()->getlocale()" 
-	dir="{{app()->getlocale()== "en" ? "ltr":"rtl"}}"
-	style="{{app()->getlocale()== "en" ? "ltr":"rtl"}}"
-	direction="{{app()->getlocale()== "en" ? "ltr":"rtl"}}"
+<html att=" {{app()->getlocale() }}" lang="{{app()->getlocale()== 'ar' ? 'ar' : 'en' }}" 
+	dir="{{app()->getlocale()== 'ar' ? 'rtl' : 'ltr' }}"
+	style="{{app()->getlocale()== 'ar' ? 'rtl' : 'ltr' }}"
+	direction="{{app()->getlocale()== 'ar' ? 'rtl' : 'ltr' }}"
 >
 	<head>
 
@@ -55,14 +55,12 @@
     	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" integrity="sha512-SgaqKKxJDQ/tAUAAXzvxZz33rmn7leYDYfBP+YoMRSENhf3zJyx3SBASt/OfeQwBHA1nxMis7mM3EV/oYT6Fdw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 		<!-- Favicon -->
-    	@if (app()->getlocale()=="en")
-		<link rel="stylesheet" href="{{ asset('front-end/css/theme.css') }}">
-		<link rel="stylesheet" href="https://cdn.usebootstrap.com/bootstrap/4.3.1/css/bootstrap.min.css">
-		
+    	@if( app()->getlocale() == "en" )
+			<link rel="stylesheet" href="{{ asset('front-end/css/theme.css') }}">
+			<link rel="stylesheet" href="https://cdn.usebootstrap.com/bootstrap/4.3.1/css/bootstrap.min.css">		
 		@else
-		<link rel="stylesheet" href="{{ asset('front-end/css/themear.css') }}">
-		<link rel="stylesheet" href="asset('front-end/css/bootstrap.min.css')">
-
+			<link rel="stylesheet" href="{{ asset('front-end/css/themear.css') }}">
+			<link rel="stylesheet" href="asset('front-end/css/bootstrap.min.css')">
 		@endif
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/solid.min.js" integrity="sha512-apZ8JDL5kA1iqvafDdTymV4FWUlJd8022mh46oEMMd/LokNx9uVAzhHk5gRll+JBE6h0alB2Upd3m+ZDAofbaQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     
