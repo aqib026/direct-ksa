@@ -15,7 +15,7 @@
                 <h2 class="text-color-dark font-weight-bold text-8 pb-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">{{__('fetsales.ffa')}}</h2>
             </div>
         </div>
-        <div class="align-items-center d-flex justify-content-center m-1 pb-5 py-4 row">
+        <div class="align-items-center d-flex justify-content-center text-dark m-1 pb-5 py-4 row">
             <div class="p-75 bg-white shadow rounded col-lg-8" style="padding: 50px 20px;">
                 <form action="{{ route('featured_sales_post') }}" role="form" method="post" class="form-horizontal" enctype="multipart/form-data">
                     @csrf
