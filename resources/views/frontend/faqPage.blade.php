@@ -1,7 +1,8 @@
 @extends('layouts.front-end')
 
 @section('content')
-    <section class="section border-0 bg-transparent m-0">
+
+    <section class="section border-0 bg-transparent m-0" dir="{{app()->getlocale()== "en" ? "ltr":"ltr"}}">
         <div class="container">
             <div class="row">
                 <div class="col text-center">
@@ -26,10 +27,11 @@
                         <div class="card card-default">
                             <div class="card-header" id="collapse200Heading">
                                 <h4 class="card-title m-0">
+                                  
                                     <a class="accordion-toggle text-color-dark font-weight-bold collapsed"
                                         data-bs-toggle="collapse" data-bs-target="#collapseparent{{ $key }}"
                                         aria-expanded="false" aria-controls="collapseparent{{ $key }}">
-
+                                  
                                         {{ $cat->name }}
                                     </a>
 
@@ -43,10 +45,12 @@
                                             <div class="col-md-6">
                                                 <div class="card-header" id="collapse1HeadingThree">
                                                     <h4 class="card-title m-0">
+                                                    
                                                         <a class="accordion-toggle" data-bs-toggle="collapse"
                                                             data-bs-target="#collapsechild{{$question->id}}"
                                                             aria-expanded="false"
                                                             aria-controls="collapsechild{{$question->id}}">
+                                                     
                                                             {{ $question->question }}
                                                         </a>
                                                     </h4>

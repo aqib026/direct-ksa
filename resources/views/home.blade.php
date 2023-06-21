@@ -7,7 +7,7 @@
 		<div class="row text-center custom-hero-row">
 			<div class="col text-center">
 				<div class="row">
-					<div class="offset-2 col-lg-8 p-relative pt-5"> 
+					<div class=" p-relative pt-5"> 
 						<div class="divider divider-small divider-small-lg mt-0 text-center appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="0">
 							<hr class="bg-primary border-radius m-auto">
 						</div>

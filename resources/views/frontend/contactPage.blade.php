@@ -1,7 +1,7 @@
 @extends('layouts.front-end')
 
 @section('content')
-    <section class="section border-0 bg-transparent m-0">
+    <section class="section border-0 bg-transparent m-0"  dir="{{app()->getlocale()== "en" ? "ltr":"ltr"}}">
         <div class="container">
             <div class="row">
                 <div class="col text-center">
