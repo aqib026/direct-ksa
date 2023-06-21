@@ -38,18 +38,21 @@
                     </div>
                     <div class="overflow-hidden mb-1">
                         <h3 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-3 text-4 line-height-2 line-height-sm-7 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">{{__('req.vr')}}</h3>
-                    </div>
+                    </div>                                           
                     <h2 class="text-color-dark font-weight-bold text-8 pb-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">{{ $country->name }}</h2>
                     <h6 class="text-center text-danger py-2">{{__('req.vri')}}</h6>
                 </div>
             </div>
+            @if ($country->visa->status=="1")
             <div class="row">
                 <div class="py-2 table visa_detail">{!! $country->visa->detail !!}</div>
                 
             </div>
+            @endif
             <div class="text-center py-5">
                 <a href="{{ route('visa_request') }}" class="btn btn-primary w-75">{{__('req.st')}} {{ $country->name }} {{__('req.vrn')}}</a>
             </div>
         </div>
+       
     </section>
 @endsection

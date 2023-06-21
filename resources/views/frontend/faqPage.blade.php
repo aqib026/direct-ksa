@@ -20,6 +20,7 @@
             </div>
             @foreach ($page_data as $key => $cat)
                 <br>
+                @if ($cat->status==1)
                 <div class="row">
                     <div class="accordion accordion-modern-status accordion-modern-status-borders accordion-modern-status-arrow"
                         id="accordion200">
@@ -42,6 +43,9 @@
                                 <div class="card-body pt-0">
                                     <div class="row col-md-12">
                                         @foreach ($cat->categorie as $key => $question)
+                                        @if ($question->status == 1)
+                                            
+                                        
                                             <div class="col-md-6">
                                                 <div class="card-header" id="collapse1HeadingThree">
                                                     <h4 class="card-title m-0">
@@ -62,6 +66,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            @endif
                                         @endforeach
                                     </div>
                                 </div>
@@ -69,6 +74,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
             @endforeach
         </div>
     </section>
