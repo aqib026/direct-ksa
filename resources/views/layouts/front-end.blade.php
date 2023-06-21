@@ -175,15 +175,13 @@
 								</div>
 							</div>
 							<div class="btn-group">
-								<button class="btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="">
+								<button class="btn-sm " type="button" data-bs-toggle="dropdown" aria-expanded="">
 									@if(session()->get('locale') == 'ar')
 										{{__('head.arb')}}
 										@else
 										{{__('head.eng')}}							
-
-								
 								@endif
-								</button>
+								<i class="fas fa-chevron-down"></i></button>
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="min-width:80px; width: 80px;">
 									<a class="dropdown-item" href="{{url('/locale/en')}}" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>{{__('head.eng')}}</a>
 									<a class="dropdown-item" href="{{url('/locale/ar')}}" {{ session()->get('locale') == 'ar' ? 'selected' : '' }}>{{__('head.arb')}}</a>
