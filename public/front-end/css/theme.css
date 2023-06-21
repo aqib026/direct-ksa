@@ -4030,7 +4030,7 @@ html[dir="rtl"] #header .header-search .btn-light {
 }
 
 #header .header-nav-main nav > ul > li.dropdown-mega.dropdown-mega-shop .product-actions {
-	text-align: right;
+	text-align: left;
 	width: 80px;
 }
 

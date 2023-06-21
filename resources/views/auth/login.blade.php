@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<body class="login">
-    <div>
-      <div class="col-md-12 col-sm-12  ">
+
+      <div class="col-md-12 col-sm-12  " >
       <div class="login_wrapper">
       
         <div class="animate form login_form">
@@ -57,7 +56,7 @@
 
               <div class="separator">
                 <p class="change_link">New to site?
-                  <a href="register" class="to_register"> Create Account </a>
+                  <a href="{{url('/register')}}" class="to_register"> Create Account </a>
                 </p>
 
                 <div class="clearfix"></div>

@@ -27,6 +27,11 @@
     <script src="{{ asset('js/jquery.min.js') }}"></script>
 
   </head>
+  <body style="background-image: url('https://wallpapercave.com/wp/wp2939993.jpg');
+   background-repeat: no-repeat;  
+  background-size: 100%;">
+    
+  
   <div class="d-flex" id="wrapper">
             <!-- Sidebar-->
             <div class="border-end bg-white" id="sidebar-wrapper">
