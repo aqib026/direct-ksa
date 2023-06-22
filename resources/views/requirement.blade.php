@@ -43,12 +43,12 @@
                     <h6 class="text-center text-danger py-2">{{__('req.vri')}}</h6>
                 </div>
             </div>
-            @if ($country->visa->status=="1")
+            @if ($visaDetails)
             <div class="row">
-                <div class="py-2 table visa_detail">{!! $country->visa->detail !!}</div>
-                
+                <div class="py-2 table visa_detail">{!! $visaDetails->detail !!}</div>
+
             </div>
-            @endif
+        @endif
             <div class="text-center py-5">
                 <a href="{{ route('visa_request') }}" class="btn btn-primary w-75">{{__('req.st')}} {{ $country->name }} {{__('req.vrn')}}</a>
             </div>
