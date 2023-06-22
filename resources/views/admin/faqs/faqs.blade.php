@@ -33,7 +33,9 @@
 									<tr class="headings">
 										<th>Category</th>
 										<th>Question</th>
+										<th>Question (Arabic)</th>
 										<th>Answer</th>
+										<th>Answer (Arabic)</th>
 										<th>Status</th>
 										<th>Action</th>
 									</tr>
@@ -43,7 +45,9 @@
 										@foreach ($faqs as $faqss)
 										<td scope="row">{{ $faqss->categorie->name }}</td>
 										<td>{{ $faqss->question }}</td>
+										<td>{{ $faqss->question_ar }}</td>
 										<td>{{ $faqss->answer }}</td>
+										<td>{{ $faqss->answer_ar }}</td>
 										<td>
 											@if ($faqss->status == 1)
 											<span class="badge badge-success bg-success">Active</span>

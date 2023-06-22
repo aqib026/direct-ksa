@@ -31,7 +31,8 @@ class VisaController extends Controller
     {
         $url = url('admin/visa_form');
         $title = "Add Visa Requirement";
-        $countries = DB::table('countries')->get();
+       $countries = Countries::pluck('name', 'id');
+    //    dd($countries);
         $data = compact('url', 'title', 'countries');
         return view('admin.visa_requirement.visa_form')->with($data);
     }
@@ -46,13 +47,16 @@ class VisaController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'detail' => 'required'
+            'detail' => 'required',
+            'detail_ar' => 'required'
+
 
         ]);
 
         $visa = new visa;
         $visa->countries_id = $request['name'];
         $visa->detail = $request['detail'];
+        $visa->detail_ar = $request['detail_ar'];
         $visa->status = $request['status'];
         $visa->save();
 
@@ -92,8 +96,8 @@ class VisaController extends Controller
         } else {
             $url = url('admin/visa_form/update') . "/" . $id;
             $title = "Update Visa Requirement";
-            $countries = DB::table('countries')->get();
-            $data = compact('visa', 'url', 'countries', 'title');
+            $countries = Countries::pluck('name', 'id');
+            $data = compact('visa', 'url', 'countries', 'title','id');
             return view('admin/visa_requirement/visa_form')->with($data);
         }
     }
@@ -108,12 +112,16 @@ class VisaController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required',
+            'detail' => 'required',
+            'detail_ar' => 'required'
+            
         ]);
 
         $visa = visa::find($id);
         $visa->countries_id = $request['name'];
         $visa->detail = $request['detail'];
+        $visa->detail_ar = $request['detail_ar'];
         $visa->status = $request['status'];
         $visa->save();
 

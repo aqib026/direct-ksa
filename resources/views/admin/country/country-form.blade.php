@@ -41,6 +41,17 @@
                                     </div>
                                 </div>
                                 <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Country Name (Arabic)<span class="required"></span></label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input id="name_ar" type="text" class="form-control @error('name') is-invalid @enderror" name="name_ar" value="{{ old('name_ar', isset($countries) ? $countries->name_ar : '') }}" required autocomplete="name" placeholder="Enter Name" autofocus>
+                                        @error('name_ar')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Flag Pic<span class="required"></span></label>
                                     <div class="col-md-6 col-sm-6 ">
                                         <input id="" type="file" name="flag_pic" value="" placeholder="" {{ isset($countries->flag_pic) ? '' : 'required' }}>

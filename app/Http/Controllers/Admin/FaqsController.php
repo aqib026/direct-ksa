@@ -45,7 +45,8 @@ class FaqsController extends Controller
            'categorie' => 'required',
            'question' => 'required',
            'answer' => 'required',
-          
+           'answer_ar' => 'required',
+        'question_ar' => 'required',
            
        ]);
 
@@ -55,7 +56,8 @@ class FaqsController extends Controller
        $faqs->categorie_id = $request['categorie'];
        $faqs->question = $request['question'];
        $faqs->answer = $request['answer'];
-      
+       $faqs->answer_ar = $request['answer_ar'];
+       $faqs->question_ar = $request['question_ar'];
        $faqs->status = $request['status'];
        $faqs->save();
       
@@ -115,6 +117,8 @@ class FaqsController extends Controller
         'categorie' => 'required',
         'answer' => 'required',
         'question' => 'required',
+        'answer_ar' => 'required',
+        'question_ar' => 'required',
        ]);
 
        $faqs = Faqs::find($id);
@@ -122,6 +126,8 @@ class FaqsController extends Controller
        $faqs->categorie_id = $request['categorie'];
        $faqs->answer = $request['answer'];
        $faqs->question = $request['question'];
+        $faqs->answer_ar = $request['answer_ar'];
+       $faqs->question_ar = $request['question_ar'];
        $faqs->status = $request['status'];
        $faqs->save();
        return redirect('admin/faqs');

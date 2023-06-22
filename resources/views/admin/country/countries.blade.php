@@ -32,6 +32,7 @@
                                     <thead>
                                         <tr class="headings">
                                             <th>Country Name</th>
+                                            <th>Country Name (Arabic)</th>
                                             <th>Flag</th>
                                             <th>Cover Pic</th>
                                             <th>Status</th>
@@ -43,6 +44,8 @@
                                         @foreach ($countries as $country)
                                             <tr class="even pointer">
                                                 <td scope="row">{{ $country->name }}</td>
+                                                <td scope="row">{{ $country->name_ar }}</td>
+
                                                 <td><img src="{{ asset($country->flag_pic) }}" class="me-4 my-image" width="60" alt="Flag-Pic"></td>
                                                 <td><img src="{{ asset($country->cover_pic) }}" class="me-4 my-image" width="60" alt="Cover-Pic"></td>
                                                 <td>

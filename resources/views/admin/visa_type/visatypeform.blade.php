@@ -30,9 +30,9 @@
                                     <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Select Country<span class="required"></span></label>
                                     <div class="col-md-6 col-sm-6 ">
                                         <select name="name" value="{{ old('name', isset($VisaRequest) ? $VisaRequest->name : '') }}" class="form-control">
-                                            @foreach ($countries as $country)
-                                                <option value="{{ $country->id }}" @isset($VisaRequest) @if ($VisaRequest->countries_id == $country->id) selected @endif @endisset>{{ $country->name }}</option>
-                                            @endforeach
+                                            @foreach ($countries as $id => $name)
+                                            <option value="{{ $id }}" @isset($VisaRequest) @if ($VisaRequest->countries_id == $id) selected @endif @endisset>{{ $name }}</option>
+                                        @endforeach
                                         </select>
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">

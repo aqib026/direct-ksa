@@ -33,6 +33,7 @@
                                         <tr class="headings">
                                             <th>Country Name</th>
                                             <th>Detail</th>
+                                            <th>Detail (Arabic)</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
@@ -45,6 +46,10 @@
                                                     $limitedContent = strlen($visas->detail) > 100 ? substr($visas->detail, 0, 100) . '...' : $visas->detail;
                                                 @endphp
                                                 <td>{{ $limitedContent }}</td>
+                                                @php
+                                                $limitedContent_ar = strlen($visas->detail_ar) > 100 ? substr($visas->detail_ar, 0, 100) . '...' : $visas->detail_ar;
+                                            @endphp
+                                            <td>{{ $limitedContent_ar }}</td>
                                                 <td>
                                                     @if ($visas->status == 1)
                                                         <span class="badge badge-success bg-success">Active</span>

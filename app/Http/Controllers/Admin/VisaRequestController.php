@@ -44,7 +44,7 @@ class VisaRequestController extends Controller
     {
         $url = url('admin/visarequest_form');
         $title = "Add Visa Type";
-        $countries = DB::table('countries')->get();
+        $countries = Countries::pluck('name', 'id');
 
         $data = compact('url', 'title','countries');
         return view('admin.visa_type.visatypeform')->with($data);
@@ -115,7 +115,7 @@ class VisaRequestController extends Controller
         } else {
             $url = url('admin/visarequest_form/update') . "/" . $id;
             $title = "Update Visa Type";
-            $countries = DB::table('countries')->get();
+            $countries = Countries::pluck('name', 'id');
             $data = compact('VisaRequest', 'url', 'title','countries');
             return view('admin/visa_type/visatypeform')->with($data);
         }

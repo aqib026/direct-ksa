@@ -35,8 +35,8 @@
                             </label>
                             <div class="col-md-6 col-sm-6 ">
                                 <select name="name" id="" value="{{ old('name', isset($visa) ? $visa->name : '') }}" class="form-control">
-                                    @foreach ($countries as $country)
-                                        <option value="{{ $country->id }}" @isset($visa) @if ($visa->countries_id == $country->id) selected @endif @endisset>{{ $country->name }}</option>
+                                    @foreach ($countries as $id => $name)
+                                        <option value="{{ $id }}" @isset($visa) @if ($visa->countries_id == $id) selected @endif @endisset>{{ $name }}</option>
                                     @endforeach
                                 </select>
                                 @error('name')
@@ -52,6 +52,14 @@
                             </label>
                             <div class="col-md-11 col-sm-11 ">
                                 <textarea name="detail">{{ old('detail', isset($visa) ? $visa->detail : '') }}</textarea>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-1 col-sm-1 label-align" for="first-name"> Detail (Arabic)<span
+                                    class="required"></span>
+                            </label>
+                            <div class="col-md-11 col-sm-11 ">
+                                <textarea name="detail_ar">{{ old('detail_ar', isset($visa) ? $visa->detail_ar : '') }}</textarea>
                             </div>
                         </div>
                         <div class="item form-group">

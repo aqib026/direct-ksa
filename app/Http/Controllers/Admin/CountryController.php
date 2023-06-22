@@ -23,7 +23,9 @@ class CountryController extends Controller
    public function store(request $request)
    {
       $request->validate([
-         'name' => 'required'
+         'name' => 'required',
+         'name_ar' => 'required'
+
 
 
       ]);
@@ -31,6 +33,7 @@ class CountryController extends Controller
 
       $countries = new Countries;
       $countries->name = $request['name'];
+      $countries->name_ar = $request['name_ar'];
 
       $filename = time() . "fp." . $request->file('flag_pic')->getClientOriginalExtension();
       $countries->flag_pic = $request->file('flag_pic')->storeas('flagpic', $filename);
@@ -94,11 +97,15 @@ class CountryController extends Controller
       //flagpic/1686146027fp.png
       //coverpic/1686146027cp.png
       $request->validate([
-         'name' => 'required'
+         'name' => 'required',
+         'name_ar' => 'required'
+
       ]);
       $countries = Countries::find($id);
    
       $countries->name = $request['name'];
+      $countries->name_ar = $request['name_ar'];
+
       if(isset($request) && !empty($request->file('flag_pic'))){
          $filename = time() . "fp." . $request->file('flag_pic')->getClientOriginalExtension();
          $countries->flag_pic = $request->file('flag_pic')->storeas('flagpic', $filename);

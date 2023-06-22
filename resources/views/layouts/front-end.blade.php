@@ -36,7 +36,6 @@
 
     <!-- Theme CSS -->
     {{-- <link rel="stylesheet" href="{{ asset('front-end/css/theme.css') }}">this --}}
-    <link rel="stylesheet" href="{{ asset('front-end/css/theme-elements.css') }}">
     <link rel="stylesheet" href="{{ asset('front-end/css/theme-blog.css') }}">
     <link rel="stylesheet" href="{{ asset('front-end/css/theme-shop.css') }}">
 
@@ -59,9 +58,11 @@
 
     <!-- Favicon -->
     @if (app()->getlocale() == 'en')
+    <link rel="stylesheet" href="{{ asset('front-end/css/theme-elements.css') }}">
         <link rel="stylesheet" href="{{ asset('front-end/css/theme.css') }}">
         <link rel="stylesheet" href="https://cdn.usebootstrap.com/bootstrap/4.3.1/css/bootstrap.min.css">
     @else
+    <link rel="stylesheet" href="{{ asset('front-end/css/theme-ar-element.css') }}">
         <link rel="stylesheet" href="{{ asset('front-end/css/themear.css') }}">
         <link rel="stylesheet" href="asset('front-end/css/bootstrap.min.css')">
     @endif

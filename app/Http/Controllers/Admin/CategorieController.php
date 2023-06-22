@@ -22,12 +22,15 @@ class CategorieController extends Controller
     public function store(request $request)
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required',
+            'name_ar' => 'required'
+
         ]);
 
 
         $categorie = new Categorie;
         $categorie->name = $request['name'];
+        $categorie->name_ar = $request['name_ar'];
         $categorie->status = $request['status'];
         $categorie->save();
         return redirect('admin/categorie');
@@ -72,11 +75,13 @@ class CategorieController extends Controller
     public function update($id, request $request)
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required',
+            'name_ar' => 'required',
         ]);
 
         $categorie = Categorie::find($id);
         $categorie->name = $request['name'];
+        $categorie->name_ar = $request['name_ar'];
         $categorie->status = $request['status'];
         $categorie->save();
         return redirect('admin/categorie');

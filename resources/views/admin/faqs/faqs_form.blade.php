@@ -47,10 +47,24 @@
                             <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Question</label>
                             <div class="col-md-6 col-sm-6 ">
                                 <input type="text"
-                                    class="form-control @error('answer') is-invalid @enderror" name="question"
-                                    value="{{ old('lat', isset($faqs) ? $faqs->question : '') }}" required
+                                    class="form-control @error('question') is-invalid @enderror" name="question"
+                                    value="{{ old('question', isset($faqs) ? $faqs->question : '') }}" required
                                     autocomplete="name" placeholder="Enter Question" autofocus>
                                 @error('question')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Question (Arabic)</label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input type="text"
+                                    class="form-control @error('question_ar') is-invalid @enderror" name="question_ar"
+                                    value="{{ old('question_ar', isset($faqs) ? $faqs->question_ar : '') }}" required
+                                    autocomplete="name" placeholder="Enter Question" autofocus>
+                                @error('question_ar')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -63,6 +77,18 @@
                                 <textarea id="" type="text" class="form-control @error('answer') is-invalid @enderror" name="answer"
                                     value="" required autocomplete="name" placeholder="Enter Answer" autofocus>{{ old('long', isset($faqs) ? $faqs->answer : '') }}</textarea>
                                 @error('answer')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Answer (Arabic)<span class="required"></span></label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <textarea id="" type="text" class="form-control @error('answer_ar') is-invalid @enderror" name="answer_ar"
+                                    value="" required autocomplete="name" placeholder="Enter Answer" autofocus>{{ old('long', isset($faqs) ? $faqs->answer_ar : '') }}</textarea>
+                                @error('answer_ar')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

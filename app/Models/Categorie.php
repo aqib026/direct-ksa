@@ -14,5 +14,8 @@ class Categorie extends Model
     {
         return $this->hasmany('App\Models\Faqs');
     }
+    public function getNameAttribute($value) {
+        return session()->has('locale') && session()->get('locale') == 'ar' && !request()->is('admin*') ? $this->{'name_ar'} : $value;  
+    }
     use HasFactory;
 }
