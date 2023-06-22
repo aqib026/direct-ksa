@@ -176,7 +176,7 @@
 
                     <div class="d-none forms_filling">
                         <div class="form-group">
-                            <label for="form_type">{{__('fetesales.ft')}}</label>
+                            <label for="form_type">{{__('fetsales.ft')}}</label>
                             <select class="form-control" name="form_type" id="form_type">
                                 <option disabled selected></option>    
                                 <option value="Singapore Entry Form">{{__('fetsales.sef')}}</option>

@@ -1,6 +1,6 @@
 @extends('layouts.front-end')
 @section('content')
-	{{-- 	<section class="section border-0 bg-quaternary m-0 p-0 border-1"> --}}
+	<section class="section border-0 bg-quaternary m-0 p-0 border-1">
 		<div class="steps w-100 text-center">
 			<a class="col-lg-3 col-xs-3 step"><span class="badge rounded-pill bg-success p-2">{{__('steps.s1')}}: <strong>{{__('steps.s1i')}}</strong>&nbsp;<i class="fa fa-check-circle"></i></span></a> 
 			<a class="col-lg-3 col-xs-3 step active"><span>{{__('steps.s2')}}: <strong>{{__('steps.s2i')}}</strong></span></a> 
@@ -33,7 +33,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="row py-5 appear-animation datepickercustom" data-appear-animation="fadeIn" data-appear-animation-delay="300">
+			<div class="row mt-5 py-5 appear-animation datepickercustom" data-appear-animation="fadeIn" data-appear-animation-delay="300">
 				<div class="overflow-hidden mb-1 text-center">
 					<h2 class="text-color-dark font-weight-bold text-8 pb-2 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">{{__('steps.wwa')}}</h2>
 				</div>
@@ -77,20 +77,25 @@
 				<div class="col col-lg-12 text-center py-3">
 					<table class="table table-bordered">
 						<tbody>
-							<tr>
-								<td>{{__('steps.ad')}}</td>
-								<td><button class="btn btn-secondary" id="adult_counter_minus"><i class="fa fa-minus"></i></button><span class="adult_counter">0</span><button class="btn btn-secondary" id="adult_counter_plus"><i class="fa fa-plus"></i></button></td>
-								<td><span class="adult_counter_sum"><span class="adult_price_total">0</span> {{__('steps.s')}}</span></td>
+							<tr class="{{ $VisaRequest->adult_price ?? 'd-none' }}">
+								<td  width="30%">{{__('steps.ad')}}</td>
+								<td  width="40%"><button class="btn btn-secondary" id="adult_counter_minus"><i class="fa fa-minus"></i></button><span class="adult_counter">0</span><button class="btn btn-secondary" id="adult_counter_plus"><i class="fa fa-plus"></i></button></td>
+								<td  width="30%"><span class="adult_counter_sum"><span class="adult_price_total">0</span> {{__('steps.s')}}</span></td>
 							</tr>
-							<tr>
-								<td>{{__('steps.ch')}}</td>
-								<td><button class="btn btn-secondary" id="child_counter_minus"><i class="fa fa-minus"></i></button><span class="child_counter">0</span><button class="btn btn-secondary" id="child_counter_plus"><i class="fa fa-plus"></i></button></td>
-								<td><span class="child_counter_sum"><span class="child_price_total">0</span> {{__('steps.s')}}</span></td>
+							<tr class="{{ $VisaRequest->child_price ?? 'd-none' }}">
+								<td  width="30%">{{__('steps.ch')}}</td>
+								<td  width="40%"><button class="btn btn-secondary" id="child_counter_minus"><i class="fa fa-minus"></i></button><span class="child_counter">0</span><button class="btn btn-secondary" id="child_counter_plus"><i class="fa fa-plus"></i></button></td>
+								<td  width="30%"><span class="child_counter_sum"><span class="child_price_total">0</span> {{__('steps.s')}}</span></td>
 							</tr>
-							<tr>
-								<td>{{__('steps.hp')}}</td>
-								<td><input class="form-control text-3 h-auto py-2" value="" name="promo_code" placeholder="Type Promo Here"/></td>
-								<td><button class="btn btn-primary">{{__('steps.ap')}}</button></td>
+							<tr class="{{ $VisaRequest->passport_price ?? 'd-none' }}">
+								<td  width="30%">{{__('steps.pas')}}</td>
+								<td  width="40%"><button class="btn btn-secondary" id="passport_counter_minus"><i class="fa fa-minus"></i></button><span class="passport_counter">0</span><button class="btn btn-secondary" id="passport_counter_plus"><i class="fa fa-plus"></i></button></td>
+								<td  width="30%"><span class="passport_counter_sum"><span class="passport_price_total">0</span> {{__('steps.s')}}</span></td>
+							</tr>
+							<tr class="d-none">
+								<td  width="30%">{{__('steps.hp')}}</td>
+								<td  width="40%"><input class="form-control text-3 h-auto py-2" value="" name="promo_code" placeholder="Type Promo Here"/></td>
+								<td  width="30%"><button class="btn btn-primary">{{__('steps.ap')}}</button></td>
 							</tr>					
 						</tbody>
 					</table>
@@ -115,8 +120,14 @@
 					</div>
 				</div>
 			</div>
-			<input type="hidden" id="adult_price" value="849" />
-			<input type="hidden" id="child_price" value="849" />
+			<input type="hidden" id="adult_price" value="{{ $VisaRequest->adult_price ?? '0' }}" />
+			<input type="hidden" id="child_price" value="{{ $VisaRequest->child_price ?? '0' }}" />
+			<input type="hidden" id="passport_price" value="{{ $VisaRequest->passport_price ?? '0' }}" />
+			<div class="row py-5 appear-animation datepickercustom" data-appear-animation="fadeIn" data-appear-animation-delay="300">
+				<div class="col col-lg-12 text-center">
+					<button class="btn btn-modern btn-primary btn-arrow-effect-1 btn-xl mb-2" type="submit">{{__('steps.ns3')}}</button>
+				</div>
+			</div>
 		</div>
 	</section>	
 @endsection
@@ -187,6 +198,35 @@
 			$('.passenger_total').text(adult_price_total+child_price_total);
 		});
 
+		$('#passport_counter_minus').on('click', function(){
+			var passport_counter_current_value = parseInt($('.passport_counter').text());
+			var passport_price_total = 0;
+			var passport_price = parseInt($('#passport_price').val());
+			if(passport_counter_current_value > 0){
+				passport_counter_current_value--;
+				passport_price_total = passport_counter_current_value * passport_price;
+			}else{
+				passport_counter_current_value = 0;
+			}
+			$('.passport_counter').text(passport_counter_current_value);
+			$('.passport_price_total').text(passport_price_total);
+			$('.passenger_total').text(passport_price_total);
+
+		});
+		$('#passport_counter_plus').on('click', function(){
+			var passport_counter_current_value = parseInt($('.passport_counter').text());
+			var passport_price_total = 0;
+			var passport_price = parseInt($('#passport_price').val());
+			if(passport_counter_current_value >= 0){
+				passport_counter_current_value++;
+				passport_price_total = passport_counter_current_value * passport_price;
+			}else{
+				passport_counter_current_value = 0;
+			}
+			$('.passport_counter').text(passport_counter_current_value);
+			$('.passport_price_total').text(passport_price_total);
+			$('.passenger_total').text(passport_price_total);
+		});
   	});
 	
 	function join(t, a, s) {
