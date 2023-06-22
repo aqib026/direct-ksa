@@ -24,18 +24,14 @@
                 <div class="row">
                     <div class="accordion accordion-modern-status accordion-modern-status-borders accordion-modern-status-arrow"
                         id="accordion200">
-
                         <div class="card card-default">
                             <div class="card-header" id="collapse200Heading">
-                                <h4 class="card-title m-0">
-                                  
+                                <h4 class="card-title m-0">              
                                     <a class="accordion-toggle text-color-dark font-weight-bold collapsed"
                                         data-bs-toggle="collapse" data-bs-target="#collapseparent{{ $key }}"
-                                        aria-expanded="false" aria-controls="collapseparent{{ $key }}">
-                                  
+                                        aria-expanded="false" aria-controls="collapseparent{{ $key }}">             
                                         {{ $cat->name }}
                                     </a>
-
                                 </h4>
                             </div>
                             <div id="collapseparent{{ $key }}" class="collapse"
@@ -44,8 +40,6 @@
                                     <div class="row col-md-12">
                                         @foreach ($cat->categorie as $key => $question)
                                         @if ($question->status == 1)
-                                            
-                                        
                                             <div class="col-md-6">
                                                 <div class="card-header" id="collapse1HeadingThree">
                                                     <h4 class="card-title m-0">

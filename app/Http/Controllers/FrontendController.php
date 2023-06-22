@@ -55,10 +55,10 @@ class FrontendController extends Controller
      */
     public function show(Countries $country)
     {  
-        $countries=Countries::all();
-
+        $countries=Countries::where('status','1')->get();
+        $visaDetails = $country->visa()->where('status', '1')->first();
         if ($countries) {
-            return view('requirement', compact('countries', 'country' ));
+            return view('requirement', compact('countries', 'country','visaDetails' ));
         } else {
             return redirect('home');
         }
