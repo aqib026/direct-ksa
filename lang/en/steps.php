@@ -21,6 +21,7 @@ return[
     "cnt"=>"CHOOSE No. OF TRAVELERS",
     "ad"=>"Adults (More than 6 years in age)",
     "ch"=>"Children (Less than 6 years in age)",
+    "pas"=>"Passport",
     "hp"=>"Have a Promo?",
     "s"=>"SAR",
     "ap"=>"APPLY",
@@ -32,5 +33,6 @@ return[
     "ot"=>"Others",
     "start"=>"Start Visa Request",
     "total"=>"Total Cost",
+    "ns3"=>"Continue to Step 3: Application Forms"
 ]
 ?>

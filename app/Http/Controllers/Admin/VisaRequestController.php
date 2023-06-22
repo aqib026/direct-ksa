@@ -32,12 +32,10 @@ class VisaRequestController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function steptwo(Request $request){
-        $countries = countries::all();
-
-        $data = compact('countries');
-
-        return view('frontend.visa_request_steptwo')->with($data);
+    public function steptwo(Request $request, $country, $visatype)
+    {
+        $VisaRequest = VisaRequest::where('countries_id', $country)->where('visa_type', $visatype)->first();
+        return view('frontend.visa_request_steptwo', compact('VisaRequest'));
     }
 
     public function create()
