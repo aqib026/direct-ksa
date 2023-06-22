@@ -126,7 +126,7 @@ Theme Version:	9.9.2
 	            }
 	        },
 	        "color": {
-	            "value": "#0088cc"
+	            "value": "#FFFFFF"
 	        },
 	        "shape": {
 	            "type": "circle",
@@ -161,7 +161,7 @@ Theme Version:	9.9.2
 	        "line_linked": {
 	            "enable": false,
 	            "distance": 150,
-	            "color": "#0088cc",
+	            "color": "#FFFFFF",
 	            "opacity": 0.4,
 	            "width": 1
 	        },

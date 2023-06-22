@@ -332,11 +332,9 @@
     <!-- Theme Base, Components and Settings -->
     <script src="{{ asset('front-end/js/theme.js') }}"></script>
 
-    <!-- Demo -->
-    <script src="{{ asset('front-end/js/demos/demo-business-consulting-4.js') }}"></script>
-
     <!-- Theme Custom -->
     <script src="{{ asset('front-end/js/custom.js') }}"></script>
+    <script src="{{ asset('front-end/js/examples/examples.particles.js') }}"></script>
 
     <!-- Theme Initialization Files -->
     <script src="{{ asset('front-end/js/theme.init.js') }}"></script>

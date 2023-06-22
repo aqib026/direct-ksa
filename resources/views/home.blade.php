@@ -1,74 +1,29 @@
 @extends('layouts.front-end')
 @section('content')
 
-
-<section class="section border-0 m-0 bg-color-quaternary p-relative">
-	<div class="container">
-		<div class="row text-center custom-hero-row">
-			<div class="col text-center">
-				<div class="row">
-					<div class=" p-relative pt-5"> 
-						<div class="divider divider-small divider-small-lg mt-0 text-center appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="0">
-							<hr class="bg-primary border-radius m-auto">
-						</div>
-						<div class="overflow-hidden mb-1">
-							<h2 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-3 text-4-5 line-height-2 line-height-sm-7 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">{{__('home.ti')}}</h2>
-						</div>
-						<h1 class="text-color-dark font-weight-bold text-9 pb-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">{{__('home.in')}}</h1>
-						<div class="d-block appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">
-							<a href="{{ route('visa_request') }}" data-hash data-hash-offset="0" data-hash-offset-lg="100" class="btn btn-modern btn-primary btn-arrow-effect-1 text-capitalize text-3-5 px-5 py-3 anim-hover-translate-top-5px transition-2ms">{{__('home.bu')}}<i class="fas fa-arrow-right ms-2"></i></a>
-						</div>
-						<div class="pt-5 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">
-							<span class="d-inline-block anim-hover-translate-bottom-5px transition-2ms">
-								<a href="#visa" data-hash data-hash-offset="0" data-hash-offset-lg="100" class="btn btn-default text-color-primary border-color-primary bg-transparent rotate-r-90 btn-circle border-width-2 btn-lg"><i class="fas fa-arrow-right"></i></a>
-							</span>
-						</div>
-					</div>
-					<!--<div class="col-12 col-lg-6 p-relative text-end">
-
-						<div class="appear-animation custom-element-wrapper custom-element-6" data-appear-animation="expandIn" data-appear-animation-delay="500">
-							<div class="bg-color-primary particle particle-dots w-100 h-100 opacity-3"></div>	
-						</div>
-
-						<div class="appear-animation custom-element-wrapper custom-element-7" data-appear-animation="expandIn" data-appear-animation-delay="700">
-							<div class="bg-color-primary particle particle-dots w-100 h-100 opacity-3"></div>	
-						</div>
-
-						<div class="appear-animation custom-element-wrapper p-relative custom-element-5" data-appear-animation="expandIn" data-appear-animation-delay="0">
-							<div class="w-100 h-100">
-								<div class="custom-element rotate-r-45"></div>
-							</div>
-						</div>
-
-						<img class="appear-animation img-fluid custom-element-wrapper custom-element-8" data-appear-animation="fadeIn" data-appear-animation-delay="900" src="{{ asset('img/demos/business-consulting-4/generic/generic-1.png') }}" alt="">
-
-					</div>-->
+<section class="section border-0 bg-dark m-0 p-relative">
+	<div class="particles-wrapper z-index-1">
+		<div id="particles-1"></div>
+	</div>
+	<div class="container py-5 p-relative z-index-2">
+		<div class="row">
+			<div class="text-center p-relative pt-5"> 
+				<div class="divider divider-small divider-small-lg mt-0 text-center appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="0">
+					<hr class="bg-primary border-radius m-auto">
+				</div>
+				<div class="overflow-hidden mb-1">
+					<h2 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-3 text-4-5 line-height-2 line-height-sm-7 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">{{__('home.ti')}}</h2>
+				</div>
+				<h1 class="text-color-light font-weight-bold text-9 pb-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">{{__('home.in')}}</h1>
+				<div class="d-block appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">
+					<a href="{{ route('visa_request') }}" data-hash data-hash-offset="0" data-hash-offset-lg="100" class="btn btn-modern btn-primary btn-arrow-effect-1 text-capitalize text-3-5 px-5 py-3 anim-hover-translate-top-5px transition-2ms">{{__('home.bu')}}<i class="fas fa-arrow-right ms-2"></i></a>
+				</div>
+				<div class="pt-5 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">
+					<span class="d-inline-block anim-hover-translate-bottom-5px transition-2ms">
+						<a href="#visa" data-hash data-hash-offset="0" data-hash-offset-lg="100" class="btn btn-default text-color-primary border-color-primary bg-transparent rotate-r-90 btn-circle border-width-2 btn-lg"><i class="fas fa-arrow-right"></i></a>
+					</span>
 				</div>
 			</div>
-		</div>
-	</div>
-
-	<div class="appear-animation custom-element-wrapper custom-element-1" data-appear-animation="expandIn" data-appear-animation-delay="200">
-		<div class="w-100 h-100" data-plugin-float-element data-plugin-options="{'startPos': 'bottom', 'speed': 2.1, 'transition': true, 'transitionDuration': 500}">
-			<div class="custom-element rotate-r-45"></div>
-		</div>
-	</div>
-
-	<div class="appear-animation custom-element-wrapper custom-element-2" data-appear-animation="expandIn" data-appear-animation-delay="200">
-		<div class="w-100 h-100" data-plugin-float-element data-plugin-options="{'startPos': 'bottom', 'speed': 2.2, 'transition': true, 'transitionDuration': 500}">
-			<div class="custom-element rotate-r-45"></div>
-		</div>
-	</div>
-
-	<div class="appear-animation custom-element-wrapper custom-element-3" data-appear-animation="expandIn" data-appear-animation-delay="200">
-		<div class="w-100 h-100" data-plugin-float-element data-plugin-options="{'startPos': 'bottom', 'speed': 2.3, 'transition': true, 'transitionDuration': 500}">
-			<div class="custom-element rotate-r-45"></div>
-		</div>
-	</div>
-
-	<div class="appear-animation custom-element-wrapper custom-element-4" data-appear-animation="expandIn" data-appear-animation-delay="200">
-		<div class="w-100 h-100" data-plugin-float-element data-plugin-options="{'startPos': 'bottom', 'speed': 2.4, 'transition': true, 'transitionDuration': 500}">
-			<div class="custom-element rotate-r-45"></div>
 		</div>
 	</div>
 </section>
