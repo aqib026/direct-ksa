@@ -56,6 +56,21 @@
                                         </span>
                                     @enderror
 
+                                </div> <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Visa type (Arabic)
+                                        <span class="required"></span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input id="" type="text" class="form-control" name="visa_type_ar"
+                                            value="{{ old('visa_type_ar', isset($VisaRequest) ? $VisaRequest->visa_type_ar : '') }}"
+                                            placeholder="" required autocomplete="">
+                                    </div>
+                                    @error('VisaRequest_type_ar')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+
                                 </div>
                                 <div class="item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3 label-align" for="adult_price">Adult Person Charges</label>

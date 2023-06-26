@@ -32,15 +32,17 @@
                                     <thead>
                                         <tr class="headings">
                                             <th>Country Name</th>
-                                            <th>VisaRequest Type</th>
+                                            <th>Visa Request Type</th>
+                                            <th>Visa Request Type (Arabic)</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($VisaRequest as $VisaRequests)
                                             <tr class="even pointer">
-                                                <td scope="row">{{ $VisaRequests->visatype->name }}</td>
+                                                <td scope="row">{{ $VisaRequests->country->name }}</td>
                                                 <td>{{ $VisaRequests->visa_type }}</td>
+                                                <td>{{ $VisaRequests->visa_type_ar }}</td> 
                                                 <td>
                                                     <a href="{{ url('admin/visarequest_form/edit/') }}/{{ $VisaRequests->id }}"><i class="btn btn-success fa fa-edit"></i>
                                                     <a href="{{ url('admin/visarequest/delete/') }}/{{ $VisaRequests->id }}"><i class="btn btn-danger fa fa-trash"></i></a>

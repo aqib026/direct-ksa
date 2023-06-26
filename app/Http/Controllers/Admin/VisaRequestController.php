@@ -59,6 +59,7 @@ class VisaRequestController extends Controller
         $request->validate([
             'name' => 'required',
             'visa_type' => 'required',
+            'visa_type_ar' => 'required',
         ]);
 
         $VisaRequest = new VisaRequest();
@@ -66,6 +67,7 @@ class VisaRequestController extends Controller
         $VisaRequest->countries_id = $request['name'];
 
         $VisaRequest->visa_type = $request['visa_type'];
+        $VisaRequest->visa_type_ar = $request['visa_type_ar'];
         $VisaRequest->adult_price = $request['adult_price'];
         $VisaRequest->child_price = $request['child_price'];
         $VisaRequest->passport_price = $request['passport_price'];
@@ -129,12 +131,15 @@ class VisaRequestController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required',
+            'visa_type' => 'required',
+            'visa_type_ar' => 'required',
         ]);
         $VisaRequest = VisaRequest::find($id);
 
         $VisaRequest->Countries_id = $request['name'];
         $VisaRequest->visa_type = $request['visa_type'];
+        $VisaRequest->visa_type_ar = $request['visa_type_ar'];
         $VisaRequest->adult_price = $request['adult_price'];
         $VisaRequest->child_price = $request['child_price'];
         $VisaRequest->passport_price = $request['passport_price'];
