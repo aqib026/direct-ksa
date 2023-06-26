@@ -38,7 +38,9 @@ class ContactController extends Controller
    {
        $request->validate([
            'name' => 'required',
-           'address' => 'required',
+           'name_ar' => 'required',
+            'address' => 'required',
+            'address_ar' => 'required',
            'lat' => 'required',
            'long' => 'required',
            
@@ -48,8 +50,10 @@ class ContactController extends Controller
        $location = new Contact();
 
        $location->name = $request['name'];
-       $location->address = $request['address'];
-       $location->latitude = $request['lat'];
+        $location->name_ar = $request['name_ar'];
+        $location->address = $request['address'];
+        $location->address_ar = $request['address_ar'];
+        $location->latitude = $request['lat'];
        $location->longitude = $request['long'];
        $location->status = $request['status'];
        $location->save();
@@ -107,7 +111,9 @@ class ContactController extends Controller
    {
        $request->validate([
         'name' => 'required',
+        'name_ar' => 'required',
         'address' => 'required',
+        'address_ar' => 'required',
         'lat' => 'required',
         'long' => 'required',
        ]);
@@ -115,7 +121,9 @@ class ContactController extends Controller
        $location = Contact::find($id);
 
        $location->name = $request['name'];
+       $location->name_ar = $request['name_ar'];
        $location->address = $request['address'];
+       $location->address_ar = $request['address_ar'];
        $location->latitude = $request['lat'];
        $location->longitude = $request['long'];
        $location->status = $request['status'];

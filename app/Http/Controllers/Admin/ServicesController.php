@@ -22,20 +22,14 @@ class ServicesController extends Controller
    public function store(Request $request)
    {
       $request->validate([
-         'name' => 'required'
-
-
+         'name' => 'required',
+         'name_ar' => 'required'
       ]);
-
-
       $services = new Services;
       $services->name = $request['name'];
-
+      $services->name_ar = $request['name_ar'];
       $filename = time() . "bn." . $request->file('banner')->getClientOriginalExtension();
       $services->banner = $request->file('banner')->storeas('banner', $filename);
-
-
-
       $services->save();
       return redirect('admin/special_services');
    }
@@ -87,9 +81,14 @@ class ServicesController extends Controller
 
    public function update($id, Request $request)
    {
+      $request->validate([
+         'name' => 'required',
+         'name_ar' => 'required'
+      ]);
       $services = Services::find($id);
 
       $services->name = $request['name'];
+      $services->name_ar = $request['name_ar'];
       if(isset($request) && !empty($request->file('banner'))){
       $filename = time() . "bn" . $request->file('banner')->getClientOriginalExtension();
       $services->banner = $request->file('banner')->storeas('banner', $filename);

@@ -34,7 +34,9 @@
                                 <thead>
                                     <tr class="headings">
                                         <th>City Name</th>
+                                        <th>City Name (Arabic)</th>
                                         <th>Address</th>
+                                        <th>Address (Arabic)</th>
                                         <th>Lat</th>
                                         <th>Lang</th>
                                         <th>Status</th>
@@ -44,8 +46,10 @@
                                 <tbody>
                                     <tr class="even pointer">
                                         @foreach ($location as $locations)
-                                            <td scope="row">{{ $locations->name }}</td>
+                                            <td>{{ $locations->name }}</td>
+                                            <td> {{ $locations->name_ar }}</td>
                                             <td> {{ $locations->address }}</td>
+                                            <td> {{ $locations->address_ar }}</td>
                                             <td>{{ $locations->latitude }}</td>
                                             <td>{{ $locations->longitude }}</td>
 

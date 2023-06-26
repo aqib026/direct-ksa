@@ -34,6 +34,7 @@
                                 <thead>
                                     <tr class="headings">
                                         <th>Name</th>
+                                        <th>Name (Arabic)</th>
                                         <th>Status</th>
 
                                         <th>Action</th>
@@ -43,6 +44,7 @@
                                     <tr class="even pointer">
                                         @foreach ($feature as $features)
                                             <td scope="row">{{ $features->name }}</td>
+                                            <td scope="row">{{ $features->name_ar }}</td>
                                             <td>
                                                 @if ($features->status == 1)
                                                     <span class="badge badge-success bg-success">Active</span>

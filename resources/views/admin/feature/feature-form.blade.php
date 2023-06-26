@@ -40,6 +40,21 @@
                                     </span>
                                 @enderror
                             </div>
+                        </div><div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name"> Name (Arabic)
+                                <span class="required"></span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input id="name_ar" type="text"
+                                    class="form-control @error('name_ar') is-invalid @enderror" name="name_ar"
+                                    value="{{ old('name_ar', isset($feature) ? $feature->name_ar : '') }}" required
+                                    autocomplete="name" placeholder="Enter Name In Arabic" autofocus>
+                                @error('name_ar')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                         </div>
                         <div class="item form-group">
                             <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Status

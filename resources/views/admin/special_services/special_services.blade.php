@@ -32,6 +32,7 @@
                                     <thead>
                                         <tr class="headings">
                                             <th>Name</th>
+                                            <th>Name (Arabic)</th>
                                             <th>Banner</th>
                                             <th>Action</th>
                                         </tr>
@@ -40,6 +41,7 @@
                                         @foreach ($services as $service)
                                             <tr class="even pointer">
                                                 <td scope="row">{{ $service->name }}</td>
+                                                <td scope="row">{{ $service->name_ar }}</td>
                                                 <td><img src="{{ asset($service->banner) }}" class="me-4 border my-image" width="80" alt="Flag-Pic"></td>
                                                 <td>
                                                     <a href="{{ url('admin/special_services_form/edit/') }}/{{ $service->id }}"><i class="btn btn-success fa fa-edit"></i></a>

@@ -36,12 +36,15 @@ class ContentPageController extends Controller
    public function update($page_type, Request $request)
    {
       $request->validate([
-         'title' => 'required'
+         'title' => 'required',
+         'title_ar' => 'required',
       ]);
 
       $page = Page::where('page', $page_type)->first();
       $page->title    = $request['title'];
+      $page->title_ar    = $request['title_ar'];
       $page->content  = $request['content'];
+      $page->content_ar  = $request['content_ar'];
       $page->save();
 
       return redirect( route('content_pages',$page_type));

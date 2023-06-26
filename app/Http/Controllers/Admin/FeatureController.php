@@ -30,6 +30,7 @@ class FeatureController extends Controller
 
         $feature = new Feature;
         $feature->name = $request['name'];
+        $feature->name_ar = $request['name_ar'];
         $feature->status = $request['status'];
         $feature->save();
         return redirect('admin/feature');
@@ -79,6 +80,7 @@ class FeatureController extends Controller
 
         $feature = Feature::find($id);
         $feature->name = $request['name'];
+        $feature->name_ar = $request['name_ar'];
         $feature->status = $request['status'];
         $feature->save();
         return redirect('admin/feature');

@@ -34,7 +34,8 @@ class AccreditationController extends Controller
    public function store(request $request)
    {
       $request->validate([
-         'name' => 'required'
+         'name' => 'required',
+         'name_ar' => 'required',
 
 
       ]);
@@ -42,6 +43,7 @@ class AccreditationController extends Controller
 
       $accreditation = new accreditation;
       $accreditation->name = $request['name'];
+      $accreditation->name_ar = $request['name_ar'];
 
       $filename = time() . "acc." . $request->file('banner')->getClientOriginalExtension();
       $accreditation->banner = $request->file('banner')->storeas('banner', $filename);
@@ -115,11 +117,13 @@ class AccreditationController extends Controller
    public function update($id, Request $request)
    {
       $request->validate([
-         'name' => 'required'
+         'name' => 'required',
+         'name_ar' => 'required',
       ]);
       $accreditation = accreditation::find($id);
 
       $accreditation->name = $request['name'];
+      $accreditation->name_ar = $request['name_ar'];
 
       if(isset($request) && !empty($request->file('banner'))){
       $filename = time() . "acc." . $request->file('banner')->getClientOriginalExtension();

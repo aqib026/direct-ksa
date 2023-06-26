@@ -42,10 +42,32 @@
                                     </div>
                                 </div>
                                 <div class="item form-group">
+                                    <label class="col-form-label col-md-1 col-sm-1 label-align" for="title">Title (Arabic)<span class="required"></span></label>
+                                    <div class="col-md-10 col-sm-10">
+                                        <input id="title_ar" type="text"
+                                            class="form-control @error('title_ar') is-invalid @enderror" name="title_ar"
+                                            value="{{ old('title_ar', isset($page) ? $page->title_ar : '') }}"
+                                            required autocomplete="name" placeholder="Enter Title in Arabic" autofocus>
+                                        @error('title_ar')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="item form-group">
                                     <div class="item form-group">
                                         <label class="col-form-label col-md-1 col-sm-1 label-align" for="content">Detail<span class="required"></span></label>
                                         <div class="col-md-11 col-sm-11">
                                             <textarea name="content">{{ old('content', isset($page) ? $page->content : '') }}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <div class="item form-group">
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align" for="content">Detail_ar<span class="required"></span></label>
+                                        <div class="col-md-11 col-sm-11">
+                                            <textarea name="content_ar">{{ old('content_ar', isset($page) ? $page->content_ar : '') }}</textarea>
                                         </div>
                                     </div>
                                 </div>

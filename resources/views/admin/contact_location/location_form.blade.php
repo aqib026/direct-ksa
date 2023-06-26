@@ -43,6 +43,21 @@
                                     </span>
                                 @enderror
                             </div>
+                        </div> <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">City
+                                Name (Arabic) <span class="required"></span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input id="name" type="text"
+                                    class="form-control @error('name_ar') is-invalid @enderror" name="name_ar"
+                                    value="{{ old('name_ar', isset($location) ? $location->name_ar : '') }}" required
+                                    autocomplete="name" placeholder="Enter Name in Arabic" autofocus>
+                                @error('name_ar')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                         </div>
                         <div class="item form-group">
                             <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Address
@@ -53,6 +68,19 @@
                                     rows="5">{{ old('address', isset($location) ? $location->address : '') }}</textarea>
                             </div>
                             @error('address')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div> <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Address (Arabic)
+                                <span class="required"></span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <textarea class="form-control @error('address_ar') is-invalid @enderror" name="address_ar" id="" cols="10"
+                                    rows="5">{{ old('address_ar', isset($location) ? $location->address_ar : '') }}</textarea>
+                            </div>
+                            @error('address_ar')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

@@ -7914,6 +7914,7 @@ a.text-light:focus, a.text-light:hover {
 
 .font-weight-medium {
 	font-weight: 500 !important;
+	margin-right: 12px;
 }
 
 .font-weight-semibold,
