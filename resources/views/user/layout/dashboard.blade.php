@@ -247,6 +247,15 @@
                                 </a>
                             </li>
                             <br>
+                            <li>
+                                <a href="{{url('user/password/edit/')}}/{{ Auth::user()->id }}" class="nav-link link-dark">
+                                    <svg class="bi me-2" width="16" height="16">
+                                        <use xlink:href="#grid"></use>
+                                    </svg>
+                                    Change Password
+                                </a>
+                            </li>
+                            <br>
                             <li style="background: lightsteelblue;">
                                 <a class="nav-link link-dark border"  href="{{ route('logout') }}"
                                     onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>

@@ -19,9 +19,10 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\Admin\VisaRequestController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\ContentPageController;
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\NoteController;
-use App\Http\Controllers\user\UserController;
+use App\Http\Controllers\user\UserController; 
 use Illuminate\Support\Facades\Artisan;
 
 
@@ -185,13 +186,23 @@ Route::get('/page/{slug?}', [PagesController::class, 'index'])->name('content_pa
 
 Route::get('/locale/{lange}',[LocalizationController::class,'setlang']);
 
-Route::get('/user/login', function () {
+
+Route::group(['prefix'=>'/user'],function(){
+
+Route::get('/login', function () {
     return view('user.layout.userlogin');
 });
 Route::get('/user/register', function () {
     return view('user.layout.userregistration');
 });
-Route::get('/user/dashboard',[UserController::class,'index'])->middleware(['auth', 'user']);
-Route::get('/user/profile/edit/{id}',[UserController::class, 'edit'])->middleware(['auth','user']);
-Route::post('/user/profile/update/{id}',[UserController::class, 'update'])->middleware(['auth','user']);
+Route::get('/dashboard',[UserController::class,'index'])->middleware(['auth', 'user']);
+Route::get('/profile/edit/{id}',[UserController::class, 'edit'])->middleware(['auth','user']);
+Route::post('/profile/update/{id}',[UserController::class, 'update'])->middleware(['auth','user']);
+Route::get('/password/edit/{id}',[UserController::class, 'passwordedit'])->middleware(['auth','user']);
+Route::post('/password/update/{id}',[UserController::class, 'passwordupdate'])->middleware(['auth','user']);
 
+Route::get('/forgetpassword',[EmailController::class, 'create']);
+Route::post('/email',[EmailController::class, 'send'])->name('email');
+Route::get('/resetpassword',[EmailController::class, 'reset']);
+
+});

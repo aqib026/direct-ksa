@@ -25,32 +25,21 @@
         </div>
     </div>
     <div class="item form-group">
-        <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Password</label>
+        <label class="col-form-label col-md-3 col-sm-3 label-align" for="number">Phone Number <span class="required">*</span></label>
         <div class="col-md-6 col-sm-6 ">
-            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Enter Password" autocomplete="new-password">
-            @error('password')
+            <input id="number" type="number" class="form-control @error('number') is-invalid @enderror" name="number" value="{{ old('name', isset($user) ? $user->number : '') }}" placeholder="Enter Your Number" required autocomplete="email">
+            @error('number')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
         </div>
     </div>
-    <div class="item form-group">
-        <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Confirm Password</label>
-        <div class="col-md-6 col-sm-6 ">
-            <input id="password-confirm" type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" value="" placeholder="Confirm Password" autocomplete="new-password">
-            @error('password_confirmation')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-        </div>
-    </div>
+
    
     <div class="ln_solid"></div>
     <div class="item form-group">
-        <div class="col-md-6 col-sm-6 offset-md-3">
-            <a href="{{ url('../admin/users') }}"> <button class="btn btn-primary" type="button">Cancel</button></a>
+        <div class="col-md-6 col-sm-6 offset-md-4">
             <button type="submit" class="btn btn-success">Submit</button>
         </div>
     </div>

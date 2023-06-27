@@ -1,3 +1,5 @@
+
+
 !<!doctype html>
 <html lang="en">
   <head>
@@ -18,16 +20,16 @@
                 class="img-fluid" alt="Sample image">
             </div>
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                <form method="POST" action="{{ route('login') }}">
+                <form method="POST" >
                    @csrf
-                   <p class="lead fw-normal lg   mb-0 me-3">Sign in with</p>
+                   
                 
                 <!-- Email input -->
                      <div class="">
-                <input id="email" type="email" class="form-control form-control-lg @error('email') is-invalid @enderror" placeholder="Enter Your Email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                <label class="form-label" for="form3Example3">Email address</label>
+                <input id="password" type="password" class="form-control form-control-lg @error('password') is-invalid @enderror" placeholder="Enter New Password" name="password" value="{{ old('password') }}" required autocomplete="password" autofocus>
+                <label class="form-label" for="form3Example3">New Password</label>
 
-                @error('email')
+                @error('password')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -36,33 +38,23 @@
       
                 <!-- Password input -->
                 <div class="">
-                    <input id="password" type="password" class="form-control form-control-lg @error('password') is-invalid @enderror" placeholder="Enter Your Password" name="password" required autocomplete="current-password">
+                    <input id="password_confirmation" type="password" class="form-control form-control-lg @error('password_confirmation') is-invalid @enderror" placeholder=" Confrom Password" name="password_confirmation" 
                     <label class="form-label" for="form3Example4">Password</label>
     
-                    @error('password')
+                    @error('password_confirmation')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
                 </div>
       
-                <div class="d-flex justify-content-between align-items-center">
-                  <!-- Checkbox -->
-                  <div class="form-check mb-0">
-                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
-                    <label class="form-check-label" for="form2Example3">
-                      Remember me
-                    </label>
-                  </div>
-                  <a href="{{url('/user/forgetpassword')}}" class="text-body">Forgot password?</a>
-                </div>
+            
       
                 <div class="text-center text-lg-start mt-4 pt-2">
                     <button type="submit" class="btn btn-primary btn-lg submit">
                         {{ __('Login') }}
                     </button>
-                  <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="{{url('/user/register')}}"
-                      class="link-danger">Register</a></p>
+                 
                 </div>
       
               </form>

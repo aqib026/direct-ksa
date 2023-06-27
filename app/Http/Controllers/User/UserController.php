@@ -5,6 +5,8 @@ namespace App\Http\Controllers\user;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+
 
 use Illuminate\Http\Request;
 
@@ -37,9 +39,8 @@ class UserController extends Controller
 
         if (is_null($user)) redirect('admin/users');
 
-        $title = "Edit User Registration";
         $url = url('user/profile/update') . "/" . $id;
-        $data = compact('url', 'user', 'title');
+        $data = compact('url', 'user');
 
         return view('user.updateprofile')->with($data);
     }
@@ -50,12 +51,10 @@ class UserController extends Controller
         $validatedData = $request->validate([
             'name'                  => 'required',
             'email'                 => 'required|email',
-            'password'              => 'nullable|min:8',
-            'password_confirmation' => 'nullable|same:password'
+           'number'                 => 'required'
         ], [
             'name.required'                     => 'Name is required',
-            'password.min'                      => 'Minimum 8 Characters are required',
-            'password_confirmation.same'        => 'Confirm password doesnt matches with password',
+         
             'email.required'                    => 'Email is required',
             'email.email'                       => 'Enter a valid Email'
         ]);
@@ -63,10 +62,36 @@ class UserController extends Controller
         $user = admin::find($id);
         $user->name     = $request['name'];
         $user->email    = $request['email'];
-        if ($request['password'] !== "" && $request['password'] == $request['password_confirmation'] && !is_null($request['password'])) {
-            $user->password = bcrypt($request['password']);
-        }
+        $user->number    = $request['number'];
         $user->usertype = 'customer';
+        $user->save();
+
+        return redirect('user/dashboard');
+    }
+    public function passwordedit($id)
+    {
+        $user = admin::find($id);
+
+        if (is_null($user)) redirect('admin/users');
+        $url = url('user/password/update') . "/" . $id;
+        $data = compact('url', 'user');
+
+        return view('user.password')->with($data);
+    }
+
+    public function passwordupdate( request $request)
+    {
+
+        $request->validate([
+            'current_password' => 'required',
+            'password' => 'required|string|min:6|confirmed',
+            'password_confirmation' => 'required',
+          ]);
+        $user = Auth::user();  
+        if (!Hash::check($request->current_password, $user->password)) {
+            return back()->with('error', 'Current password does not match!');
+        }
+        $user->password = Hash::make($request->password);
         $user->save();
 
         return redirect('user/dashboard');
