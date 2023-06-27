@@ -41,6 +41,10 @@ class HomeController extends Controller
             {
                 return view ('admin.dashboard');
             }
+            else if($usertype=='customer')
+            {
+                return view ('user.layout.dashboard');
+            }
             else
             {
                 return redirect()->back();

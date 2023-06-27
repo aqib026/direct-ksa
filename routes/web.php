@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\ContentPageController;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\NoteController;
+use App\Http\Controllers\user\UserController;
 use Illuminate\Support\Facades\Artisan;
 
 
@@ -64,7 +65,7 @@ Route::group(['prefix'=>'/admin'],function(){
         return view('auth.login');
     });
     
-    Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [HomeController::class, 'index']);
 
     Route::get('/content_pages/{page_type}', [ContentPageController::class, 'edit'])->name('content_pages');
     Route::post('/content_pages/{page_type}', [ContentPageController::class, 'update'])->name('content_pages_post');
@@ -183,3 +184,14 @@ Route::get('/page/{slug?}', [PagesController::class, 'index'])->name('content_pa
 
 
 Route::get('/locale/{lange}',[LocalizationController::class,'setlang']);
+
+Route::get('/user/login', function () {
+    return view('user.layout.userlogin');
+});
+Route::get('/user/register', function () {
+    return view('user.layout.userregistration');
+});
+Route::get('/user/dashboard',[UserController::class,'index'])->middleware(['auth', 'user']);
+Route::get('/user/profile/edit/{id}',[UserController::class, 'edit'])->middleware(['auth','user']);
+Route::post('/user/profile/update/{id}',[UserController::class, 'update'])->middleware(['auth','user']);
+

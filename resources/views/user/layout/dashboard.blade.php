@@ -58,11 +58,11 @@
 
     <!-- Favicon -->
     @if (app()->getlocale() == 'en')
-    <link rel="stylesheet" href="{{ asset('front-end/css/theme-elements.css') }}">
+        <link rel="stylesheet" href="{{ asset('front-end/css/theme-elements.css') }}">
         <link rel="stylesheet" href="{{ asset('front-end/css/theme.css') }}">
         <link rel="stylesheet" href="https://cdn.usebootstrap.com/bootstrap/4.3.1/css/bootstrap.min.css">
     @else
-    <link rel="stylesheet" href="{{ asset('front-end/css/theme-ar-element.css') }}">
+        <link rel="stylesheet" href="{{ asset('front-end/css/theme-ar-element.css') }}">
         <link rel="stylesheet" href="{{ asset('front-end/css/themear.css') }}">
         <link rel="stylesheet" href="asset('front-end/css/bootstrap.min.css')">
     @endif
@@ -134,8 +134,6 @@
                                 </div>
                             </div>
                         </div>
-                      
-                        
                         <div class="header-column justify-content-end">
                             <div class="header-row">
                                 <div class="header-nav header-nav-links">
@@ -209,8 +207,68 @@
             </div>
         </header>
         <div role="main" class="main" style="padding-top: 100px;">
-            @yield('content')</div>
+            <div class="container ">
+                <div class="row col-md-12">
+                    <div class="col-md-3 " style="margin-top:5%;">
+                        <ul class="nav nav-pills flex-column mb-auto">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link active" aria-current="page">
+                                    <svg class="bi me-2" width="16" height="16">
+                                        <use xlink:href="#home"></use>
+                                    </svg>
+                                    Home
+                                </a>
+                            </li>
+                            <br>
+                            <li>
+                                <a href="#" class="nav-link link-dark">
+                                    <svg class="bi me-2" width="16" height="16">
+                                        <use xlink:href="#speedometer2"></use>
+                                    </svg>
+                                    VISA REQUEST
+                                </a>
+                            </li>
+                            <br>
+                            <li>
+                                <a href="#" class="nav-link link-dark">
+                                    <svg class="bi me-2" width="16" height="16">
+                                        <use xlink:href="#table"></use>
+                                    </svg>
+                                    SERVICES
+                                </a>
+                            </li>
+                            <br>
+                            <li>
+                                <a href="{{url('user/profile/edit/')}}/{{ Auth::user()->id }}" class="nav-link link-dark">
+                                    <svg class="bi me-2" width="16" height="16">
+                                        <use xlink:href="#grid"></use>
+                                    </svg>
+                                    UPDATE PROFILE
+                                </a>
+                            </li>
+                            <br>
+                            <li style="background: lightsteelblue;">
+                                <a class="nav-link link-dark border"  href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+										@csrf
+									</form>
+                            </li>
+                        </ul>
 
+                    </div>
+                    
+                    <div class="col-md-1 d-flex" style="height: 444px;">
+                        <div class="vr"></div>
+                      </div>
+                    <div class="col-md-8">
+                        @yield('content')
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <br><br><br><br><br>
         <footer id="footer" class="position-relative bg-dark border-top-0">
             <div class="container pt-5 pb-3">
                 <div class="row pt-5">
