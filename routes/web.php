@@ -181,6 +181,7 @@ Route::get('/requirement/{country}',[FrontendController::class, 'show']);
 
 Route::get('/visa_request', [VisaRequestController::class, 'index'])->name('visa_request');
 Route::get('/visa_request/{country?}/{visatype?}', [VisaRequestController::class, 'steptwo'])->name('visa_request_steptwo');
+Route::post('/visa_request', [VisaRequestController::class, 'payment_form'])->name('visa_request_payment_form');
 Route::get('/page/{slug?}', [PagesController::class, 'index'])->name('content_page');
 
 

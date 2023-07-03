@@ -8,7 +8,7 @@ use App\Models\VisaRequest;
 use Illuminate\Http\Request;
 use App\Models\countries;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Session;
 
 class VisaRequestController extends Controller
 {
@@ -34,6 +34,7 @@ class VisaRequestController extends Controller
      */
     public function steptwo(Request $request, $country, $visatype)
     {
+        //dd(session('from_data'));
         $VisaRequest = VisaRequest::where('countries_id', $country)->where('visa_type', $visatype)->first();
         return view('frontend.visa_request_steptwo', compact('VisaRequest'));
     }
@@ -46,6 +47,29 @@ class VisaRequestController extends Controller
 
         $data = compact('url', 'title','countries');
         return view('admin.visa_type.visatypeform')->with($data);
+    }
+
+     /**
+     * Store post data of step two and redirecct to payment form.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function payment_form(Request $request)
+    {
+        $request->validate([
+            'travel_date' => 'required',
+            'appointment_city' => 'required',
+            'relation' => 'required',
+        ]);
+        $form_data = $request->all();
+        
+        Session::put('form_data', $form_data);
+        $session_values = Session::get('form_data');
+
+        dd($session_values);
+
+        return redirect('admin/visarequest_form');
     }
 
     /**
