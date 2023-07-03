@@ -1,7 +1,7 @@
 !<!doctype html>
 <html lang="en">
   <head>
-    <title>Title</title>
+    <title>Register</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,7 +18,7 @@
                 class="img-fluid" alt="Sample image">
             </div>
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                <form method="POST" action="{{ route('register') }}">
+                <form method="POST" action="{{$url}}">
                     @csrf
                   <h1>Create Account</h1>
                   <div class="">

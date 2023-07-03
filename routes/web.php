@@ -6,7 +6,7 @@ use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\FaqsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth; 
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\FeatureController;
 use App\Http\Controllers\Admin\ServicesController;
@@ -193,9 +193,9 @@ Route::group(['prefix'=>'/user'],function(){
 Route::get('/login', function () {
     return view('user.layout.userlogin');
 });
-Route::get('/user/register', function () {
-    return view('user.layout.userregistration');
-});
+Route::get('/register',[UserController::class,'create']);
+Route::Post('/register',[UserController::class,'store']);
+
 Route::get('/dashboard',[UserController::class,'index'])->middleware(['auth', 'user']);
 Route::get('/profile/edit/{id}',[UserController::class, 'edit'])->middleware(['auth','user']);
 Route::post('/profile/update/{id}',[UserController::class, 'update'])->middleware(['auth','user']);
