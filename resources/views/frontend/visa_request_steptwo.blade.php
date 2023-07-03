@@ -9,126 +9,133 @@
 		</div> 
 	</section>
 	<section class="section border-0 bg-quaternary m-0">
-		<div class="container py-5">
-			<div class="row justify-content-center">
-				<div class="col col-lg-9 text-center">
-					<div class="divider divider-small divider-small-lg mt-0 text-center appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="0">
-						<hr class="bg-primary border-radius m-auto">
-					</div>
-					<div class="overflow-hidden mb-1">
-						<h3 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-3 text-4 line-height-2 line-height-sm-7 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">{{__('steps.vr')}}</h3>
-					</div>
-					<h2 class="text-color-dark font-weight-bold text-8 pb-4 mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">{{__('steps.ti')}}</h2>
-				</div>
-			</div>
-			<div class="row py-5 appear-animation datepickercustom" data-appear-animation="fadeIn" data-appear-animation-delay="300">
-				<div class="overflow-hidden mb-3 text-center ">
-					<h2 class="text-color-dark font-weight-bold text-8 pb-2 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">{{__('steps.wte')}}</h2>
-				</div>
-				<div class="col col-lg-12 text-center py-3 datepickercustom" id="datepicker"></div>
-				<div class="col col-lg-12 text-center py-3 datepickercustom">
-					<div class="overflow-hidden mb-1">
-						<h3 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-1 text-5 line-height-2 line-height-sm-7 mb-3 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">{{__('steps.edt')}}</h3>
-						<h1 class="font-weight-semi-bold text-5 line-height-2 line-height-sm-7 mb-5 selecteddatediv">--</h1>
-					</div>
-				</div>
-			</div>
-			<div class="row mt-5 py-5 appear-animation datepickercustom" data-appear-animation="fadeIn" data-appear-animation-delay="300">
-				<div class="overflow-hidden mb-1 text-center">
-					<h2 class="text-color-dark font-weight-bold text-8 pb-2 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">{{__('steps.wwa')}}</h2>
-				</div>
-				<div class="overflow-hidden mb-5 text-center">
-					<h3 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-1 text-4 line-height-2 line-height-sm-7 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100"><i class="fa fa-info-circle"></i>&nbsp;{{__('steps.eqi')}}</h3>
-				</div>
-				<div class="col col-lg-12 text-center py-3">
-					<div class="row">
-						<div class="form-group col">
-							<div class="form-check form-check-inline">
-								<label class="form-check-label form-check-label-custom">
-									<input class="form-check-input form-check-input-custom" type="radio" name="appointment_city" data-msg-required="Please select at least one option." value="Riyadh" required="">{{__('steps.r')}}
-								</label>
-							</div>
+		<form action="{{ route('visa_request_payment_form') }}" role="form" method="post" class="form-horizontal" enctype="multipart/form-data">
+        @csrf
+			<div class="container py-5">
+				<div class="row justify-content-center">
+					<div class="col col-lg-9 text-center">
+						<div class="divider divider-small divider-small-lg mt-0 text-center appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="0">
+							<hr class="bg-primary border-radius m-auto">
 						</div>
-					</div>
-					<div class="row">
-						<div class="form-group col">
-							<div class="form-check form-check-inline">
-								<label class="form-check-label form-check-label-custom">
-									<input class="form-check-input form-check-input-custom" type="radio" name="appointment_city" data-msg-required="Please select at least one option." value="Dhahran" required="">{{__('steps.d')}}
-								</label>
-							</div>
+						<div class="overflow-hidden mb-1">
+							<h3 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-3 text-4 line-height-2 line-height-sm-7 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">{{__('steps.vr')}}</h3>
 						</div>
+						<h2 class="text-color-dark font-weight-bold text-8 pb-4 mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">{{__('steps.ti')}}</h2>
 					</div>
-					<div class="row">
-						<div class="form-group col">
-							<div class="form-check form-check-inline">
-								<label class="form-check-label form-check-label-custom">
-									<input class="form-check-input form-check-input-custom" type="radio" name="appointment_city" data-msg-required="Please select at least one option." value="Jeddah" required="">{{__('steps.j')}}
-								</label>
-							</div>
+				</div>
+				<div class="row py-5 appear-animation datepickercustom" data-appear-animation="fadeIn" data-appear-animation-delay="300">
+					<div class="overflow-hidden mb-3 text-center ">
+						<h2 class="text-color-dark font-weight-bold text-8 pb-2 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">{{__('steps.wte')}}</h2>
+					</div>
+					<div class="col col-lg-12 text-center py-3 datepickercustom" id="datepicker"></div>
+					<div class="col col-lg-12 text-center py-3 datepickercustom">
+						<div class="overflow-hidden mb-1">
+							<h3 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-1 text-5 line-height-2 line-height-sm-7 mb-3 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">{{__('steps.edt')}}</h3>
+							<h1 class="font-weight-semi-bold text-5 line-height-2 line-height-sm-7 mb-5 selecteddatediv">--</h1>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="row mt-5 py-5 appear-animation datepickercustom" data-appear-animation="fadeIn" data-appear-animation-delay="300">
-				<div class="overflow-hidden mb-5 text-center">
-					<h2 class="text-color-dark font-weight-bold text-8 pb-2 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">{{__('steps.cnt')}}</h2>
+				<div class="row mt-5 py-5 appear-animation datepickercustom" data-appear-animation="fadeIn" data-appear-animation-delay="300">
+					<div class="overflow-hidden mb-1 text-center">
+						<h2 class="text-color-dark font-weight-bold text-8 pb-2 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">{{__('steps.wwa')}}</h2>
+					</div>
+					<div class="overflow-hidden mb-5 text-center">
+						<h3 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-1 text-4 line-height-2 line-height-sm-7 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100"><i class="fa fa-info-circle"></i>&nbsp;{{__('steps.eqi')}}</h3>
+					</div>
+					<div class="col col-lg-12 text-center py-3">
+						<div class="row">
+							<div class="form-group col">
+								<div class="form-check form-check-inline">
+									<label class="form-check-label form-check-label-custom">
+										<input class="form-check-input form-check-input-custom" type="radio" name="appointment_city" data-msg-required="Please select at least one option." value="Riyadh" required="">{{__('steps.r')}}
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col">
+								<div class="form-check form-check-inline">
+									<label class="form-check-label form-check-label-custom">
+										<input class="form-check-input form-check-input-custom" type="radio" name="appointment_city" data-msg-required="Please select at least one option." value="Dhahran" required="">{{__('steps.d')}}
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col">
+								<div class="form-check form-check-inline">
+									<label class="form-check-label form-check-label-custom">
+										<input class="form-check-input form-check-input-custom" type="radio" name="appointment_city" data-msg-required="Please select at least one option." value="Jeddah" required="">{{__('steps.j')}}
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
-				<div class="col col-lg-12 text-center py-3">
-					<table class="table table-bordered">
-						<tbody>
-							<tr class="{{ $VisaRequest->adult_price ?? 'd-none' }}">
-								<td  width="30%">{{__('steps.ad')}}</td>
-								<td  width="40%"><button class="btn btn-secondary" id="adult_counter_minus"><i class="fa fa-minus"></i></button><span class="adult_counter">0</span><button class="btn btn-secondary" id="adult_counter_plus"><i class="fa fa-plus"></i></button></td>
-								<td  width="30%"><span class="adult_counter_sum"><span class="adult_price_total">0</span> {{__('steps.s')}}</span></td>
-							</tr>
-							<tr class="{{ $VisaRequest->child_price ?? 'd-none' }}">
-								<td  width="30%">{{__('steps.ch')}}</td>
-								<td  width="40%"><button class="btn btn-secondary" id="child_counter_minus"><i class="fa fa-minus"></i></button><span class="child_counter">0</span><button class="btn btn-secondary" id="child_counter_plus"><i class="fa fa-plus"></i></button></td>
-								<td  width="30%"><span class="child_counter_sum"><span class="child_price_total">0</span> {{__('steps.s')}}</span></td>
-							</tr>
-							<tr class="{{ $VisaRequest->passport_price ?? 'd-none' }}">
-								<td  width="30%">{{__('steps.pas')}}</td>
-								<td  width="40%"><button class="btn btn-secondary" id="passport_counter_minus"><i class="fa fa-minus"></i></button><span class="passport_counter">0</span><button class="btn btn-secondary" id="passport_counter_plus"><i class="fa fa-plus"></i></button></td>
-								<td  width="30%"><span class="passport_counter_sum"><span class="passport_price_total">0</span> {{__('steps.s')}}</span></td>
-							</tr>
-							<tr class="d-none">
-								<td  width="30%">{{__('steps.hp')}}</td>
-								<td  width="40%"><input class="form-control text-3 h-auto py-2" value="" name="promo_code" placeholder="Type Promo Here"/></td>
-								<td  width="30%"><button class="btn btn-primary">{{__('steps.ap')}}</button></td>
-							</tr>					
-						</tbody>
-					</table>
-					<div class="overflow-hidden mt-5 mb-1">
-						<h3 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-1 text-5 line-height-2 line-height-sm-7 mb-3 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">{{__('steps.total')}}</h3>
-						<h1 class="font-weight-semi-bold text-5 line-height-2 line-height-sm-7 mb-5 selectedpersons"><span class="passenger_total">0</span> {{__('steps.s')}}</h1>
+				<div class="row mt-5 py-5 appear-animation datepickercustom" data-appear-animation="fadeIn" data-appear-animation-delay="300">
+					<div class="overflow-hidden mb-5 text-center">
+						<h2 class="text-color-dark font-weight-bold text-8 pb-2 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">{{__('steps.cnt')}}</h2>
+					</div>
+					<div class="col col-lg-12 text-center py-3">
+						<table class="table table-bordered">
+							<tbody>
+								<tr class="{{ $VisaRequest->adult_price ?? 'd-none' }}">
+									<td  width="30%">{{__('steps.ad')}}</td>
+									<td  width="40%"><button class="btn btn-secondary" id="adult_counter_minus"><i class="fa fa-minus"></i></button><span class="adult_counter">0</span><button class="btn btn-secondary" id="adult_counter_plus"><i class="fa fa-plus"></i></button></td>
+									<td  width="30%"><span class="adult_counter_sum"><span class="adult_price_total">0</span> {{__('steps.s')}}</span></td>
+								</tr>
+								<tr class="{{ $VisaRequest->child_price ?? 'd-none' }}">
+									<td  width="30%">{{__('steps.ch')}}</td>
+									<td  width="40%"><button class="btn btn-secondary" id="child_counter_minus"><i class="fa fa-minus"></i></button><span class="child_counter">0</span><button class="btn btn-secondary" id="child_counter_plus"><i class="fa fa-plus"></i></button></td>
+									<td  width="30%"><span class="child_counter_sum"><span class="child_price_total">0</span> {{__('steps.s')}}</span></td>
+								</tr>
+								<tr class="{{ $VisaRequest->passport_price ?? 'd-none' }}">
+									<td  width="30%">{{__('steps.pas')}}</td>
+									<td  width="40%"><button class="btn btn-secondary" id="passport_counter_minus"><i class="fa fa-minus"></i></button><span class="passport_counter">0</span><button class="btn btn-secondary" id="passport_counter_plus"><i class="fa fa-plus"></i></button></td>
+									<td  width="30%"><span class="passport_counter_sum"><span class="passport_price_total">0</span> {{__('steps.s')}}</span></td>
+								</tr>
+								<tr class="d-none">
+									<td  width="30%">{{__('steps.hp')}}</td>
+									<td  width="40%"><input class="form-control text-3 h-auto py-2" value="" name="promo_code" placeholder="Type Promo Here"/></td>
+									<td  width="30%"><button class="btn btn-primary">{{__('steps.ap')}}</button></td>
+								</tr>					
+							</tbody>
+						</table>
+						<div class="overflow-hidden mt-5 mb-1">
+							<h3 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-1 text-5 line-height-2 line-height-sm-7 mb-3 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">{{__('steps.total')}}</h3>
+							<h1 class="font-weight-semi-bold text-5 line-height-2 line-height-sm-7 mb-5 selectedpersons"><span class="passenger_total">0</span> {{__('steps.s')}}</h1>
+						</div>
+					</div>
+				</div>
+				<div class="row mt-5 py-5 appear-animation datepickercustom" data-appear-animation="fadeIn" data-appear-animation-delay="300">
+					<div class="overflow-hidden mb-5 text-center">
+						<h2 class="text-color-dark font-weight-bold text-8 pb-2 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">{{__('steps.trt')}}</h2>
+					</div>
+					<div class="col col-lg-12 text-center px-5 py-3">
+						<div class="custom-select-1">
+							<select class="form-select form-control h-auto py-2" data-msg-required="Please Select Relation" name="relation" required="required">
+								<option value="" disabled selected>{{__('steps.psr')}}</option>
+								<option value="Family">{{__('steps.fm')}}</option>
+								<option value="Friends">{{__('steps.fr')}}</option>
+								<option value="Others">{{__('steps.ot')}}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<input type="hidden" id="adult_price" name="adult_price" value="{{ $VisaRequest->adult_price ?? '0' }}" />
+				<input type="hidden" id="child_price" name="child_price" value="{{ $VisaRequest->child_price ?? '0' }}" />
+				<input type="hidden" id="passport_price" name="passport_price" value="{{ $VisaRequest->passport_price ?? '0' }}" />
+				<input type="hidden" id="adult_count" name="adult_count" value="0" />
+				<input type="hidden" id="child_count" name="child_count" value="0" />
+				<input type="hidden" id="passport_count" name="passport_count" value="0" />
+				<input type="hidden" id="travel_date" name="travel_date" value="" />
+				<div class="row py-5 appear-animation datepickercustom" data-appear-animation="fadeIn" data-appear-animation-delay="300">
+					<div class="col col-lg-12 text-center">
+						<button class="btn btn-modern btn-primary btn-arrow-effect-1 btn-xl mb-2" type="submit">{{__('steps.ns3')}}</button>
 					</div>
 				</div>
 			</div>
-			<div class="row mt-5 py-5 appear-animation datepickercustom" data-appear-animation="fadeIn" data-appear-animation-delay="300">
-				<div class="overflow-hidden mb-5 text-center">
-					<h2 class="text-color-dark font-weight-bold text-8 pb-2 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">{{__('steps.trt')}}</h2>
-				</div>
-				<div class="col col-lg-12 text-center px-5 py-3">
-					<div class="custom-select-1">
-						<select class="form-select form-control h-auto py-2" data-msg-required="Please Select Relation" name="relation" required="required">
-							<option value="" disabled selected>{{__('steps.psr')}}</option>
-							<option value="Family">{{__('steps.fm')}}</option>
-							<option value="Friends">{{__('steps.fr')}}</option>
-							<option value="Others">{{__('steps.ot')}}</option>
-						</select>
-					</div>
-				</div>
-			</div>
-			<input type="hidden" id="adult_price" value="{{ $VisaRequest->adult_price ?? '0' }}" />
-			<input type="hidden" id="child_price" value="{{ $VisaRequest->child_price ?? '0' }}" />
-			<input type="hidden" id="passport_price" value="{{ $VisaRequest->passport_price ?? '0' }}" />
-			<div class="row py-5 appear-animation datepickercustom" data-appear-animation="fadeIn" data-appear-animation-delay="300">
-				<div class="col col-lg-12 text-center">
-					<button class="btn btn-modern btn-primary btn-arrow-effect-1 btn-xl mb-2" type="submit">{{__('steps.ns3')}}</button>
-				</div>
-			</div>
-		</div>
+		</form>
 	</section>	
 @endsection
 @section('custom-scripts')
@@ -147,6 +154,7 @@
 				adult_counter_current_value = 0;
 			}
 			$('.adult_counter').text(adult_counter_current_value);
+			$('#adult_count').val(adult_counter_current_value);
 			$('.adult_price_total').text(adult_price_total);
 			var child_price_total = parseInt($('.child_price_total').text());
 			$('.passenger_total').text(adult_price_total+child_price_total);
@@ -163,6 +171,7 @@
 				adult_counter_current_value = 0;
 			}
 			$('.adult_counter').text(adult_counter_current_value);
+			$('#adult_count').val(adult_counter_current_value);
 			$('.adult_price_total').text(adult_price_total);
 			var child_price_total = parseInt($('.child_price_total').text());
 			$('.passenger_total').text(adult_price_total+child_price_total);
@@ -178,6 +187,7 @@
 				child_counter_current_value = 0;
 			}
 			$('.child_counter').text(child_counter_current_value);
+			$('#child_count').val(child_counter_current_value);
 			$('.child_price_total').text(child_price_total);
 			var adult_price_total = parseInt($('.adult_price_total').text());
 			$('.passenger_total').text(adult_price_total+child_price_total);
@@ -193,6 +203,7 @@
 				child_counter_current_value = 0;
 			}
 			$('.child_counter').text(child_counter_current_value);
+			$('#child_count').val(child_counter_current_value);
 			$('.child_price_total').text(child_price_total);
 			var adult_price_total = parseInt($('.adult_price_total').text());
 			$('.passenger_total').text(adult_price_total+child_price_total);
@@ -209,6 +220,7 @@
 				passport_counter_current_value = 0;
 			}
 			$('.passport_counter').text(passport_counter_current_value);
+			$('#passport_count').val(passport_counter_current_value);
 			$('.passport_price_total').text(passport_price_total);
 			$('.passenger_total').text(passport_price_total);
 
@@ -224,6 +236,7 @@
 				passport_counter_current_value = 0;
 			}
 			$('.passport_counter').text(passport_counter_current_value);
+			$('#passport_count').val(passport_counter_current_value);
 			$('.passport_price_total').text(passport_price_total);
 			$('.passenger_total').text(passport_price_total);
 		});
@@ -253,6 +266,7 @@
 		let s = join(e.date, a, '-');
 
 		$(".selecteddatediv").html(s);
+		$("#travel_date").val(s);
 	});
 </script>
 @endsection
