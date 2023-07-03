@@ -34,9 +34,17 @@ class VisaRequestController extends Controller
      */
     public function steptwo(Request $request, $country, $visatype)
     {
-        //dd(session('from_data'));
+        
+        $form_data = '';
+        
+        if(Session::has('form_data')){
+            $form_data = Session::get('form_data');
+        }else{
+            $form_data = array('country' => $country, 'visa_type' => $visatype);
+        }
+        //dd($form_data);
         $VisaRequest = VisaRequest::where('countries_id', $country)->where('visa_type', $visatype)->first();
-        return view('frontend.visa_request_steptwo', compact('VisaRequest'));
+        return view('frontend.visa_request_steptwo', compact('VisaRequest', 'form_data'));
     }
 
     public function create()
@@ -65,11 +73,8 @@ class VisaRequestController extends Controller
         $form_data = $request->all();
         
         Session::put('form_data', $form_data);
-        $session_values = Session::get('form_data');
 
-        dd($session_values);
-
-        return redirect('admin/visarequest_form');
+        return redirect('user/login');
     }
 
     /**
