@@ -8,7 +8,7 @@
     <!-- Basic -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+@stack('title')
     <title>Direct-KSA</title>
 
     <meta name="keywords" content="Visa" />
