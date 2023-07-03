@@ -32,15 +32,53 @@ class UserController extends Controller
     }
 
     }
+    public function create()
+    {
+        $url = url('user/register');
+        $data = compact('url');
+        return view('user.layout.userregistration')->with($data);
+    }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+
+        $validatedData = $request->validate([
+            'name'                  => 'required',
+            'email'                 => 'required|email',
+            'password'              => 'required|min:8',
+            'password_confirmation' => 'required|same:password'
+        ], [
+            'name.required'                     => 'Name is required',
+            'password.required'                 => 'Password is required',
+            'password.min'                      => 'Minimum 8 Characters are required',
+            'password_confirmation.required'    => 'Confirm password is required',
+            'password_confirmation.same'        => 'Confirm password doesnt matches with password',
+            'email.required'                    => 'Email is required',
+            'email.email'                       => 'Enter a valid Email'
+        ]);
+
+        $user = new admin;
+
+        $user->name     = $request['name'];
+        $user->email    = $request['email'];
+        $user->password = bcrypt($request['password']);
+        $user->usertype = 'customer';
+        $user->save();
+
+        return redirect('user/login');
+    }
+
+    
     public function edit($id)
     {
-        $user = admin::find($id);
-
-        if (is_null($user)) redirect('admin/users');
-
         $url = url('user/profile/update') . "/" . $id;
-        $data = compact('url', 'user');
+        $data = compact('url');
 
         return view('user.updateprofile')->with($data);
     }
