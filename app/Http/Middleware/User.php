@@ -21,7 +21,7 @@ class User
             {
             return $next($request);
             }
-            echo "<h3>You Have to make account in customer side</h3>";
+            echo "<h3>You Have to make account in User side</h3>";
             abort(401);
     
         
