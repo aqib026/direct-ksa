@@ -64,11 +64,12 @@ class AdminController extends Controller
 
     public function show(request $request)
     {
+        
         $search = $request["search"] ?? "";
         if ($search != "") {
-            $users = admin::where('name', 'like', "%$search%")->orwhere('email', 'like', "%$search%")->get();
+            $users = admin::where('name', 'like', "%$search%")->orwhere('email', 'like', "%$search%")->paginate(20);
         } else {
-            $users = admin::paginate(6);
+            $users = admin::paginate(20);
         }
         $data = compact('users', 'search');
         return view('admin.users')->with($data);

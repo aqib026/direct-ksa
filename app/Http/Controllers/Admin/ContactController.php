@@ -71,7 +71,7 @@ class ContactController extends Controller
    {
        $search = $request["search"] ?? "";
        if ($search != "") {
-           $location =Contact::where('name', 'like', "%$search%")->get();
+           $location =Contact::where('name', 'like', "%$search%")->paginate(6);
        } else {
            $location = Contact::paginate(6);
        }

@@ -74,9 +74,9 @@ class FaqsController extends Controller
    {
        $search = $request["search"] ?? "";
        if ($search != "") {
-           $faqs =Faqs::where('categorie', 'like', "%$search%")->get();
+           $faqs =Faqs::where('categorie', 'like', "%$search%")->paginate(20);
        } else {
-           $faqs = Faqs::paginate(6);
+           $faqs = Faqs::paginate(20);
        }
        $data = compact('faqs', 'search');
        return view('admin.faqs.faqs')->with($data);

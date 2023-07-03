@@ -51,10 +51,8 @@ class CountryController extends Controller
    {
       $search = $request["search"] ?? "";
       if ($search != "") {
-         $countries = Countries::where('name', 'like', "%$search%")->get();
-      } else {
-         $countries = Countries::paginate(6);
-      }
+         $countries = Countries::where('name', 'like', "%$search%")->paginate(20);
+      } 
       $data = compact('countries', 'search');
       return view('admin.country.countries')->with($data);
    }

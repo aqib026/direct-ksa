@@ -73,7 +73,7 @@ class VisaController extends Controller
     {
         $search = $request["search"] ?? "";
         if ($search != "") {
-            $visa = visa::where('name', 'like', "%$search%")->get();
+            $visa = visa::where('name', 'like', "%$search%")->paginate(20);
         } else {
             $visa = visa::paginate(20);
         }

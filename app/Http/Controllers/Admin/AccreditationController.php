@@ -64,7 +64,7 @@ class AccreditationController extends Controller
    {
       $search = $request["search"] ?? "";
       if ($search != "") {
-         $accreditation = accreditation::where('name', 'like', "%$search%")->get();
+         $accreditation = accreditation::where('name', 'like', "%$search%")->paginate(20);
       } else {
          $accreditation = accreditation::paginate(6);
       }

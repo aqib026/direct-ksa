@@ -40,7 +40,7 @@ class CategorieController extends Controller
     {
         $search = $request['search'] ?? "";
         if ($search != "") {
-            $categorie = Categorie::where('name', 'like', "%$search%");
+            $categorie = Categorie::where('name', 'like', "%$search%")->paginate(20);
         } else {
             $categorie = Categorie::paginate(6);
         }
