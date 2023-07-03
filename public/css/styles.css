@@ -1128,6 +1128,8 @@ progress {
   .col-md-8 {
     flex: 0 0 auto;
     width: 66.66666667%;
+    margin-top: 77px;
+
   }
   .col-md-9 {
     flex: 0 0 auto;

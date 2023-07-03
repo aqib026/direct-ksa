@@ -201,8 +201,5 @@ Route::post('/profile/update/{id}',[UserController::class, 'update'])->middlewar
 Route::get('/password/edit/{id}',[UserController::class, 'passwordedit'])->middleware(['auth','user']);
 Route::post('/password/update/{id}',[UserController::class, 'passwordupdate'])->middleware(['auth','user']);
 
-Route::get('/forgetpassword',[EmailController::class, 'create']);
-Route::post('/email',[EmailController::class, 'send'])->name('email');
-Route::get('/resetpassword',[EmailController::class, 'reset']);
 
 });
