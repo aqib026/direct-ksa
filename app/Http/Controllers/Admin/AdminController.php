@@ -66,10 +66,14 @@ class AdminController extends Controller
     {
         
         $search = $request["search"] ?? "";
+        
         if ($search != "") {
-            $users = admin::where('name', 'like', "%$search%")->orwhere('email', 'like', "%$search%")->paginate(20);
+            $users = Admin::where('usertype', '!=', 'customer')->where(function ($query) use ($search) {
+                $query->where('name', 'like', "%$search%")
+                        ->orWhere('email', 'like', "%$search%");                      
+            })->paginate(20);
         } else {
-            $users = admin::paginate(20);
+            $users = Admin::paginate(20);
         }
         $data = compact('users', 'search');
         return view('admin.users')->with($data);
@@ -78,7 +82,7 @@ class AdminController extends Controller
     public function destroy($id)
     {
 
-        $user = admin::find($id);
+        $user = Admin::find($id);
         if (!is_null($user));
         $user->delete();
 
@@ -93,7 +97,7 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        $user = admin::find($id);
+        $user = Admin::find($id);
 
         if (is_null($user)) redirect('admin/users');
 
@@ -120,7 +124,7 @@ class AdminController extends Controller
             'email.email'                       => 'Enter a valid Email'
         ]);
 
-        $user = admin::find($id);
+        $user = Admin::find($id);
         $user->name     = $request['name'];
         $user->email    = $request['email'];
         if ($request['password'] !== "" && $request['password'] == $request['password_confirmation'] && !is_null($request['password'])) {
@@ -142,7 +146,7 @@ class AdminController extends Controller
 
     public function new($id)
     {
-        $user = admin::find($id);
+        $user = Admin::find($id);
 
         if (is_null($user))
             redirect('admin/dashboard');
@@ -162,7 +166,7 @@ class AdminController extends Controller
      */
     public function add($id, Request $request)
     {
-        $user = admin::find($id);
+        $user = Admin::find($id);
 
         $user->name     = $request['name'];
         if (isset($request) && !empty($request->file('profile_pic'))) {

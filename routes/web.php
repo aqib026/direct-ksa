@@ -22,7 +22,7 @@ use App\Http\Controllers\Admin\ContentPageController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\NoteController;
-use App\Http\Controllers\user\UserController; 
+use App\Http\Controllers\User\UserController; 
 use Illuminate\Support\Facades\Artisan;
 
 
