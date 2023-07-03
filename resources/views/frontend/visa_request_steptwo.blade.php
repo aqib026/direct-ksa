@@ -31,7 +31,7 @@
 					<div class="col col-lg-12 text-center py-3 datepickercustom">
 						<div class="overflow-hidden mb-1">
 							<h3 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-1 text-5 line-height-2 line-height-sm-7 mb-3 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">{{__('steps.edt')}}</h3>
-							<h1 class="font-weight-semi-bold text-5 line-height-2 line-height-sm-7 mb-5 selecteddatediv">--</h1>
+							<h1 class="font-weight-semi-bold text-5 line-height-2 line-height-sm-7 mb-5 selecteddatediv">@if(isset($form_data['travel_date'])) {{ $form_data['travel_date'] }} @else -- @endif</h1>
 						</div>
 					</div>
 				</div>
@@ -47,7 +47,7 @@
 							<div class="form-group col">
 								<div class="form-check form-check-inline">
 									<label class="form-check-label form-check-label-custom">
-										<input class="form-check-input form-check-input-custom" type="radio" name="appointment_city" data-msg-required="Please select at least one option." value="Riyadh" required="">{{__('steps.r')}}
+										<input class="form-check-input form-check-input-custom" type="radio" name="appointment_city" data-msg-required="Please select at least one option." value="Riyadh" @if(isset($form_data['appointment_city']) && $form_data['appointment_city'] == 'Riyadh') checked @endif required>{{__('steps.r')}}
 									</label>
 								</div>
 							</div>
@@ -56,7 +56,7 @@
 							<div class="form-group col">
 								<div class="form-check form-check-inline">
 									<label class="form-check-label form-check-label-custom">
-										<input class="form-check-input form-check-input-custom" type="radio" name="appointment_city" data-msg-required="Please select at least one option." value="Dhahran" required="">{{__('steps.d')}}
+										<input class="form-check-input form-check-input-custom" type="radio" name="appointment_city" data-msg-required="Please select at least one option." value="Dhahran" @if(isset($form_data["appointment_city"]) && $form_data["appointment_city"] == "Dhahran") checked @endif required>{{__('steps.d')}}
 									</label>
 								</div>
 							</div>
@@ -65,7 +65,7 @@
 							<div class="form-group col">
 								<div class="form-check form-check-inline">
 									<label class="form-check-label form-check-label-custom">
-										<input class="form-check-input form-check-input-custom" type="radio" name="appointment_city" data-msg-required="Please select at least one option." value="Jeddah" required="">{{__('steps.j')}}
+										<input class="form-check-input form-check-input-custom" type="radio" name="appointment_city" data-msg-required="Please select at least one option." value="Jeddah" @if(isset($form_data['appointment_city']) && $form_data['appointment_city'] == 'Jeddah') checked @endif required>{{__('steps.j')}}
 									</label>
 								</div>
 							</div>
@@ -81,18 +81,18 @@
 							<tbody>
 								<tr class="{{ $VisaRequest->adult_price ?? 'd-none' }}">
 									<td  width="30%">{{__('steps.ad')}}</td>
-									<td  width="40%"><button class="btn btn-secondary" id="adult_counter_minus"><i class="fa fa-minus"></i></button><span class="adult_counter">0</span><button class="btn btn-secondary" id="adult_counter_plus"><i class="fa fa-plus"></i></button></td>
-									<td  width="30%"><span class="adult_counter_sum"><span class="adult_price_total">0</span> {{__('steps.s')}}</span></td>
+									<td  width="40%"><button class="btn btn-secondary" id="adult_counter_minus"><i class="fa fa-minus"></i></button><span class="adult_counter"> @if(isset($form_data['adult_count'])) {{ $form_data['adult_count'] }} @else 0 @endif</span><button class="btn btn-secondary" id="adult_counter_plus"><i class="fa fa-plus"></i></button></td>
+									<td  width="30%"><span class="adult_counter_sum"><span class="adult_price_total">@if(isset($form_data['adult_counter_sum'])) {{ $form_data['adult_counter_sum'] }} @else 0 @endif</span> {{__('steps.s')}}</span></td>
 								</tr>
 								<tr class="{{ $VisaRequest->child_price ?? 'd-none' }}">
 									<td  width="30%">{{__('steps.ch')}}</td>
-									<td  width="40%"><button class="btn btn-secondary" id="child_counter_minus"><i class="fa fa-minus"></i></button><span class="child_counter">0</span><button class="btn btn-secondary" id="child_counter_plus"><i class="fa fa-plus"></i></button></td>
-									<td  width="30%"><span class="child_counter_sum"><span class="child_price_total">0</span> {{__('steps.s')}}</span></td>
+									<td  width="40%"><button class="btn btn-secondary" id="child_counter_minus"><i class="fa fa-minus"></i></button><span class="child_counter"> @if(isset($form_data['child_count'])) {{ $form_data['child_count'] }} @else 0 @endif</span><button class="btn btn-secondary" id="child_counter_plus"><i class="fa fa-plus"></i></button></td>
+									<td  width="30%"><span class="child_counter_sum"><span class="child_price_total">@if(isset($form_data['child_counter_sum'])) {{ $form_data['child_counter_sum'] }} @else 0 @endif</span> {{__('steps.s')}}</span></td>
 								</tr>
 								<tr class="{{ $VisaRequest->passport_price ?? 'd-none' }}">
 									<td  width="30%">{{__('steps.pas')}}</td>
-									<td  width="40%"><button class="btn btn-secondary" id="passport_counter_minus"><i class="fa fa-minus"></i></button><span class="passport_counter">0</span><button class="btn btn-secondary" id="passport_counter_plus"><i class="fa fa-plus"></i></button></td>
-									<td  width="30%"><span class="passport_counter_sum"><span class="passport_price_total">0</span> {{__('steps.s')}}</span></td>
+									<td  width="40%"><button class="btn btn-secondary" id="passport_counter_minus"><i class="fa fa-minus"></i></button><span class="passport_counter">@if(isset($form_data['passport_count'])) {{ $form_data['passport_count'] }} @else 0 @endif</span><button class="btn btn-secondary" id="passport_counter_plus"><i class="fa fa-plus"></i></button></td>
+									<td  width="30%"><span class="passport_counter_sum"><span class="passport_price_total">@if(isset($form_data['passport_counter_sum'])) {{ $form_data['passport_counter_sum'] }} @else 0 @endif</span> {{__('steps.s')}}</span></td>
 								</tr>
 								<tr class="d-none">
 									<td  width="30%">{{__('steps.hp')}}</td>
@@ -103,7 +103,7 @@
 						</table>
 						<div class="overflow-hidden mt-5 mb-1">
 							<h3 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-1 text-5 line-height-2 line-height-sm-7 mb-3 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">{{__('steps.total')}}</h3>
-							<h1 class="font-weight-semi-bold text-5 line-height-2 line-height-sm-7 mb-5 selectedpersons"><span class="passenger_total">0</span> {{__('steps.s')}}</h1>
+							<h1 class="font-weight-semi-bold text-5 line-height-2 line-height-sm-7 mb-5 selectedpersons"><span class="passenger_total">@if(isset($form_data['passenger_total'])) {{ $form_data['passenger_total'] }} @else 0 @endif</span> {{__('steps.s')}}</h1>
 						</div>
 					</div>
 				</div>
@@ -115,9 +115,9 @@
 						<div class="custom-select-1">
 							<select class="form-select form-control h-auto py-2" data-msg-required="Please Select Relation" name="relation" required="required">
 								<option value="" disabled selected>{{__('steps.psr')}}</option>
-								<option value="Family">{{__('steps.fm')}}</option>
-								<option value="Friends">{{__('steps.fr')}}</option>
-								<option value="Others">{{__('steps.ot')}}</option>
+								<option value="Family" @if(isset($form_data['relation']) && $form_data['relation'] == 'Family') selected @endif>{{__('steps.fm')}}</option>
+								<option value="Friends" @if(isset($form_data['relation']) && $form_data['relation'] == 'Friends') selected @endif>{{__('steps.fr')}}</option>
+								<option value="Others" @if(isset($form_data['relation']) && $form_data['relation'] == 'Others') selected @endif>{{__('steps.ot')}}</option>
 							</select>
 						</div>
 					</div>
@@ -125,10 +125,20 @@
 				<input type="hidden" id="adult_price" name="adult_price" value="{{ $VisaRequest->adult_price ?? '0' }}" />
 				<input type="hidden" id="child_price" name="child_price" value="{{ $VisaRequest->child_price ?? '0' }}" />
 				<input type="hidden" id="passport_price" name="passport_price" value="{{ $VisaRequest->passport_price ?? '0' }}" />
-				<input type="hidden" id="adult_count" name="adult_count" value="0" />
-				<input type="hidden" id="child_count" name="child_count" value="0" />
-				<input type="hidden" id="passport_count" name="passport_count" value="0" />
-				<input type="hidden" id="travel_date" name="travel_date" value="" />
+
+				<input type="hidden" id="adult_counter_sum" name="adult_counter_sum" @if(isset($form_data['adult_counter_sum'])) value="{{ $form_data['adult_counter_sum'] }}" @else value="0" @endif />
+				<input type="hidden" id="child_counter_sum" name="child_counter_sum" @if(isset($form_data['child_counter_sum'])) value="{{ $form_data['child_counter_sum'] }}" @else value="0" @endif />
+				<input type="hidden" id="passport_counter_sum" name="passport_counter_sum" @if(isset($form_data['passport_counter_sum'])) value="{{ $form_data['passport_counter_sum'] }}" @else value="0" @endif />
+				<input type="hidden" id="passenger_total" name="passenger_total" @if(isset($form_data['passenger_total'])) value="{{ $form_data['passenger_total'] }}" @else value="0" @endif />
+
+				<input type="hidden" id="country" name="country" @if(isset($form_data['country'])) value="{{ $form_data['country'] }}" @endif />
+				<input type="hidden" id="visa_type" name="visa_type" @if(isset($form_data['visa_type'])) value="{{ $form_data['visa_type'] }}" @endif />
+
+				<input type="hidden" id="adult_count" name="adult_count" @if(isset($form_data['adult_count'])) value="{{ $form_data['adult_count'] }}" @else value="0" @endif />
+				<input type="hidden" id="child_count" name="child_count" @if(isset($form_data['child_count'])) value="{{ $form_data['child_count'] }}" @else value="0" @endif />
+				<input type="hidden" id="passport_count" name="passport_count" @if(isset($form_data['passport_count'])) value="{{ $form_data['passport_count'] }}" @else value="0" @endif />
+				<input type="hidden" id="travel_date" name="travel_date" @if(isset($form_data['travel_date'])) value="{{ $form_data['travel_date'] }}" @else value="" @endif />
+
 				<div class="row py-5 appear-animation datepickercustom" data-appear-animation="fadeIn" data-appear-animation-delay="300">
 					<div class="col col-lg-12 text-center">
 						<button class="btn btn-modern btn-primary btn-arrow-effect-1 btn-xl mb-2" type="submit">{{__('steps.ns3')}}</button>
@@ -142,7 +152,6 @@
 <script src="{{ asset('front-end/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
 <script>
 	$(document).ready(function() {
-
 		$('#adult_counter_minus').on('click', function(){
 			var adult_counter_current_value = parseInt($('.adult_counter').text());
 			var adult_price_total = 0;
@@ -156,8 +165,11 @@
 			$('.adult_counter').text(adult_counter_current_value);
 			$('#adult_count').val(adult_counter_current_value);
 			$('.adult_price_total').text(adult_price_total);
+			$('#adult_counter_sum').val(adult_price_total);
 			var child_price_total = parseInt($('.child_price_total').text());
 			$('.passenger_total').text(adult_price_total+child_price_total);
+			$('#passenger_total').val(adult_price_total+child_price_total);
+			return false;
 
 		});
 		$('#adult_counter_plus').on('click', function(){
@@ -173,8 +185,12 @@
 			$('.adult_counter').text(adult_counter_current_value);
 			$('#adult_count').val(adult_counter_current_value);
 			$('.adult_price_total').text(adult_price_total);
+			$('#adult_counter_sum').val(adult_price_total);
 			var child_price_total = parseInt($('.child_price_total').text());
 			$('.passenger_total').text(adult_price_total+child_price_total);
+			$('#passenger_total').val(adult_price_total+child_price_total);
+			return false;
+
 		});
 		$('#child_counter_minus').on('click', function(){
 			var child_counter_current_value = parseInt($('.child_counter').text());
@@ -189,8 +205,12 @@
 			$('.child_counter').text(child_counter_current_value);
 			$('#child_count').val(child_counter_current_value);
 			$('.child_price_total').text(child_price_total);
+			$('#child_counter_sum').val(child_price_total);
 			var adult_price_total = parseInt($('.adult_price_total').text());
 			$('.passenger_total').text(adult_price_total+child_price_total);
+			$('#passenger_total').val(adult_price_total+child_price_total);
+			return false;
+
 		});
 		$('#child_counter_plus').on('click', function(){
 			var child_counter_current_value = parseInt($('.child_counter').text());
@@ -205,8 +225,12 @@
 			$('.child_counter').text(child_counter_current_value);
 			$('#child_count').val(child_counter_current_value);
 			$('.child_price_total').text(child_price_total);
+			$('#child_counter_sum').val(child_price_total);
 			var adult_price_total = parseInt($('.adult_price_total').text());
 			$('.passenger_total').text(adult_price_total+child_price_total);
+			$('#passenger_total').val(adult_price_total+child_price_total);
+			return false;
+
 		});
 
 		$('#passport_counter_minus').on('click', function(){
@@ -222,7 +246,10 @@
 			$('.passport_counter').text(passport_counter_current_value);
 			$('#passport_count').val(passport_counter_current_value);
 			$('.passport_price_total').text(passport_price_total);
+			$('#passport_counter_sum').val(passport_price_total);
 			$('.passenger_total').text(passport_price_total);
+			$('#passenger_total').val(adult_price_total+child_price_total);
+			return false;
 
 		});
 		$('#passport_counter_plus').on('click', function(){
@@ -238,7 +265,11 @@
 			$('.passport_counter').text(passport_counter_current_value);
 			$('#passport_count').val(passport_counter_current_value);
 			$('.passport_price_total').text(passport_price_total);
+			$('#passport_counter_sum').val(passport_price_total);
 			$('.passenger_total').text(passport_price_total);
+			$('#passenger_total').val(adult_price_total+child_price_total);
+			return false;
+
 		});
   	});
 	
