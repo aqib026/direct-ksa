@@ -60,6 +60,7 @@ route::get('/config-clear', function () {
 
 
 Auth::routes();
+
 Route::group(['prefix'=>'/admin'],function(){
 
     Route::get('/login', function () {
@@ -188,11 +189,12 @@ Route::get('/page/{slug?}', [PagesController::class, 'index'])->name('content_pa
 Route::get('/locale/{lange}',[LocalizationController::class,'setlang']);
 
 
-Route::group(['prefix'=>'/user'],function(){
 
-Route::get('/login', function () {
-    return view('user.layout.userlogin');
-});
+Route::group(['prefix'=>'/user'],function(){
+    Route::get('/login', function () {
+        return view('user.layout.userlogin');
+    });
+
 Route::get('/register',[UserController::class,'create']);
 Route::Post('/register',[UserController::class,'store']);
 
