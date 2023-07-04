@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\FeaturedSales;
 use App\Models\Note;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 
 class FeaturedSalesController extends Controller
 {
@@ -16,7 +16,9 @@ class FeaturedSalesController extends Controller
      */
     public function index(Request $request, $service = '')
     {
-        return view('frontend.featuredSales', compact('service'));
+        $user=Auth::user();
+        $data=compact('user');
+        return view('frontend.featuredSales', compact('service'))->with($data);
     }
 
     /**
@@ -113,10 +115,7 @@ class FeaturedSalesController extends Controller
         $FeaturedSales->applicant_name              = $request->applicant_name;
         $FeaturedSales->mobile_number               = $request->mobile_number;
         $FeaturedSales->email                       = $request->email;
-
-
         $FeaturedSales->service_cost                = $request->service_cost;
-
         $FeaturedSales->save();
         if ($FeaturedSales) {
             return redirect(route('featured_sales_thankyou'))->with('success', 'FeaturedSales Added Successfuly.');

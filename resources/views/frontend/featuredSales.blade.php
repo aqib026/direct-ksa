@@ -213,7 +213,7 @@
 
                     <div class="form-group">
                         <label for="applicant_name">{{__('fetsales.apn')}}</label>
-                        <input type="text" class="form-control" name="applicant_name" id="applicant_name" placeholder="e.g. Ahmed, Abdullah" required>
+                        <input type="text" class="form-control" name="applicant_name" id="applicant_name" value="{{ old('applicant_name', isset($user) ? $user->name : '') }}" placeholder="e.g. Ahmed, Abdullah" required>
                         @if ($errors->has('applicant_name'))
                             <span class="text-danger">{{ $errors->first('applicant_name') }}</span>
                         @endif
@@ -221,10 +221,8 @@
                     <div class="form-group">
                         <label for="mobile_number">{{__('fetsales.num')}}</label>
                         <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">+966</span>
-                            </div>
-                            <input type="text" name="mobile_number" id="mobile_number" class="form-control" aria-label="5xxxxxxxxx" placeholder="5xxxxxxxxx" required>
+                            
+                            <input type="text" name="mobile_number" id="mobile_number" class="form-control" aria-label="5xxxxxxxxx" value="{{ old('mobile_number', isset($user) ? $user->number : '') }}" placeholder="5xxxxxxxxx" required>
                             <div class="input-group-append">
                                 <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="14px" height="14px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-smartphone"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg></span>
                             </div>
@@ -236,7 +234,7 @@
                     <div class="form-group">
                         <label for="email">{{__('fetsales.email')}}</label>
                         <div class="input-group mb-3">
-                            <input type="text" name="email" id="email" class="form-control" aria-label="Email e.g. abc@xyz.com" placeholder="Email e.g. abc@xyz.com" required>
+                            <input type="text" name="email" id="email" class="form-control" aria-label="Email e.g. abc@xyz.com" value="{{ old('email', isset($user) ? $user->email : '') }}" placeholder="Email e.g. abc@xyz.com" required>
                             <div class="input-group-append">
                                 <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="14px" height="14px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></span>
                             </div>
