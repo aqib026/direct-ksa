@@ -82,7 +82,7 @@ class FeaturedSalesController extends Controller
             // User is not logged in, check if the email or mobile_number exists in the users table
             $user = Admin::where('email', $request->input('email'))
                         ->orWhere('number', $request->input('mobile_number'))
-                        ->firsT();
+                        ->first();
             // If no user found, create a new user record
             if (!$user) {
                 $user = Admin::create([

@@ -81,49 +81,7 @@
         <header id="header" class="header-transparent"
             data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': false, 'stickyChangeLogo': false, 'stickyStartAt': 53, 'stickySetTop': '-53px'}">
             <div class="header-body border-top-0 h-auto box-shadow-none">
-                <!-- <div class="header-top header-top-borders">
-      <div class="container h-100">
-       <div class="header-row h-100">
-        <div class="header-column justify-content-start">
-         <div class="header-row">
-          <nav class="header-nav-top">
-           <ul class="nav nav-pills">
-            <li class="nav-item py-2 d-none d-sm-inline-flex pe-2">
-             <span class="ps-0 font-weight-semibold text-color-default text-2-5">1234 Street Name, City Name</span>
-            </li>
-            <li class="nav-item py-2 pe-2">
-             <a href="tel:123-456-7890" class="text-color-default text-2-5 text-color-hover-primary font-weight-semibold">123-456-7890</a>
-            </li>
-            <li class="nav-item py-2 d-none d-md-inline-flex">
-             <a href="mailto:mail@domain.com" class="text-color-default text-2-5 text-color-hover-primary font-weight-semibold">mail@domain.com</a>
-            </li>
-           </ul>
-          </nav>
-         </div>
-        </div>
-        <div class="header-column justify-content-end">
-         <div class="header-row">
-          <nav class="header-nav-top">
-           <ul class="nav nav-pills p-relative bottom-2">
-            <li class="nav-item py-2 d-none d-lg-inline-flex">
-             <a href="http://www.facebook.com/" target="_blank" title="Facebook" class="text-color-dark text-color-hover-primary text-3 anim-hover-translate-top-5px transition-2ms"><i class="fab fa-facebook-f text-3 p-relative top-1"></i></a>
-            </li>
-            <li class="nav-item py-2 d-none d-lg-inline-flex">
-             <a href="http://www.twitter.com/" target="_blank" title="Twitter" class="text-color-dark text-color-hover-primary text-3 anim-hover-translate-top-5px transition-2ms"><i class="fab fa-twitter text-3 p-relative top-1"></i></a>
-            </li>
-            <li class="nav-item py-2 d-none d-lg-inline-flex">
-             <a href="http://www.instagram.com/" target="_blank" title="Instagram" class="text-color-dark text-color-hover-primary text-3 anim-hover-translate-top-5px transition-2ms"><i class="fab fa-instagram text-3 p-relative top-1"></i></a>
-            </li>
-            <li class="nav-item py-2 pe-0 d-none d-lg-inline-flex">
-             <a href="http://www.linkedin.com/" target="_blank" title="Linkedin" class="text-color-dark text-color-hover-primary text-3 anim-hover-translate-top-5px transition-2ms"><i class="fab fa-linkedin-in text-3 p-relative top-1"></i></a>
-            </li>
-           </ul>
-          </nav>
-         </div>
-        </div>
-       </div>
-      </div>
-     </div> -->
+
                 <div class="header-container header-container-height-sm container p-static">
                     <div class="header-row">
                         <div class="header-column">
@@ -164,26 +122,6 @@
                                     <button class="btn header-btn-collapse-nav" data-bs-toggle="collapse" data-bs-target=".header-nav-main nav" aria-expanded="true">
                                         <i class="fas fa-bars"></i>
                                     </button>
-                                    <!-- <a href="demo-business-consulting-4-contact-us.html" class="btn btn-modern btn-primary btn-outline btn-arrow-effect-1 text-capitalize text-2-5 ms-3 me-2 d-block d-md-none d-xl-block anim-hover-translate-right-5px transition-2ms">Contact Us <i class="fas fa-arrow-right ms-2"></i></a>
-          <button class="btn header-btn-collapse-nav" data-bs-toggle="collapse" data-bs-target=".header-nav-main nav">
-           <i class="fas fa-bars"></i>
-          </button> -->
-                                </div>
-                                <!-- <div class="header-nav-features header-nav-features-no-border ps-2 order-1 order-lg-2">
-          <div class="header-nav-feature header-nav-features-search d-inline-flex">
-           <a href="#" class="header-nav-features-toggle text-decoration-none" data-focus="headerSearch" aria-label="Search"><i class="fas fa-search header-nav-top-icon text-3"></i></a>
-           <div class="header-nav-features-dropdown" id="headerTopSearchDropdown">
-            <form role="search" action="page-search-results.html" method="get">
-             <div class="simple-search input-group">
-              <input class="form-control text-1" id="headerSearch" name="q" type="search" value="" placeholder="Search...">
-              <button class="btn" type="submit" aria-label="Search">
-               <i class="fas fa-search header-nav-top-icon"></i>
-              </button>
-             </div>
-            </form>
-           </div>
-          </div>
-         </div> -->
                             </div>
                         </div>
                         <div class="btn-group">
@@ -210,10 +148,11 @@
         </header>
         <div role="main" class="main" style="padding-top: 100px;">
             <div class="container ">
-                <div class="row col-md-12">
-                    <div class="col-md-3 " style="margin-top:5%;">
-                        <ul class="nav nav-pills flex-column mb-auto">
-                            <li class="nav-item">
+                <div class="row mt-5 ">
+                    <div class="col-md-3 ">
+                        <ul class="list-group flex-column mb-auto">
+
+                            <li class="list-group-item">
                                 <a href="#" class="nav-link active" aria-current="page">
                                     <svg class="bi me-2" width="16" height="16">
                                         <use xlink:href="#home"></use>
@@ -221,35 +160,31 @@
                                     Home
                                 </a>
                             </li>
-                            <br>
-                            <li>
+                            <li class="list-group-item">
                                 <a href="#" class="nav-link link-dark">
                                     <svg class="bi me-2" width="16" height="16">
                                         <use xlink:href="#speedometer2"></use>
                                     </svg>
-                                    VISA REQUEST
+                                    Visa Requests
                                 </a>
                             </li>
-                            <br>
-                            <li>
+                            <li class="list-group-item">
                                 <a href="#" class="nav-link link-dark">
                                     <svg class="bi me-2" width="16" height="16">
                                         <use xlink:href="#table"></use>
                                     </svg>
-                                    SERVICES
+                                    Services
                                 </a>
                             </li>
-                            <br>
-                            <li>
+                            <li class="list-group-item">
                                 <a href="{{url('user/profile')}}" class="nav-link link-dark">
                                     <svg class="bi me-2" width="16" height="16">
                                         <use xlink:href="#grid"></use>
                                     </svg>
-                                    UPDATE PROFILE
+                                    Update Profile
                                 </a>
                             </li>
-                            <br>
-                            <li>
+                            <li class="list-group-item">
                                 <a href="{{url('user/password')}}" class="nav-link link-dark">
                                     <svg class="bi me-2" width="16" height="16">
                                         <use xlink:href="#grid"></use>
@@ -257,10 +192,12 @@
                                     Change Password
                                 </a>
                             </li>
-                            <br>
-                            <li style="background: lightsteelblue;">
-                                <a class="nav-link link-dark border"  href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                            <li class="list-group-item">
+                                <a  class="nav-link link-dark"  href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                    <svg class="bi me-2" width="16" height="16">
+                                        <use xlink:href="#grid"></use>
+                                    </svg>{{ __('Logout') }}</a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
 										@csrf
 									</form>
@@ -269,10 +206,7 @@
 
                     </div>
                     
-                    <div class="col-md-1 d-flex" style="height: 444px;">
-                        <div class="vr"></div>
-                      </div>
-                    <div class="col-md-8">
+                    <div class="col-md-8 offset-md-1">
                         @yield('content')
                     </div>
                 </div>
