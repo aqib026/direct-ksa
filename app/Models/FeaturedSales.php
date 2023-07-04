@@ -13,6 +13,10 @@ class FeaturedSales extends Model
 
     public function note()
     {
-        return $this->hasmany('App\Models\Note', 'id');
+        return $this->hasMany('App\Models\Note','featured_id');
+    }
+    public function services()
+    {
+        return $this->hasMany('App\Models\Note','user_id');
     }
 }

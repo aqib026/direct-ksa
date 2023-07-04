@@ -4,9 +4,10 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\Models\FeaturedSales;
+use App\Models\Note;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-
 
 use Illuminate\Http\Request;
 
@@ -138,4 +139,27 @@ class UserController extends Controller
         return redirect()->back()->with('success', 'Password Has Been Updated Successfully.');
     }
 
-}
+    public function services()
+    {
+      
+        $accre = FeaturedSales::where('user_id',Auth::user()->id)->get();
+      
+
+       
+      $data=compact('accre');
+        
+
+        return view('user.services')->with($data);
+    }
+
+    public function servicesdetail()
+    { {
+            $featured_sale = FeaturedSales::find(Auth::user()->id);
+
+
+                $data = compact('featured_sale');
+                return view('user.servicesdetail')->with($data);
+            }
+        }
+    }
+

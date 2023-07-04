@@ -169,7 +169,7 @@
                                 </a>
                             </li>
                             <li class="list-group-item">
-                                <a href="#" class="nav-link link-dark">
+                                <a href="{{route('services')}}" class="nav-link link-dark">
                                     <svg class="bi me-2" width="16" height="16">
                                         <use xlink:href="#table"></use>
                                     </svg>
@@ -298,25 +298,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <!-- <div class="row">
-        <div class="col">
-         <div class="alert alert-success d-none" id="newsletterSuccess">
-          <strong>Success!</strong> You've been added to our email list.
-         </div>
-         <div class="alert alert-danger d-none" id="newsletterError"></div>
-         <div class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center">
-          <h4 class="text-color-light ws-nowrap me-3 mb-3 mb-lg-0">Subscribe to Newsletter:</h4>
-          <form id="newsletterForm" class="form-style-3 w-100" action="php/newsletter-subscribe.php" method="POST">
-           <div class="d-flex">
-            <input class="form-control bg-color-light border-0 box-shadow-none" placeholder="Email Address" name="newsletterEmail" id="newsletterEmail" type="text" />
-            <button class="btn btn-primary ms-2 btn-px-3 btn-py-2 font-weight-bold" type="submit">
-             Go
-            </button>
-           </div>
-          </form>
-         </div>
-        </div>
-       </div> -->
+       
                     </div>
                 </div>
             </div>

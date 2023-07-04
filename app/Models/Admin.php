@@ -18,4 +18,9 @@ class Admin extends Model
     ];
 
     protected $Primarykey = 'id';
+
+    public function services()
+    {
+        return $this->belongsTo(FeaturedSales::class, 'user_id', 'id');
+    }
 }
