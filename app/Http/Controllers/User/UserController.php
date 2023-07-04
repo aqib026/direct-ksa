@@ -75,15 +75,16 @@ class UserController extends Controller
     }
 
     
-    public function edit($id)
+    public function edit()
     {
-        $url = url('user/profile/update') . "/" . $id;
-        $data = compact('url');
+        $url = url('user/profile/update');
+        $user = Auth::user();
+        $data = compact('url', 'user');
 
         return view('user.updateprofile')->with($data);
     }
 
-    public function update($id, request $request)
+    public function update(request $request)
     {
 
         $validatedData = $request->validate([
@@ -97,7 +98,7 @@ class UserController extends Controller
             'email.email'                       => 'Enter a valid Email'
         ]);
 
-        $user = admin::find($id);
+        $user = Admin::find(Auth::user()->id);
         $user->name     = $request['name'];
         $user->email    = $request['email'];
         $user->number    = $request['number'];
@@ -108,7 +109,7 @@ class UserController extends Controller
     }
     public function passwordedit($id)
     {
-        $user = admin::find($id);
+        $user = Admin::find($id);
 
         if (is_null($user)) redirect('admin/users');
         $url = url('user/password/update') . "/" . $id;

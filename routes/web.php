@@ -64,7 +64,7 @@ Auth::routes();
 Route::group(['prefix'=>'/admin'],function(){
 
     Route::get('/login', function () {
-        return view('auth.login');
+        return view('auth.admin_login');
     });
     
     Route::get('/dashboard', [HomeController::class, 'index']);
@@ -203,8 +203,10 @@ Route::get('/register',[UserController::class,'create']);
 Route::Post('/register',[UserController::class,'store']);
 
 Route::get('/dashboard',[UserController::class,'index'])->middleware(['auth', 'user']);
-Route::get('/profile/edit/{id}',[UserController::class, 'edit'])->middleware(['auth','user']);
-Route::post('/profile/update/{id}',[UserController::class, 'update'])->middleware(['auth','user']);
+
+Route::get('/profile',[UserController::class, 'edit'])->middleware(['auth','user']);
+Route::post('/profile/update',[UserController::class, 'update'])->middleware(['auth','user']);
+
 Route::get('/password/edit/{id}',[UserController::class, 'passwordedit'])->middleware(['auth','user']);
 Route::post('/password/update/{id}',[UserController::class, 'passwordupdate'])->middleware(['auth','user']);
 
