@@ -14,7 +14,7 @@
         </div>
     </div>
     <div class="item form-group">
-        <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Password<span class="required">*</span></label>
+        <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">New Password<span class="required">*</span></label>
         <div class="col-md-6 col-sm-6 ">
             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Enter Password" autocomplete="new-password">
             @error('password')
@@ -25,7 +25,7 @@
         </div>
     </div>
     <div class="item form-group">
-        <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Confirm Password</label>
+        <label for="middle-name" class="col-form-label col-md-4 col-sm-4 label-align">Confirm Password<span class="required">*</span></label>
         <div class="col-md-6 col-sm-6 ">
             <input id="password-confirm" type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" value="" placeholder="Confirm Password" autocomplete="new-password">
             @error('password_confirmation')
