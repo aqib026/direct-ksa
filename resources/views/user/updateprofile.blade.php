@@ -1,9 +1,14 @@
 @extends('user.layout.dashboard')
 @section('content')
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 <form method="POST" action="{{$url}}">
     @csrf
     <div class="item form-group">
-        <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Name <span class="required">*</span></label>
+        <label class="col-form-label col-md-4 col-sm-4 label-align" for="first-name">Name <span class="required">*</span></label>
         <div class="col-md-6 col-sm-6 ">
             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name', isset($user) ? $user->name : '') }}" required autocomplete="name" placeholder="Enter Your Name" autofocus>
             @error('name')
@@ -16,7 +21,7 @@
     <div class="item form-group">
         <label class="col-form-label col-md-3 col-sm-3 label-align" for="email">Email <span class="required">*</span></label>
         <div class="col-md-6 col-sm-6 ">
-            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('name', isset($user) ? $user->email : '') }}" placeholder="Enter Your Email" required autocomplete="email">
+            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('name', isset($user) ? $user->email : '') }}" placeholder="Enter Your Email" required autocomplete="email" readonly>
             @error('email')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -44,4 +49,5 @@
         </div>
     </div>
 </form>
+
 @endsection

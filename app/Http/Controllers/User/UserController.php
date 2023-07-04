@@ -52,7 +52,9 @@ class UserController extends Controller
             'name'                  => 'required',
             'email'                 => 'required|email',
             'password'              => 'required|min:8',
-            'password_confirmation' => 'required|same:password'
+            'password_confirmation' => 'required|same:password',
+            'number'                 => 'required'
+
         ], [
             'name.required'                     => 'Name is required',
             'password.required'                 => 'Password is required',
@@ -68,6 +70,7 @@ class UserController extends Controller
         $user->name     = $request['name'];
         $user->email    = $request['email'];
         $user->password = bcrypt($request['password']);
+        $user->number    = $request['number'];
         $user->usertype = 'customer';
         $user->save();
 
@@ -105,14 +108,13 @@ class UserController extends Controller
         $user->usertype = 'customer';
         $user->save();
 
-        return redirect('user/dashboard');
+        return redirect()->back()->with('success', 'Profile Has Been Updated Successfully.');
     }
-    public function passwordedit($id)
+    public function passwordedit()
     {
-        $user = Admin::find($id);
-
+        $user = Auth::user();
         if (is_null($user)) redirect('admin/users');
-        $url = url('user/password/update') . "/" . $id;
+        $url = url('user/password/update');
         $data = compact('url', 'user');
 
         return view('user.password')->with($data);
@@ -133,7 +135,7 @@ class UserController extends Controller
         $user->password = Hash::make($request->password);
         $user->save();
 
-        return redirect('user/dashboard');
+        return redirect()->back()->with('success', 'Password Has Been Updated Successfully.');
     }
 
 }

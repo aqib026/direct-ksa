@@ -61,7 +61,7 @@
                     <button type="submit" class="btn btn-primary btn-lg submit">
                         {{ __('Login') }}
                     </button>
-                  <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="{{url('/user/register')}}"
+                  <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="{{url('/register')}}"
                       class="link-danger">Register</a></p>
                 </div>
       

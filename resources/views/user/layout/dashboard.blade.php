@@ -9,6 +9,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 @stack('title')
+@stack('style')
+@stack('script')
     <title>Direct-KSA</title>
 
     <meta name="keywords" content="Visa" />
@@ -239,7 +241,7 @@
                             </li>
                             <br>
                             <li>
-                                <a href="{{url('user/profile/edit/')}}/{{ Auth::user()->id }}" class="nav-link link-dark">
+                                <a href="{{url('user/profile')}}" class="nav-link link-dark">
                                     <svg class="bi me-2" width="16" height="16">
                                         <use xlink:href="#grid"></use>
                                     </svg>
@@ -248,7 +250,7 @@
                             </li>
                             <br>
                             <li>
-                                <a href="{{url('user/password/edit/')}}/{{ Auth::user()->id }}" class="nav-link link-dark">
+                                <a href="{{url('user/password')}}" class="nav-link link-dark">
                                     <svg class="bi me-2" width="16" height="16">
                                         <use xlink:href="#grid"></use>
                                     </svg>

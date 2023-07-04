@@ -207,8 +207,8 @@ Route::get('/dashboard',[UserController::class,'index'])->middleware(['auth', 'u
 Route::get('/profile',[UserController::class, 'edit'])->middleware(['auth','user']);
 Route::post('/profile/update',[UserController::class, 'update'])->middleware(['auth','user']);
 
-Route::get('/password/edit/{id}',[UserController::class, 'passwordedit'])->middleware(['auth','user']);
-Route::post('/password/update/{id}',[UserController::class, 'passwordupdate'])->middleware(['auth','user']);
+Route::get('/password',[UserController::class, 'passwordedit'])->middleware(['auth','user']);
+Route::post('/password/update',[UserController::class, 'passwordupdate'])->middleware(['auth','user']);
 
 
 });

@@ -19,7 +19,7 @@
             </div>
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
                 <form method="POST" action="{{ route('login') }}">
-                   @csrf     asdfasdfasdf
+                   @csrf 
                    <p class="lead fw-normal lg   mb-0 me-3">Sign in with</p>
                 
                 <!-- Email input -->
@@ -61,7 +61,7 @@
                     <button type="submit" class="btn btn-primary btn-lg submit">
                         {{ __('Login') }}
                     </button>
-                  <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="{{url('/user/register')}}"
+                  <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="{{url('/register')}}"
                       class="link-danger">Register</a></p>
                 </div>
       
