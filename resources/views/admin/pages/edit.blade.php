@@ -14,7 +14,7 @@
                         </div>
                         <div class="title_right">
                             <div class="col-md-2 col-sm-2 form-group pull-right top_search">
-                                <a href="{{ url('admin/accreditation') }}"><button class="btn btn-danger">Back</button></a>
+                                <a href="{{ url('admin/dashboard') }}"><button class="btn btn-danger">Back</button></a>
                             </div>
                         </div>
                     </div>
