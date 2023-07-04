@@ -24,9 +24,8 @@
                 
                 <!-- Email input -->
                      <div class="">
-                <input id="email" type="email" class="form-control form-control-lg @error('email') is-invalid @enderror" placeholder="Enter Your Email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                 <label class="form-label" for="form3Example3">Email address</label>
-
+                <input id="email" type="email" class="form-control form-control-lg @error('email') is-invalid @enderror" placeholder="Enter Your Email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                 @error('email')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -36,9 +35,8 @@
       
                 <!-- Password input -->
                 <div class="">
-                    <input id="password" type="password" class="form-control form-control-lg @error('password') is-invalid @enderror" placeholder="Enter Your Password" name="password" required autocomplete="current-password">
-                    <label class="form-label" for="form3Example4">Password</label>
-    
+                  <label class="form-label" for="form3Example4">Password</label>
+                    <input id="password" type="password" class="form-control form-control-lg @error('password') is-invalid @enderror" placeholder="Enter Your Password" name="password" required autocomplete="current-password">    
                     @error('password')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
