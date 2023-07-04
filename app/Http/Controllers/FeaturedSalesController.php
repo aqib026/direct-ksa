@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\FeaturedSales;
 use App\Models\Note;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 
 class FeaturedSalesController extends Controller
 {
@@ -67,9 +69,36 @@ class FeaturedSalesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $validatedData = $request->validate([
+
+     public function store(Request $request)
+     {
+         $user = null;
+     
+         // Check if the user is logged in
+         if (auth()->check()) {
+             // User is logged in, set the user_id from the logged-in user
+             $user = auth()->user();
+         } else {
+            // User is not logged in, check if the email or mobile_number exists in the users table
+            $user = Admin::where('email', $request->input('email'))
+                        ->orWhere('number', $request->input('mobile_number'))
+                        ->firsT();
+            // If no user found, create a new user record
+            if (!$user) {
+                $user = Admin::create([
+                    'name' => $request->input('applicant_name'),
+                    'email' => $request->input('email'),
+                    'number' => $request->input('mobile_number'),
+                    'password' => bcrypt('12345678'),
+                    'usertype' => 'customer',
+                ]);
+            
+            }
+        }
+    
+     
+         // Set the user_id in the featured sales or perform any other necessary actions
+         $validatedData = $request->validate([
             'required_service'  => 'required',
             'applicant_name'    => 'required',
             'mobile_number'     => 'required',
@@ -80,7 +109,7 @@ class FeaturedSalesController extends Controller
             'mobile_number.required'    => 'Mobile No is required',
             'email.required'            => 'Email is required'
         ]);
-
+    
         $input = $request->all();
 
         $images = array();
@@ -116,11 +145,16 @@ class FeaturedSalesController extends Controller
         $FeaturedSales->mobile_number               = $request->mobile_number;
         $FeaturedSales->email                       = $request->email;
         $FeaturedSales->service_cost                = $request->service_cost;
+        $FeaturedSales->user_id                     = $user->id;
+
         $FeaturedSales->save();
         if ($FeaturedSales) {
             return redirect(route('featured_sales_thankyou'))->with('success', 'FeaturedSales Added Successfuly.');
         }
-    }
+     
+         // Redirect or return a response as needed
+     }
+  
 
     
 

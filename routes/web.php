@@ -66,6 +66,9 @@ Route::group(['prefix'=>'/admin'],function(){
     Route::get('/login', function () {
         return view('auth.admin_login');
     });
+    Route::get('/register', function () {
+        return view('auth.admin_register');
+    });
     
     Route::get('/dashboard', [HomeController::class, 'index']);
 

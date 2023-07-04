@@ -14,7 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('featured_sales', function (Blueprint $table) {
-            $table->integer('user_id')->after('status')->nullable();
+            $table->unsignedBigInteger('user_id')->after('status')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

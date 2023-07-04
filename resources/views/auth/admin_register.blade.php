@@ -61,7 +61,7 @@
 
               <div class="separator">
                 <p class="change_link">Already a member ?
-                  <a href="login" class="to_register"> Log in </a>
+                  <a href="admin/login" class="to_register"> Log in </a>
                 </p>
       
                 <div class="clearfix"></div>
