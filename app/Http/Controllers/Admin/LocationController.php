@@ -52,7 +52,7 @@ class LocationController extends Controller
         ]);
 
 
-        $location = new location;
+        $location = new Location;
 
         $location->name = $request['name'];
 
@@ -76,9 +76,9 @@ class LocationController extends Controller
 
         $search = $request["search"] ?? "";
         if ($search != "") {
-            $location = location::where('name', 'like', "%$search%")->get();
+            $location = Location::where('name', 'like', "%$search%")->get();
         } else {
-            $location = location::paginate(6);
+            $location = Location::paginate(6);
         }
         $data = compact('location', 'search');
         return view('admin.contact_location.contact_location')->with($data);
@@ -92,7 +92,7 @@ class LocationController extends Controller
      */
     public function edit($id)
     {
-        $location = location::find($id);
+        $location = Location::find($id);
         if (is_null($location)) {    //not found
             return redirect('admin/contact_location');
         } else {
@@ -116,7 +116,7 @@ class LocationController extends Controller
         $request->validate([
             'name' => 'required'
         ]);
-        $location = location::find($id);
+        $location = Location::find($id);
 
         $location->name = $request['name'];
         $location->address = $request['address'];
@@ -137,7 +137,7 @@ class LocationController extends Controller
      */
     public function destroy($id)
     {
-        $location = location::find($id);
+        $location = Location::find($id);
         if (!is_null($location)) {
             $location->delete();
         }

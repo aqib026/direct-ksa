@@ -2,7 +2,7 @@
 
 @section('main-section')
     @push('title')
-        <title>{{ $title }}</title>
+        <title>Edit-Customer</title>
     @endpush
     <section class="section border-0 bg-transparent m-0 p-0">
         <div class="container">
@@ -14,7 +14,7 @@
                         </div>
                         <div class="title_right">
                             <div class="col-md-1 col-sm-6  form-group pull-right top_search">
-                                <a href="{{ url('admin/users') }}"><button class="btn btn-danger">Back</button></a>
+                                <a href="{{ url('admin/customer') }}"><button class="btn btn-danger">Back</button></a>
                             </div>
                         </div>
                     </div>
@@ -71,19 +71,10 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="item form-group">
-                                    <label class="col-form-label col-md-3 col-sm-3 label-align">Role</label>
-                                    <div class="col-md-6 col-sm-6 ">
-                                        <select class="form-control" name="usertype" id="usertype">
-                                            <option value="users" @isset($user) @if ($user->usertype == 'users') selected @endif @endisset>User</option>
-                                            <option value="admin" @isset($user) @if ($user->usertype == 'admin') selected @endif @endisset>Admin</option>
-                                        </select>
-                                    </div>
-                                </div>
                                 <div class="ln_solid"></div>
                                 <div class="item form-group">
                                     <div class="col-md-6 col-sm-6 offset-md-3">
-                                        <a href="{{ url('../admin/users') }}"> <button class="btn btn-primary" type="button">Cancel</button></a>
+                                        <a href="{{ url('../admin/customer') }}"> <button class="btn btn-primary" type="button">Cancel</button></a>
                                         <button type="submit" class="btn btn-success">Submit</button>
                                     </div>
                                 </div>

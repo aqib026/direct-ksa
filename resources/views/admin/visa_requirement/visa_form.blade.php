@@ -2,7 +2,7 @@
 
 @section('main-section')
     @push('title')
-        <title>Visa Requirement</title>
+        <title>{{ $title }}</title>
     @endpush
 
     <div class="page-title">

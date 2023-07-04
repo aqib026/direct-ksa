@@ -50,7 +50,7 @@ class AdminController extends Controller
             'email.email'                       => 'Enter a valid Email'
         ]);
 
-        $user = new admin;
+        $user = new Admin;
 
         $user->name     = $request['name'];
         $user->email    = $request['email'];
@@ -73,10 +73,27 @@ class AdminController extends Controller
                         ->orWhere('email', 'like', "%$search%");                      
             })->paginate(20);
         } else {
-            $users = Admin::paginate(20);
+             $users = Admin::where('usertype', '!=', 'customer')->paginate(20);     
         }
         $data = compact('users', 'search');
         return view('admin.users')->with($data);
+    }
+
+    public function customer(request $request)
+    {
+        
+        $search = $request["search"] ?? "";
+        
+        if ($search != "") {
+            $users = Admin::where('usertype', '=', 'customer')->where(function ($query) use ($search) {
+                $query->where('name', 'like', "%$search%")
+                        ->orWhere('email', 'like', "%$search%");                      
+            })->paginate(20);
+        } else {
+             $users = Admin::where('usertype', '=', 'customer')->paginate(20);     
+        }
+        $data = compact('users', 'search');
+        return view('admin.customer.customer')->with($data);
     }
 
     public function destroy($id)
@@ -135,6 +152,47 @@ class AdminController extends Controller
 
         return redirect('admin/users');
     }
+    public function customeredit($id)
+    {
+        $user = Admin::find($id);
+
+        if (is_null($user)) redirect('admin/users');
+
+        $title = "Edit User Registration";
+        $url = url('admin/customer/update') . "/" . $id;
+        $data = compact('url', 'user', 'title');
+
+        return view('admin.customer.editcustomer')->with($data);
+    }
+
+    public function customerupdate($id, request $request)
+    {
+
+        $validatedData = $request->validate([
+            'name'                  => 'required',
+            'email'                 => 'required|email',
+            'password'              => 'nullable|min:8',
+            'password_confirmation' => 'nullable|same:password'
+        ], [
+            'name.required'                     => 'Name is required',
+            'password.min'                      => 'Minimum 8 Characters are required',
+            'password_confirmation.same'        => 'Confirm password doesnt matches with password',
+            'email.required'                    => 'Email is required',
+            'email.email'                       => 'Enter a valid Email'
+        ]);
+
+        $user = Admin::find($id);
+        $user->name     = $request['name'];
+        $user->email    = $request['email'];
+        if ($request['password'] !== "" && $request['password'] == $request['password_confirmation'] && !is_null($request['password'])) {
+            $user->password = bcrypt($request['password']);
+        }
+        $user->usertype = 'customer';
+        $user->save();
+
+        return redirect('admin/customer');
+    }
+
 
     public function setting()
     {

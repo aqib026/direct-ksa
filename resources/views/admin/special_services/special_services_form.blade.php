@@ -2,7 +2,7 @@
 
 @section('main-section')
     @push('title')
-        <title>Special Services</title>
+        <title>{{ $title }}</title>
     @endpush
     <div class="page-title">
         <div class="title_left">

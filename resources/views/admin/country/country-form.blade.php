@@ -2,7 +2,7 @@
 
 @section('main-section')
     @push('title')
-        <title>Country</title>
+        <title>{{ $title }}</title>
     @endpush
     <section class="section border-0 m-0">
 	    <div class="container">

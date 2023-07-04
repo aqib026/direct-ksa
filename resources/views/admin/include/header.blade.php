@@ -69,6 +69,11 @@
 										<li><a href="{{url('admin/add-user')}}">Add User</a></li>
 										<li><a href="{{{url('admin/users')}}}">View Users</a></li>
 									</ul>
+								</li>			
+								<li><a><i class="fa fa-edit"></i> Customer <span class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">								
+										<li><a href="{{{url('admin/customer')}}}">View Customer</a></li>
+									</ul>
 								</li>
 								<li>
 									<a><i class="fa fa-clone"></i>Settings <span class="fa fa-chevron-down"></span></a>

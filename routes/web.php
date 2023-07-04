@@ -85,6 +85,10 @@ Route::group(['prefix'=>'/admin'],function(){
     Route::post('/user/update/{id}',[AdminController::class, 'update'])->middleware(['auth','admin']);
     Route::get('/setting',[AdminController::class, 'setting'])->middleware(['auth','admin']);
 
+    Route::get('/customer',[AdminController::class, 'customer'])->middleware(['auth','admin']);
+    Route::get('/customer/edit/{id}',[AdminController::class, 'customeredit'])->middleware(['auth','admin']);
+    Route::post('/customer/update/{id}',[AdminController::class, 'customerupdate'])->middleware(['auth','admin']);
+
     Route::get('/countries',[CountryController::class, 'show'])->middleware(['auth','admin']);
     Route::get('/country-form',[CountryController::class, 'create'])->middleware(['auth','admin']);
     Route::post('/country-form',[CountryController::class, 'store'])->middleware(['auth', 'admin']);
