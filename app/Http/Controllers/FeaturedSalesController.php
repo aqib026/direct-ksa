@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\CustomerFormReportMail;
 use App\Models\FeaturedSales;
 use App\Models\Note;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+
 
 
 class FeaturedSalesController extends Controller
@@ -80,9 +83,7 @@ class FeaturedSalesController extends Controller
              $user = auth()->user();
          } else {
             // User is not logged in, check if the email or mobile_number exists in the users table
-            $user = Admin::where('email', $request->input('email'))
-                        ->orWhere('number', $request->input('mobile_number'))
-                        ->first();
+            $user = Admin::where('email', $request->input('email'))->first();
             // If no user found, create a new user record
             if (!$user) {
                 $user = Admin::create([
@@ -148,6 +149,8 @@ class FeaturedSalesController extends Controller
         $FeaturedSales->user_id                     = $user->id;
 
         $FeaturedSales->save();
+
+        Mail::to('admin@directksa.com')->send(new CustomerFormReportMail($request->all()));
         if ($FeaturedSales) {
             return redirect(route('featured_sales_thankyou'))->with('success', 'FeaturedSales Added Successfuly.');
         }

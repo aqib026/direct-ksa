@@ -117,7 +117,7 @@
                                                     </a>
                                                 </li>
                                                 <li style="margin-top: 34px;">  
-                                                    <button class="btn-sm " type="button" data-bs-toggle="dropdown" aria-expanded="">
+                                                    <button class="btn btn-outline-dark " type="button" data-bs-toggle="dropdown" aria-expanded="">
                                                         @if (session()->get('locale') == 'ar')
                                                             {{ __('head.arb') }}
                                                         @else
@@ -148,9 +148,9 @@
             </div>
         </header>
         <div role="main" class="main" style="padding-top: 100px;">
-            <div class="container ">
+            <div class="container-fluid ">
                 <div class="row mt-5 ">
-                    <div class="col-md-3 ">
+                    <div class="col-md-2" style="margin-left: 124px;">
                         <ul class="list-group flex-column mb-auto">
 
                             <li class="list-group-item">

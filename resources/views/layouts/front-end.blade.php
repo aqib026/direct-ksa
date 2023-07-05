@@ -116,7 +116,7 @@
                                                     </a>
                                                 </li>
                                                 <li style="margin-top: 34px;">
-                                                    <button class="btn-sm " type="button" data-bs-toggle="dropdown" aria-expanded="">
+                                                    <button class="btn btn-outline-dark " type="button" data-bs-toggle="dropdown" aria-expanded="">
                                                         @if (session()->get('locale') == 'ar')
                                                             {{ __('head.arb') }}
                                                         @else
@@ -144,12 +144,28 @@
                             </div>
                         </div>
                         
+                         
+                        </div>
                            
                             @if (Auth::check())
-                                <form action="{{ route('logout') }}" method="POST">
-                                    @csrf
-                                <div class="ml-2"><button type="submit" class="btn btn-outline-primary">Logout</button></div>
-                            </form>
+                           <a href="{{url('user/dashboard')}}"> <button class="btn btn-secondary" type="button" >
+                                Dashboard
+                                </button></a>
+                            <button class="btn btn-secondary  dropdown-toggle-split" type="button" data-bs-toggle="dropdown" aria-expanded="">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
+                                >
+                                <a class="dropdown-item" href="{{ url('user/visarequest') }}">
+                                    Visa Request</a>
+                                    <a class="dropdown-item" href="{{ url('user/services') }}">
+                                       Services</a>
+                                <a class="dropdown-item" href="{{ url('/locale/en') }}">
+                                
+                                    <form action="{{ route('logout') }}" method="POST">
+                                        @csrf
+                                    <button type="submit" class="btn btn-outline-primary">Logout</button>
+                                </form></a>
                             
                             @else
                             <div class="ml-2"><a href="{{url('login')}}"><button type="button" class="btn btn-outline-primary">Login</button></a></div>
