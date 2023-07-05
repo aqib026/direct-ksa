@@ -214,7 +214,7 @@ Route::get('/password',[UserController::class, 'passwordedit'])->middleware(['au
 Route::post('/password/update',[UserController::class, 'passwordupdate'])->middleware(['auth','user']);
 
 Route::get('/services',[UserController::class, 'services'])->name('services')->middleware(['auth','user']);
-Route::get('/servicesdetail',[UserController::class, 'servicesdetail'])->name('servicesdetail')->middleware(['auth','user']);
+Route::get('/servicesdetail/{id}',[UserController::class, 'servicesdetail'])->name('servicesdetail')->middleware(['auth','user']);
 
 
 

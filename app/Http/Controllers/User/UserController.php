@@ -152,10 +152,11 @@ class UserController extends Controller
         return view('user.services')->with($data);
     }
 
-    public function servicesdetail()
+    public function servicesdetail($id)
     { {
-            $featured_sale = FeaturedSales::find(Auth::user()->id);
-
+        
+        $featured_sale = FeaturedSales::find($id);
+        
 
                 $data = compact('featured_sale');
                 return view('user.servicesdetail')->with($data);

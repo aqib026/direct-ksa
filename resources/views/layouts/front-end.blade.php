@@ -79,49 +79,6 @@
         <header id="header" class="header-transparent"
             data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': false, 'stickyChangeLogo': false, 'stickyStartAt': 53, 'stickySetTop': '-53px'}">
             <div class="header-body border-top-0 h-auto box-shadow-none">
-                <!-- <div class="header-top header-top-borders">
-      <div class="container h-100">
-       <div class="header-row h-100">
-        <div class="header-column justify-content-start">
-         <div class="header-row">
-          <nav class="header-nav-top">
-           <ul class="nav nav-pills">
-            <li class="nav-item py-2 d-none d-sm-inline-flex pe-2">
-             <span class="ps-0 font-weight-semibold text-color-default text-2-5">1234 Street Name, City Name</span>
-            </li>
-            <li class="nav-item py-2 pe-2">
-             <a href="tel:123-456-7890" class="text-color-default text-2-5 text-color-hover-primary font-weight-semibold">123-456-7890</a>
-            </li>
-            <li class="nav-item py-2 d-none d-md-inline-flex">
-             <a href="mailto:mail@domain.com" class="text-color-default text-2-5 text-color-hover-primary font-weight-semibold">mail@domain.com</a>
-            </li>
-           </ul>
-          </nav>
-         </div>
-        </div>
-        <div class="header-column justify-content-end">
-         <div class="header-row">
-          <nav class="header-nav-top">
-           <ul class="nav nav-pills p-relative bottom-2">
-            <li class="nav-item py-2 d-none d-lg-inline-flex">
-             <a href="http://www.facebook.com/" target="_blank" title="Facebook" class="text-color-dark text-color-hover-primary text-3 anim-hover-translate-top-5px transition-2ms"><i class="fab fa-facebook-f text-3 p-relative top-1"></i></a>
-            </li>
-            <li class="nav-item py-2 d-none d-lg-inline-flex">
-             <a href="http://www.twitter.com/" target="_blank" title="Twitter" class="text-color-dark text-color-hover-primary text-3 anim-hover-translate-top-5px transition-2ms"><i class="fab fa-twitter text-3 p-relative top-1"></i></a>
-            </li>
-            <li class="nav-item py-2 d-none d-lg-inline-flex">
-             <a href="http://www.instagram.com/" target="_blank" title="Instagram" class="text-color-dark text-color-hover-primary text-3 anim-hover-translate-top-5px transition-2ms"><i class="fab fa-instagram text-3 p-relative top-1"></i></a>
-            </li>
-            <li class="nav-item py-2 pe-0 d-none d-lg-inline-flex">
-             <a href="http://www.linkedin.com/" target="_blank" title="Linkedin" class="text-color-dark text-color-hover-primary text-3 anim-hover-translate-top-5px transition-2ms"><i class="fab fa-linkedin-in text-3 p-relative top-1"></i></a>
-            </li>
-           </ul>
-          </nav>
-         </div>
-        </div>
-       </div>
-      </div>
-     </div> -->
                 <div class="header-container header-container-height-sm container p-static">
                     <div class="header-row">
                         <div class="header-column">
@@ -158,51 +115,47 @@
                                                         {{ __('head.sc') }}
                                                     </a>
                                                 </li>
+                                                <li style="margin-top: 34px;">
+                                                    <button class="btn-sm " type="button" data-bs-toggle="dropdown" aria-expanded="">
+                                                        @if (session()->get('locale') == 'ar')
+                                                            {{ __('head.arb') }}
+                                                        @else
+                                                            {{ __('head.eng') }}
+                                                        @endif
+                                                        <i class="fas fa-chevron-down"></i>
+                                                    </button>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
+                                                        style="min-width:80px; width: 80px;">
+                                                        <a class="dropdown-item" href="{{ url('/locale/en') }}"
+                                                            {{ session()->get('locale') == 'en' ? 'selected' : '' }}>{{ __('head.eng') }}</a>
+                                                        <a class="dropdown-item" href="{{ url('/locale/ar') }}"
+                                                            {{ session()->get('locale') == 'ar' ? 'selected' : '' }}>{{ __('head.arb') }}</a>
+                                                    </div>
+                                                </li>
                                             </ul>
                                         </nav>
                                     </div>
                                     <button class="btn header-btn-collapse-nav" data-bs-toggle="collapse" data-bs-target=".header-nav-main nav" aria-expanded="true">
                                         <i class="fas fa-bars"></i>
                                     </button>
-                                    <!-- <a href="demo-business-consulting-4-contact-us.html" class="btn btn-modern btn-primary btn-outline btn-arrow-effect-1 text-capitalize text-2-5 ms-3 me-2 d-block d-md-none d-xl-block anim-hover-translate-right-5px transition-2ms">Contact Us <i class="fas fa-arrow-right ms-2"></i></a>
-          <button class="btn header-btn-collapse-nav" data-bs-toggle="collapse" data-bs-target=".header-nav-main nav">
-           <i class="fas fa-bars"></i>
-          </button> -->
+                           
                                 </div>
-                                <!-- <div class="header-nav-features header-nav-features-no-border ps-2 order-1 order-lg-2">
-          <div class="header-nav-feature header-nav-features-search d-inline-flex">
-           <a href="#" class="header-nav-features-toggle text-decoration-none" data-focus="headerSearch" aria-label="Search"><i class="fas fa-search header-nav-top-icon text-3"></i></a>
-           <div class="header-nav-features-dropdown" id="headerTopSearchDropdown">
-            <form role="search" action="page-search-results.html" method="get">
-             <div class="simple-search input-group">
-              <input class="form-control text-1" id="headerSearch" name="q" type="search" value="" placeholder="Search...">
-              <button class="btn" type="submit" aria-label="Search">
-               <i class="fas fa-search header-nav-top-icon"></i>
-              </button>
-             </div>
-            </form>
-           </div>
-          </div>
-         </div> -->
+        
                             </div>
                         </div>
-                        <div class="btn-group">
-                            <button class="btn-sm " type="button" data-bs-toggle="dropdown" aria-expanded="">
-                                @if (session()->get('locale') == 'ar')
-                                    {{ __('head.arb') }}
-                                @else
-                                    {{ __('head.eng') }}
-                                @endif
-                                <i class="fas fa-chevron-down"></i>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
-                                style="min-width:80px; width: 80px;">
-                                <a class="dropdown-item" href="{{ url('/locale/en') }}"
-                                    {{ session()->get('locale') == 'en' ? 'selected' : '' }}>{{ __('head.eng') }}</a>
-                                <a class="dropdown-item" href="{{ url('/locale/ar') }}"
-                                    {{ session()->get('locale') == 'ar' ? 'selected' : '' }}>{{ __('head.arb') }}</a>
-                            </div>
-                        </div>
+                        
+                           
+                            @if (Auth::check())
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                <div class="ml-2"><button type="submit" class="btn btn-outline-primary">Logout</button></div>
+                            </form>
+                            
+                            @else
+                            <div class="ml-2"><a href="{{url('login')}}"><button type="button" class="btn btn-outline-primary">Login</button></a></div>
+                             
+                             @endif
+                             
                     </div>
                 </div>
 

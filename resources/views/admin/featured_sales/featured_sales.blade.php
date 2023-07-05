@@ -87,7 +87,7 @@
                                             @endswitch
                                         </td>
                                         <td>{{ $accre->applicant_name }}</td>
-                                        <td>+966{{ $accre->mobile_number }}</td>
+                                        <td>{{ $accre->mobile_number }}</td>
                                         <td>{{ $accre->email }}</td>
                                         <td>{{ $accre->created_at }}</td>
                                         <td>

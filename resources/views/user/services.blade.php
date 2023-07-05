@@ -94,7 +94,7 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="{{route('servicesdetail') }}">
+                                        <a href="{{ url('user/servicesdetail') }}/{{ $ac->id }}">
                                             <i class="btn btn-success fa fa-eye"></i>
                                             {{-- <a href="{{ url('admin/featured_sales/delete/') }}/{{ $accre->id }}">
                                                 <i class="btn btn-danger fa fa-trash"></i></a>  --}}

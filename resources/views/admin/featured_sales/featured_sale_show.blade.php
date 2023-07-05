@@ -193,7 +193,7 @@
                                 </tr>
                                 <tr>
                                     <td>Mobile Number</td>
-                                    <td>+966{{ $featured_sale->mobile_number }}</td>
+                                    <td>{{ $featured_sale->mobile_number }}</td>
                                 </tr>
                                 <tr>
                                     <td>Email</td>

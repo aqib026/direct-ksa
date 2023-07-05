@@ -207,14 +207,15 @@
                                     <td>Status</td>
                                     <td>
                                         @if ($featured_sale->status == 0)
-                                            <span class="badge badge-success bg-success">New</span>
-                                        @elseif ($featured_sale->status == 1)
-                                            <span class="badge badge-warning bg-warning">Pending </span>
-                                        @elseif ($featured_sale->status == 2)
-                                            <span class="badge badge-success bg-success">Progress</span>
-                                        @else
-                                            <span class="badge badge-primary bg-primary">Delivered</span>
-                                        @endif
+                                        <span class="badge badge-success bg-success">New</span>
+                                    @elseif ($featured_sale->status == 1)
+                                        <span class="badge badge-warning bg-warning">Pending </span>
+                                    @elseif ($featured_sale->status == 2)
+                                        <span class="badge badge-success bg-success">Progress</span>
+                                    @else
+                                        <span class="badge badge-primary bg-primary">Delivered</span>
+                                    @endif
+                                </td>
                                     </td>
                                 </tr>
                             </tbody>
