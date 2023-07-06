@@ -92,8 +92,11 @@ class VisaRequestController extends Controller
         $form_data = $request->all();
         
         Session::put('form_data', $form_data);
-
-        return redirect('user/login');
+        if (auth()->check()) {
+            return redirect('visa_request/application_forms');
+        }else {
+            return redirect('user/login');
+        }
     }
 
     /**
