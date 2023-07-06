@@ -33,6 +33,10 @@ return[
     "ot"=>"Others",
     "start"=>"Start Visa Request",
     "total"=>"Total Cost",
-    "ns3"=>"Continue to Step 3: Application Forms"
+    "ns3"=>"Continue to Step 3: Application Forms",
+    "ns4"=>"Continue to Step 4: Payment",
+    "s3t"=>"Traveller's Information",
+    "s3s"=>"Please enter correct information of all travelers"
+
 ]
 ?>

@@ -74,7 +74,6 @@
 </head>
 
 <body>
-
     <div class="body">
         <header id="header" class="header-transparent"
             data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': false, 'stickyChangeLogo': false, 'stickyStartAt': 53, 'stickySetTop': '-53px'}">
@@ -84,20 +83,14 @@
                         <div class="header-column">
                             <div class="header-row">
                                 <div class="header-logo">
-                                    <a href="{{ route('home') }}">
-                                        <img alt="Direct" width="150" height="42"
-                                            src="{{ asset('img/logo.png') }}">
-                                    </a>
+                                    <a href="{{ route('home') }}"><img alt="Direct" width="150" height="42" src="{{ asset('img/logo.png') }}"></a>
                                 </div>
                             </div>
                         </div>
-                      
-                        
                         <div class="header-column justify-content-end">
                             <div class="header-row">
                                 <div class="header-nav header-nav-links">
-                                    <div
-                                        class="header-nav-main header-nav-main-square header-nav-main-dropdown-no-borders header-nav-main-dropdown-border-radius header-nav-main-text-capitalize header-nav-main-text-size-4 header-nav-main-arrows header-nav-main-full-width-mega-menu header-nav-main-mega-menu-bg-hover header-nav-main-effect-2">
+                                    <div class="header-nav-main header-nav-main-square header-nav-main-dropdown-no-borders header-nav-main-dropdown-border-radius header-nav-main-text-capitalize header-nav-main-text-size-4 header-nav-main-arrows header-nav-main-full-width-mega-menu header-nav-main-mega-menu-bg-hover header-nav-main-effect-2">
                                         <nav class="collapse">
                                             <ul class="nav nav-pills" id="mainNav">
                                                 <li class="dropdown">
@@ -110,12 +103,12 @@
                                                         {{ __('head.vi') }}
                                                     </a>
                                                 </li>
-                                                <li>
+                                                <li class="dropdown">
                                                     <a class="nav-link" href="">
                                                         {{ __('head.sc') }}
                                                     </a>
                                                 </li>
-                                                <li style="margin-top: 34px;">
+                                                <li class="dropdown" style="margin-top: 30px;">
                                                     <button class="btn btn-outline-dark " type="button" data-bs-toggle="dropdown" aria-expanded="">
                                                         @if (session()->get('locale') == 'ar')
                                                             {{ __('head.arb') }}
@@ -132,53 +125,36 @@
                                                             {{ session()->get('locale') == 'ar' ? 'selected' : '' }}>{{ __('head.arb') }}</a>
                                                     </div>
                                                 </li>
+                                                <li class="dropdown">
+                                                    @if (Auth::check())
+                                                        <a href="{{url('user/dashboard')}}"><button class="btn btn-secondary" type="button">{{__('userdashboard.dashboard')}}</button></a>
+                                                        <button class="btn btn-secondary  dropdown-toggle-split" type="button" data-bs-toggle="dropdown" aria-expanded="" style="margin-top: -4px;"><i class="fas fa-chevron-down"></i></button>
+                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                            <a class="dropdown-item" href="{{ url('user/visarequest') }}">{{__('userdashboard.visa')}}</a>
+                                                            <a class="dropdown-item" href="{{ url('user/services') }}">{{__('userdashboard.services')}}</a>
+                                                            <a class="dropdown-item" href="{{ url('/locale/en') }}">
+                                                                <form action="{{ route('logout') }}" method="POST">
+                                                                @csrf
+                                                                    <button type="submit" class="btn btn-outline-primary">{{__('userdashboard.logout')}}</button>
+                                                                </form>
+                                                            </a>
+                                                        </div>
+                                                    @else
+                                                        <div class="ml-2" style="margin-top: 30px;"><a href="{{url('login')}}"><button type="button" class="btn btn-outline-primary">Login</button></a></div>
+                                                    @endif     
+                                                </li>
                                             </ul>
                                         </nav>
                                     </div>
-                                    <button class="btn header-btn-collapse-nav" data-bs-toggle="collapse" data-bs-target=".header-nav-main nav" aria-expanded="true">
-                                        <i class="fas fa-bars"></i>
-                                    </button>
-                           
+                                    <button class="btn header-btn-collapse-nav" data-bs-toggle="collapse" data-bs-target=".header-nav-main nav" aria-expanded="true"><i class="fas fa-bars"></i></button>
                                 </div>
-        
                             </div>
                         </div>
-                        
-                         
-                        </div>
-                           
-                            @if (Auth::check())
-                           <a href="{{url('user/dashboard')}}"> <button class="btn btn-secondary" type="button" >
-                                {{__('userdashboard.dashboard')}}
-                                </button></a>
-                            <button class="btn btn-secondary  dropdown-toggle-split" type="button" data-bs-toggle="dropdown" aria-expanded="">
-                                <i class="fas fa-chevron-down"></i>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
-                                >
-                                <a class="dropdown-item" href="{{ url('user/visarequest') }}">
-                                    {{__('userdashboard.visa')}}</a>
-                                    <a class="dropdown-item" href="{{ url('user/services') }}">
-                                       {{__('userdashboard.services')}}</a>
-                                <a class="dropdown-item" href="{{ url('/locale/en') }}">
-                                
-                                    <form action="{{ route('logout') }}" method="POST">
-                                        @csrf
-                                    <button type="submit" class="btn btn-outline-primary">{{__('userdashboard.logout')}}</button>
-                                </form></a>
-                            
-                            @else
-                            <div class="ml-2"><a href="{{url('login')}}"><button type="button" class="btn btn-outline-primary">Login</button></a></div>
-                             
-                             @endif
-                             
                     </div>
-                </div>
-
+                </div> 
             </div>
         </header>
-        <div role="main" class="main" style="padding-top: 100px;">
-            @yield('content')</div>
+        <div role="main" class="main" style="padding-top: 100px;">@yield('content')</div>
 
         <footer id="footer" class="position-relative bg-dark border-top-0">
             <div class="container pt-5 pb-3">
@@ -231,58 +207,41 @@
                             <div class="col-lg-6 mb-4 mb-lg-0">
                                 <h4 class="text-color-light font-weight-bold mb-3">{{ __('head.nav') }}</h4>
                                 <ul class="list list-unstyled columns-lg-2">
-                                    <li><a href="{{ route('home') }}"
-                                            class="text-color-grey text-color-hover-primary">{{ __('head.ho') }}</a>
-                                    </li>
-                                    <li><a href="{{ route('featured_sales') }}"
-                                            class="text-color-grey text-color-hover-primary">{{ __('head.os') }}</a>
-                                    </li>
-                                    <li><a href="{{ route('visa_request') }}"
-                                            class="text-color-grey text-color-hover-primary">{{ __('head.vi') }}</a>
-                                    </li>
-                                    <li><a href="#"
-                                            class="text-color-grey text-color-hover-primary">{{ __('head.sc') }}</a>
-                                    </li>
-
+                                    <li><a href="{{ route('home') }}" class="text-color-grey text-color-hover-primary">{{ __('head.ho') }}</a></li>
+                                    <li><a href="{{ route('featured_sales') }}" class="text-color-grey text-color-hover-primary">{{ __('head.os') }}</a></li>
+                                    <li><a href="{{ route('visa_request') }}" class="text-color-grey text-color-hover-primary">{{ __('head.vi') }}</a></li>
+                                    <li><a href="#" class="text-color-grey text-color-hover-primary">{{ __('head.sc') }}</a></li>
                                 </ul>
                             </div>
                             <div class="col-lg-6">
                                 <h4 class="text-color-light font-weight-bold mb-3">{{ __('head.el') }}</h4>
                                 <ul class="list list-unstyled columns-lg-2">
-                                    <li><a href="{{ route('content_page') }}/about_us"
-                                            class="text-color-grey text-color-hover-primary">{{ __('head.au') }}</a>
-                                    </li>
-                                    <li><a href="{{ url('/page/contact') }}"
-                                            class="text-color-grey text-color-hover-primary">{{ __('head.cu') }}</a>
-                                    </li>
-                                    <li><a href="{{ url('/page/faq') }}"
-                                            class="text-color-grey text-color-hover-primary">{{ __('head.faq') }}</a>
-                                    </li>
-                                    <li><a href="{{ route('content_page') }}/terms_conditions"
-                                            class="text-color-grey text-color-hover-primary">{{ __('head.tc') }}</a>
-                                    </li>
+                                    <li><a href="{{ route('content_page') }}/about_us" class="text-color-grey text-color-hover-primary">{{ __('head.au') }}</a></li>
+                                    <li><a href="{{ url('/page/contact') }}" class="text-color-grey text-color-hover-primary">{{ __('head.cu') }}</a></li>
+                                    <li><a href="{{ url('/page/faq') }}" class="text-color-grey text-color-hover-primary">{{ __('head.faq') }}</a></li>
+                                    <li><a href="{{ route('content_page') }}/terms_conditions" class="text-color-grey text-color-hover-primary">{{ __('head.tc') }}</a></li>
                                 </ul>
                             </div>
                         </div>
                         <!-- <div class="row">
-        <div class="col">
-         <div class="alert alert-success d-none" id="newsletterSuccess">
-          <strong>Success!</strong> You've been added to our email list.
-         </div>
-         <div class="alert alert-danger d-none" id="newsletterError"></div>
-         <div class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center">
-          <h4 class="text-color-light ws-nowrap me-3 mb-3 mb-lg-0">Subscribe to Newsletter:</h4>
-          <form id="newsletterForm" class="form-style-3 w-100" action="php/newsletter-subscribe.php" method="POST">
-           <div class="d-flex">
-            <input class="form-control bg-color-light border-0 box-shadow-none" placeholder="Email Address" name="newsletterEmail" id="newsletterEmail" type="text" />
-            <button class="btn btn-primary ms-2 btn-px-3 btn-py-2 font-weight-bold" type="submit">
-             Go
-            </button>
-           </div>
-          </form>
-         </div>
-        </div>
-       </div> -->
+                            <div class="col">
+                                <div class="alert alert-success d-none" id="newsletterSuccess">
+                                    <strong>Success!</strong> You've been added to our email list.
+                                </div>
+                                <div class="alert alert-danger d-none" id="newsletterError"></div>
+                                <div class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center">
+                                    <h4 class="text-color-light ws-nowrap me-3 mb-3 mb-lg-0">Subscribe to Newsletter:</h4>
+                                    <form id="newsletterForm" class="form-style-3 w-100" action="php/newsletter-subscribe.php" method="POST">
+                                        <div class="d-flex">
+                                            <input class="form-control bg-color-light border-0 box-shadow-none" placeholder="Email Address" name="newsletterEmail" id="newsletterEmail" type="text" />
+                                            <button class="btn btn-primary ms-2 btn-px-3 btn-py-2 font-weight-bold" type="submit">
+                                            Go
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -317,5 +276,4 @@
     @stack('script')
     @yield('custom-scripts')
 </body>
-
 </html>

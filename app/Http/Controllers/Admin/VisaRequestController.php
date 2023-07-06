@@ -47,6 +47,25 @@ class VisaRequestController extends Controller
         return view('frontend.visa_request_steptwo', compact('VisaRequest', 'form_data'));
     }
 
+     /**
+     * Third Step.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function stepthree(Request $request)
+    {
+        
+        $form_data = '';
+        
+        if(Session::has('form_data')){
+            $form_data = Session::get('form_data');
+        }
+        //dd($form_data);
+        
+        return view('frontend.visa_request_stepthree', compact('form_data'));
+    }
+
     public function create()
     {
         $url = url('admin/visarequest_form');
