@@ -116,7 +116,7 @@
                                                         {{ __('head.sc') }}
                                                     </a>
                                                 </li>
-                                                <li style="margin-top: 34px;">  
+                                                <li style="margin-top: 34px;">
                                                     <button class="btn btn-outline-dark " type="button" data-bs-toggle="dropdown" aria-expanded="">
                                                         @if (session()->get('locale') == 'ar')
                                                             {{ __('head.arb') }}
@@ -130,7 +130,7 @@
                                                             {{ session()->get('locale') == 'en' ? 'selected' : '' }}>{{ __('head.eng') }}</a>
                                                         <a class="dropdown-item" href="{{ url('/locale/ar') }}"
                                                             {{ session()->get('locale') == 'ar' ? 'selected' : '' }}>{{ __('head.arb') }}</a>
-                                                   
+
                                                 </li>
                                             </ul>
                                         </nav>
@@ -140,7 +140,7 @@
                                     </button>
                             </div>
                         </div>
-                      
+
                         </div>
                     </div>
                 </div>
@@ -206,7 +206,7 @@
                         </ul>
 
                     </div>
-                    
+
                     <div class="col-md-8 offset-md-1">
                         @yield('content')
                     </div>
@@ -214,8 +214,7 @@
 
             </div>
         </div>
-        <br><br><br><br><br>
-        <footer id="footer" class="position-relative bg-dark border-top-0">
+        <footer id="footer" class="position-relative mt-5 bg-dark border-top-0">
             <div class="container pt-5 pb-3">
                 <div class="row pt-5">
                     <div class="col-lg-4">
@@ -299,7 +298,7 @@
                                 </ul>
                             </div>
                         </div>
-       
+
                     </div>
                 </div>
             </div>

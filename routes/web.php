@@ -6,7 +6,7 @@ use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\FaqsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use Illuminate\Support\Facades\Auth; 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\FeatureController;
 use App\Http\Controllers\Admin\ServicesController;
@@ -22,7 +22,7 @@ use App\Http\Controllers\Admin\ContentPageController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\NoteController;
-use App\Http\Controllers\User\UserController; 
+use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Artisan;
 
 
@@ -66,9 +66,7 @@ Route::group(['prefix'=>'/admin'],function(){
     Route::get('/login', function () {
         return view('auth.admin_login');
     });
-    Route::get('/register', function () {
-        return view('auth.admin_register');
-    });
+  
     
     Route::get('/dashboard', [HomeController::class, 'index']);
 
@@ -196,15 +194,13 @@ Route::get('/page/{slug?}', [PagesController::class, 'index'])->name('content_pa
 
 Route::get('/locale/{lange}',[LocalizationController::class,'setlang']);
 
-
+Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 
 Route::group(['prefix'=>'/user'],function(){
     Route::get('/login', function () {
         return view('user.layout.userlogin');
     });
-
-Route::get('/register',[UserController::class,'create']);
-Route::Post('/register',[UserController::class,'store']);
+    
 
 Route::get('/dashboard',[UserController::class,'index'])->middleware(['auth', 'user']);
 
@@ -221,3 +217,7 @@ Route::get('/servicesdetail/{id}',[UserController::class, 'servicesdetail'])->na
 
 
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
