@@ -6,6 +6,7 @@ return [
     'update'=>'Update Profile',
     'password'=>'Change Password',
     'logout'=>'Logout',
+    'dashboard'=>'Dashboard',
 ]
 
 ?>

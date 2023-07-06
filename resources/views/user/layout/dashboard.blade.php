@@ -150,15 +150,15 @@
         <div role="main" class="main" style="padding-top: 100px;">
             <div class="container-fluid ">
                 <div class="row mt-5 ">
-                    <div class="col-md-2" style="margin-left: 124px;">
-                        <ul class="list-group flex-column mb-auto">
+                    <div class="col-md-3" >
+                        <ul class="list-group flex-column mb-auto" style="margin-left: 78px;">
 
                             <li class="list-group-item">
                                 <a href="#" class="nav-link active" aria-current="page">
                                     <svg class="bi me-2" width="16" height="16">
                                         <use xlink:href="#home"></use>
                                     </svg>
-                                    Home
+                                    {{__("userdashboard.home")}}
                                 </a>
                             </li>
                             <li class="list-group-item">
@@ -166,7 +166,7 @@
                                     <svg class="bi me-2" width="16" height="16">
                                         <use xlink:href="#speedometer2"></use>
                                     </svg>
-                                    Visa Requests
+                                    {{__('userdashboard.visa')}}
                                 </a>
                             </li>
                             <li class="list-group-item">
@@ -174,7 +174,7 @@
                                     <svg class="bi me-2" width="16" height="16">
                                         <use xlink:href="#table"></use>
                                     </svg>
-                                    Services
+                                    {{__('userdashboard.services')}}
                                 </a>
                             </li>
                             <li class="list-group-item">
@@ -182,7 +182,7 @@
                                     <svg class="bi me-2" width="16" height="16">
                                         <use xlink:href="#grid"></use>
                                     </svg>
-                                    Update Profile
+                                    {{__('userdashboard.update')}}
                                 </a>
                             </li>
                             <li class="list-group-item">
@@ -190,7 +190,7 @@
                                     <svg class="bi me-2" width="16" height="16">
                                         <use xlink:href="#grid"></use>
                                     </svg>
-                                    Change Password
+                                    {{__('userdashboard.password')}}
                                 </a>
                             </li>
                             <li class="list-group-item">
@@ -198,7 +198,7 @@
                                     onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                     <svg class="bi me-2" width="16" height="16">
                                         <use xlink:href="#grid"></use>
-                                    </svg>{{ __('Logout') }}</a>
+                                    </svg>{{ __('userdashboard.logout') }}</a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
 										@csrf
 									</form>

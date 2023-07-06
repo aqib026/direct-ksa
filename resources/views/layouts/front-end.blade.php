@@ -149,7 +149,7 @@
                            
                             @if (Auth::check())
                            <a href="{{url('user/dashboard')}}"> <button class="btn btn-secondary" type="button" >
-                                Dashboard
+                                {{__('userdashboard.dashboard')}}
                                 </button></a>
                             <button class="btn btn-secondary  dropdown-toggle-split" type="button" data-bs-toggle="dropdown" aria-expanded="">
                                 <i class="fas fa-chevron-down"></i>
@@ -157,14 +157,14 @@
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
                                 >
                                 <a class="dropdown-item" href="{{ url('user/visarequest') }}">
-                                    Visa Request</a>
+                                    {{__('userdashboard.visa')}}</a>
                                     <a class="dropdown-item" href="{{ url('user/services') }}">
-                                       Services</a>
+                                       {{__('userdashboard.services')}}</a>
                                 <a class="dropdown-item" href="{{ url('/locale/en') }}">
                                 
                                     <form action="{{ route('logout') }}" method="POST">
                                         @csrf
-                                    <button type="submit" class="btn btn-outline-primary">Logout</button>
+                                    <button type="submit" class="btn btn-outline-primary">{{__('userdashboard.logout')}}</button>
                                 </form></a>
                             
                             @else
