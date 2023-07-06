@@ -94,7 +94,7 @@
                                         <nav class="collapse">
                                             <ul class="nav nav-pills" id="mainNav">
                                                 <li class="dropdown">
-                                                    <a href="{{ route('home') }}" class="nav-link active">
+                                                    <a href="{{ url('/') }}" class="nav-link active">
                                                         {{ __('head.ho') }}
                                                     </a>
                                                 </li>
@@ -141,7 +141,7 @@
                                                         </div>
                                                     @else
                                                         <div class="ml-2" style="margin-top: 30px;"><a href="{{url('login')}}"><button type="button" class="btn btn-outline-primary">Login</button></a></div>
-                                                    @endif     
+                                                    @endif
                                                 </li>
                                             </ul>
                                         </nav>
@@ -151,7 +151,7 @@
                             </div>
                         </div>
                     </div>
-                </div> 
+                </div>
             </div>
         </header>
         <div role="main" class="main" style="padding-top: 100px;">@yield('content')</div>

@@ -102,7 +102,7 @@
                                         <nav class="collapse">
                                             <ul class="nav nav-pills" id="mainNav">
                                                 <li class="dropdown">
-                                                    <a href="{{ route('home') }}" class="nav-link active">
+                                                    <a href="{{ url('/') }}" class="nav-link active">
                                                         {{ __('head.ho') }}
                                                     </a>
                                                 </li>
