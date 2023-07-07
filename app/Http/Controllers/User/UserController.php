@@ -75,7 +75,7 @@ class UserController extends Controller
         $user->usertype = 'customer';
         $user->save();
 
-        return redirect('user/login');
+        return redirect('otp/login');
     }
 
     
@@ -129,7 +129,7 @@ class UserController extends Controller
             'password' => 'required|string|min:6|confirmed',
             'password_confirmation' => 'required',
           ]);
-        $user = Auth::user();  
+        $user = Auth::user();
         if (!Hash::check($request->current_password, $user->password)) {
             return back()->with('error', 'Current password does not match!');
         }

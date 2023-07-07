@@ -24,7 +24,7 @@ use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Artisan;
-
+use App\Http\Controllers\Auth\OtpController;
 
 
 
@@ -200,7 +200,9 @@ Route::group(['prefix'=>'/user'],function(){
     Route::get('/login', function () {
         return view('user.layout.userlogin');
     });
-    
+
+//Route::get('/register', [UserController::class,'create']);
+//Route::POST('/register', [UserController::class,'store']);
 
 Route::get('/dashboard',[UserController::class,'index'])->middleware(['auth', 'user']);
 
@@ -220,4 +222,9 @@ Route::get('/servicesdetail/{id}',[UserController::class, 'servicesdetail'])->na
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/otp/login',[OtpController::class, 'login'])->name('otp.login')->middleware(['auth', 'user']);
+Route::Post('/otp/generate',[OtpController::class, 'generate'])->name('otp.generate')->middleware(['auth', 'user']);
+Route::get('/otp/verification/{user_id}',[OtpController::class, 'verification'])->name('otp.verification')->middleware(['auth', 'user']);
+Route::Post('/otp/login',[OtpController::class, 'loginotp'])->name('otp.getlogin')->middleware(['auth', 'user']);
+

@@ -72,5 +72,6 @@ class RegisterController extends Controller
             'usertype'=>'customer',
             
         ]);
+
     }
 }

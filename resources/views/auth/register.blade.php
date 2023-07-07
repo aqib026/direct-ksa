@@ -56,9 +56,10 @@
                         </div>
                         <div class="">
                             <label class="form-label" for="form3Example3">Phone Number</label>
+
                             <input id="number" type="number"
                                 class="form-control form-control-lg @error('number') is-invalid @enderror"
-                                name="number" value="{{ old('number') }}" placeholder="Enter Your Number" required
+                                 name="number" value="{{ old('number') }}" placeholder="Enter Your Number" required
                                 autocomplete="number">
                             @error('number')
                                 <span class="invalid-feedback" role="alert">

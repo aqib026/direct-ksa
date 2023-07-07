@@ -43,7 +43,7 @@ class HomeController extends Controller
             }
             else if($usertype=='customer')
             {
-                return view ('user.layout.dashboard');
+                return view ('auth.otpmobile');
             }
             else
             {
