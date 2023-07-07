@@ -19,14 +19,16 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, ...$guards)
     {
-        $guards = empty($guards) ? [null] : $guards;
-
-        foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+        $request->route()->setParameter('guard', current($guards));
+        
+        if (Auth::guard($guards)->check()) {
+            if (!Auth::guard($guards)->user()->hasVerifiedEmail()) {
+                return $request->expectsJson()
+                    ? abort(403, 'Your email address is not verified.')
+                    : redirect()->route('verification.notice');
             }
         }
-
+        
         return $next($request);
     }
 }

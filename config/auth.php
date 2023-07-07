@@ -58,12 +58,14 @@ return [
     | Supported: "database", "eloquent"
     |
     */
-
+    
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+            'verify' => true,
         ],
+        
 
         // 'users' => [
         //     'driver' => 'database',

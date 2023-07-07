@@ -147,6 +147,11 @@
 
             </div>
         </header>
+        @if (session('error'))
+            <div class="alert alert-danger" role="alert">
+                {{ session('error') }}
+            </div>
+        @endif
         <div role="main" class="main" style="padding-top: 100px;">
             <div class="container-fluid ">
                 <div class="row mt-5 ">

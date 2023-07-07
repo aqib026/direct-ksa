@@ -25,7 +25,9 @@ use App\Http\Controllers\NoteController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\Auth\OtpController;
-
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Auth\EmailVerificationController;
 
 
 
@@ -196,6 +198,18 @@ Route::get('/locale/{lange}',[LocalizationController::class,'setlang']);
 
 Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 
+
+
+
+Route::get('/email/verify', [EmailVerificationController::class, 'show'])->middleware(['auth'])->name('verification.notice');
+Route::get('/email/verify/{id}/{hash}', [EmailVerificationController::class, 'verify'])->middleware(['auth', 'signed'])->name('verification.verify');
+Route::post('/email/verification-notification', [EmailVerificationController::class, 'sendVerificationEmail'])->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+
+
+
+
+
 Route::group(['prefix'=>'/user'],function(){
     Route::get('/login', function () {
         return view('user.layout.userlogin');
@@ -204,16 +218,16 @@ Route::group(['prefix'=>'/user'],function(){
 //Route::get('/register', [UserController::class,'create']);
 //Route::POST('/register', [UserController::class,'store']);
 
-Route::get('/dashboard',[UserController::class,'index'])->middleware(['auth', 'user']);
+Route::get('/dashboard',[UserController::class,'index'])->middleware(['auth', 'user','verified']);
 
-Route::get('/profile',[UserController::class, 'edit'])->middleware(['auth','user']);
-Route::post('/profile/update',[UserController::class, 'update'])->middleware(['auth','user']);
+Route::get('/profile',[UserController::class, 'edit'])->middleware(['auth','user','verified']);
+Route::post('/profile/update',[UserController::class, 'update'])->middleware(['auth','user','verified']);
 
-Route::get('/password',[UserController::class, 'passwordedit'])->middleware(['auth','user']);
-Route::post('/password/update',[UserController::class, 'passwordupdate'])->middleware(['auth','user']);
+Route::get('/password',[UserController::class, 'passwordedit'])->middleware(['auth','user','verified']);
+Route::post('/password/update',[UserController::class, 'passwordupdate'])->middleware(['auth','user','verified']);
 
-Route::get('/services',[UserController::class, 'services'])->name('services')->middleware(['auth','user']);
-Route::get('/servicesdetail/{id}',[UserController::class, 'servicesdetail'])->name('servicesdetail')->middleware(['auth','user']);
+Route::get('/services',[UserController::class, 'services'])->name('services')->middleware(['auth','user','verified']);
+Route::get('/servicesdetail/{id}',[UserController::class, 'servicesdetail'])->name('servicesdetail')->middleware(['auth','user','verified']);
 
 
 

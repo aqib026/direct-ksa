@@ -38,7 +38,8 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \Illuminate\Session\Middleware\AuthenticateSession::class,
-            \App\Http\Middleware\Localization::class,
+            \App\Http\Middleware\Localization::class
+            
         
         ],
 
@@ -69,6 +70,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'admin'=> \App\Http\Middleware\Admin::class,
         'user'=> \App\Http\Middleware\User::class,
-        'varify'=>\App\Http\Middleware\VerifyMobile::class,
+        'verify'=>\App\Http\Middleware\VerifyMobile::class,
     ];
 }

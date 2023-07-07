@@ -16,22 +16,19 @@ class UserController extends Controller
 {
     public function index()
     {
-        if(Auth::id())
-        {
-            if(Auth::id())
-        {
-            $usertype = Auth()->user()->usertype;
-            if($usertype=='customer')
-            {
-                return view ('user.layout.dashboard');
-            }
-            else
-            {
-                return redirect()->back();
+        if (Auth::id()) {
+            $user = Auth()->user();
+            if ($user->hasVerifiedEmail()) {
+                $usertype = $user->usertype;
+                if ($usertype == 'customer') {
+                    return view('user.layout.dashboard');
+                } else {
+                    return redirect()->back();
+                }
+            } else {
+                return redirect()->route('verification.notice')->with('error', 'Please verify your email address.');
             }
         }
-    }
-
     }
     public function create()
     {
@@ -147,9 +144,22 @@ class UserController extends Controller
 
        
       $data=compact('accre');
-        
+    
+        if (Auth::id()) {
+            $user = Auth()->user();
+            if ($user->hasVerifiedEmail()) {
+                $usertype = $user->usertype;
+                if ($usertype == 'customer') {
+                    return view('user.services')->with($data);
+                } else {
+                    return redirect()->back();
+                }
+            } else {
+                return redirect()->route('verification.notice')->with('error', 'Please verify your email address.');
+            }
+        }
 
-        return view('user.services')->with($data);
+    
     }
 
     public function servicesdetail($id)

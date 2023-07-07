@@ -72,6 +72,8 @@ class RegisterController extends Controller
             'usertype'=>'customer',
             
         ]);
-
+        $user->sendEmailVerificationNotification();
+    
+        return $user;
     }
 }

@@ -27,33 +27,26 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-
-
+    
+    
     public function index()
     {
-        if(Auth::id())
-        {
-            $usertype = Auth()->user()->usertype;
-            if($usertype=='users'){
-                return view ('admin.dashboard');
-            }
-            else if($usertype=='admin')
-            {
-                return view ('admin.dashboard');
-            }
-            else if($usertype=='customer')
-            {
-                return view ('user.layout.dashboard');
-            }
-            else
-            {
-                return redirect()->back();
+        $user = Auth::user();
+        
+        if ($user) {
+            if ($user->usertype === 'admin') {
+                return view('admin.dashboard');
+            } elseif ($user->usertype === 'customer') {
+                if ($user->hasVerifiedEmail()) {
+                    return view('user.layout.dashboard');
+                } else {
+                    return redirect()->route('verification.notice')->with('error', 'Please verify your email address.');
+                }
             }
         }
-
-
+        
+        return redirect()->back();
     }
-
  
 
 
