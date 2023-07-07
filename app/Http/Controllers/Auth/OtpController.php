@@ -15,32 +15,36 @@ class OtpController extends Controller
     {
     return view('auth.otpmobile');
     }
-    public function generate(Request $request )
+    public function generate(Request $request)
     {
-    $request->validate([
-        'number'=> 'required|exists:users,number'
-    ]);
-    
-    $userotp = $this->generateotp($request->number);
-    $userotp->sendsms($request->number);
-    return redirect()->route('otp.verification',[$userotp->user_id])->with('success','OTP Has Been Sent To Your Mobile Number!');
+        $request->validate([
+            'number' => 'required|exists:users,number',
+        ]);
+        
+        $user = User::where('number', $request->number)->first();
+        $userotp = $this->generateotp($user->id);
+        
+        if ($userotp) {
+            $userotp->sendsms($request->number);
+            return redirect()->route('otp.verification', [$userotp->user_id])->with('success', 'OTP has been sent to your mobile number!');
+        }
+        
+        // Handle the case where $userotp is null
+        return redirect()->back()->with('error', 'Failed to generate OTP. Please try again.');
     }
-    public function generateotp($number)
-    {
-        $user = User::where('number',$number)->first();
-        $userotp = UserOtp::where('user_id',$user->id)->latest()->first();
-        
-        $now =now();
-        
-         if($userotp && $now->isBefore($userotp->expire_at)){
-             return $userotp;
-         }
     
-        UserOtp::create([
-                 'user_id'=>$user->id,
-                 'otp'=>rand(12344,99999),
-                 'expire_at'=>$now->addMinutes(10),
-             ]);
+    public function generateotp($user_id)
+    {
+        $user = User::find($user_id);
+        $now = now();
+        
+        $userotp = UserOtp::create([
+            'user_id' => $user->id,
+            'otp' => rand(12344, 99999),
+            'expire_at' => $now->addMinutes(10),
+        ]);
+        
+        return $userotp;
     }
     
     public function verification($user_id)
