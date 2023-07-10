@@ -19,7 +19,7 @@
                         <label class="form-label" for="form3Example3">Mobile Number</label>
 
                         <div class="">
-                            <input id="number" type="number" class="form-control @error('number') is-invalid @enderror" name="number" value="{{ old('number') }}" required autocomplete="number" autofocus>
+                            <input id="number" type="number" class="form-control @error('number') is-invalid @enderror" name="number" value="{{  Auth::user()->number }}" required autocomplete="number" autofocus>
 
                             @error('number')
                             <span class="invalid-feedback" role="alert">

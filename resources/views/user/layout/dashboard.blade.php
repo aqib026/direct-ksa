@@ -152,9 +152,16 @@
                 {{ session('error') }}
             </div>
         @endif
+
         <div role="main" class="main" style="padding-top: 100px;">
             <div class="container-fluid ">
                 <div class="row mt-5 ">
+                    @if (!Auth::user()->phone_verified)
+                        <div class="alert alert-danger" role="alert">
+                            Please verify your phone number.
+                            <a href="{{ url('otp/login') }}" class="alert-link">Click here</a> to go to the verification page.
+                        </div>
+                    @endif
                     <div class="col-md-3" >
                         <ul class="list-group flex-column mb-auto" style="margin-left: 78px;">
 

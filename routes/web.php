@@ -237,7 +237,7 @@ Route::get('/servicesdetail/{id}',[UserController::class, 'servicesdetail'])->na
 Auth::routes();
 
 
-Route::get('/otp/login',[OtpController::class, 'login'])->name('otp.login');
+Route::get('/otp/login/{id}',[OtpController::class, 'login'])->name('otp.login');
 Route::Post('/otp/generate',[OtpController::class, 'generate'])->name('otp.generate');
 Route::get('/otp/verification/{user_id}',[OtpController::class, 'verification'])->name('otp.verification');
 Route::Post('/otp/login',[OtpController::class, 'loginotp'])->name('otp.getlogin');

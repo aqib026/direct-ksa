@@ -55,30 +55,35 @@ class OtpController extends Controller
     }
     public function loginotp(Request $request)
     {
-    $request->validate([
-        'otp'=>'required',
-        'user_id'=>'required|exists:users,id'
-    ]);
-    $userotp = UserOtp::where('user_id',$request->user_id)->where('otp',$request->otp )->first();
-    $now= now();
-    if(!$userotp)
-    {
-        return redirect()->back()->with('error','Your OTP is Incorrect');
-    }
-    elseif ($userotp && $now->isAfter($userotp->expire_at)){
-        return redirect()->back()->with('error','Your OTP is Expired');
-    }
-    
-   $user = User::whereId($request->user_id)->first();
-    if ($user){
-        $userotp->update([
-            'expire_at'=>now()
+        $request->validate([
+            'otp' => 'required',
+            'user_id' => 'required|exists:users,id',
         ]);
-        Auth::login($user);
-        return redirect('/');
-    
-    }
-        return redirect()->route('otp.login')->with('error','Your OTP is not correct');
-    
+        
+        $userotp = UserOtp::where('user_id', $request->user_id)->where('otp', $request->otp)->first();
+        $now = now();
+        
+        if (!$userotp) {
+            return redirect()->back()->with('error', 'Your OTP is incorrect.');
+        } elseif ($now->isAfter($userotp->expire_at)) {
+            return redirect()->back()->with('error', 'Your OTP has expired.');
+        }
+        
+        $userotp->update([
+            'expire_at' => now()
+        ]);
+        
+        $user = User::whereId($request->user_id)->first();
+        
+        if ($user) {
+            // Update the user's verification status
+            $user->phone_verified = true;
+            $user->save();
+            
+            Auth::login($user);
+            return redirect('/')->with('success', 'OTP verification successful.');
+        }
+        
+        return redirect()->route('otp.login')->with('error', 'Your OTP is not correct.');
     }
 }
