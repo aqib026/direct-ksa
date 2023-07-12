@@ -188,9 +188,12 @@ Route::get('/requirement/{country}',[FrontendController::class, 'show']);
 
 
 Route::get('/visa_request', [VisaRequestController::class, 'index'])->name('visa_request');
+Route::get('/visa_request/payment', [VisaRequestController::class, 'stepfour'])->middleware(['auth', 'user'])->name('visa_request_stepfour');
 Route::get('/visa_request/application_forms', [VisaRequestController::class, 'stepthree'])->middleware(['auth', 'user'])->name('visa_request_stepthree');
 Route::get('/visa_request/{country?}/{visatype?}', [VisaRequestController::class, 'steptwo'])->name('visa_request_steptwo');
 Route::post('/visa_request', [VisaRequestController::class, 'payment_form'])->name('visa_request_payment_form');
+Route::post('/visa_request_application_form', [VisaRequestController::class, 'application_form'])->name('visa_request_application_form');
+Route::post('/visa_request/payment', [VisaRequestController::class, 'save_payment_form'])->middleware(['auth', 'user'])->name('visa_request_stepfour_post');
 Route::get('/page/{slug?}', [PagesController::class, 'index'])->name('content_page');
 
 

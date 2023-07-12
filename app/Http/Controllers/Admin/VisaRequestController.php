@@ -7,6 +7,7 @@ use App\Models\VisaRequest;
 
 use Illuminate\Http\Request;
 use App\Models\countries;
+use App\Models\UserVisaApplications;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
@@ -60,6 +61,8 @@ class VisaRequestController extends Controller
         
         if(Session::has('form_data')){
             $form_data = Session::get('form_data');
+        }else{
+            return redirect('visa_request');
         }
         //dd($form_data);
         
@@ -97,6 +100,87 @@ class VisaRequestController extends Controller
         }else {
             return redirect('user/login');
         }
+    }
+
+     /**
+     * Store post data of step three and redirecct to payment form.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function application_form(Request $request)
+    {
+        $form_data = $request->all();
+    
+        $stepthreedata = Session::get('form_data');
+        
+        if(isset($stepthreedata) && $stepthreedata['adult_count'] > 0){
+            $adult_count = $stepthreedata['adult_count'];
+            for($i = 1; $i <= $adult_count; $i++){
+                $filename = time() . $i . "." .  $request->file('adult_passport_'.$i)->getClientOriginalExtension();
+                $form_data['adult_passport_'.$i] = $request->file('adult_passport_'.$i)->storeas('passportpic', $filename);
+            }
+        }
+        
+        if(isset($stepthreedata) && $stepthreedata['child_count'] > 0){
+            $child_count = $stepthreedata['child_count'];
+            for($i = 1; $i <= $child_count; $i++){
+                $filename = time() . $i . "." . $request->file('child_passport_'.$i)->getClientOriginalExtension();
+                $form_data['child_passport_'.$i] = $request->file('child_passport_'.$i)->storeas('passportpic', $filename);
+            }
+        }
+       
+        if(isset($stepthreedata) && $stepthreedata['passport_count'] > 0){
+            $passport_count = $stepthreedata['passport_count'];
+            for($i = 1; $i <= $passport_count; $i++){
+                $filename = time() . $i . "." . $request->file('passport_'.$i)->getClientOriginalExtension();
+                $form_data['passport_'.$i] = $request->file('passport_'.$i)->storeas('passportpic', $filename);
+            }
+        }
+        
+        Session::put('application_form_data', $form_data);
+        if (auth()->check()) {
+            return redirect('visa_request/payment');
+        }else {
+            return redirect('user/login');
+        }
+    }
+
+    public function save_payment_form(Request $request)
+    {
+        $form_data = $request->all();
+        $data = '';
+    
+        if(Session::has('form_data') && Session::has('application_form_data')) {
+            $data = Session::get('form_data');
+            $data['application_form_data'] = Session::get('application_form_data');
+            $data['payment_form_data'] = $form_data['payment_method'];
+        }else{
+            return redirect('visa_request');
+        }
+        
+        $VisaRequest = new UserVisaApplications();
+
+        $VisaRequest->user_id = auth()->user()->id;
+        $VisaRequest->content = serialize($data);
+        $VisaRequest->save();
+        
+        return view('frontend.thankyou');
+    }
+
+    public function stepfour()
+    {
+        $form_data = '';
+        $country = '';
+        if(Session::has('form_data') && Session::has('application_form_data')) {
+            $form_data = Session::get('form_data');
+            
+            $country = countries::where('id', $form_data['country'])->first();
+        }else{
+            return redirect('visa_request');
+        }
+        
+        return view('frontend.visa_request_stepfour', compact('form_data', 'country'));
     }
 
     /**

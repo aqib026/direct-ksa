@@ -9,7 +9,7 @@
 		</div> 
 	</section>
 	<section class="section border-0 bg-quaternary m-0">
-		<form action="" role="form" method="post" class="form-horizontal" enctype="multipart/form-data">
+		<form action="{{ route('visa_request_application_form') }}" role="form" method="post" class="form-horizontal" enctype="multipart/form-data">
         @csrf
 			<div class="container py-5">
 				<div class="col-lg-12">		
@@ -33,13 +33,13 @@
 														<div class="col-lg-6">
 															<div class="input-group input-group-default">
 																<span class="input-group-text" id="inputGroup-sizing-default">First Name</span>
-																<input type="text" placeholder="First Name" class="form-control h-auto" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+																<input type="text" name="adult_first_name_{{ $i }}" placeholder="First Name" class="form-control h-auto" required>
 															</div>
 														</div>
 														<div class="col-lg-6">
 															<div class="input-group input-group-default">
 																<span class="input-group-text" id="inputGroup-sizing-default">Family Name</span>
-																<input type="text" placeholder="Family Name" class="form-control h-auto" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+																<input type="text" name="adult_family_name_{{ $i }}" placeholder="Family Name" class="form-control h-auto" required>
 															</div>
 														</div>
 													</div>
@@ -52,13 +52,13 @@
 														<div class="col-lg-6">
 															<div class="input-group input-group-default">
 																<span class="input-group-text" id="inputGroup-sizing-default">First Name</span>
-																<input type="text" placeholder="First Name" class="form-control h-auto" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+																<input type="text" name="adult_mother_first_name_{{ $i }}" placeholder="First Name" class="form-control h-auto" required>
 															</div>
 														</div>
 														<div class="col-lg-6">
 															<div class="input-group input-group-default">
 																<span class="input-group-text" id="inputGroup-sizing-default">Family Name</span>
-																<input type="text" placeholder="Family Name" class="form-control h-auto" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+																<input type="text" name="adult_mother_family_name_{{ $i }}" placeholder="Family Name" class="form-control h-auto" required>
 															</div>
 														</div>
 													</div>
@@ -70,7 +70,7 @@
 														<div class="col">
 															<div class="input-group input-group-default">
 																<span class="input-group-text" id="inputGroup-sizing-default">Upload Passport Copy of Traveler</span>
-																<input type="file" class="form-control h-auto" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+																<input name="adult_passport_{{ $i }}" type="file" class="form-control h-auto" required>
 															</div>
 														</div>
 													</div>
@@ -102,13 +102,13 @@
 														<div class="col-lg-6">
 															<div class="input-group input-group-default">
 																<span class="input-group-text" id="inputGroup-sizing-default">First Name</span>
-																<input type="text" placeholder="First Name" class="form-control h-auto" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+																<input type="text" name="child_first_name_{{ $i }}" placeholder="First Name" class="form-control h-auto" required>
 															</div>
 														</div>
 														<div class="col-lg-6">
 															<div class="input-group input-group-default">
 																<span class="input-group-text" id="inputGroup-sizing-default">Family Name</span>
-																<input type="text" placeholder="Family Name" class="form-control h-auto" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+																<input type="text" name="child_family_name_{{ $i }}" placeholder="Family Name" class="form-control h-auto" required>
 															</div>
 														</div>
 													</div>
@@ -121,13 +121,13 @@
 														<div class="col-lg-6">
 															<div class="input-group input-group-default">
 																<span class="input-group-text" id="inputGroup-sizing-default">First Name</span>
-																<input type="text" placeholder="First Name" class="form-control h-auto" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+																<input type="text" name="child_mother_first_name_{{ $i }}" placeholder="First Name" class="form-control h-auto" required>
 															</div>
 														</div>
 														<div class="col-lg-6">
 															<div class="input-group input-group-default">
 																<span class="input-group-text" id="inputGroup-sizing-default">Family Name</span>
-																<input type="text" placeholder="Family Name" class="form-control h-auto" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+																<input type="text" name="child_mother_family_name_{{ $i }}" placeholder="Family Name" class="form-control h-auto" required>
 															</div>
 														</div>
 													</div>
@@ -139,7 +139,7 @@
 														<div class="col">
 															<div class="input-group input-group-default">
 																<span class="input-group-text" id="inputGroup-sizing-default">Upload Passport Copy of Traveler</span>
-																<input type="file" class="form-control h-auto" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+																<input name="child_passport_{{ $i }}" type="file" class="form-control h-auto" required>
 															</div>
 														</div>
 													</div>
@@ -170,7 +170,7 @@
 														<div class="col">
 															<div class="input-group input-group-default">
 																<span class="input-group-text" id="inputGroup-sizing-default">Upload Passport Copy of Traveler</span>
-																<input type="file" class="form-control h-auto" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+																<input name="passport_{{ $i }}" type="file" class="form-control h-auto" required>
 															</div>
 														</div>
 													</div>
