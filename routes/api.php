@@ -3,7 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ServicesController;
-
+use App\Http\Controllers\Api\CountriesController;
+use App\Http\Controllers\Api\CustomerController;
+use App\Http\Controllers\Api\LoginController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,3 +22,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/services-list', [ServicesController::class, 'index'])->name('services-list');
+Route::get('/countries-list', [CountriesController::class, 'index'])->name('countries-list');
+Route::get('/requirement/{country}',[CountriesController::class, 'show']);
+
+
+
+Route::POST('register',[LoginController::class,'register']);
+Route::POST('login',[LoginController::class,'login']);
+

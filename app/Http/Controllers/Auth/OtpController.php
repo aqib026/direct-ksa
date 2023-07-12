@@ -41,7 +41,7 @@ class OtpController extends Controller
         $userotp = UserOtp::create([
             'user_id' => $user->id,
             'otp' => rand(12344, 99999),
-            'expire_at' => $now->addMinutes(10),
+            'expire_at' => $now->addMinutes(59),
         ]);
         
         return $userotp;

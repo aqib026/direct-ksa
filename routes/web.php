@@ -28,7 +28,8 @@ use App\Http\Controllers\Auth\OtpController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Auth\EmailVerificationController;
-
+use App\Http\Controllers\Admin\BranchController;
+use App\Http\Controllers\Admin\BankController;
 
 
 
@@ -154,6 +155,20 @@ Route::group(['prefix'=>'/admin'],function(){
     Route::Get('/contact_location/delete/{id}',[ContactController::class, 'destroy'])->middleware(['auth','admin']);
     Route::get('/contact_form/edit/{id}',[ContactController::class, 'edit'])->middleware(['auth','admin']);
     Route::post('/contact_form/update/{id}',[ContactController::class, 'update'])->middleware(['auth','admin']);
+    
+    Route::get('/cash_form',[BranchController::class, 'create'])->middleware(['auth','admin']);
+    Route::get('/cash_location',[BranchController::class, 'show'])->middleware(['auth','admin']);
+    Route::post('cash_form',[BranchController::class, 'store'])->middleware(['auth', 'admin']);
+    Route::Get('/cash_location/delete/{id}',[BranchController::class, 'destroy'])->middleware(['auth','admin']);
+    Route::get('/cash_form/edit/{id}',[BranchController::class, 'edit'])->middleware(['auth','admin']);
+    Route::post('/cash_form/update/{id}',[BranchController::class, 'update'])->middleware(['auth','admin']);
+    
+    Route::get('/bank-form',[BankController::class, 'create'])->middleware(['auth','admin']);
+    Route::Post('/bank-form',[BankController::class, 'store'])->middleware(['auth','admin']);
+    Route::get('/bank',[BankController::class, 'show'])->middleware(['auth','admin']);
+    Route::get('/bank/delete/{id}',[BankController::class, 'destroy'])->middleware(['auth','admin']);
+    Route::get('/bank-form/edit/{id}',[BankController::class, 'edit'])->middleware(['auth','admin']);
+    Route::Post('/bank-form/update/{id}',[BankController::class, 'update'])->middleware(['auth','admin']);
 
     Route::get('/faqs_form',[FaqsController::class, 'create'])->middleware(['auth','admin']);
     Route::get('/faqs',[FaqsController::class, 'show'])->middleware(['auth','admin']);

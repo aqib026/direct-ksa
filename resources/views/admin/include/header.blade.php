@@ -35,7 +35,7 @@
 					<!-- menu profile quick info -->
 					<div class="profile clearfix">
 						<div class="profile_pic">
-							@php 
+							@php
 								if (!empty(Auth::user()->profile_pic)){
 									$profile_pic = asset(Auth::user()->profile_pic);
 								}else{
@@ -69,15 +69,15 @@
 										<li><a href="{{url('admin/add-user')}}">Add User</a></li>
 										<li><a href="{{{url('admin/users')}}}">View Users</a></li>
 									</ul>
-								</li>			
+								</li>
 								<li><a><i class="fa fa-edit"></i> Customer <span class="fa fa-chevron-down"></span></a>
-									<ul class="nav child_menu">								
+									<ul class="nav child_menu">
 										<li><a href="{{{url('admin/customer')}}}">View Customer</a></li>
 									</ul>
 								</li>
 								<li><a><i class="fa fa-edit"></i> Visa <span class="fa fa-chevron-down"></span></a>
-									<ul class="nav child_menu">								
-										<li><a href="{{url('admin/visa_requirement')}}">Visa Requirement</a></li>										
+									<ul class="nav child_menu">
+										<li><a href="{{url('admin/visa_requirement')}}">Visa Requirement</a></li>
 										<li><a href="{{url('admin/visarequest')}}">Visa Types</a></li>
 									</ul>
 								</li>
@@ -87,7 +87,7 @@
 										<li><a href="{{url('admin/accreditation')}}">Accreditation</a></li>
 										<li><a href="{{url('admin/countries')}}">Countries</a></li>
 										<li><a href="{{url('admin/feature')}}">Feature</a></li>
-										
+
 									</ul>
 								</li>
 								<li>
@@ -95,6 +95,8 @@
 									<ul class="nav child_menu">
 										<li><a href="{{ route('content_pages', 'about_us') }}">About us</a></li>
 										<li><a href="{{url('admin/contact_location')}}">Contact Location</a></li>
+										<li><a href="{{url('admin/cash_location')}}">Cash Deposit Location</a></li>
+										<li><a href="{{url('admin/bank')}}">Bank Branch</a></li>
 										<li><a href="{{url('admin/categorie')}}">FAQs Categories</a></li>
 										<li><a href="{{url('admin/faqs')}}">FAQs</a></li>
 										<li><a href="{{ route('content_pages', 'terms_conditions') }}">Terms & Conditions</a></li>

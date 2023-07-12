@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Branch;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Countries;
@@ -52,7 +53,10 @@ class CountryController extends Controller
       $search = $request["search"] ?? "";
       if ($search != "") {
          $countries = Countries::where('name', 'like', "%$search%")->paginate(20);
-      } 
+      }
+      else {
+          $countries = Countries::paginate(20);
+      }
       $data = compact('countries', 'search');
       return view('admin.country.countries')->with($data);
    }
