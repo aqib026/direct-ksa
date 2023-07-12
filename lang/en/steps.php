@@ -36,7 +36,17 @@ return[
     "ns3"=>"Continue to Step 3: Application Forms",
     "ns4"=>"Continue to Step 4: Payment",
     "s3t"=>"Traveller's Information",
-    "s3s"=>"Please enter correct information of all travelers"
+    "s3s"=>"Please enter correct information of all travelers",
+    "tsi"=>"Traveler's Information",
+    "bpt"=>"Before Payment, Please review all the information carefully!",
+    "cvt"=>"Country & Visa Type",
+    "tdnt"=>"Travel Date & No. of Traveler's",
+    "etd"=>"Expected Travel Date",
+    "not"=>"No. of Adult Traveler's",
+    "noct"=>"No. of Child Traveler's",
+    "nop"=>"No. of Passport's",
+    "ps"=>"Payment Summary",
+    
 
 ]
 ?>
