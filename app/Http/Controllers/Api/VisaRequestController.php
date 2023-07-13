@@ -3,25 +3,29 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CountryResource;
 use App\Models\Countries;
+use App\Models\VisaRequest;
 use Illuminate\Http\Request;
+use App\Http\Resources\VisaTypeResource;
 
 class VisaRequestController extends Controller
 {
-    public function show(Request $request, $countryId)
+    public function index(Request $request)
     {
-        $countries = Countries::where('status', '1')->get();
-        $country = Countries::find($countryId);
-        $visaDetails = $country->visatype()->where('status', '1')->first();
+        $visaRequests = VisaRequest::all();
         
-        if ($countries && $country && $visaDetails) {
-            return response()->json([
-                'countries' => $countries,
-                'country' => $country,
-                'visaDetails' => $visaDetails
-            ]);
+        if ($visaRequests) {
+            $data = [
+                'visaRequests' => VisaTypeResource::collection($visaRequests),
+            ];
         } else {
-            return response()->json(['error' => 'Country not found'], 404);
+            $data = [
+                'error' => 'No visa requests found',
+            ];
         }
+        
+        return $data;
     }
+    
 }

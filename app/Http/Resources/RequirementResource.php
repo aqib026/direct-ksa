@@ -14,15 +14,16 @@ class RequirementResource extends JsonResource
      */
     public function toArray($request)
     {
-        return[
+        return [
             'id' => $this->id,
             'countries_id' => $this->countries_id,
+            'country' => $this->visa->name, // Assuming the country name is stored in the `name` column
             'status' => $this->status,
             'detail'=>$this->detail,
             'detail_ar'=>$this->detail_ar,
             'created_at' => date('Y-m-d', strtotime($this->created_at)),
             'updated_at' => date('Y-m-d', strtotime($this->updated_at)),
-        ];
-        return parent::toArray($request);
+            ];
     }
+    
 }

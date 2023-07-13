@@ -13,7 +13,7 @@ class ServicesController extends Controller
 
     public function index(){
 
-        $services = Services::where('status',1)->get();
+        $services = Services::all();
         return ServiceResource::collection($services);
 
     }
