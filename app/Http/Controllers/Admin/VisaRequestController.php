@@ -98,7 +98,7 @@ class VisaRequestController extends Controller
         if (auth()->check()) {
             return redirect('visa_request/application_forms');
         }else {
-            return redirect('user/login');
+            return redirect('/login');
         }
     }
 
@@ -142,7 +142,7 @@ class VisaRequestController extends Controller
         if (auth()->check()) {
             return redirect('visa_request/payment');
         }else {
-            return redirect('user/login');
+            return redirect('/login');
         }
     }
 

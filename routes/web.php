@@ -214,7 +214,7 @@ Route::get('/page/{slug?}', [PagesController::class, 'index'])->name('content_pa
 
 Route::get('/locale/{lange}',[LocalizationController::class,'setlang']);
 
-Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+//Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 
 
 
@@ -236,27 +236,24 @@ Route::group(['prefix'=>'/user'],function(){
 //Route::get('/register', [UserController::class,'create']);
 //Route::POST('/register', [UserController::class,'store']);
 
-Route::get('/dashboard',[UserController::class,'index'])->middleware(['auth', 'user','verified']);
+Route::get('/dashboard',[UserController::class,'index'])->middleware(['auth', 'user']);
 
-Route::get('/profile',[UserController::class, 'edit'])->middleware(['auth','user','verified']);
-Route::post('/profile/update',[UserController::class, 'update'])->middleware(['auth','user','verified']);
+Route::get('/profile',[UserController::class, 'edit'])->middleware(['auth','user']);
+Route::post('/profile/update',[UserController::class, 'update'])->middleware(['auth','user']);
 
-Route::get('/password',[UserController::class, 'passwordedit'])->middleware(['auth','user','verified']);
-Route::post('/password/update',[UserController::class, 'passwordupdate'])->middleware(['auth','user','verified']);
+Route::get('/password',[UserController::class, 'passwordedit'])->middleware(['auth','user']);
+Route::post('/password/update',[UserController::class, 'passwordupdate'])->middleware(['auth','user']);
 
-Route::get('/services',[UserController::class, 'services'])->name('services')->middleware(['auth','user','verified']);
-Route::get('/servicesdetail/{id}',[UserController::class, 'servicesdetail'])->name('servicesdetail')->middleware(['auth','user','verified']);
+Route::get('/services',[UserController::class, 'services'])->name('services')->middleware(['auth','user']);
+Route::get('/servicesdetail/{id}',[UserController::class, 'servicesdetail'])->name('servicesdetail')->middleware(['auth','user']);
 
 
 
 
 });
 
-Auth::routes();
-
-
-Route::get('/otp/login/{id}',[OtpController::class, 'login'])->name('otp.login');
+Route::get('/otp/login/{?id}',[OtpController::class, 'login'])->name('otp.login');
 Route::Post('/otp/generate',[OtpController::class, 'generate'])->name('otp.generate');
-Route::get('/otp/verification/{user_id}',[OtpController::class, 'verification'])->name('otp.verification');
+Route::get('/otp/verification/{?user_id}',[OtpController::class, 'verification'])->name('otp.verification');
 Route::Post('/otp/login',[OtpController::class, 'loginotp'])->name('otp.getlogin');
 

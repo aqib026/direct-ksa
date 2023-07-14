@@ -15,17 +15,21 @@ class OtpController extends Controller
     {
     return view('auth.otpmobile');
     }
+    
     public function generate(Request $request)
     {
         $request->validate([
-            'number' => 'required|exists:users,number',
+            'number' => 'nullable|exists:users,number',
+            'login-mobile' => 'nullable|exists:users,number',
         ]);
         
-        $user = User::where('number', $request->number)->first();
+        //$request->input($this->username())
+        $mobile_number = $request->number == null ? $request->input('login-mobile') : $request->number;
+        $user = User::where('number', $mobile_number)->first();
         $userotp = $this->generateotp($user->id);
         
         if ($userotp) {
-            $userotp->sendsms($request->number);
+            $userotp->sendsms($mobile_number);
             return redirect()->route('otp.verification', [$userotp->user_id])->with('success', 'OTP has been sent to your mobile number!');
         }
         

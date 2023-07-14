@@ -6,8 +6,9 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable 
 {
     use Notifiable;
     use HasApiTokens;
@@ -21,6 +22,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'number',
         'usertype',
     ];
+
 
     /**
      * The attributes that should be hidden for serialization.

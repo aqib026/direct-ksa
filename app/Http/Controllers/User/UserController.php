@@ -18,18 +18,14 @@ class UserController extends Controller
     {
         if (Auth::id()) {
             $user = Auth()->user();
-            if ($user->hasVerifiedEmail()) {
-                $usertype = $user->usertype;
-                if ($usertype == 'customer') {
-                    return view('user.layout.dashboard');
-                } else {
-                    return redirect()->back();
-                }
+            if ($user->usertype == 'customer') {
+                return view('user.layout.dashboard');
             } else {
-                return redirect()->route('verification.notice')->with('error', 'Please verify your email address.');
+                return redirect()->back();
             }
         }
     }
+
     public function create()
     {
         $url = url('user/register');
@@ -147,16 +143,13 @@ class UserController extends Controller
     
         if (Auth::id()) {
             $user = Auth()->user();
-            if ($user->hasVerifiedEmail()) {
-                $usertype = $user->usertype;
-                if ($usertype == 'customer') {
-                    return view('user.services')->with($data);
-                } else {
-                    return redirect()->back();
-                }
+            $usertype = $user->usertype;
+            if ($usertype == 'customer') {
+                return view('user.services')->with($data);
             } else {
-                return redirect()->route('verification.notice')->with('error', 'Please verify your email address.');
+                return redirect()->back();
             }
+            
         }
 
     
