@@ -17,12 +17,12 @@ class User
     public function handle(Request $request, Closure $next)
     {
         
-            if(Auth()->user()->usertype=='customer')
-            {
+            // if(Auth()->user()->usertype=='customer')
+            // {
             return $next($request);
-            }
-            echo "<h3>You Have to make account in User side</h3>";
-            abort(401);
+            // }
+            // echo "<h3>You Have to make account in User side</h3>";
+            // abort(401);
     
         
     }

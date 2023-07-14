@@ -48,8 +48,6 @@ use App\Http\Controllers\Admin\BankController;
 
 
 
-route::get('/dashboard',[HomeController::class, 'index']);
-
 route::get('/config-clear', function () {
     $exitCode = Artisan::call('route:cache');
     $exitCode = Artisan::call('migrate');
