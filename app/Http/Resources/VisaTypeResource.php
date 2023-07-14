@@ -21,6 +21,7 @@ class VisaTypeResource extends JsonResource
         'created_at' => date('Y-m-d', strtotime($this->created_at)),
         'updated_at' => date('Y-m-d', strtotime($this->updated_at)),
         'country' => $this->country->name,
+        'flag_pic'=> asset($this->country->flag_pic),
         
     ];
 }
