@@ -48,8 +48,6 @@ use App\Http\Controllers\Admin\BankController;
 
 
 
-route::get('/dashboard',[HomeController::class, 'index']);
-
 route::get('/config-clear', function () {
     $exitCode = Artisan::call('route:cache');
     $exitCode = Artisan::call('migrate');
@@ -252,8 +250,8 @@ Route::get('/servicesdetail/{id}',[UserController::class, 'servicesdetail'])->na
 
 });
 
-Route::get('/otp/login/{?id}',[OtpController::class, 'login'])->name('otp.login');
+Route::get('/otp/login/{id?}',[OtpController::class, 'login'])->name('otp.login');
 Route::Post('/otp/generate',[OtpController::class, 'generate'])->name('otp.generate');
-Route::get('/otp/verification/{?user_id}',[OtpController::class, 'verification'])->name('otp.verification');
+Route::get('/otp/verification/{user_id?}',[OtpController::class, 'verification'])->name('otp.verification');
 Route::Post('/otp/login',[OtpController::class, 'loginotp'])->name('otp.getlogin');
 

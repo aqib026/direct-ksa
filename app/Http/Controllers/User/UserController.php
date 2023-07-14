@@ -20,6 +20,8 @@ class UserController extends Controller
             $user = Auth()->user();
             if ($user->usertype == 'customer') {
                 return view('user.layout.dashboard');
+            }if ($user->usertype == 'admin') {
+                return redirect('/admin/dashboard');
             } else {
                 return redirect()->back();
             }

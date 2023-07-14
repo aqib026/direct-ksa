@@ -57,6 +57,7 @@ class OtpController extends Controller
             'user_id'=>$user_id
         ]);
     }
+    
     public function loginotp(Request $request)
     {
         $request->validate([
