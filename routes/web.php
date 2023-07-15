@@ -245,8 +245,8 @@ Route::post('/password/update',[UserController::class, 'passwordupdate'])->middl
 Route::get('/services',[UserController::class, 'services'])->name('services')->middleware(['auth','user']);
 Route::get('/servicesdetail/{id}',[UserController::class, 'servicesdetail'])->name('servicesdetail')->middleware(['auth','user']);
 
-
-
+Route::get('/visa_requests',[UserController::class, 'visarequests'])->name('visarequests')->middleware(['auth','user']);
+Route::get('/visa_request/{id}',[UserController::class, 'visarequest'])->name('visarequest')->middleware(['auth','user']);
 
 });
 

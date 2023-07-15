@@ -5,6 +5,8 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use App\Models\FeaturedSales;
+use App\Models\UserVisaApplications;
+use App\Models\Countries;
 use App\Models\Note;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -136,36 +138,71 @@ class UserController extends Controller
 
     public function services()
     {
-      
-        $accre = FeaturedSales::where('user_id',Auth::user()->id)->get();
-      
-
-       
-      $data=compact('accre');
-    
         if (Auth::id()) {
             $user = Auth()->user();
             $usertype = $user->usertype;
             if ($usertype == 'customer') {
+                $accre = FeaturedSales::where('user_id',Auth::user()->id)->get();
+                $data=compact('accre');
                 return view('user.services')->with($data);
             } else {
                 return redirect()->back();
             }
-            
         }
-
-    
     }
 
     public function servicesdetail($id)
-    { {
-        
-        $featured_sale = FeaturedSales::find($id);
-        
-
+    { 
+        if (Auth::id()) {
+            $user = Auth()->user();
+            $usertype = $user->usertype;
+            if ($usertype == 'customer') {
+                $featured_sale = FeaturedSales::find($id);
                 $data = compact('featured_sale');
                 return view('user.servicesdetail')->with($data);
+            } else {
+                return redirect()->back();
             }
         }
     }
 
+    public function visarequests()
+    {
+        if (Auth::id()) {
+            $user = Auth()->user();
+            $usertype = $user->usertype;
+            if ($usertype == 'customer') {
+                $country = '';
+                $accre = UserVisaApplications::where('user_id',Auth::user()->id)->get();
+                $data = array();
+                foreach ($accre as $acc) {
+                    $data[$acc['id']] = unserialize($acc['content']);
+                    $country = countries::where('id', $data[$acc['id']]['country'])->first();
+                    $data[$acc['id']]['country_name'] =  $country;
+                }
+                return view('user.visarequests', compact('data'));
+            } else {
+                return redirect()->back();
+            }
+        }
+    }
+
+    public function visarequest($id)
+    {
+        if (Auth::id()) {
+            $user = Auth()->user();
+            $usertype = $user->usertype;
+            if ($usertype == 'customer') {
+                $country = '';
+                $accre = UserVisaApplications::find($id);
+                $data = array();
+                $data = unserialize($accre['content']);
+                $country = countries::where('id', $data['country'])->first();
+                $data['country_name'] =  $country;
+                return view('user.visarequestdetail', compact('data'));
+            } else {
+                return redirect()->back();
+            }
+        }
+    }
+}

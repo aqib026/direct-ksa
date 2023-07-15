@@ -7,6 +7,8 @@ use App\Models\VisaRequest;
 
 use Illuminate\Http\Request;
 use App\Models\countries;
+use App\Models\Branch;
+use App\Models\Bank;
 use App\Models\UserVisaApplications;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -35,7 +37,6 @@ class VisaRequestController extends Controller
      */
     public function steptwo(Request $request, $country, $visatype)
     {
-        
         $form_data = '';
         
         if(Session::has('form_data')){
@@ -98,6 +99,7 @@ class VisaRequestController extends Controller
         if (auth()->check()) {
             return redirect('visa_request/application_forms');
         }else {
+            Session::put('redirect_to_visa', 'true');
             return redirect('/login');
         }
     }
@@ -179,8 +181,10 @@ class VisaRequestController extends Controller
         }else{
             return redirect('visa_request');
         }
+        $bankBranches = Bank::all();
+        $cashBranches = Branch::all();
         
-        return view('frontend.visa_request_stepfour', compact('form_data', 'country'));
+        return view('frontend.visa_request_stepfour', compact('form_data', 'country', 'cashBranches', 'bankBranches'));
     }
 
     /**

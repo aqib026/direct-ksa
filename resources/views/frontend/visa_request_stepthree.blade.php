@@ -18,7 +18,7 @@
 							<ul class="nav nav-tabs" role="tablist">
 								@for ($i = 1; $i <= $form_data['adult_count']; $i++)
 									<li class="nav-item @if ($i == 1) active @endif" role="presentation">
-										<a class="nav-link @if ($i == 1) active @endif" href="#adult{{ $i }}" data-bs-toggle="tab" aria-selected="@if ($i == 1) true @else false @endif" role="tab" >Adult Traveller - {{ $i }}</a>
+										<a class="nav-link @if ($i == 1) active @endif" href="#adult{{ $i }}" data-bs-toggle="tab" aria-selected="@if ($i == 1) true @else false @endif" role="tab" >Adult Traveler - {{ $i }}</a>
 									</li>
 								@endfor
 							</ul>
@@ -87,7 +87,7 @@
 							<ul class="nav nav-tabs" role="tablist">
 								@for ($i = 1; $i <= $form_data['child_count']; $i++)
 									<li class="nav-item @if ($i == 1) active @endif" role="presentation">
-										<a class="nav-link @if ($i == 1) active @endif" href="#child{{ $i }}" data-bs-toggle="tab" aria-selected="@if ($i == 1) true @else false @endif" role="tab" >Child Traveller - {{ $i }}</a>
+										<a class="nav-link @if ($i == 1) active @endif" href="#child{{ $i }}" data-bs-toggle="tab" aria-selected="@if ($i == 1) true @else false @endif" role="tab" >Child Traveler - {{ $i }}</a>
 									</li>
 								@endfor
 							</ul>

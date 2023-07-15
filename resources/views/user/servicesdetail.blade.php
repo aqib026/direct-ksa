@@ -3,13 +3,13 @@
     @push('title')
         <title>Service Request</title>
     @endpush
-<section class="section border-0 mb-5">
+<section class="section border-0 mb-5 mt-0">
     <div class="container">
         <div class="col-md-12 col-sm-12">
-            <div class="page-title">
-                <div class="title_left">
+            <div class="page-title mb-3">
+                <span class="title_left" style="display: inline-block;">
                     <h3>Service Request</h3>
-                </div>
+                </span>
                 <a href="{{ url('user/services') }}"><button class="float-right btn btn-danger">Back</button></a>
             </div>
             <div class="clearfix"></div>
