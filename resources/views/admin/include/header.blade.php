@@ -77,6 +77,7 @@
 								</li>
 								<li><a><i class="fa fa-edit"></i> Visa <span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
+										<li><a href="{{url('admin/visa_requests')}}">User Visa Applications</a></li>
 										<li><a href="{{url('admin/visa_requirement')}}">Visa Requirement</a></li>
 										<li><a href="{{url('admin/visarequest')}}">Visa Types</a></li>
 									</ul>

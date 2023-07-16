@@ -7,7 +7,7 @@ use App\Models\Admin;
 use App\Models\FeaturedSales;
 use App\Models\UserVisaApplications;
 use App\Models\Countries;
-use App\Models\Note;
+use App\Models\VisaNote;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -199,7 +199,8 @@ class UserController extends Controller
                 $data = unserialize($accre['content']);
                 $country = countries::where('id', $data['country'])->first();
                 $data['country_name'] =  $country;
-                return view('user.visarequestdetail', compact('data'));
+                $notes = VisaNote::where('visa_request_id', $id)->get();
+                return view('user.visarequestdetail', compact('data','notes'));
             } else {
                 return redirect()->back();
             }

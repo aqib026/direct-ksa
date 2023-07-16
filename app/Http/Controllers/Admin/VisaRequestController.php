@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\countries;
 use App\Models\Branch;
 use App\Models\Bank;
+use App\Models\VisaNote;
 use App\Models\UserVisaApplications;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -301,6 +302,40 @@ class VisaRequestController extends Controller
         }
 
         return redirect('admin/visarequest');
+    }
+
+    public function visarequests(Request $request)
+    {
+        $search = $request["search"] ?? "";
+        $country = '';
+        if ($search != "") {
+            $accre = UserVisaApplications::where('content', 'like', "%$search%")->orderBy('id', 'DESC')->paginate(20);
+        } else {
+            $accre = UserVisaApplications::orderBy('id', 'DESC')->paginate(20);
+        }
+        $data = array();
+        foreach ($accre as $acc) {
+            $data[$acc['id']] = unserialize($acc['content']);
+            $country = countries::where('id', $data[$acc['id']]['country'])->first();
+            $data[$acc['id']]['country_name'] =  $country;
+        }
+        return view('admin.userVisaRequests.user_visa_requests', compact('data', 'search','accre'));
+    }
+
+    public function visarequest($id)
+    {
+        $country = '';
+        $accre = UserVisaApplications::find($id);
+        if (is_null($accre)) {
+            return redirect('admin/visa_requests');
+        } else {
+            $data = array();
+            $data = unserialize($accre['content']);
+            $country = countries::where('id', $data['country'])->first();
+            $data['country_name'] =  $country;
+            $notes = VisaNote::where('visa_request_id', $id)->get();
+            return view('admin.userVisaRequests.user_visa_request', compact('data','id','notes'));
+        } 
     }
 
 }

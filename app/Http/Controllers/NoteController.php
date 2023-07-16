@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\FeaturedSales;
+use App\Models\UserVisaApplications;
 use App\Models\Note;
+use App\Models\VisaNote;
 
 
 
@@ -26,6 +28,19 @@ class NoteController extends Controller
             return redirect()->back();
         }
     }
+
+    public function storevisa(request $request)
+    {
+        $UserVisaApplications = UserVisaApplications::where('id', $request->post_slug)->first();
+        if ($UserVisaApplications) {
+            VisaNote::create([
+                "visa_request_id" => $request->post_slug,
+                "note" => $request->note
+            ]);
+            return redirect()->back();
+        }
+    }
+
 
 
     /**

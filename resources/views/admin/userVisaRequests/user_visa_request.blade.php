@@ -1,16 +1,16 @@
-@extends('user.layout.dashboard')
-@section('content')
+@extends('admin.include.main')
+@section('main-section')
     @push('title')
-        <title>Visa Request</title>
+        <title>User Visa Request</title>
     @endpush
-<section class="section border-0 mb-5 mt-0">
+<section class="section border-0 mb-5">
     <div class="container">
         <div class="col-md-12 col-sm-12">
-        <div class="page-title mb-3">
-                <span class="title_left" style="display: inline-block;">
-                    <h3>Visa Request</h3>
-                </span>
-                <a href="{{ url('user/visa_requests') }}"><button class="float-right btn btn-danger">Back</button></a>
+            <div class="page-title">
+                <div class="title_left">
+                    <h3>User Visa Request</h3>
+                </div>
+                <a href="{{ url('admin/visa_requests') }}"><button class="float-right btn btn-danger">Back</button></a>
             </div>
             <div class="clearfix"></div>
             <div class="x_panel">
@@ -193,7 +193,20 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="page-title  mt-5">
+                    <form action="{{ url('/admin/visa_notes') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="post_slug" value="{{ $id }}">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="note">Note</label>
+                                <textarea id="note" name="note" class="form-control" cols="15" rows="5"></textarea>
+                            </div>
+                            <div class="float-right m-3">
+                                <button type="submit" class="btn btn-success">ADD</button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="page-title">
                         <div class="title_left">
                             <h3>Note's</h3>
                         </div>
