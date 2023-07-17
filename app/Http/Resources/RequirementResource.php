@@ -21,8 +21,7 @@ class RequirementResource extends JsonResource
             'status' => $this->status,
             'detail'=>$this->detail,
             'detail_ar'=>$this->detail_ar,
-            'created_at' => date('Y-m-d', strtotime($this->created_at)),
-            'updated_at' => date('Y-m-d', strtotime($this->updated_at)),
+     
             ];
     }
     

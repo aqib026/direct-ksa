@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\RequirementsController;
 use App\Http\Controllers\Api\VisaRequestController;
+use App\Http\Controllers\Api\FeaturedController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -28,6 +29,8 @@ Route::get('/services-list', [ServicesController::class, 'index'])->name('servic
 Route::middleware('auth:sanctum')->get('/countries-list', [CountriesController::class, 'index'])->name('countries-list');
 Route::get('/requirement/{country?}',[RequirementsController::class, 'index'])->name('requirement-list');
 Route::get('/visarequest',[VisaRequestController::class, 'index'])->name('visa-list');
+Route::get('/featured-services',[FeaturedController::class, 'index'])->name('featured-show');
+Route::POST('/featured-sales', [FeaturedController::class, 'store'])->name('featured-store');
 
 
 

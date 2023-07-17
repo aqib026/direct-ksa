@@ -46,6 +46,9 @@ public function register(Request $request)
         ];
         return response()->json($response,200);
 }
+
+
+
 public function login(Request $request)
 {
 if(Auth::attempt(['email'=>$request->email,'password'=>$request->password])){
