@@ -108,12 +108,12 @@
 											</h6>
 										</td>
 										<td class="text-right">
-											<h5>{{ $form_data['passenger_total'] }}.00</h5>
+											<h5>@if(isset($form_data['passenger_total']) && $form_data['passenger_total'] > 0) {{ $form_data['passenger_total'] }}.00 @elseif(isset($form_data['passport_counter_sum']) && $form_data['passport_counter_sum'] > 0) {{ $form_data['passport_counter_sum'] }}.00 @else 0.00 @endif</h5>
 										</td>
 									</tr>
 									<tr>
 										<td class="text-left">Total (Incl.VAT)</td>
-										<td class="text-right"><h5>{{ $form_data['passenger_total'] }}.00 SAR</h5></td>
+										<td class="text-right"><h5>@if(isset($form_data['passenger_total']) && $form_data['passenger_total'] > 0) {{ $form_data['passenger_total'] }}.00 SAR @elseif(isset($form_data['passport_counter_sum']) && $form_data['passport_counter_sum'] > 0) {{ $form_data['passport_counter_sum'] }}.00 SAR @else 0.00 SAR @endif</h5></td>
 									</tr>
 								</tbody>
 							</table>
@@ -122,7 +122,7 @@
 								<thead>
 									<tr>
 										<th class="text-left">Total for Payment</th>
-										<th class="text-right"><h3><span class="badge badge-warning p5-2 mx-2">{{ $form_data['passenger_total'] }}.00 SAR</span></h3></th>
+										<th class="text-right"><h3><span class="badge badge-warning p5-2 mx-2">@if(isset($form_data['passenger_total']) && $form_data['passenger_total'] > 0) {{ $form_data['passenger_total'] }}.00 SAR @elseif(isset($form_data['passport_counter_sum']) && $form_data['passport_counter_sum'] > 0) {{ $form_data['passport_counter_sum'] }}.00 SAR @else 0.00 SAR @endif</span></h3></th>
 									</tr>
 								</thead>
 							</table>
@@ -163,30 +163,14 @@
 						<h3 class="font-weight-semi-bold text-transform-none mb-3">Bank Account Details</h3>
 						<div class="col-lg-12">
 							<div class="toggle toggle-minimal toggle-primary" data-plugin-toggle="" data-plugin-options="{ 'isAccordion': true }">
-								<section class="toggle active">
-									<a class="toggle-title">Alinmah Bank</a>
-									<div class="toggle-content" style="display: block;">
-										<p>Umm Al Hamam St,<br>
-										Opposite to VFS Global<br>
-										Riyadh, Saudia Arabia</p>
-									</div>
-								</section>
-								<section class="toggle">
-									<a class="toggle-title">AlRajhi Bank</a>
-									<div class="toggle-content" style="display: none;">
-										<p>Umm Al Hamam St,<br>
-										Opposite to VFS Global<br>
-										Riyadh, Saudia Arabia</p>
-									</div>
-								</section>
-								<section class="toggle">
-									<a class="toggle-title">NCB Bank</a>
-									<div class="toggle-content" style="display: none;">
-										<p>Umm Al Hamam St,<br>
-										Opposite to VFS Global<br>
-										Riyadh, Saudia Arabia</p>
-									</div>
-								</section>
+								@foreach ($bankBranches as $bankBranch)
+									<section @if($loop->first)class="toggle active" @else class="toggle" @endif>
+										<a class="toggle-title">{{ $bankBranch->name }}</a>
+										<div class="toggle-content" @if($loop->first) style="display: block;" @else style="display: none;" @endif>
+											<pre>{{ $bankBranch->address }}</pre>
+										</div>
+									</section>
+								@endforeach
 							</div>
 						</div>
 					</div>
@@ -195,30 +179,14 @@
 						<h3 class="font-weight-semi-bold text-transform-none mb-3">Branche(s) Details</h3>
 						<div class="col-lg-12">
 							<div class="toggle toggle-minimal toggle-primary" data-plugin-toggle="" data-plugin-options="{ 'isAccordion': true }">
-								<section class="toggle active">
-									<a class="toggle-title">Riyaydh Ummulhamam Branch</a>
-									<div class="toggle-content" style="display: block;">
-										<p>Umm Al Hamam St,<br>
-										Opposite to VFS Global<br>
-										Riyadh, Saudia Arabia</p>
-									</div>
-								</section>
-								<section class="toggle">
-									<a class="toggle-title">Riyadh As Safarat Branch</a>
-									<div class="toggle-content" style="display: none;">
-										<p>Umm Al Hamam St,<br>
-										Opposite to VFS Global<br>
-										Riyadh, Saudia Arabia</p>
-									</div>
-								</section>
-								<section class="toggle">
-									<a class="toggle-title">Jeddah Branch</a>
-									<div class="toggle-content" style="display: none;">
-										<p>Umm Al Hamam St,<br>
-										Opposite to VFS Global<br>
-										Riyadh, Saudia Arabia</p>
-									</div>
-								</section>
+								@foreach ($cashBranches as $cashBranch)
+									<section @if($loop->first)class="toggle active" @else class="toggle" @endif>
+										<a class="toggle-title">{{ $cashBranch->name }}</a>
+										<div class="toggle-content" @if($loop->first) style="display: block;" @else style="display: none;" @endif>
+											<pre>{{ $cashBranch->address }}</pre>
+										</div>
+									</section>
+								@endforeach
 							</div>
 						</div>
 					</div>

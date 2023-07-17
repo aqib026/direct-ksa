@@ -133,6 +133,9 @@ Route::group(['prefix'=>'/admin'],function(){
     Route::get('/location_form/edit/{id}',[LocationController::class, 'edit'])->middleware(['auth','admin']);
     Route::Post('/location_form/update/{id}',[LocationController::class, 'update'])->middleware(['auth','admin']);
 
+    Route::get('/visa_requests',[VisaRequestController::class, 'visarequests'])->name('uservisarequests')->middleware(['auth','admin']);
+    Route::get('/visa_request/{id}',[VisaRequestController::class, 'visarequest'])->name('uservisarequest')->middleware(['auth','admin']);
+
     Route::get('/featured_sales',[FeaturedSalesController::class, 'list'])->middleware(['auth','admin'])->name('featured_sales_list');
     Route::get('/featured_sales/view/{id}',[FeaturedSalesController::class, 'show'])->middleware(['auth','admin'])->name('featured_sales_show');
     Route::get('/featured_sales/delete/{id}',[FeaturedSalesController::class, 'destroy'])->middleware(['auth','admin']);
@@ -184,6 +187,7 @@ Route::group(['prefix'=>'/admin'],function(){
 
     
     Route::post('/notes',[NoteController::class, 'store'])->middleware(['auth', 'admin']);
+    Route::post('/visa_notes',[NoteController::class, 'storevisa'])->middleware(['auth', 'admin']);
     Route::get('/notes/delete/{id}',[NoteController::class, 'destroy'])->middleware(['auth','admin']);
     
 });
@@ -245,8 +249,8 @@ Route::post('/password/update',[UserController::class, 'passwordupdate'])->middl
 Route::get('/services',[UserController::class, 'services'])->name('services')->middleware(['auth','user']);
 Route::get('/servicesdetail/{id}',[UserController::class, 'servicesdetail'])->name('servicesdetail')->middleware(['auth','user']);
 
-
-
+Route::get('/visa_requests',[UserController::class, 'visarequests'])->name('visarequests')->middleware(['auth','user']);
+Route::get('/visa_request/{id}',[UserController::class, 'visarequest'])->name('visarequest')->middleware(['auth','user']);
 
 });
 
