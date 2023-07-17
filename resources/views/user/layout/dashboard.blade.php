@@ -162,6 +162,12 @@
                             <a href="{{ url('otp/login') }}" class="alert-link">Click here</a> to go to the verification page.
                         </div>
                     @endif
+                        @if (!Auth::user()->email_verified_at)
+                            <div class="alert alert-danger" role="alert">
+                                Please verify your email address.
+                                <a href="{{ route('verification.notice') }}" class="alert-link">Click here</a> to resend the verification email.
+                            </div>
+                        @endif
                     <div class="col-md-3" >
                         <ul class="list-group flex-column mb-auto" style="margin-left: 78px;">
 

@@ -47,7 +47,7 @@ class OtpController extends Controller
             'otp' => rand(12344, 99999),
             'expire_at' => $now->addMinutes(59),
         ]);
-        
+   
         return $userotp;
     }
     

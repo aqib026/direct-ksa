@@ -28,7 +28,8 @@
                                     {{ __('Resend Verification Email') }}
                                 </button>
                             </form>
-
+                            <div class="d-flex">
+                            <div>
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
 
@@ -36,6 +37,15 @@
                                     {{ __('Log Out') }}
                                 </button>
                             </form>
+                            </div>
+                                <div class="float-right mr-5" style="margin-left: 75%;">
+
+                                <a href="{{url('user/dashboard')}}">    <button  class="btn btn-outline-primary mt-2">
+                                        SKIP FOR NOW
+                                    </button></a>
+
+                                </div>
+                            </div>
 
 
                 </div>

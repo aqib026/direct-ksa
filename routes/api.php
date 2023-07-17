@@ -20,12 +20,12 @@ use App\Http\Controllers\Api\VisaRequestController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get('/', [HomeController::class, 'index'])->name('Home');
 Route::get('/services-list', [ServicesController::class, 'index'])->name('services-list');
-Route::get('/countries-list', [CountriesController::class, 'index'])->name('countries-list');
+Route::middleware('auth:sanctum')->get('/countries-list', [CountriesController::class, 'index'])->name('countries-list');
 Route::get('/requirement/{country?}',[RequirementsController::class, 'index'])->name('requirement-list');
 Route::get('/visarequest',[VisaRequestController::class, 'index'])->name('visa-list');
 
