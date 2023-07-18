@@ -136,6 +136,11 @@
                                 Please verify your phone number. <a href="{{ url('otp/login') }}" class="alert-link">Click here</a> to go to the verification page.
                             </div>
                         @endif
+                            @if (!Auth::user()->email_verified)
+                                <div class="alert alert-danger" role="alert">
+                                    Please verify your email address. <a href="{{ route('verification.notice') }}" class="alert-link">Click here</a> to go to the verification page.
+                                </div>
+                            @endif
                     </div>
                     <div class="row mt-5">
                         <div class="col-md-3">
