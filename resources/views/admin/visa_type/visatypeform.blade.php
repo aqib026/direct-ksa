@@ -84,6 +84,7 @@
                                         <input type="text" id="child_price" class="form-control" name="child_price" value="{{ old('child_price', isset($VisaRequest) ? $VisaRequest->child_price : '') }}">
                                     </div>
                                 </div>
+                                <div class="divider text-center m-5"><legend style="position: absolute; margin-top: -10px; color: #000"><strong>OR</strong></legend></div>
                                 <div class="item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3 label-align" for="passport_price">Per Passport Price</label>
                                     <div class="col-md-6 col-sm-6 ">
@@ -104,4 +105,16 @@
             </div>
         </div>
     </section>
+@endsection
+@section('custom-scripts')
+<script>
+    jQuery(document).ready(function($) {
+        $('#adult_price, #child_price').on('focus', function(){
+            $('#passport_price').val('');
+        });
+        $('#passport_price').on('focus', function(){
+            $('#adult_price, #child_price').val('');
+        });
+    });
+</script>
 @endsection
