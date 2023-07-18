@@ -32,6 +32,8 @@ Route::get('/visarequest',[VisaRequestController::class, 'index'])->name('visa-l
 Route::get('/featured-services',[FeaturedController::class, 'index'])->name('featured-show');
 Route::middleware('auth:sanctum')->get('/user/services',[FeaturedController::class, 'services'])->name('featured-show-id');
 Route::middleware('auth:sanctum')->get('/user/services/{id}', [FeaturedController::class, 'detail']);
+Route::middleware('auth:sanctum')->get('/user/visarequest', [VisaRequestController::class, 'visa']);
+Route::middleware('auth:sanctum')->get('/user/visarequest/{id}', [VisaRequestController::class, 'visarequest']);
 Route::POST('/featured-sales', [FeaturedController::class, 'store'])->name('featured-store');
 
 
