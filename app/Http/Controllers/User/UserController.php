@@ -10,7 +10,7 @@ use App\Models\Countries;
 use App\Models\VisaNote;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-
+use App\Models\Note;
 use Illuminate\Http\Request;
 
 
@@ -152,13 +152,14 @@ class UserController extends Controller
     }
 
     public function servicesdetail($id)
-    { 
+    {
         if (Auth::id()) {
             $user = Auth()->user();
             $usertype = $user->usertype;
             if ($usertype == 'customer') {
                 $featured_sale = FeaturedSales::find($id);
-                $data = compact('featured_sale');
+                $notes = Note::where('featured_id', $id)->get();
+                $data = compact('featured_sale','notes');
                 return view('user.servicesdetail')->with($data);
             } else {
                 return redirect()->back();

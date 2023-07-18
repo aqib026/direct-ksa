@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\CustomerFormReportMail;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\FeaturedSalesResource;
+use App\Models\Note;
 
 class FeaturedController extends Controller
 {
@@ -128,7 +129,8 @@ class FeaturedController extends Controller
             if ($usertype == 'customer') {
                 $featured_sale = FeaturedSales::find($id);
                 if ($featured_sale) {
-                    return response()->json(['featured_sale' => $featured_sale], 200);
+                    $notes = Note::where('featured_id', $id)->get();
+                    return response()->json(['featured_sale' => $featured_sale, 'notes' => $notes], 200);
                 } else {
                     return response()->json(['message' => 'FeaturedSale not found.'], 404);
                 }
@@ -139,4 +141,5 @@ class FeaturedController extends Controller
             return response()->json(['message' => 'Unauthorized.'], 401);
         }
     }
+    
 }
