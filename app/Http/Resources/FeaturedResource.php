@@ -16,6 +16,7 @@ class FeaturedResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'note'=>$this->note->note,
             'required_service' => $this->required_service,
             'paper_quantity' => $this->paper_quantity, // Assuming the country name is stored in the `name` column
             'documents' => $this->documents,
@@ -41,7 +42,7 @@ class FeaturedResource extends JsonResource
             'email '=>$this->email ,
             'service_cost '=>$this->service_cost ,
             'created_at' => date('Y-m-d', strtotime($this->created_at)),
-
+           
 
         ];
         return parent::toArray($request);
