@@ -89,11 +89,13 @@
 									<td  width="40%"><button class="btn btn-secondary" id="child_counter_minus"><i class="fa fa-minus"></i></button><span class="child_counter"> @if(isset($form_data['child_count'])) {{ $form_data['child_count'] }} @else 0 @endif</span><button class="btn btn-secondary" id="child_counter_plus"><i class="fa fa-plus"></i></button></td>
 									<td  width="30%"><span class="child_counter_sum"><span class="child_price_total">@if(isset($form_data['child_counter_sum'])) {{ $form_data['child_counter_sum'] }} @else 0 @endif</span> {{__('steps.s')}}</span></td>
 								</tr>
-								<tr class="{{ $VisaRequest->passport_price ?? 'd-none' }}">
-									<td  width="30%">{{__('steps.pas')}}</td>
-									<td  width="40%"><button class="btn btn-secondary" id="passport_counter_minus"><i class="fa fa-minus"></i></button><span class="passport_counter">@if(isset($form_data['passport_count'])) {{ $form_data['passport_count'] }} @else 0 @endif</span><button class="btn btn-secondary" id="passport_counter_plus"><i class="fa fa-plus"></i></button></td>
-									<td  width="30%"><span class="passport_counter_sum"><span class="passport_price_total">@if(isset($form_data['passport_counter_sum'])) {{ $form_data['passport_counter_sum'] }} @else 0 @endif</span> {{__('steps.s')}}</span></td>
-								</tr>
+								@if ($VisaRequest->adult_price == 0 && $VisaRequest->passport_price > 0)
+									<tr class="{{ $VisaRequest->passport_price ?? 'd-none' }}">
+										<td  width="30%">{{__('steps.pas')}}</td>
+										<td  width="40%"><button class="btn btn-secondary" id="passport_counter_minus"><i class="fa fa-minus"></i></button><span class="passport_counter">@if(isset($form_data['passport_count'])) {{ $form_data['passport_count'] }} @else 0 @endif</span><button class="btn btn-secondary" id="passport_counter_plus"><i class="fa fa-plus"></i></button></td>
+										<td  width="30%"><span class="passport_counter_sum"><span class="passport_price_total">@if(isset($form_data['passport_counter_sum'])) {{ $form_data['passport_counter_sum'] }} @else 0 @endif</span> {{__('steps.s')}}</span></td>
+									</tr>
+								@endif
 								<tr class="d-none">
 									<td  width="30%">{{__('steps.hp')}}</td>
 									<td  width="40%"><input class="form-control text-3 h-auto py-2" value="" name="promo_code" placeholder="Type Promo Here"/></td>
