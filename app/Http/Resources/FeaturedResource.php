@@ -40,7 +40,9 @@ class FeaturedResource extends JsonResource
             'mobile_number '=>$this->mobile_number ,
             'email '=>$this->email ,
             'service_cost '=>$this->service_cost ,
-          
+            'created_at' => date('Y-m-d', strtotime($this->created_at)),
+
+
         ];
         return parent::toArray($request);
     }

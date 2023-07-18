@@ -6,6 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\FeaturedResource;
 use App\Models\FeaturedSales;
 use Illuminate\Http\Request;
+use App\Models\Admin;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\CustomerFormReportMail;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Resources\FeaturedSalesResource;
 
 class FeaturedController extends Controller
 {
@@ -17,6 +22,8 @@ class FeaturedController extends Controller
     
     public function store(Request $request)
     {
+        $input=json_decode($request->getContent(),true);
+        
         // Check if the user is logged in
         if (auth()->check()) {
             // User is logged in, set the user_id from the logged-in user
@@ -27,9 +34,9 @@ class FeaturedController extends Controller
             // If no user found, create a new user record
             if (!$user) {
                 $user = Admin::create([
-                    'name' => $request->input('applicant_name'),
-                    'email' => $request->input('email'),
-                    'number' => $request->input('mobile_number'),
+                    'name' => $input['applicant_name'],
+                    'email' => $input['email'],
+                    'number' => $input['mobile_number'],
                     'password' => bcrypt('12345678'),
                     'usertype' => 'customer',
                 ]);
@@ -94,6 +101,42 @@ class FeaturedController extends Controller
             return response()->json(['success' => true, 'message' => 'FeaturedSales added successfully']);
         } else {
             return response()->json(['success' => false, 'message' => 'Failed to add FeaturedSales']);
+        }
+    }
+    
+    public function services()
+    {
+        if (Auth::id()) {
+            $user = Auth()->user();
+            $usertype = $user->usertype;
+            if ($usertype == 'customer') {
+                $accre = FeaturedSales::where('user_id', Auth::user()->id)->get();
+                return FeaturedSalesResource::collection($accre);
+            } else {
+                return response()->json(['message' => 'Unauthorized.'], 401);
+            }
+        } else {
+            return response()->json(['message' => 'Unauthorized.'], 401);
+        }
+    }
+    
+    public function detail($id)
+    {
+        if (Auth::id()) {
+            $user = Auth()->user();
+            $usertype = $user->usertype;
+            if ($usertype == 'customer') {
+                $featured_sale = FeaturedSales::find($id);
+                if ($featured_sale) {
+                    return response()->json(['featured_sale' => $featured_sale], 200);
+                } else {
+                    return response()->json(['message' => 'FeaturedSale not found.'], 404);
+                }
+            } else {
+                return response()->json(['message' => 'Unauthorized.'], 401);
+            }
+        } else {
+            return response()->json(['message' => 'Unauthorized.'], 401);
         }
     }
 }
