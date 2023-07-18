@@ -144,11 +144,11 @@
 									<thead>
 										<tr>
 											<th class="text-left"><i class="fa fa-receipt"></i>&nbsp;&nbsp;&nbsp;Cash in Branch <span class="mx-5 badge badge-secondary px-3 py-2"><a class="popup-with-zoom-anim" href="#branches-dialog" style="color: #FFF;">View Branche(s)</a></span></th>
-											<th class="text-right"><div class="form-check"><input class="form-check-input" type="radio" name="payment_method" id="branchradio" value="cash" checked><label class="form-check-label" for="branchradio"></label></div></th>
+											<th class="text-right"><div class="form-check"><input class="form-check-input" type="radio" name="payment_method" value="cash" checked><label class="form-check-label"></label></div></th>
 										</tr>
 										<tr>
 											<th class="text-left"><i class="fa fa-bank"></i>&nbsp;&nbsp;&nbsp;Bank Transfer <span class="mx-5 badge badge-secondary px-3 py-2"><a class="popup-with-zoom-anim" href="#banks-dialog"  style="color: #FFF;">View Bank(s)</a></span></th>
-											<th class="text-right"><div class="form-check"><input class="form-check-input" type="radio" name="payment_method" id="branchradio" value="bank"><label class="form-check-label" for="branchradio"></label></div></th>
+											<th class="text-right"><div class="form-check"><input class="form-check-input" type="radio" name="payment_method" value="bank"><label class="form-check-label"></label></div></th>
 										</tr>
 									</thead>
 								</table>

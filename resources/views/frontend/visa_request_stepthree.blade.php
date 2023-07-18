@@ -8,6 +8,7 @@
 			<a class="col-lg-3 col-xs-3 step step-last"><span>{{__('steps.s4')}}: <strong>{{__('steps.s4i')}}</strong></span></a>
 		</div> 
 	</section>
+	<h5 class="text-center mt-2 p-3">Please Fill all the information of Travelers!</h5>
 	<section class="section border-0 bg-quaternary m-0">
 		<form action="{{ route('visa_request_application_form') }}" role="form" method="post" class="form-horizontal" enctype="multipart/form-data">
         @csrf
@@ -25,20 +26,20 @@
 							<div class="tab-content">
 								@for ($i = 1; $i <= $form_data['adult_count']; $i++)
 									<div id="adult{{ $i }}" class="tab-pane @if ($i == 1) active show @endif" role="tabpanel">
-										<div class="tab-pane tab-pane-navigation active show" id="formsExamplesInputGroup" role="tabpanel">
+										<div class="tab-pane tab-pane-navigation active show" role="tabpanel">
 											<h4 class="mb-3">Personal Information</h4>
 											<div class="card mb-4">
 												<div class="card-body">
 													<div class="row">
 														<div class="col-lg-6">
 															<div class="input-group input-group-default">
-																<span class="input-group-text" id="inputGroup-sizing-default">First Name</span>
+																<span class="input-group-text">First Name</span>
 																<input type="text" name="adult_first_name_{{ $i }}" placeholder="First Name" class="form-control h-auto" required>
 															</div>
 														</div>
 														<div class="col-lg-6">
 															<div class="input-group input-group-default">
-																<span class="input-group-text" id="inputGroup-sizing-default">Family Name</span>
+																<span class="input-group-text">Family Name</span>
 																<input type="text" name="adult_family_name_{{ $i }}" placeholder="Family Name" class="form-control h-auto" required>
 															</div>
 														</div>
@@ -51,13 +52,13 @@
 													<div class="row">
 														<div class="col-lg-6">
 															<div class="input-group input-group-default">
-																<span class="input-group-text" id="inputGroup-sizing-default">First Name</span>
+																<span class="input-group-text">First Name</span>
 																<input type="text" name="adult_mother_first_name_{{ $i }}" placeholder="First Name" class="form-control h-auto" required>
 															</div>
 														</div>
 														<div class="col-lg-6">
 															<div class="input-group input-group-default">
-																<span class="input-group-text" id="inputGroup-sizing-default">Family Name</span>
+																<span class="input-group-text">Family Name</span>
 																<input type="text" name="adult_mother_family_name_{{ $i }}" placeholder="Family Name" class="form-control h-auto" required>
 															</div>
 														</div>
@@ -69,7 +70,7 @@
 													<div class="row">
 														<div class="col">
 															<div class="input-group input-group-default">
-																<span class="input-group-text" id="inputGroup-sizing-default">Upload Passport Copy of Traveler</span>
+																<span class="input-group-text">Upload Passport Copy of Traveler</span>
 																<input name="adult_passport_{{ $i }}" type="file" class="form-control h-auto" required>
 															</div>
 														</div>
@@ -94,20 +95,20 @@
 							<div class="tab-content">
 								@for ($i = 1; $i <= $form_data['child_count']; $i++)
 									<div id="child{{ $i }}" class="tab-pane @if ($i == 1) active show @endif" role="tabpanel">
-										<div class="tab-pane tab-pane-navigation active show" id="formsExamplesInputGroup" role="tabpanel">
+										<div class="tab-pane tab-pane-navigation active show" role="tabpanel">
 											<h4 class="mb-3">Personal Information</h4>
 											<div class="card mb-4">
 												<div class="card-body">
 													<div class="row">
 														<div class="col-lg-6">
 															<div class="input-group input-group-default">
-																<span class="input-group-text" id="inputGroup-sizing-default">First Name</span>
+																<span class="input-group-text">First Name</span>
 																<input type="text" name="child_first_name_{{ $i }}" placeholder="First Name" class="form-control h-auto" required>
 															</div>
 														</div>
 														<div class="col-lg-6">
 															<div class="input-group input-group-default">
-																<span class="input-group-text" id="inputGroup-sizing-default">Family Name</span>
+																<span class="input-group-text">Family Name</span>
 																<input type="text" name="child_family_name_{{ $i }}" placeholder="Family Name" class="form-control h-auto" required>
 															</div>
 														</div>
@@ -120,13 +121,13 @@
 													<div class="row">
 														<div class="col-lg-6">
 															<div class="input-group input-group-default">
-																<span class="input-group-text" id="inputGroup-sizing-default">First Name</span>
+																<span class="input-group-text">First Name</span>
 																<input type="text" name="child_mother_first_name_{{ $i }}" placeholder="First Name" class="form-control h-auto" required>
 															</div>
 														</div>
 														<div class="col-lg-6">
 															<div class="input-group input-group-default">
-																<span class="input-group-text" id="inputGroup-sizing-default">Family Name</span>
+																<span class="input-group-text">Family Name</span>
 																<input type="text" name="child_mother_family_name_{{ $i }}" placeholder="Family Name" class="form-control h-auto" required>
 															</div>
 														</div>
@@ -138,7 +139,7 @@
 													<div class="row">
 														<div class="col">
 															<div class="input-group input-group-default">
-																<span class="input-group-text" id="inputGroup-sizing-default">Upload Passport Copy of Traveler</span>
+																<span class="input-group-text">Upload Passport Copy of Traveler</span>
 																<input name="child_passport_{{ $i }}" type="file" class="form-control h-auto" required>
 															</div>
 														</div>
@@ -163,13 +164,13 @@
 							<div class="tab-content">
 								@for ($i = 1; $i <= $form_data['passport_count']; $i++)
 									<div id="passport{{ $i }}" class="tab-pane @if ($i == 1) active show @endif" role="tabpanel">
-										<div class="tab-pane tab-pane-navigation active show" id="formsExamplesInputGroup" role="tabpanel">
+										<div class="tab-pane tab-pane-navigation active show" role="tabpanel">
 											<div class="card mb-4">
 												<div class="card-body">
 													<div class="row">
 														<div class="col">
 															<div class="input-group input-group-default">
-																<span class="input-group-text" id="inputGroup-sizing-default">Upload Passport Copy of Traveler</span>
+																<span class="input-group-text">Upload Passport Copy of Traveler</span>
 																<input name="passport_{{ $i }}" type="file" class="form-control h-auto" required>
 															</div>
 														</div>
