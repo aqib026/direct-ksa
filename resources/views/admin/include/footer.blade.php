@@ -18,6 +18,7 @@
 	@stack('script')
 	<!-- Custom Theme Scripts -->
 	<script src="{{ asset('js/custom.min.js') }}"></script>
+	@yield('custom-scripts')
 </body>
 
 </html>

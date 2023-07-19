@@ -42,10 +42,13 @@ class VisaRequestController extends Controller
         
         if(Session::has('form_data')){
             $form_data = Session::get('form_data');
+            if($form_data['country'] !== $country || $form_data['visa_type'] !== $visatype){
+                Session::forget('form_data');
+                $form_data = '';
+            }
         }else{
             $form_data = array('country' => $country, 'visa_type' => $visatype);
         }
-        //dd($form_data);
         $VisaRequest = VisaRequest::where('countries_id', $country)->where('visa_type', $visatype)->first();
         return view('frontend.visa_request_steptwo', compact('VisaRequest', 'form_data'));
     }
@@ -58,16 +61,12 @@ class VisaRequestController extends Controller
      */
     public function stepthree(Request $request)
     {
-        
         $form_data = '';
-        
         if(Session::has('form_data')){
             $form_data = Session::get('form_data');
         }else{
             return redirect('visa_request');
         }
-        //dd($form_data);
-        
         return view('frontend.visa_request_stepthree', compact('form_data'));
     }
 
@@ -95,12 +94,10 @@ class VisaRequestController extends Controller
             'relation' => 'required',
         ]);
         $form_data = $request->all();
-        
         Session::put('form_data', $form_data);
         if (auth()->check()) {
             return redirect('visa_request/application_forms');
         }else {
-            Session::put('redirect_to_visa', 'true');
             return redirect('/login');
         }
     }
@@ -114,10 +111,8 @@ class VisaRequestController extends Controller
     public function application_form(Request $request)
     {
         $form_data = $request->all();
-    
         $stepthreedata = Session::get('form_data');
-
-        if(isset($stepthreedata) && $stepthreedata['adult_count'] > 0){
+        if(isset($stepthreedata) && !is_null($stepthreedata) && $stepthreedata['adult_count'] > 0){
             $adult_count = $stepthreedata['adult_count'];
             for($i = 1; $i <= $adult_count; $i++){
                 $filename = time() . $i . "." .  $request->file('adult_passport_'.$i)->getClientOriginalExtension();
@@ -125,7 +120,7 @@ class VisaRequestController extends Controller
             }
         }
         
-        if(isset($stepthreedata) && $stepthreedata['child_count'] > 0){
+        if(isset($stepthreedata) && !is_null($stepthreedata) && $stepthreedata['child_count'] > 0){
             $child_count = $stepthreedata['child_count'];
             for($i = 1; $i <= $child_count; $i++){
                 $filename = time() . $i . "." . $request->file('child_passport_'.$i)->getClientOriginalExtension();
@@ -133,17 +128,16 @@ class VisaRequestController extends Controller
             }
         }
        
-        if(isset($stepthreedata) && $stepthreedata['passport_count'] > 0){
+        if(isset($stepthreedata) && !is_null($stepthreedata) && $stepthreedata['passport_count'] > 0){
             $passport_count = $stepthreedata['passport_count'];
             for($i = 1; $i <= $passport_count; $i++){
                 $filename = time() . $i . "." . $request->file('passport_'.$i)->getClientOriginalExtension();
                 $form_data['passport_'.$i] = $request->file('passport_'.$i)->storeas('passportpic', $filename);
             }
         }
-        
         Session::put('application_form_data', $form_data);
         if (auth()->check()) {
-            return redirect('visa_request/payment');
+            return redirect(route('visa_request_stepfour'));
         }else {
             return redirect('/login');
         }
