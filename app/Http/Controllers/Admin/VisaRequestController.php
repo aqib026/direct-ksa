@@ -116,7 +116,7 @@ class VisaRequestController extends Controller
         $form_data = $request->all();
     
         $stepthreedata = Session::get('form_data');
-        
+
         if(isset($stepthreedata) && $stepthreedata['adult_count'] > 0){
             $adult_count = $stepthreedata['adult_count'];
             for($i = 1; $i <= $adult_count; $i++){
