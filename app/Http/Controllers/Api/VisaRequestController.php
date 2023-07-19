@@ -15,11 +15,11 @@ class VisaRequestController extends Controller
 {
     public function index(Request $request)
     {
-        $visaRequests = VisaRequest::all();
-        
-        if ($visaRequests) {
+        //$visaRequests = VisaRequest::all();
+        $countries = Countries::all();
+        if ($countries) {
             $data = [
-                'visaRequests' => VisaTypeResource::collection($visaRequests),
+                'visaRequests' => VisaTypeResource::collection($countries),
             ];
         } else {
             $data = [
