@@ -39,12 +39,24 @@ class VisaRequestController extends Controller
     public function steptwo(Request $request, $country, $visatype)
     {
         $form_data = '';
-        
         if(Session::has('form_data')){
             $form_data = Session::get('form_data');
-            if($form_data['country'] !== $country || $form_data['visa_type'] !== $visatype){
-                Session::forget('form_data');
-                $form_data = '';
+            if($form_data['country'] !== $country || $form_data['visa_type'] !== $visatype)
+            {
+                $form_data = array(
+                    'country' => $country, 
+                    'visa_type' => $visatype,
+                    'adult_price' => '0',
+                    'child_price' => '0',
+                    'passport_price' => '0',
+                    'adult_counter_sum' => '0',
+                    'child_counter_sum' => '0',
+                    'passport_counter_sum' => '0',
+                    'passenger_total' => '0',
+                    'adult_count' => '0',
+                    'child_count' => '0',
+                    'passport_count' => '0',
+                );
             }
         }else{
             $form_data = array('country' => $country, 'visa_type' => $visatype);
@@ -110,8 +122,8 @@ class VisaRequestController extends Controller
      */
     public function application_form(Request $request)
     {
-        $form_data = $request->all();
         $stepthreedata = Session::get('form_data');
+        $form_data = $request->all();
         if(isset($stepthreedata) && !is_null($stepthreedata) && $stepthreedata['adult_count'] > 0){
             $adult_count = $stepthreedata['adult_count'];
             for($i = 1; $i <= $adult_count; $i++){
@@ -135,7 +147,12 @@ class VisaRequestController extends Controller
                 $form_data['passport_'.$i] = $request->file('passport_'.$i)->storeas('passportpic', $filename);
             }
         }
-        Session::put('application_form_data', $form_data);
+        if(isset($stepthreedata) && !is_null($stepthreedata)){
+            Session::put('application_form_data', $form_data);
+        }else{
+            Session::put('application_form_data', '');
+        }
+        
         if (auth()->check()) {
             return redirect(route('visa_request_stepfour'));
         }else {
