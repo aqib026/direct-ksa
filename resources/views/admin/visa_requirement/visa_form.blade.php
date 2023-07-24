@@ -62,6 +62,23 @@
                                 <textarea name="detail_ar">{{ old('detail_ar', isset($visa) ? $visa->detail_ar : '') }}</textarea>
                             </div>
                         </div>
+                             <div class="item form-group">
+                            <label class="col-form-label col-md-1 col-sm-1 label-align" for="first-name">Mobile Detail <span
+                                    class="required"></span>
+                            </label>
+                            <div class="col-md-11 col-sm-11 ">
+                                <input name="mobile_detail" class="form-control" value="{{ old('mobile_detail', isset($visa) ? $visa->mobile_detail : '') }}">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-1 col-sm-1 label-align" for="first-name">Mobile Detail (Arabic)<span
+                                    class="required"></span>
+                            </label>
+                            <div class="col-md-11 col-sm-11 ">
+                                <input name="mobile_detail_ar" class="form-control" value="{{ old('mobile_detail_ar', isset($visa) ? $visa->mobile_detail_ar : '') }}">
+                            </div>
+                        </div>
+
                         <div class="item form-group">
                             <label for="middle-name" class="col-form-label col-md-1 col-sm-1 label-align">Status</label>
                             <div class="col-md-6 col-sm-6 ">

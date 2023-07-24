@@ -34,6 +34,8 @@
                                             <th>Country Name</th>
                                             <th>Detail</th>
                                             <th>Detail (Arabic)</th>
+                                            <th>Mobile Detail</th>
+                                            <th>Mobile Detail (Arabic)</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
@@ -50,6 +52,14 @@
                                                 $limitedContent_ar = strlen($visas->detail_ar) > 100 ? substr($visas->detail_ar, 0, 100) . '...' : $visas->detail_ar;
                                             @endphp
                                             <td>{{ $limitedContent_ar }}</td>
+                                                @php
+                                                    $limitedmobileContent = strlen($visas->mobile_detail) > 100 ? substr($visas->mobile_detail, 0, 100) . '...' : $visas->mobile_detail;
+                                                @endphp
+                                                <td>{{ $limitedmobileContent }}</td>
+                                                @php
+                                                    $limitedmobileContent_ar = strlen($visas->mobile_detail_ar) > 100 ? substr($visas->mobile_detail_ar, 0, 100) . '...' : $visas->mobile_detail_ar;
+                                                @endphp
+                                                <td>{{ $limitedmobileContent_ar }}</td>
                                                 <td>
                                                     @if ($visas->status == 1)
                                                         <span class="badge badge-success bg-success">Active</span>

@@ -57,6 +57,8 @@ class VisaController extends Controller
         $visa->countries_id = $request['name'];
         $visa->detail = $request['detail'];
         $visa->detail_ar = $request['detail_ar'];
+        $visa->mobile_detail = $request['mobile_detail'];
+        $visa->mobile_detail_ar = $request['mobile_detail_ar'];
         $visa->status = $request['status'];
         $visa->save();
 
@@ -122,6 +124,8 @@ class VisaController extends Controller
         $visa->countries_id = $request['name'];
         $visa->detail = $request['detail'];
         $visa->detail_ar = $request['detail_ar'];
+        $visa->mobile_detail = $request['mobile_detail'];
+        $visa->mobile_detail_ar = $request['mobile_detail_ar'];
         $visa->status = $request['status'];
         $visa->save();
 
