@@ -1,0 +1,228 @@
+swagger: '2.0'
+info:
+  description: LPT APIs
+  version: 1.0.0
+  title: LPT Frontend API's
+basePath: /api/
+tags:
+  - name: Api
+    description: Api
+
+paths:
+  /countries-list:
+    get:
+      tags:
+        - Countries
+      summary: LIST COUNTRIES
+      description: 'Get the list of countries'
+      operationId: listCountries
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Bad request
+
+  /requirement/29:
+    get:
+      tags:
+        - Visa Requirement
+      summary: Visa Requirement
+      description: 'This is another GET endpoint'
+      operationId: Visa Requirement
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Bad request
+
+  /visarequest:
+    get:
+      tags:
+        - Visa Request
+      summary: OTHER Visa Request
+      description: 'This is another GET endpoint'
+      operationId: Visa Request
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Bad request
+
+      security:
+        - api_key: []
+
+  /visa_request/33/visit:
+    get:
+      tags:
+        - Visa_Request step Two
+      summary: Visa_Request step Two
+      description: 'This is another GET endpoint'
+      operationId: Visa_Request step Two
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Bad request
+
+  /user/visarequest:
+    get:
+      tags:
+        - login User Visa Request
+      summary: Visa Request
+      description: 'This is another GET endpoint'
+      operationId: Visa Request
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Bad request
+
+  /user/visarequest/1:
+    get:
+      tags:
+        - login User Visa Request Detail
+      summary: Visa Request
+      description: 'This is another GET endpoint'
+      operationId: Visa Request
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Bad request
+
+  /services-list:
+    get:
+      tags:
+        - Services List
+      summary: Services List
+      description: 'This is another GET endpoint'
+      operationId: Services List
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Bad request
+
+  /user/services:
+    get:
+      tags:
+        - login User Services
+      summary: Services
+      description: 'This is another GET endpoint'
+      operationId: Services
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Bad request
+
+  /user/services/34:
+    get:
+      tags:
+        - login User Services Detail
+      summary: Services
+      description: 'This is another GET endpoint'
+      operationId: Services
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Bad request
+
+  /register:
+    post:
+      tags:
+        - REGISTRATION
+      summary: USER REGISTRATION
+      description: 'Register a new user'
+      operationId: registerUser
+      consumes:
+        - application/x-www-form-urlencoded # Changed to form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - name: name
+          in: formData # Changed to formData
+          description: 'User name'
+          required: true
+          type: string # Specify the type directly for form data
+        - name: email
+          in: formData # Changed to formData
+          description: 'User email'
+          required: true
+          type: string # Specify the type directly for form data
+        - name: password
+          in: formData # Changed to formData
+          description: 'User password'
+          required: true
+          type: string # Specify the type directly for form data
+        - name: password_confirmation
+          in: formData # Changed to formData
+          description: 'Confirm password'
+          required: true
+          type: string # Specify the type directly for form data
+      responses:
+        '201':
+          description: User registered successfully
+        '400':
+          description: Bad request
+
+
+  /login:                 # Add the /login endpoint
+    post:                 # Use POST method for login
+      tags:
+        - Login
+      summary: USER Login
+      description: 'Authenticate a user'
+      operationId: LoginUser
+      consumes:
+        - application/x-www-form-urlencoded  # Use form-urlencoded for login request
+      produces:
+        - application/json
+      parameters:
+        - name: email
+          in: formData
+          description: 'User email'
+          required: true
+          type: string
+        - name: password
+          in: formData
+          description: 'User password'
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Successful login
+        '401':
+          description: Unauthorized - Invalid credentials
+
+
+
+
+
+      security:
+        - api_key: []
+
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: Hassan
+    in: header

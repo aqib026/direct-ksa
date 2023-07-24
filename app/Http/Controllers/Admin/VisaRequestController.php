@@ -224,10 +224,10 @@ class VisaRequestController extends Controller
         $search = $request["search"] ?? "";
         if ($search != "") {
             $VisaRequest = $VisaRequest->where('name', 'like', "%$search%");
-        } 
+        }
         if ($country_id != null) {
             $VisaRequest = $VisaRequest->where('countries_id', $country_id);
-        } 
+        }
         
         $VisaRequest = $VisaRequest->orderby('id', 'desc')->paginate(20);
 
@@ -329,7 +329,7 @@ class VisaRequestController extends Controller
             $data['country_name'] =  $country;
             $notes = VisaNote::where('visa_request_id', $id)->get();
             return view('admin.userVisaRequests.user_visa_request', compact('data','id','notes'));
-        } 
+        }
     }
 
 }

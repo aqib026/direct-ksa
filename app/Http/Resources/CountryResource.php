@@ -21,8 +21,7 @@ class CountryResource extends JsonResource
             'status' => $this->status,
             'flag_pic' => asset($this->flag_pic),
             'cover_pic' => asset($this->cover_pic),
-            'created_at' => date('Y-m-d', strtotime($this->created_at)),
-            'updated_at' => date('Y-m-d', strtotime($this->updated_at)),
+          
         ];
     }
     

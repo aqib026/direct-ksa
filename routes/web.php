@@ -46,6 +46,9 @@ use App\Http\Controllers\Admin\BankController;
 |
 */
 
+Route::get('/api/swagger', function () {
+    return view('swagger.index');
+});
 
 
 route::get('/config-clear', function () {

@@ -17,8 +17,8 @@ class FeaturedController extends Controller
 {
     public function index()
     {
-        $featured= FeaturedSales::all();
-        return FeaturedResource::collection($featured);
+        $accre = FeaturedSales::get();
+        return FeaturedResource::collection($accre);
     }
     
     public function store(Request $request)

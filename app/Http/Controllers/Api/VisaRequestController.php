@@ -11,6 +11,7 @@ use App\Http\Resources\VisaTypeResource;
 use Illuminate\Support\Facades\Auth;
 use App\Models\UserVisaApplications;
 use App\Models\VisaNote;
+use Illuminate\Support\Facades\Session;
 class VisaRequestController extends Controller
 {
     public function index(Request $request)
@@ -28,6 +29,68 @@ class VisaRequestController extends Controller
         }
         
         return $data;
+    }
+    public function second(Request $request, $country, $visatype)
+    {
+        $form_data = '';
+        
+        if (Session::has('form_data')) {
+            $form_data = Session::get('form_data');
+            if ($form_data['country'] !== $country || $form_data['visa_type'] !== $visatype) {
+                Session::forget('form_data');
+                $form_data = '';
+            }
+        } else {
+            $form_data = array('country' => $country, 'visa_type' => $visatype);
+        }
+        
+        $VisaRequest = VisaRequest::where('countries_id', $country)
+            ->where('visa_type', $visatype)
+            ->first();
+        
+        return response()->json([
+            'VisaRequest' => $VisaRequest,
+            'form_data' => $form_data,
+        ]);
+    }
+    
+    public function third(Request $request)
+    {
+        $form_data = $request->all();
+        $stepthreedata = Session::get('form_data');
+        
+        if (isset($stepthreedata) && !is_null($stepthreedata) && $stepthreedata['adult_count'] > 0) {
+            $adult_count = $stepthreedata['adult_count'];
+            for ($i = 1; $i <= $adult_count; $i++) {
+                $filename = time() . $i . "." . $request->file('adult_passport_' . $i)->getClientOriginalExtension();
+                $form_data['adult_passport_' . $i] = $request->file('adult_passport_' . $i)->storeAs('passportpic', $filename);
+            }
+        }
+        
+        if (isset($stepthreedata) && !is_null($stepthreedata) && $stepthreedata['child_count'] > 0) {
+            $child_count = $stepthreedata['child_count'];
+            for ($i = 1; $i <= $child_count; $i++) {
+                $filename = time() . $i . "." . $request->file('child_passport_' . $i)->getClientOriginalExtension();
+                $form_data['child_passport_' . $i] = $request->file('child_passport_' . $i)->storeAs('passportpic', $filename);
+            }
+        }
+        
+        if (isset($stepthreedata) && !is_null($stepthreedata) && $stepthreedata['passport_count'] > 0) {
+            $passport_count = $stepthreedata['passport_count'];
+            for ($i = 1; $i <= $passport_count; $i++) {
+                $filename = time() . $i . "." . $request->file('passport_' . $i)->getClientOriginalExtension();
+                $form_data['passport_' . $i] = $request->file('passport_' . $i)->storeAs('passportpic', $filename);
+            }
+        }
+        
+        Session::put('application_form_data', $form_data);
+        
+        // Return a JSON response indicating the status and any relevant data
+        if (auth()->check()) {
+            return response()->json(['status' => 'success', 'message' => 'Form data saved successfully.', 'redirect_url' => route('visa_request_stepfour')]);
+        } else {
+            return response()->json(['status' => 'error', 'message' => 'User not authenticated. Please log in.', 'redirect_url' => '/api/login']);
+        }
     }
     
     public function visa()

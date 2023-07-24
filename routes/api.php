@@ -30,9 +30,10 @@ Route::get('/countries-list', [CountriesController::class, 'index'])->name('coun
 Route::get('/requirement/{country?}',[RequirementsController::class, 'index'])->name('requirement-list');
 
 Route::get('/visarequest',[VisaRequestController::class, 'index'])->name('visa-list');
-Route::get('/visa_request/{country_id?}/{visa_type?}',[VisaRequestController::class, 'index'])->name('visa-detail-page');
+Route::get('/visa_request/{country_id?}/{visa_type?}',[VisaRequestController::class, 'second'])->name('visa-detail-page');
+Route::Post('/visa_request/application_form',[VisaRequestController::class,'third'])->name('visa_application_form');
 
-Route::get('/featured-services',[FeaturedController::class, 'index'])->name('featured-show');
+
 Route::middleware('auth:sanctum')->get('/user/services',[FeaturedController::class, 'services'])->name('featured-show-id');
 Route::middleware('auth:sanctum')->get('/user/services/{id}', [FeaturedController::class, 'detail']);
 Route::middleware('auth:sanctum')->get('/user/visarequest', [VisaRequestController::class, 'visa']);
