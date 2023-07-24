@@ -51,7 +51,7 @@
                                     class="required"></span>
                             </label>
                             <div class="col-md-11 col-sm-11 ">
-                                <textarea name="detail">{{ old('detail', isset($visa) ? $visa->detail : '') }}</textarea>
+                                <textarea name="detail" class="tinymce-editor"> {{ old('detail', isset($visa) ? $visa->detail : '') }}</textarea>
                             </div>
                         </div>
                         <div class="item form-group">
@@ -59,7 +59,7 @@
                                     class="required"></span>
                             </label>
                             <div class="col-md-11 col-sm-11 ">
-                                <textarea name="detail_ar">{{ old('detail_ar', isset($visa) ? $visa->detail_ar : '') }}</textarea>
+                                <textarea name="detail_ar" class="tinymce-editor">{{ old('detail_ar', isset($visa) ? $visa->detail_ar : '') }}</textarea>
                             </div>
                         </div>
                              <div class="item form-group">
@@ -67,7 +67,7 @@
                                     class="required"></span>
                             </label>
                             <div class="col-md-11 col-sm-11 ">
-                                <input name="mobile_detail" class="form-control" value="{{ old('mobile_detail', isset($visa) ? $visa->mobile_detail : '') }}">
+                                <textarea name="mobile_detail" >{{ old('mobile_detail', isset($visa) ? $visa->mobile_detail : '') }}</textarea>
                             </div>
                         </div>
                         <div class="item form-group">
@@ -75,7 +75,7 @@
                                     class="required"></span>
                             </label>
                             <div class="col-md-11 col-sm-11 ">
-                                <input name="mobile_detail_ar" class="form-control" value="{{ old('mobile_detail_ar', isset($visa) ? $visa->mobile_detail_ar : '') }}">
+                                <textarea name="mobile_detail_ar" >{{ old('mobile_detail_ar', isset($visa) ? $visa->mobile_detail_ar : '') }}</textarea>
                             </div>
                         </div>
 
@@ -104,5 +104,14 @@
     </div>
 @endsection
 @push('script')
-    <script src="{{ asset('js/tinymce.js') }}"></script>
+    <script src="{{ asset('vendor/tinymce/tinymce/tinymce.min.js') }}"></script>
+
+    <!-- Initialize TinyMCE -->
+    <script>
+        tinymce.init({
+            selector: '.tinymce-editor', // Add the 'tinymce-editor' class to your textarea to enable TinyMCE on it
+            plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+            toolbar_mode: 'floating',
+        });
+    </script>
 @endpush
