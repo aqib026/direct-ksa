@@ -9,10 +9,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Direct-KSA</title>
+    <title>EX VISAS</title>
 
     <meta name="keywords" content="Visa" />
-    <meta name="description" content="Direct-KSA">
+    <meta name="description" content="EX-VISAS">
     <meta name="author" content="Brantum">
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" href="img/apple-touch-icon.png') }} ">
@@ -130,7 +130,7 @@
                                                         <a href="{{url('user/dashboard')}}"><button class="btn btn-secondary" type="button">{{__('userdashboard.dashboard')}}</button></a>
                                                         <button class="btn btn-secondary  dropdown-toggle-split" type="button" data-bs-toggle="dropdown" aria-expanded="" style="margin-top: -4px;"><i class="fas fa-chevron-down"></i></button>
                                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                            <a class="dropdown-item" href="{{ url('user/visarequest') }}">{{__('userdashboard.visa')}}</a>
+                                                            <a class="dropdown-item" href="{{ url('user/visa_requests') }}">{{__('userdashboard.visa')}}</a>
                                                             <a class="dropdown-item" href="{{ url('user/services') }}">{{__('userdashboard.services')}}</a>
                                                             <a class="dropdown-item" href="{{ url('/locale/en') }}">
                                                                 <form action="{{ route('logout') }}" method="POST">

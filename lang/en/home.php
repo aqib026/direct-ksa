@@ -1,11 +1,11 @@
 <?php
 return[
     "ti"=>"Apply for your Visa Now!",
-    "in"=>"With Direct, you can get your Visa at all ease",
+    "in"=>"With EX VISAS, you can get your Visa at all ease",
     "bu"=>"APPLY NOW",
     "ss"=>"SPECIAL SERVICES",
     "si"=>"Find out more with our special services",
-    "wd"=>"WHY DIRECT?",
+    "wd"=>"WHY EX VISAS?",
     "oms"=>"Our Amazing Services",
     "ave"=>"Apply for your Visa with Ease",
     "avei"=>"Submit your visa request with ease within 2 minutes, from anywhere in the world at competitive prices",
