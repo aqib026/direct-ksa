@@ -44,7 +44,7 @@ class VisaRequestController extends Controller
             if($form_data['country'] !== $country || $form_data['visa_type'] !== $visatype)
             {
                 $form_data = array(
-                    'country' => $country, 
+                    'country' => $country,
                     'visa_type' => $visatype,
                     'adult_price' => '0',
                     'child_price' => '0',
@@ -224,7 +224,7 @@ class VisaRequestController extends Controller
         $VisaRequest->passport_price = $request['passport_price'];
 
         $VisaRequest->save();
-        return redirect('admin/visarequest_form');
+        return redirect('admin/visarequest');
     }
 
     /**
