@@ -59,7 +59,7 @@
                                     <div class="item form-group">
                                         <label class="col-form-label col-md-1 col-sm-1 label-align" for="content">Detail<span class="required"></span></label>
                                         <div class="col-md-11 col-sm-11">
-                                            <textarea name="content">{{ old('content', isset($page) ? $page->content : '') }}</textarea>
+                                            <textarea name="content" class="tinymce-editor" >{{ old('content', isset($page) ? $page->content : '') }}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -67,7 +67,7 @@
                                     <div class="item form-group">
                                         <label class="col-form-label col-md-1 col-sm-1 label-align" for="content">Detail_ar<span class="required"></span></label>
                                         <div class="col-md-11 col-sm-11">
-                                            <textarea name="content_ar">{{ old('content_ar', isset($page) ? $page->content_ar : '') }}</textarea>
+                                            <textarea name="content_ar" class="tinymce-editor">{{ old('content_ar', isset($page) ? $page->content_ar : '') }}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -84,6 +84,18 @@
         </div>
     </section>
     @endsection
+@push('script')
+    <script src="{{ asset('vendor/tinymce/tinymce/tinymce.min.js') }}"></script>
+
+    <!-- Initialize TinyMCE -->
+    <script>
+        tinymce.init({
+            selector: '.tinymce-editor', // Add the 'tinymce-editor' class to your textarea to enable TinyMCE on it
+            plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+            toolbar_mode: 'floating',
+        });
+    </script>
+@endpush
     @push('script')
         <script src="{{ asset('js/tinymce.js') }}"></script>
     @endpush
