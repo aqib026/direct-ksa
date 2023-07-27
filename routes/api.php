@@ -10,6 +10,9 @@ use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\RequirementsController;
 use App\Http\Controllers\Api\VisaRequestController;
 use App\Http\Controllers\Api\FeaturedController;
+use App\Http\Controllers\Api\PageController;
+use App\Http\Controllers\Api\BankController;
+use App\Http\Controllers\Api\CashController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -33,6 +36,9 @@ Route::get('/visarequest',[VisaRequestController::class, 'index'])->name('visa-l
 Route::get('/visa_request/{country_id?}/{visa_type?}',[VisaRequestController::class, 'second'])->name('visa-detail-page');
 Route::Post('/visa_request/application_form',[VisaRequestController::class,'third'])->name('visa_application_form');
 
+Route::get('/page/{slug?}', [PageController::class, 'index'])->name('contentpage');
+Route::get('/bank', [BankController::class, 'index'])->name('bank');
+Route::get('/cash', [CashController::class, 'index'])->name('cash');
 
 Route::middleware('auth:sanctum')->get('/user/services',[FeaturedController::class, 'services'])->name('featured-show-id');
 Route::middleware('auth:sanctum')->get('/user/services/{id}', [FeaturedController::class, 'detail']);
