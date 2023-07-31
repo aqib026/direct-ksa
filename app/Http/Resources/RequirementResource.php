@@ -19,8 +19,8 @@ class RequirementResource extends JsonResource
             'countries_id' => $this->countries_id,
             'country' => $this->visa->name, // Assuming the country name is stored in the `name` column
             'status' => $this->status,
-            'mobile_detail'=>$this->mobile_detail,
-            'mobile_detail_ar'=>$this->mobile_detail_ar,
+            'mobile_detail'=>strip_tags($this->mobile_detail),
+            'mobile_detail_ar'=>strip_tags($this->mobile_detail_ar),
      
             ];
     }

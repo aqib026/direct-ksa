@@ -3,6 +3,7 @@
 @section('main-section')
     @push('title')
         <title>{{ $title }}</title>
+
     @endpush
 
     <div class="page-title">
@@ -67,7 +68,7 @@
                                     class="required"></span>
                             </label>
                             <div class="col-md-11 col-sm-11 ">
-                                <textarea name="mobile_detail" >{{ old('mobile_detail', isset($visa) ? $visa->mobile_detail : '') }}</textarea>
+                                <textarea name="mobile_detail" class="w-100" >{{ old('mobile_detail', isset($visa) ? $visa->mobile_detail : '') }}</textarea>
                             </div>
                         </div>
                         <div class="item form-group">
@@ -75,7 +76,7 @@
                                     class="required"></span>
                             </label>
                             <div class="col-md-11 col-sm-11 ">
-                                <textarea name="mobile_detail_ar" >{{ old('mobile_detail_ar', isset($visa) ? $visa->mobile_detail_ar : '') }}</textarea>
+                                <textarea name="mobile_detail_ar" class="w-100" >{{ old('mobile_detail_ar', isset($visa) ? $visa->mobile_detail_ar : '') }}</textarea>
                             </div>
                         </div>
 
