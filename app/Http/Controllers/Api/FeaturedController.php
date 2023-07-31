@@ -23,8 +23,8 @@ class FeaturedController extends Controller
     
     public function store(Request $request)
     {
-        $input=json_decode($request->getContent(),true);
-        
+        $input = $request->all();
+
         // Check if the user is logged in
         if (auth()->check()) {
             // User is logged in, set the user_id from the logged-in user
@@ -60,7 +60,9 @@ class FeaturedController extends Controller
         $input = $request->all();
         
         $images = array();
-        if ($files = $request->file('documents')) {
+        if ($request->hasFile('documents')) {
+            dd('am i here');
+            $files = $request->file('documents');
             foreach ($files as $file) {
                 $name = $file->getClientOriginalName();
                 $file->move('image', $name);
