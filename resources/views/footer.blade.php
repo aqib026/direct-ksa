@@ -1,13 +1,9 @@
-<footer>
-
-    <div class="pull-right">
-        Direct KSA - Admin Panel <a href="https://colorlib.com">Colorlib</a>
-
+        <footer>
+            <div class="pull-right">ExVisas - Admin Panel</div>
+            <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
     </div>
-    <div class="clearfix"></div>
-</footer>
-<!-- /footer content -->
-</div>
 </div>
 
 <!-- jQuery -->
@@ -18,11 +14,8 @@
 <script src="'{{ asset('js/fastclick.js') }}'"></script>
 <!-- NProgress -->
 <script src="{{ asset('js/nprogress.js') }}"></script>
-
 <!-- Custom Theme Scripts -->
-<script src="{{ asset('js/custom.min.js') }}"></script>\
-
+<script src="{{ asset('js/custom.min.js') }}"></script>
 <script src="{{ asset('js/jquery.mCustomScrollbar.concat.min') }}"></script>
 </body>
-
 </html>

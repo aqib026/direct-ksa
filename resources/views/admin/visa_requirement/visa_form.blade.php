@@ -22,7 +22,7 @@
         <div class="col-md-12 col-sm-12 ">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>{{ $title }} <small>Direct KSA</small></h2>
+                    <h2>{{ $title }} <small>ExVisas</small></h2>
 
                     <div class="clearfix"></div>
                 </div>
@@ -67,7 +67,7 @@
                             <label class="col-form-label col-md-1 col-sm-1 label-align" for="first-name">Mobile Detail <span
                                     class="required"></span>
                             </label>
-                            <div class="col-md-11 col-sm-11 row-cols-md-3 ">
+                            <div class="col-md-11 col-sm-11  ">
                                 <textarea name="mobile_detail" class="w-100" style="height:350px;">{{ old('mobile_detail', isset($visa) ? $visa->mobile_detail : '') }}</textarea>
                             </div>
                         </div>
