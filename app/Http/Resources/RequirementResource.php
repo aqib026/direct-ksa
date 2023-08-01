@@ -28,29 +28,42 @@ class RequirementResource extends JsonResource
    protected function format_detail($mobile_detail){
 
     $dom = new \DOMDocument();
-
+    if($mobile_detail == null || $mobile_detail == '') return '';
     $dom->loadHTML($mobile_detail);
-    // Initialize an array to store the extracted data
-    $extractedData = array();
 
-    // Function to recursively traverse the DOM tree and build the array
-    function extractDataFromNode($node, &$data) {
+    // Function to recursively traverse the DOM tree and extract text content
+
+    // Start extracting text content from the root element (in this case, <div>)
+    $extractedData = $this->extractTextFromNode($dom->documentElement);
+
+    // Convert the $extractedData to a JSON response
+    $jsonResponse = json_encode($extractedData);
+
+    // Output the JSON response
+    return $jsonResponse;
+
+   }
+
+    // Function to recursively traverse the DOM tree and extract text content
+    protected function extractTextFromNode($node) {
+        $textData = array();
+
         if ($node->nodeType === XML_TEXT_NODE) {
-            // If it's a text node, add the text content to the array
-            $data[] = $node->textContent;
+            // If it's a text node, add the text content to the $textData array
+            $text = trim($node->textContent);
+            if ($text !== '') {
+                $textData[] = str_replace(array("\r", "\n"), '', $text);
+            }
         } else {
-            // If it's an element node, process its children
+            // Process the child nodes
             foreach ($node->childNodes as $childNode) {
-                extractDataFromNode($childNode, $data);
+                $textData = array_merge($textData, $this->extractTextFromNode($childNode));
             }
         }
+
+        return $textData;
     }
 
-    // Start extracting data from the root element (in this case, <div>)
-    extractDataFromNode($dom->documentElement, $extractedData);
-
-    print_r($extractedData);    
-   }
 
 
 
