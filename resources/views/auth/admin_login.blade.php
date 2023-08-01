@@ -61,8 +61,8 @@
                 <br />
 
                 <div>
-                  <h1><i class="fa-regular fa-paw"></i> Direct KSA</h1>
-                  <p>©2023 All Rights Reserved. Direct KSA . Privacy and Terms</p>
+                  <h1><i class="fa-regular fa-paw"></i> ExVisas</h1>
+                  <p>©2023 All Rights Reserved. ExVisas . Privacy and Terms</p>
                 </div>
               </div>
             </form>

@@ -7,7 +7,7 @@
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3>Direct KSA <small>  </small></h3>
+                <h3>ExVisas</h3>
             </div>
         </div>
     </div>

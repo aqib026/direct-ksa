@@ -29,7 +29,7 @@
 			<div class="col-md-3 left_col">
 				<div class="left_col scroll-view">
 					<div class="navbar nav_title" style="border: 0;">
-						<a href="{{url('/dashboard')}}" class="site_title"><i class="fa fa-paw"></i> <span>Direct KSA</span></a>
+						<a href="{{url('/dashboard')}}" class="site_title"><i class="fa fa-paw"></i> <span>ExVisas</span></a>
 					</div>
 					<div class="clearfix"></div>
 					<!-- menu profile quick info -->
