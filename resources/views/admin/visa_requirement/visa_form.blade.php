@@ -3,6 +3,7 @@
 @section('main-section')
     @push('title')
         <title>{{ $title }}</title>
+
     @endpush
 
     <div class="page-title">
@@ -21,7 +22,7 @@
         <div class="col-md-12 col-sm-12 ">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>{{ $title }} <small>Direct KSA</small></h2>
+                    <h2>{{ $title }} <small>ExVisas</small></h2>
 
                     <div class="clearfix"></div>
                 </div>
@@ -66,8 +67,8 @@
                             <label class="col-form-label col-md-1 col-sm-1 label-align" for="first-name">Mobile Detail <span
                                     class="required"></span>
                             </label>
-                            <div class="col-md-11 col-sm-11 ">
-                                <textarea name="mobile_detail" >{{ old('mobile_detail', isset($visa) ? $visa->mobile_detail : '') }}</textarea>
+                            <div class="col-md-11 col-sm-11  ">
+                                <textarea name="mobile_detail" class="w-100" style="height:350px;">{{ old('mobile_detail', isset($visa) ? $visa->mobile_detail : '') }}</textarea>
                             </div>
                         </div>
                         <div class="item form-group">
@@ -75,7 +76,7 @@
                                     class="required"></span>
                             </label>
                             <div class="col-md-11 col-sm-11 ">
-                                <textarea name="mobile_detail_ar" >{{ old('mobile_detail_ar', isset($visa) ? $visa->mobile_detail_ar : '') }}</textarea>
+                                <textarea name="mobile_detail_ar" class="w-100" style="height: 350px;" >{{ old('mobile_detail_ar', isset($visa) ? $visa->mobile_detail_ar : '') }}</textarea>
                             </div>
                         </div>
 

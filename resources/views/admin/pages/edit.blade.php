@@ -3,6 +3,8 @@
 @section('main-section')
     @push('title')
         <title>{{ $title }}</title>
+        <script src="https://cdn.tiny.cloud/1/hug50cit7wgg002tl8n59158ayw82gtgkeuj8uu5sedz6vwu/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
     @endpush
     <section class="section border-0 m-0">
         <div class="container">
@@ -85,16 +87,21 @@
     </section>
     @endsection
 @push('script')
-    <script src="{{ asset('vendor/tinymce/tinymce/tinymce.min.js') }}"></script>
-
     <!-- Initialize TinyMCE -->
     <script>
         tinymce.init({
-            selector: '.tinymce-editor', // Add the 'tinymce-editor' class to your textarea to enable TinyMCE on it
-            plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
-            toolbar_mode: 'floating',
+            selector: '.tinymce-editor',
+            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
         });
     </script>
+{{--    <script>--}}
+{{--        tinymce.init({--}}
+{{--            selector: '.tinymce-editor', // Add the 'tinymce-editor' class to your textarea to enable TinyMCE on it--}}
+{{--            plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',--}}
+{{--            toolbar_mode: 'floating',--}}
+{{--        });--}}
+{{--    </script>--}}
 @endpush
     @push('script')
         <script src="{{ asset('js/tinymce.js') }}"></script>

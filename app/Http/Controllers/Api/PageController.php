@@ -21,7 +21,13 @@ class PageController extends Controller
            return FaqResource::collection($page_data);
         } else {
             $page_data = Page::where('page', $slug)->first();
-            return response()->json(['data' => $page_data]);
+            $response = [
+                'title'=> $page_data ->title,
+                'title_ar'=> $page_data ->title_ar,
+                'content'=> strip_tags($page_data ->content),
+                'content_ar'=> strip_tags($page_data ->content_ar)
+            ];
+            return response()->json(['data' => $response]);
         }
     }
 }
