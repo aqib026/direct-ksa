@@ -39,19 +39,13 @@ class RequirementResource extends JsonResource
     $response = [];
     $x = 0;
     foreach($extractedData as $eD){
-        if($x % 2 == 0)
-            $response[]['heading'] = $eD;
-        else
-            $response[]['para'] = $eD;
-        
+        if($x % 2 == 0){
+            $response[$eD] = $extractedData[$x+1];
+        }
             $x++;
     }
+    return $response;
 
-    // Convert the $extractedData to a JSON response
-    $jsonResponse = json_encode($response);
-
-    // Output the JSON response
-    return $jsonResponse;
 
    }
 
