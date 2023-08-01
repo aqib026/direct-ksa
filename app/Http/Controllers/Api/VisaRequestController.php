@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\UserVisaApplications;
 use App\Models\VisaNote;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Http\JsonResponse;
 class VisaRequestController extends Controller
 {
     public function index(Request $request)
@@ -54,43 +55,57 @@ class VisaRequestController extends Controller
         ]);
     }
     
-    public function third(Request $request)
+    public function third(Request $request): JsonResponse
     {
+        // Check if the user is authenticated
+        if (!Auth::check()) {
+            // User is not authenticated
+            return response()->json([
+                'status' => 'error',
+                'message' => 'User not authenticated. Please log in.',
+                'redirect_url' => '/api/login'
+            ]);
+        }
+        
+        // User is authenticated, proceed with form data and passport image processing
         $form_data = $request->all();
         $stepthreedata = Session::get('form_data');
         
-        if (isset($stepthreedata) && !is_null($stepthreedata) && $stepthreedata['adult_count'] > 0) {
-            $adult_count = $stepthreedata['adult_count'];
-            for ($i = 1; $i <= $adult_count; $i++) {
-                $filename = time() . $i . "." . $request->file('adult_passport_' . $i)->getClientOriginalExtension();
-                $form_data['adult_passport_' . $i] = $request->file('adult_passport_' . $i)->storeAs('passportpic', $filename);
+        // Your existing code for saving passport images...
+        if (isset($stepthreedata) && !is_null($stepthreedata)) {
+            if ($stepthreedata['adult_count'] > 0) {
+                $adult_count = $stepthreedata['adult_count'];
+                for ($i = 1; $i <= $adult_count; $i++) {
+                    $filename = time() . $i . "." . $request->file('adult_passport_' . $i)->getClientOriginalExtension();
+                    $form_data['adult_passport_' . $i] = $request->file('adult_passport_' . $i)->storeAs('passportpic', $filename);
+                }
             }
-        }
-        
-        if (isset($stepthreedata) && !is_null($stepthreedata) && $stepthreedata['child_count'] > 0) {
-            $child_count = $stepthreedata['child_count'];
-            for ($i = 1; $i <= $child_count; $i++) {
-                $filename = time() . $i . "." . $request->file('child_passport_' . $i)->getClientOriginalExtension();
-                $form_data['child_passport_' . $i] = $request->file('child_passport_' . $i)->storeAs('passportpic', $filename);
+            
+            if ($stepthreedata['child_count'] > 0) {
+                $child_count = $stepthreedata['child_count'];
+                for ($i = 1; $i <= $child_count; $i++) {
+                    $filename = time() . $i . "." . $request->file('child_passport_' . $i)->getClientOriginalExtension();
+                    $form_data['child_passport_' . $i] = $request->file('child_passport_' . $i)->storeAs('passportpic', $filename);
+                }
             }
-        }
-        
-        if (isset($stepthreedata) && !is_null($stepthreedata) && $stepthreedata['passport_count'] > 0) {
-            $passport_count = $stepthreedata['passport_count'];
-            for ($i = 1; $i <= $passport_count; $i++) {
-                $filename = time() . $i . "." . $request->file('passport_' . $i)->getClientOriginalExtension();
-                $form_data['passport_' . $i] = $request->file('passport_' . $i)->storeAs('passportpic', $filename);
+            
+            if ($stepthreedata['passport_count'] > 0) {
+                $passport_count = $stepthreedata['passport_count'];
+                for ($i = 1; $i <= $passport_count; $i++) {
+                    $filename = time() . $i . "." . $request->file('passport_' . $i)->getClientOriginalExtension();
+                    $form_data['passport_' . $i] = $request->file('passport_' . $i)->storeAs('passportpic', $filename);
+                }
             }
         }
         
         Session::put('application_form_data', $form_data);
         
-        // Return a JSON response indicating the status and any relevant data
-        if (auth()->check()) {
-            return response()->json(['status' => 'success', 'message' => 'Form data saved successfully.', 'redirect_url' => route('visa_request_stepfour')]);
-        } else {
-            return response()->json(['status' => 'error', 'message' => 'User not authenticated. Please log in.', 'redirect_url' => '/api/login']);
-        }
+        // Return a JSON response with status, message, and redirect URL for a successful form submission
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Form data saved successfully.',
+            'redirect_url' => route('visa_request_stepfour')
+        ]);
     }
     
     public function visa()

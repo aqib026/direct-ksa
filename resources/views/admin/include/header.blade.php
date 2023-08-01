@@ -29,7 +29,7 @@
 			<div class="col-md-3 left_col">
 				<div class="left_col scroll-view">
 					<div class="navbar nav_title" style="border: 0;">
-						<a href="{{url('/dashboard')}}" class="site_title"><i class="fa fa-paw"></i> <span>ExVisas</span></a>
+						<a href="{{url('/admin/dashboard')}}" class="site_title"><i class="fa fa-paw"></i> <span>EX VISAS</span></a>
 					</div>
 					<div class="clearfix"></div>
 					<!-- menu profile quick info -->
@@ -56,7 +56,7 @@
 						<div class="menu_section">
 							<h3>General</h3>
 							<ul class="nav side-menu">
-								<li><a href="{{url('/dashboard')}}"><i class="fa fa-home"></i>Dashboard</i></a></li>
+								<li><a href="{{url('/admin/dashboard')}}"><i class="fa fa-home"></i>Dashboard</i></a></li>
 								<li>
 									<a><i class="fa fa-clone"></i>Special Services <span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">

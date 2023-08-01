@@ -4,15 +4,15 @@
 
       <div class="col-md-12 col-sm-12  " >
       <div class="login_wrapper">
-      
+
         <div class="animate form login_form">
-         
+
             <div class="x_panel">
-            
-    
+
+
               <div class="x_content">
-    
-    
+
+
                 <div class="table-responsive">
           <section class="login_content">
             <form method="POST" action="{{ route('login') }}">
@@ -27,7 +27,7 @@
                     </span>
                 @enderror
             </div>
-            
+
             <div class="">
                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Enter Your Password" name="password" required autocomplete="current-password">
 
@@ -50,19 +50,19 @@
                     @endif
                 </div>
             </div>
-           
+
 
               <div class="clearfix"></div>
 
               <div class="separator">
-               
+
 
                 <div class="clearfix"></div>
                 <br />
 
                 <div>
-                  <h1><i class="fa-regular fa-paw"></i> ExVisas</h1>
-                  <p>©2023 All Rights Reserved. ExVisas . Privacy and Terms</p>
+                  <h1><i class="fa-regular fa-paw"></i> EX VISAS</h1>
+                  <p>©2023 All Rights Reserved. EX VISAS . Privacy and Terms</p>
                 </div>
               </div>
             </form>

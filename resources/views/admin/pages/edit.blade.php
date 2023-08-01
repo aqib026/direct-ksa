@@ -3,6 +3,8 @@
 @section('main-section')
     @push('title')
         <title>{{ $title }}</title>
+        <script src="https://cdn.tiny.cloud/1/hug50cit7wgg002tl8n59158ayw82gtgkeuj8uu5sedz6vwu/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
     @endpush
     <section class="section border-0 m-0">
         <div class="container">
@@ -59,7 +61,7 @@
                                     <div class="item form-group">
                                         <label class="col-form-label col-md-1 col-sm-1 label-align" for="content">Detail<span class="required"></span></label>
                                         <div class="col-md-11 col-sm-11">
-                                            <textarea name="content">{{ old('content', isset($page) ? $page->content : '') }}</textarea>
+                                            <textarea name="content" class="tinymce-editor" >{{ old('content', isset($page) ? $page->content : '') }}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -67,7 +69,7 @@
                                     <div class="item form-group">
                                         <label class="col-form-label col-md-1 col-sm-1 label-align" for="content">Detail_ar<span class="required"></span></label>
                                         <div class="col-md-11 col-sm-11">
-                                            <textarea name="content_ar">{{ old('content_ar', isset($page) ? $page->content_ar : '') }}</textarea>
+                                            <textarea name="content_ar" class="tinymce-editor">{{ old('content_ar', isset($page) ? $page->content_ar : '') }}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -84,6 +86,23 @@
         </div>
     </section>
     @endsection
+@push('script')
+    <!-- Initialize TinyMCE -->
+    <script>
+        tinymce.init({
+            selector: '.tinymce-editor',
+            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+        });
+    </script>
+{{--    <script>--}}
+{{--        tinymce.init({--}}
+{{--            selector: '.tinymce-editor', // Add the 'tinymce-editor' class to your textarea to enable TinyMCE on it--}}
+{{--            plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',--}}
+{{--            toolbar_mode: 'floating',--}}
+{{--        });--}}
+{{--    </script>--}}
+@endpush
     @push('script')
         <script src="{{ asset('js/tinymce.js') }}"></script>
     @endpush

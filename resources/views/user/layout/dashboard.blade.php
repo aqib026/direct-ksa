@@ -7,7 +7,7 @@
             @stack('title')
             @stack('style')
             @stack('script')
-        <title>Direct-KSA</title>
+        <title>EX VISAS</title>
         <meta name="keywords" content="Visa" />
         <meta name="description" content="Direct-KSA">
         <meta name="author" content="Brantum">
