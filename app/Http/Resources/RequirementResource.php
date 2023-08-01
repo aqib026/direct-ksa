@@ -36,8 +36,19 @@ class RequirementResource extends JsonResource
     // Start extracting text content from the root element (in this case, <div>)
     $extractedData = $this->extractTextFromNode($dom->documentElement);
 
+    $response = [];
+    $x = 0;
+    foreach($extractedData as $eD){
+        if($x % 2 == 0)
+            $response[]['heading'] = $eD;
+        else
+            $response[]['para'] = $eD;
+        
+            $x++;
+    }
+
     // Convert the $extractedData to a JSON response
-    $jsonResponse = json_encode($extractedData);
+    $jsonResponse = json_encode($response);
 
     // Output the JSON response
     return $jsonResponse;
