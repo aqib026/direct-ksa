@@ -26,50 +26,29 @@ class RequirementResource extends JsonResource
     }
 
    protected function format_detail($mobile_detail){
-
+  
+    if($mobile_detail == '') return;
+    $htmlData = $mobile_detail;
     $dom = new \DOMDocument();
-    if($mobile_detail == null || $mobile_detail == '') return '';
-    $dom->loadHTML($mobile_detail);
+    $dom->loadHTML($mobile_detail);        
 
-    // Function to recursively traverse the DOM tree and extract text content
-
-    // Start extracting text content from the root element (in this case, <div>)
-    $extractedData = $this->extractTextFromNode($dom->documentElement);
-
+    $valid_tags = ['h2', 'h3', 'p'];
+    $tags = $dom->getElementsByTagName('*'); // Selects all elements
     $response = [];
-    $x = 0;
-    foreach($extractedData as $eD){
-        if($x % 2 == 0){
-            $response[$eD] = $extractedData[$x+1];
+    foreach ($tags as $key => $tag) {
+        if ($tag instanceof \DOMElement) {
+            if(!in_array($tag->tagName, $valid_tags)) continue;
+            $tagName = $tag->tagName;
+            $tagText = $tag->textContent;
+
+            $response[][$tagName]  = $tag->textContent;
         }
-            $x++;
     }
+
     return $response;
 
 
    }
-
-    // Function to recursively traverse the DOM tree and extract text content
-    protected function extractTextFromNode($node) {
-        $textData = array();
-
-        if ($node->nodeType === XML_TEXT_NODE) {
-            // If it's a text node, add the text content to the $textData array
-            $text = trim($node->textContent);
-            if ($text !== '') {
-                $textData[] = str_replace(array("\r", "\n"), '', $text);
-            }
-        } else {
-            // Process the child nodes
-            foreach ($node->childNodes as $childNode) {
-                $textData = array_merge($textData, $this->extractTextFromNode($childNode));
-            }
-        }
-
-        return $textData;
-    }
-
-
 
 
 }
