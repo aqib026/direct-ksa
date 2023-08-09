@@ -24,31 +24,55 @@ class RequirementResource extends JsonResource
      
             ];
     }
-
-   protected function format_detail($mobile_detail){
-  
-    if($mobile_detail == '') return;
-    $htmlData = $mobile_detail;
-    $dom = new \DOMDocument();
-    $dom->loadHTML($mobile_detail);        
-
-    $valid_tags = ['h2', 'h3', 'p'];
-    $tags = $dom->getElementsByTagName('*'); // Selects all elements
-    $response = [];
-    foreach ($tags as $key => $tag) {
-        if ($tag instanceof \DOMElement) {
-            if(!in_array($tag->tagName, $valid_tags)) continue;
-            $tagName = $tag->tagName;
-            $tagText = $tag->textContent;
-
-            $response[][$tagName]  = $tag->textContent;
+    
+    protected function format_detail($mobile_detail) {
+        
+        if ($mobile_detail == '') return;
+        $htmlData = $mobile_detail;
+        $dom = new \DOMDocument();
+        $dom->loadHTML($mobile_detail);
+        
+        $valid_tags = ['h2', 'h3', 'p'];
+        $tags = $dom->getElementsByTagName('*'); // Selects all elements
+        $response = [];
+        $currentGroup = null; // To track the current group being processed
+        
+        foreach ($tags as $key => $tag) {
+            if ($tag instanceof \DOMElement) {
+                $tagName = $tag->tagName;
+                $tagText = $tag->textContent;
+                
+                if (in_array($tagName, $valid_tags)) {
+                    if ($tagName === 'h2') {
+                        if ($currentGroup) {
+                            $response[] = $currentGroup;
+                        }
+                        $currentGroup = ['h2' => $tagText];
+                    } elseif ($tagName === 'h3') {
+                        if ($currentGroup && isset($currentGroup['h3'])) {
+                            $response[] = $currentGroup;
+                            $currentGroup = null;
+                        }
+                        $currentGroup['h3'] = $tagText;
+                    } elseif ($tagName === 'p') {
+                        if ($currentGroup && isset($currentGroup['p'])) {
+                            $response[] = $currentGroup;
+                            $currentGroup = null;
+                        }
+                        $currentGroup['p'] = $tagText;
+                    }
+                }
+            }
         }
+        
+        if ($currentGroup) {
+            $response[] = $currentGroup;
+        }
+        
+        return $response;
     }
-
-    return $response;
-
-
-   }
-
-
+    
+    
+    
+    
 }

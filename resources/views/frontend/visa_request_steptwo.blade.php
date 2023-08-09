@@ -2,11 +2,11 @@
 @section('content')
 	<section class="section border-0 bg-quaternary m-0 p-0 border-1">
 		<div class="steps w-100 text-center">
-			<a class="col-lg-3 col-xs-3 step"><span class="badge rounded-pill bg-success p-2">{{__('steps.s1')}}: <strong>{{__('steps.s1i')}}</strong>&nbsp;<i class="fa fa-check-circle"></i></span></a> 
-			<a class="col-lg-3 col-xs-3 step active"><span>{{__('steps.s2')}}: <strong>{{__('steps.s2i')}}</strong></span></a> 
+			<a class="col-lg-3 col-xs-3 step"><span class="badge rounded-pill bg-success p-2">{{__('steps.s1')}}: <strong>{{__('steps.s1i')}}</strong>&nbsp;<i class="fa fa-check-circle"></i></span></a>
+			<a class="col-lg-3 col-xs-3 step active"><span>{{__('steps.s2')}}: <strong>{{__('steps.s2i')}}</strong></span></a>
 			<a class="col-lg-3 col-xs-3 step"><span>{{__('steps.s3')}}: <strong>{{__('steps.s3i')}}</strong></span></a>
 			<a class="col-lg-3 col-xs-3 step step-last"><span>{{__('steps.s4')}}: <strong>{{__('steps.s4i')}}</strong></span></a>
-		</div> 
+		</div>
 	</section>
 	<section class="section border-0 bg-quaternary m-0">
 		<form action="{{ route('visa_request_payment_form') }}" role="form" method="post" class="form-horizontal" enctype="multipart/form-data">
@@ -52,7 +52,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="row">
+						<div class="row">z
 							<div class="form-group col">
 								<div class="form-check form-check-inline">
 									<label class="form-check-label form-check-label-custom">
@@ -100,7 +100,7 @@
 									<td  width="30%">{{__('steps.hp')}}</td>
 									<td  width="40%"><input class="form-control text-3 h-auto py-2" value="" name="promo_code" placeholder="Type Promo Here"/></td>
 									<td  width="30%"><button class="btn btn-primary">{{__('steps.ap')}}</button></td>
-								</tr>					
+								</tr>
 							</tbody>
 						</table>
 						<div class="overflow-hidden mt-5 mb-1">
@@ -148,7 +148,7 @@
 				</div>
 			</div>
 		</form>
-	</section>	
+	</section>
 @endsection
 @section('custom-scripts')
 <script src="{{ asset('front-end/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
@@ -272,7 +272,7 @@
 
 		});
   	});
-	
+
 	function join(t, a, s) {
    		function format(m) {
       		let f = new Intl.DateTimeFormat('en', m);
@@ -287,12 +287,12 @@
 			var today = new Date(); // Current date
 			var yesterday = new Date(today); // Create a new date object
 			yesterday.setDate(today.getDate() - 1); // Subtract one day
-			if(date < yesterday ) 
+			if(date < yesterday )
 				return false;
 			else
-				return true;	
+				return true;
 		}
-	}).on("changeDate", function(e) {	
+	}).on("changeDate", function(e) {
 		let a = [{day: 'numeric'}, {month: 'numeric'}, {year: 'numeric'}];
 		let s = join(e.date, a, '-');
 
