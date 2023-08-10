@@ -35,7 +35,7 @@ class RequirementResource extends JsonResource
         $valid_tags = ['h2', 'h3', 'p'];
         $tags = $dom->getElementsByTagName('*'); // Selects all elements
         $response = [];
-        $currentGroup = null; // To track the current group being processed
+        $currentH2 = null; // To track the current h2 being processed
         
         foreach ($tags as $key => $tag) {
             if ($tag instanceof \DOMElement) {
@@ -44,33 +44,35 @@ class RequirementResource extends JsonResource
                 
                 if (in_array($tagName, $valid_tags)) {
                     if ($tagName === 'h2') {
-                        if ($currentGroup) {
-                            $response[] = $currentGroup;
+                        if ($currentH2) {
+                            $response[] = $currentH2;
                         }
-                        $currentGroup = ['h2' => $tagText];
+                        $currentH2 = ['h2' => $tagText, 'items' => []];
                     } elseif ($tagName === 'h3') {
-                        if ($currentGroup && isset($currentGroup['h3'])) {
-                            $response[] = $currentGroup;
-                            $currentGroup = null;
-                        }
-                        $currentGroup['h3'] = $tagText;
+                        $currentH3 = ['h3' => $tagText];
                     } elseif ($tagName === 'p') {
-                        if ($currentGroup && isset($currentGroup['p'])) {
-                            $response[] = $currentGroup;
-                            $currentGroup = null;
+                        if (isset($currentH2['p'])) {
+                            $response[] = $currentH2;
+                            $currentH2 = ['h2' => $tagText, 'items' => []];
+                        } elseif (isset($currentH3)) {
+                            $currentH3['p'] = $tagText;
+                            $currentH2['items'][] = $currentH3;
+                            unset($currentH3);
+                        } else {
+                            $currentH2['p'] = $tagText;
                         }
-                        $currentGroup['p'] = $tagText;
                     }
                 }
             }
         }
         
-        if ($currentGroup) {
-            $response[] = $currentGroup;
+        if ($currentH2) {
+            $response[] = $currentH2;
         }
         
         return $response;
     }
+
     
     
     
