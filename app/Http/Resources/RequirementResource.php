@@ -21,16 +21,17 @@ class RequirementResource extends JsonResource
             'status' => $this->status,
             'mobile_detail'=>$this->format_detail($this->mobile_detail),
             'mobile_detail_ar'=>$this->format_detail($this->mobile_detail_ar),
-     
-            ];
+        
+        ];
     }
     
     protected function format_detail($mobile_detail) {
-        
         if ($mobile_detail == '') return;
         $htmlData = $mobile_detail;
         $dom = new \DOMDocument();
-        $dom->loadHTML($mobile_detail);
+        libxml_use_internal_errors(true); // Suppress HTML5 parsing errors
+        $dom->loadHTML(mb_convert_encoding($mobile_detail, 'HTML-ENTITIES', 'UTF-8'));
+        libxml_clear_errors();
         
         $valid_tags = ['h2', 'h3', 'p'];
         $tags = $dom->getElementsByTagName('*'); // Selects all elements
@@ -72,7 +73,6 @@ class RequirementResource extends JsonResource
         
         return $response;
     }
-
     
     
     
