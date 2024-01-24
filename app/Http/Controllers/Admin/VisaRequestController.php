@@ -26,7 +26,6 @@ class VisaRequestController extends Controller
         $countries = countries::all();
 
         $data = compact('countries');
-
         return view('frontend.visa_request_stepone')->with($data);
     }
 
@@ -39,10 +38,9 @@ class VisaRequestController extends Controller
     public function steptwo(Request $request, $country, $visatype)
     {
         $form_data = '';
-        if(Session::has('form_data')){
+        if (Session::has('form_data')) {
             $form_data = Session::get('form_data');
-            if($form_data['country'] !== $country || $form_data['visa_type'] !== $visatype)
-            {
+            if ($form_data['country'] !== $country || $form_data['visa_type'] !== $visatype) {
                 $form_data = array(
                     'country' => $country,
                     'visa_type' => $visatype,
@@ -58,7 +56,7 @@ class VisaRequestController extends Controller
                     'passport_count' => '0',
                 );
             }
-        }else{
+        } else {
             $form_data = array('country' => $country, 'visa_type' => $visatype);
         }
         $VisaRequest = VisaRequest::where('countries_id', $country)->where('visa_type', $visatype)->first();
@@ -74,9 +72,9 @@ class VisaRequestController extends Controller
     public function stepthree(Request $request)
     {
         $form_data = '';
-        if(Session::has('form_data')){
+        if (Session::has('form_data')) {
             $form_data = Session::get('form_data');
-        }else{
+        } else {
             return redirect('visa_request');
         }
         return view('frontend.visa_request_stepthree', compact('form_data'));
@@ -88,7 +86,7 @@ class VisaRequestController extends Controller
         $title = "Add Visa Type";
         $countries = Countries::pluck('name', 'id');
 
-        $data = compact('url', 'title','countries');
+        $data = compact('url', 'title', 'countries');
         return view('admin.visa_type.visatypeform')->with($data);
     }
 
@@ -109,7 +107,7 @@ class VisaRequestController extends Controller
         Session::put('form_data', $form_data);
         if (auth()->check()) {
             return redirect('visa_request/application_forms');
-        }else {
+        } else {
             return redirect('/login');
         }
     }
@@ -124,38 +122,38 @@ class VisaRequestController extends Controller
     {
         $stepthreedata = Session::get('form_data');
         $form_data = $request->all();
-        if(isset($stepthreedata) && !is_null($stepthreedata) && $stepthreedata['adult_count'] > 0){
+        if (isset($stepthreedata) && !is_null($stepthreedata) && $stepthreedata['adult_count'] > 0) {
             $adult_count = $stepthreedata['adult_count'];
-            for($i = 1; $i <= $adult_count; $i++){
+            for ($i = 1; $i <= $adult_count; $i++) {
                 $filename = time() . $i . "." .  $request->file('adult_passport_'.$i)->getClientOriginalExtension();
                 $form_data['adult_passport_'.$i] = $request->file('adult_passport_'.$i)->storeas('passportpic', $filename);
             }
         }
         
-        if(isset($stepthreedata) && !is_null($stepthreedata) && $stepthreedata['child_count'] > 0){
+        if (isset($stepthreedata) && !is_null($stepthreedata) && $stepthreedata['child_count'] > 0) {
             $child_count = $stepthreedata['child_count'];
-            for($i = 1; $i <= $child_count; $i++){
+            for ($i = 1; $i <= $child_count; $i++) {
                 $filename = time() . $i . "." . $request->file('child_passport_'.$i)->getClientOriginalExtension();
                 $form_data['child_passport_'.$i] = $request->file('child_passport_'.$i)->storeas('passportpic', $filename);
             }
         }
        
-        if(isset($stepthreedata) && !is_null($stepthreedata) && $stepthreedata['passport_count'] > 0){
+        if (isset($stepthreedata) && !is_null($stepthreedata) && $stepthreedata['passport_count'] > 0) {
             $passport_count = $stepthreedata['passport_count'];
-            for($i = 1; $i <= $passport_count; $i++){
+            for ($i = 1; $i <= $passport_count; $i++) {
                 $filename = time() . $i . "." . $request->file('passport_'.$i)->getClientOriginalExtension();
                 $form_data['passport_'.$i] = $request->file('passport_'.$i)->storeas('passportpic', $filename);
             }
         }
-        if(isset($stepthreedata) && !is_null($stepthreedata)){
+        if (isset($stepthreedata) && !is_null($stepthreedata)) {
             Session::put('application_form_data', $form_data);
-        }else{
+        } else {
             Session::put('application_form_data', '');
         }
         
         if (auth()->check()) {
             return redirect(route('visa_request_stepfour'));
-        }else {
+        } else {
             return redirect('/login');
         }
     }
@@ -163,34 +161,33 @@ class VisaRequestController extends Controller
     public function save_payment_form(Request $request)
     {
         $form_data = $request->all();
+        
         $data = '';
     
-        if(Session::has('form_data') && Session::has('application_form_data')) {
+        if (Session::has('form_data') && Session::has('application_form_data')) {
             $data = Session::get('form_data');
             $data['application_form_data'] = Session::get('application_form_data');
             $data['payment_form_data'] = $form_data['payment_method'];
-        }else{
+        } else {
             return redirect('visa_request');
         }
-        
         $VisaRequest = new UserVisaApplications();
 
         $VisaRequest->user_id = auth()->user()->id;
         $VisaRequest->content = serialize($data);
         $VisaRequest->save();
-        
-        return view('frontend.thankyou');
+        return redirect()->route('payment-request')->with('user_data', $data);
     }
 
     public function stepfour()
     {
         $form_data = '';
         $country = '';
-        if(Session::has('form_data') && Session::has('application_form_data')) {
+        if (Session::has('form_data') && Session::has('application_form_data')) {
             $form_data = Session::get('form_data');
             
             $country = countries::where('id', $form_data['country'])->first();
-        }else{
+        } else {
             return redirect('visa_request');
         }
         $bankBranches = Bank::all();
@@ -235,7 +232,6 @@ class VisaRequestController extends Controller
      */
     public function show(Request $request, $country_id=null)
     {
-
         $VisaRequest = new VisaRequest();
 
         $search = $request["search"] ?? "";
@@ -267,7 +263,7 @@ class VisaRequestController extends Controller
             $url = url('admin/visarequest_form/update') . "/" . $id;
             $title = "Update Visa Type";
             $countries = Countries::pluck('name', 'id');
-            $data = compact('VisaRequest', 'url', 'title','countries');
+            $data = compact('VisaRequest', 'url', 'title', 'countries');
             return view('admin/visa_type/visatypeform')->with($data);
         }
     }
@@ -330,7 +326,7 @@ class VisaRequestController extends Controller
             $country = countries::where('id', $data[$acc['id']]['country'])->first();
             $data[$acc['id']]['country_name'] =  $country;
         }
-        return view('admin.userVisaRequests.user_visa_requests', compact('data', 'search','accre'));
+        return view('admin.userVisaRequests.user_visa_requests', compact('data', 'search', 'accre'));
     }
 
     public function visarequest($id)
@@ -345,8 +341,7 @@ class VisaRequestController extends Controller
             $country = countries::where('id', $data['country'])->first();
             $data['country_name'] =  $country;
             $notes = VisaNote::where('visa_request_id', $id)->get();
-            return view('admin.userVisaRequests.user_visa_request', compact('data','id','notes'));
+            return view('admin.userVisaRequests.user_visa_request', compact('data', 'id', 'notes'));
         }
     }
-
 }

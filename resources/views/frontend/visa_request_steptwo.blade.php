@@ -52,7 +52,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="row">z
+						<div class="row">
 							<div class="form-group col">
 								<div class="form-check form-check-inline">
 									<label class="form-check-label form-check-label-custom">
