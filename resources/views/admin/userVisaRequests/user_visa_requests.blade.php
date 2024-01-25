@@ -42,7 +42,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($data as $ac)
+                            @foreach ($data as $key=> $ac)
                                 <tr class="even pointer">
                                     <td>{{ $ac['visa_type'] }}</td>
                                     <td>{{ $ac['country_name']->name }}</td>
@@ -54,7 +54,7 @@
                                     </td>
                                     <td>{{ $ac['payment_form_data'] }}</td>
                                     <td>
-                                        <a href="{{ url('admin/visa_request') }}/{{ $loop->iteration }}"><i class="btn btn-success fa fa-eye"></i></a>
+                                        <a href="{{ url('admin/visa_request') }}/{{ $key }}"><i class="btn btn-success fa fa-eye"></i></a>
                                     </td>
                                 </tr>
                             @endforeach

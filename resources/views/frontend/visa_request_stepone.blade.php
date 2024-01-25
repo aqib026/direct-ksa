@@ -2,11 +2,11 @@
 @section('content')
 	<section class="section border-0 bg-quaternary m-0 p-0 border-1">
 		<div class="steps w-100 text-center">
-			<a class="col-lg-3 col-xs-3 step active"><span>{{__('steps.s1')}}: <strong>{{__('steps.s1i')}}</strong></span></a> 
-			<a class="col-lg-3 col-xs-3 step"><span>{{__('steps.s2')}}: <strong>{{__('steps.s2i')}}</strong></span></a> 
+			<a class="col-lg-3 col-xs-3 step active"><span>{{__('steps.s1')}}: <strong>{{__('steps.s1i')}}</strong></span></a>
+			<a class="col-lg-3 col-xs-3 step"><span>{{__('steps.s2')}}: <strong>{{__('steps.s2i')}}</strong></span></a>
 			<a class="col-lg-3 col-xs-3 step"><span>{{__('steps.s3')}}: <strong>{{__('steps.s3i')}}</strong></span></a>
 			<a class="col-lg-3 col-xs-3 step step-last"><span>{{__('steps.s4')}}: <strong>{{__('steps.s4i')}}</strong></span></a>
-		</div> 
+		</div>
 	</section>
 	<section class="section border-0 bg-quaternary m-0">
 		<div class="container py-5">
@@ -32,12 +32,13 @@
 									@php $content = "<div class='visa-type-btn-div'>"; @endphp
 									@foreach ($country->visatype as $visatype)
 										@php
-											$url = route('visa_request_steptwo', [$visatype->countries_id, $visatype->visa_type]); 
-											$content .= "<a href='". $url ."' class='btn btn-popover-custom btn-lg btn-primary'>$visatype->visa_type</a>"; 
+											$url = route('visa_request_steptwo', [$visatype->countries_id, $visatype->visa_type]);
+
+											$content .= "<a href='". $url ."' class='btn btn-popover-custom btn-lg btn-primary'>$visatype->visa_type</a>";
 										@endphp
 									@endforeach
 									@php $content .= "</div>"; @endphp
-									<a tabindex="0" class="btn btn-lg btn-primary" role="button" data-bs-sanitize="false" data-bs-placement="bottom" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-title="Select Visa Type" data-bs-html="true" data-bs-content="{!! $content !!}">{{__('steps.start')}}</a>
+									<a tabindex="0" class="btn btn-lg btn-primary" role="button" data-bs-sanitize="false" data-bs-placement="bottom" data-bs-toggle="popover"  data-bs-title="Select Visa Type" data-bs-html="true" data-bs-content="{!! $content !!}">{{__('steps.start')}}</a>
 								</div>
 							</div>
 						</div>
@@ -45,7 +46,7 @@
 				@endforeach
 			</div>
 		</div>
-	</section>	
+	</section>
 @endsection
 @section('custom-scripts')
 	{{-- <script src="{{ asset('front-end/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script> --}}

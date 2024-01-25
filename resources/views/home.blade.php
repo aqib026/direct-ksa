@@ -1,27 +1,19 @@
 @extends('layouts.front-end')
 @section('content')
 
-<section class="section border-0 bg-dark m-0 p-relative">
-	<div class="particles-wrapper z-index-1">
-		<div id="particles-1"></div>
-	</div>
+<section class="hero-section section border-0 m-0 p-relative">
 	<div class="container py-5 p-relative z-index-2">
 		<div class="row">
-			<div class="text-center p-relative pt-5"> 
+			<div class="text-center p-relative">
 				<div class="divider divider-small divider-small-lg mt-0 text-center appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="0">
 					<hr class="bg-primary border-radius m-auto">
 				</div>
 				<div class="overflow-hidden mb-1">
-					<h2 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-3 text-4-5 line-height-2 line-height-sm-7 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">{{__('home.ti')}}</h2>
+					<h2 class="text-color-dark positive-ls-3 text-4-5 line-height-2 line-height-sm-7 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">{{__('home.ti')}}</h2>
 				</div>
-				<h1 class="text-color-light font-weight-bold text-9 pb-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">{{__('home.in')}}</h1>
+				<h1 class="text-color-dark text-9 font-weight-semi-bold pb-2 mb-4 appear-animation mx-auto mt-2 mt-md-0" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">{{__('home.in')}}</h1>
 				<div class="d-block appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">
-					<a href="{{ route('visa_request') }}" data-hash data-hash-offset="0" data-hash-offset-lg="100" class="btn btn-modern btn-primary btn-arrow-effect-1 text-capitalize text-3-5 px-5 py-3 anim-hover-translate-top-5px transition-2ms">{{__('home.bu')}}<i class="fas fa-arrow-right ms-2"></i></a>
-				</div>
-				<div class="pt-5 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">
-					<span class="d-inline-block anim-hover-translate-bottom-5px transition-2ms">
-						<a href="#visa" data-hash data-hash-offset="0" data-hash-offset-lg="100" class="btn btn-default text-color-primary border-color-primary bg-transparent rotate-r-90 btn-circle border-width-2 btn-lg"><i class="fas fa-arrow-right"></i></a>
-					</span>
+					<a href="{{ route('visa_request') }}" data-hash data-hash-offset="0" data-hash-offset-lg="100" class="btn btn-modern btn-primary btn-arrow-effect-1 text-capitalize text-3-5 py-3 anim-hover-translate-top-5px transition-2ms">{{__('home.bu')}}<i class="fas fa-arrow-right ms-2"></i></a>
 				</div>
 			</div>
 		</div>
@@ -37,64 +29,64 @@
 			<div class="overflow-hidden mb-1">
 				<h3 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-3 text-4 line-height-2 line-height-sm-7 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">{{__('home.ss')}}</h3>
 			</div>
-			<h2 class="text-color-dark font-weight-bold text-8 pb-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">{{__('home.si')}}</h2>
+			<h2 class="text-color-dark font-weight-semi-bold text-color-grey text-8 pb-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">{{__('home.si')}}</h2>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col">
-			<div class="row align-items-center justify-content-center pt-5">
-				<div class="col-lg-10 text-center pt-5">
+			<div class="row align-items-center justify-content-center">
+				<div class="col-lg-10 text-center">
 					<div class="appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="800">
-						<div class="owl-carousel owl-theme stage-margin rounded-nav nav-dark nav-icon-1 nav-size-md nav-position-1" data-plugin-options="{'responsive': {'0': {'items': 1}, '479': {'items': 2}, '768': {'items': 3}, '979': {'items': 4}, '1199': {'items': 4}}, 'margin': 10, 'loop': true, 'nav': true, 'dots': false, 'stagePadding': 40}">
-							@php $service_url = ''; @endphp	
-							@foreach ($services as $service)	
-								@switch($service->name)
-									@case('Translation')
-										@php $service_url = 'translation' @endphp
-									@break
+						<div class="owl-carousel owl-theme stage-margin rounded-nav nav-dark nav-icon-1 nav-size-md nav-position-1 mb-0" data-plugin-options="{'responsive': {'0': {'items': 1}, '479': {'items': 2}, '768': {'items': 3}, '979': {'items': 4}, '1199': {'items': 5}}, 'margin': 10, 'loop': true, 'nav': false, 'dots': true, 'stagePadding': 40}">
+							@php $service_url = ''; @endphp
+							@foreach ($services as $service)
+							@switch($service->name)
+							@case('Translation')
+							@php $service_url = 'translation' @endphp
+							@break
 
-									@case('Passport Renewals')
-										@php $service_url = 'passport_renewals' @endphp
-									@break
+							@case('Passport Renewals')
+							@php $service_url = 'passport_renewals' @endphp
+							@break
 
-									@case('Intl Driving License - Card')
-										@php $service_url = 'intl_dl_card' @endphp
-									@break
+							@case('Intl Driving License - Card')
+							@php $service_url = 'intl_dl_card' @endphp
+							@break
 
-									@case('Intl Driving License - Booklet')
-										@php $service_url = 'intl_dl_booklet' @endphp
-									@break
+							@case('Intl Driving License - Booklet')
+							@php $service_url = 'intl_dl_booklet' @endphp
+							@break
 
-									@case('University Admissions')
-										@php $service_url = 'uni_adm' @endphp
-									@break
+							@case('University Admissions')
+							@php $service_url = 'uni_adm' @endphp
+							@break
 
-									@case('UAE Visa for KSA Residents')
-										@php $service_url = 'uae_visa' @endphp
-									@break
+							@case('UAE Visa for KSA Residents')
+							@php $service_url = 'uae_visa' @endphp
+							@break
 
-									@case('Forms Filling')
-										@php $service_url = 'forms_filling' @endphp
-									@break
+							@case('Forms Filling')
+							@php $service_url = 'forms_filling' @endphp
+							@break
 
-									@case('Bahrain Visa for KSA Residents')
-										@php $service_url = 'bahrain_visa' @endphp
-									@break
+							@case('Bahrain Visa for KSA Residents')
+							@php $service_url = 'bahrain_visa' @endphp
+							@break
 
-									@case('Premium Service (VIP)')
-										@php $service_url = 'vip' @endphp
-									@break
+							@case('Premium Service (VIP)')
+							@php $service_url = 'vip' @endphp
+							@break
 
-									@default
-								@endswitch
-								<div class="rounded overflow-hidden">
-									<img alt="" class="img-fluid rounded" width="250" height="250" src="{{ asset($service->banner) }}">
-									<a href="{{ route('featured_sales',$service_url) }}" class="p-absolute z-index-2 top-0 left-0 w-100 h-100 anim-hover-translate-top-5px transition-2ms">
-										<span class="p-absolute left-0 bottom-0 text-color-light text-start ms-4 mb-3 ps-2 pb-1">
-											<strong class="text-5 negative-ls-05 font-weight-bold">{{ $service->name }}</strong>
-										</span>
-									</a>
-								</div>
+							@default
+							@endswitch
+							<div class="rounded overflow-hidden dk-services-img position-relative">
+								<img alt="" class="img-fluid rounded" width="250" height="200" src="{{ asset($service->banner) }}">
+								<a href="{{ route('featured_sales',$service_url) }}" class="p-absolute z-index-2 top-0 left-0 w-100 h-100 anim-hover-translate-top-5px transition-2ms">
+									<span class="p-absolute left-0 bottom-0 text-color-light text-start px-4 py-3">
+										<strong class="text-3 negative-ls-05 font-weight-bold">{{ $service->name }}</strong>
+									</span>
+								</a>
+							</div>
 							@endforeach
 						</div>
 					</div>
@@ -105,50 +97,56 @@
 </section>
 
 <section class="section border-0 bg-quaternary m-0">
-	<div class="container py-5">
-		<div class="row justify-content-center">
+	<div class="container">
+		<div class="divider divider-small divider-small-lg mt-0 text-center appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="0">
+			<hr class="bg-primary border-radius m-auto">
+		</div>
+		<div class="overflow-hidden mb-1 text-center">
+			<h3 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-3 text-4 line-height-2 line-height-sm-7 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">{{__('home.wd')}}</h3>
+		</div>
+		<h2 class="text-center text-color-dark font-weight-semi-bold text-8 pb-1 mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">{{__('home.oms')}}</h2>
+		<!-- <div class="row justify-content-center">
 			<div class="col col-lg-9 text-center">
-
 				<div class="divider divider-small divider-small-lg mt-0 text-center appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="0">
 					<hr class="bg-primary border-radius m-auto">
 				</div>
 				<div class="overflow-hidden mb-1">
 					<h3 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-3 text-4 line-height-2 line-height-sm-7 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">{{__('home.wd')}}</h3>
 				</div>
-				<h2 class="text-color-dark font-weight-bold text-8 pb-4 mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">{{__('home.oms')}}</h2>
+				<h2 class="text-color-dark font-weight-semi-bold text-8 pb-4 mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">{{__('home.oms')}}</h2>
 			</div>
-		</div>
+		</div> -->
 
-		<div class="row py-5 appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="300">
-			<div class="col-md-4 mb-4 mb-md-0">
-				<div class="card card-border card-border-top card-border-hover bg-color-light border-0 box-shadow-6 box-shadow-hover anim-hover-translate-top-10px transition-3ms anim-hover-inner-wrapper">
-					<div class="card-body p-relative zindex-1 p-5 text-center">
+		<div class="row pt-sm-5 pt-4 pb-2 appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="300">
+			<div class="col-lg-4 col-12 mb-4 mb-lg-0">
+				<div class="card h-100 card-border card-border-top card-border-hover bg-color-light border-0 box-shadow-6 box-shadow-hover anim-hover-translate-top-10px transition-3ms anim-hover-inner-wrapper">
+					<div class="card-body p-relative zindex-1 text-center">
 						<div class="anim-hover-inner-translate-top-20px transition-3ms">
-							<img width="72" height="73" src="{{ asset('img/demos/business-consulting-4/icons/icon-1.svg') }}" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary'}" />
-							<h4 class="card-title mt-4 mb-2 text-5 font-weight-bold">{{__('home.ave')}}</h4>
-							<p class="card-text text-3-5">{{__('home.avei')}}</p>
+							<img width="62" height="63" src="{{ asset('img/demos/business-consulting-4/icons/icon-1.svg') }}" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary'}" />
+							<h4 class="card-title mb-0 text-5 font-weight-bold">{{__('home.ave')}}</h4>
+							<p class="card-text text-3-5 mt-4">{{__('home.avei')}}</p>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-md-4 mb-4 mb-md-0">
-				<div class="card card-border card-border-top card-border-hover bg-color-light border-0 box-shadow-6 box-shadow-hover anim-hover-translate-top-10px transition-3ms anim-hover-inner-wrapper">
-					<div class="card-body p-relative zindex-1 p-5 text-center">
+			<div class="col-lg-4 col-12 mb-4 mb-lg-0">
+				<div class="card h-100 card-border card-border-top card-border-hover bg-color-light border-0 box-shadow-6 box-shadow-hover anim-hover-translate-top-10px transition-3ms anim-hover-inner-wrapper">
+					<div class="card-body p-relative zindex-1 text-center">
 						<div class="anim-hover-inner-translate-top-20px transition-3ms">
-							<img width="72" height="73" src="{{ asset('img/demos/business-consulting-4/icons/icon-2.svg') }}" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary'}" />
-							<h4 class="card-title mt-4 mb-2 text-5 font-weight-bold">{{__('home.baw')}}</h4>
-							<p class="card-text text-3-5">{{__('home.bawi')}}</p>
+							<img width="62" height="63" src="{{ asset('img/demos/business-consulting-4/icons/icon-2.svg') }}" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary'}" />
+							<h4 class="card-title mb-0 text-5 font-weight-bold">{{__('home.baw')}}</h4>
+							<p class="card-text text-3-5 mt-4">{{__('home.bawi')}}</p>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-md-4">
-				<div class="card card-border card-border-top card-border-hover bg-color-light border-0 box-shadow-6 box-shadow-hover anim-hover-translate-top-10px transition-3ms anim-hover-inner-wrapper">
-					<div class="card-body p-relative zindex-1 p-5 text-center">
+			<div class="col-lg-4 col-12">
+				<div class="card h-100 card-border card-border-top card-border-hover bg-color-light border-0 box-shadow-6 box-shadow-hover anim-hover-translate-top-10px transition-3ms anim-hover-inner-wrapper">
+					<div class="card-body p-relative zindex-1 text-center">
 						<div class="anim-hover-inner-translate-top-20px transition-3ms">
-							<img width="72" height="73" src="{{ asset('img/demos/business-consulting-4/icons/icon-3.svg') }}" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary'}" />
-							<h4 class="card-title mt-4 mb-2 text-5 font-weight-bold">{{__('home.ydc')}}</h4>
-							<p class="card-text text-3-5">{{__('home.ydci')}}</p>
+							<img width="62" height="63" src="{{ asset('img/demos/business-consulting-4/icons/icon-3.svg') }}" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary'}" />
+							<h4 class="card-title mb-0 text-5 font-weight-bold">{{__('home.ydc')}}</h4>
+							<p class="card-text text-3-5 mt-4">{{__('home.ydci')}}</p>
 						</div>
 					</div>
 				</div>
@@ -167,9 +165,16 @@
 	</div>
 </section>
 
-<section class="section border-0 bg-transparent m-0" id="visa">
-	<div class="container py-5 mb-3">
-		<div class="row">
+<section class="section border-0 bg-transparent m-0 visa" id="visa">
+	<div class="container">
+		<div class="divider divider-small divider-small-lg mt-0 text-center appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="0">
+			<hr class="bg-primary border-radius m-auto">
+		</div>
+		<div class="overflow-hidden mb-1 text-center">
+			<h3 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-3 text-4 line-height-2 line-height-sm-7 mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="100">{{__('home.vr')}}</h3>
+		</div>
+		<h2 class="text-center text-capitalize text-color-dark font-weight-bold text-8 pb-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">{{__('home.vri')}}</h2>
+		<!-- <div class="row">
 			<div class="col text-center">
 				<div class="divider divider-small divider-small-lg mt-0 text-center appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="0">
 					<hr class="bg-primary border-radius m-auto">
@@ -180,27 +185,27 @@
 				<h2 class="text-color-dark font-weight-bold text-8 pb-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">{{__('home.vri')}}</h2>
 
 			</div>
-		</div>
+		</div> -->
 		<div class="row">
 			<div class="col">
-				<div class="row align-items-end justify-content-end pt-5">
-					<div class="col-lg-12 text-end pt-5">
+				<div class="row align-items-end justify-content-end">
+					<div class="col-lg-12 text-end pt-sm-3 pt-0">
 						<div class="appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="800">
-							<div class="owl-carousel owl-theme stage-margin rounded-nav nav-dark nav-icon-1 nav-size-md nav-position-1" data-plugin-options="{'responsive': {'0': {'items': 1}, '479': {'items': 2}, '768': {'items': 3}, '979': {'items': 4}, '1199': {'items': 4}}, 'margin': 10, 'loop': true, 'nav': true, 'dots': false, 'stagePadding': 40}">
+							<div class="owl-carousel owl-theme stage-margin rounded-nav nav-dark nav-icon-1 nav-size-md nav-position-1" data-plugin-options="{'responsive': {'0': {'items': 1}, '479': {'items': 2}, '768': {'items': 3}, '979': {'items': 4}, '1199': {'items': 4}}, 'margin': 10, 'loop': true, 'nav': false, 'dots': true, 'stagePadding': 40}">
 								@foreach ($countries as $country)
-									@if($country->visa && $country->status == '1')
-										<div class="rounded overflow-hidden">
-											<img alt="" class="img-fluid rounded" width="250" height="250" src="{{ asset($country->cover_pic) }}">
-											<div class="card-image" style="margin:auto; margin-top: -50px; margin-bottom: 50px; width: 100px;">
-												<img src="{{ asset($country->flag_pic) }}" alt="" class="card-img">
-											</div>
-											<a href="{{ url('requirement/') }}/{{ $country->visa->countries_id }}" class="p-absolute z-index-2 top-20 left-0 w-100 h-100 anim-hover-translate-top-5px transition-2ms">
-												<span class="p-absolute left-0 bottom-0 text-color-dark text-center mb-3 pb-1" style="width: 100%;">
-													<strong class="text-5 negative-ls-05 font-weight-bold">{{ $country->name }}</strong>
-												</span>
-											</a>
-										</div>
-									@endif
+								@if($country->visa && $country->status == '1')
+								<div class="rounded overflow-hidden">
+									<img alt="" class="img-fluid rounded-4" width="250" height="250" src="{{ asset($country->cover_pic) }}">
+									<div class="card-image" style="margin:auto; margin-top: -32px; margin-bottom: 32px; width: 60px;">
+										<img src="{{ asset($country->flag_pic) }}" alt="" class="card-img">
+									</div>
+									<a href="{{ url('requirement/') }}/{{ $country->visa->countries_id }}" class="p-absolute z-index-2 top-20 left-0 w-100 h-100 anim-hover-translate-top-5px transition-2ms">
+										<span class="p-absolute left-0 bottom-0 text-color-dark text-center mb-3 pb-1" style="width: 100%;">
+											<strong class="fs-6 negative-ls-05 font-weight-bold">{{ $country->name }}</strong>
+										</span>
+									</a>
+								</div>
+								@endif
 								@endforeach
 							</div>
 						</div>
@@ -209,7 +214,7 @@
 			</div>
 		</div>
 	</div>
-</section>	
+</section>
 <!--
 <section class="section border-0 bg-transparent m-0" id="start">
 	<div class="container py-5 mb-3">
