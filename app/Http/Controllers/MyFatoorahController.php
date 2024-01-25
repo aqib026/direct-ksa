@@ -154,7 +154,7 @@ class MyFatoorahController extends Controller
                 //save data in  user_visa_applications table
                 $VisaRequest = new UserVisaApplications();
                 $VisaRequest->user_id = auth()->user()->id;
-                $VisaRequest->content = serialize($data);
+                $VisaRequest->content = serialize($user_data);
                 $VisaRequest->order_id = $fatoora_session_data['order_id'];
                 $VisaRequest->save();
 
