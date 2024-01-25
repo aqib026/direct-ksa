@@ -177,7 +177,6 @@ class VisaRequestController extends Controller
             return redirect()->route('payment-request');
         }else{
             $VisaRequest = new UserVisaApplications();
-
             $VisaRequest->user_id = auth()->user()->id;
             $VisaRequest->content = serialize($data);
             $VisaRequest->save();
