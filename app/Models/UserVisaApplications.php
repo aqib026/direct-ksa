@@ -13,4 +13,8 @@ class UserVisaApplications extends Model
     {
         return $this->belongsTo(Users::class, 'user_id', 'id');
     }
+    public function transactions()
+    {
+        return $this->hasOne(Transaction::class, 'order_id', 'order_id');
+    }
 }

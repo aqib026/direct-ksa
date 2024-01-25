@@ -2,6 +2,16 @@
 
 @section('content')
     <section class="section border-0 m-0 bg-color-quaternary">
+        @if (session()->has('success'))
+            <div class="col-md-6 alert alert-success" role="alert">
+                {!! session()->get('success') !!}
+            </div>
+        @endif
+            @if (session()->has('error'))
+                <div class="col-md-6 alert alert-danger" role="alert">
+                    {!! session()->get('error') !!}
+                </div>
+            @endif
         <div class="container">
             <div class="row">
                 <div class="col text-center m-5 p-5">

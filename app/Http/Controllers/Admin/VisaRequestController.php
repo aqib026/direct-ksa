@@ -129,7 +129,7 @@ class VisaRequestController extends Controller
                 $form_data['adult_passport_'.$i] = $request->file('adult_passport_'.$i)->storeas('passportpic', $filename);
             }
         }
-        
+
         if (isset($stepthreedata) && !is_null($stepthreedata) && $stepthreedata['child_count'] > 0) {
             $child_count = $stepthreedata['child_count'];
             for ($i = 1; $i <= $child_count; $i++) {
@@ -137,7 +137,7 @@ class VisaRequestController extends Controller
                 $form_data['child_passport_'.$i] = $request->file('child_passport_'.$i)->storeas('passportpic', $filename);
             }
         }
-       
+
         if (isset($stepthreedata) && !is_null($stepthreedata) && $stepthreedata['passport_count'] > 0) {
             $passport_count = $stepthreedata['passport_count'];
             for ($i = 1; $i <= $passport_count; $i++) {
@@ -150,7 +150,7 @@ class VisaRequestController extends Controller
         } else {
             Session::put('application_form_data', '');
         }
-        
+
         if (auth()->check()) {
             return redirect(route('visa_request_stepfour'));
         } else {
@@ -161,9 +161,9 @@ class VisaRequestController extends Controller
     public function save_payment_form(Request $request)
     {
         $form_data = $request->all();
-        
+
         $data = '';
-    
+
         if (Session::has('form_data') && Session::has('application_form_data')) {
             $data = Session::get('form_data');
             $data['application_form_data'] = Session::get('application_form_data');
@@ -176,7 +176,13 @@ class VisaRequestController extends Controller
         $VisaRequest->user_id = auth()->user()->id;
         $VisaRequest->content = serialize($data);
         $VisaRequest->save();
-        return redirect()->route('payment-request')->with('user_data', $data);
+        if($form_data['payment_method']=="online_pay"){
+            $data['visa_request_record_id']=$VisaRequest->id;
+            return redirect()->route('payment-request')->with('user_data', $data);
+        }else{
+            return view('frontend.thankyou');
+        }
+
     }
 
     public function stepfour()
@@ -185,14 +191,14 @@ class VisaRequestController extends Controller
         $country = '';
         if (Session::has('form_data') && Session::has('application_form_data')) {
             $form_data = Session::get('form_data');
-            
+
             $country = countries::where('id', $form_data['country'])->first();
         } else {
             return redirect('visa_request');
         }
         $bankBranches = Bank::all();
         $cashBranches = Branch::all();
-        
+
         return view('frontend.visa_request_stepfour', compact('form_data', 'country', 'cashBranches', 'bankBranches'));
     }
 
@@ -241,7 +247,7 @@ class VisaRequestController extends Controller
         if ($country_id != null) {
             $VisaRequest = $VisaRequest->where('countries_id', $country_id);
         }
-        
+
         $VisaRequest = $VisaRequest->orderby('id', 'desc')->paginate(20);
 
         $data = compact('VisaRequest', 'search');
@@ -290,7 +296,7 @@ class VisaRequestController extends Controller
         $VisaRequest->adult_price = $request['adult_price'];
         $VisaRequest->child_price = $request['child_price'];
         $VisaRequest->passport_price = $request['passport_price'];
-      
+
         $VisaRequest->save();
         return redirect('admin/visarequest');
     }

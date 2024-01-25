@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\UserVisaApplications;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Contracts\View\View;
@@ -60,12 +61,15 @@ class MyFatoorahController extends Controller
             $payment = $mfObj->getInvoiceURL($curlData, $paymentId, $orderId, $sessionId);
             return redirect($payment['invoiceURL']);
             }else{
-                return redirect('visa_request')->with('error',"there was a problem with payment ,try again later");
+                $message = "There is a problem with payment process ,try again later";
+                Session::flash('error', $message);
+                return view('frontend.thankyou');
             }
-            
+
         } catch (Exception $ex) {
             $exMessage = __('myfatoorah.' . $ex->getMessage());
-            return redirect('visa_request')->with('error',$exMessage);
+            Session::flash('error', $exMessage);
+            return view('frontend.thankyou');
         }
     }
 
@@ -82,7 +86,7 @@ class MyFatoorahController extends Controller
     private function getPayLoadData($orderId = null)
     {
         $callbackURL = route('fallback');
-        
+
         return [
             // 'CustomerName'       => 'test',
             //  'InvoiceValue'       => 144,
@@ -113,7 +117,8 @@ class MyFatoorahController extends Controller
             $response = ['IsSuccess' => true, 'Message' => $message, 'Data' => $data];
         } catch (Exception $ex) {
             $exMessage = __('myfatoorah.' . $ex->getMessage());
-            return redirect('visa_request')->with('error',$exMessage );
+            Session::flash('error', $exMessage);
+            return view('frontend.thankyou');
         }
         if($response['IsSuccess']==true){
             $transaction_entry =Transaction::where('order_id',$response['Data']->CustomerReference)->first();
@@ -131,13 +136,21 @@ class MyFatoorahController extends Controller
                 $transaction_entry->card_type=$response['Data']->focusTransaction->PaymentGateway;
                 $transaction_entry->update();
             }
-            
-        
-         return view('frontend.thankyou');
+            $response_message="Payment transaction status: \n".$response['Message'];
+            if ($response['Data']->InvoiceStatus == 'Paid') {
+                Session::flash('success', $response_message);
+                return view('frontend.thankyou');
+            }else{
+                Session::flash('error', $response_message);
+                return view('frontend.thankyou');
+            }
 
-           
+
+
         }else{
-            return redirect('visa_request')->with('error',$response['Message']);
+            $response_message="Payment transaction status: \n Processing error ,Try again after few seconds";
+            Session::flash('error', $response_message);
+            return view('frontend.thankyou');
         }
     }
 
@@ -152,22 +165,22 @@ class MyFatoorahController extends Controller
     public function checkout()
     {
         if (Session::has('user_data')) {
-           
+
             try {
                 $data = Session::get('user_data');
                 //You can get the data using the order object in your system
                 $orderId = auth()->user()->id.time();
-                
+
                 $user_data=[
                     "passenger_total"=>$data['passenger_total'],
                     "name"=>auth()->user()->name,
                     "email"=>auth()->user()->email
                 ];
                 $order   = $this->getTestOrderData($orderId,$user_data);
-                
+
                 //You can replace this variable with customer Id in your system
                 $customerId = auth()->user()->id;
-    
+
                 //You can use the user defined field if you want to save card
                 $userDefinedField = config('myfatoorah.save_card') && $customerId ? "CK-$customerId" : '';
                 //Get the enabled gateways at your MyFatoorah acount to be displayed on checkout page
@@ -189,21 +202,32 @@ class MyFatoorahController extends Controller
                 $transaction_entry->user_name=auth()->user()->name;
                 $transaction_entry->user_email=auth()->user()->email;
                 $transaction_entry->save();
+                //save order id in  user_visa_applications table
+                $record_id=$data['visa_request_record_id'];
+                $user_application_record=UserVisaApplications::find($record_id);
+                if(isset($user_application_record)){
+                    $user_application_record->order_id=$orderId;
+                    $user_application_record->update();
+                }
+
                 //Get Environment url
                 $isTest = $this->mfConfig['isTest'];
                 $vcCode = $this->mfConfig['countryCode'];
-    
+
                 $countries = MyFatoorah::getMFCountries();
                 $jsDomain  = ($isTest) ? $countries[$vcCode]['testPortal'] : $countries[$vcCode]['portal'];
                 return view('myfatoorah.checkout', compact('mfSession', 'paymentMethods', 'jsDomain', 'userDefinedField'));
             } catch (Exception $ex) {
                 $exMessage = __('myfatoorah.' . $ex->getMessage());
-                return view('myfatoorah.error', compact('exMessage'));
+                Session::flash('error', $exMessage);
+                return view('frontend.thankyou');
             }
         } else {
-            return redirect('visa_request');
+            $message = "Found no data for online payment ! Try again after a while";
+            Session::flash('error', $message);
+            return view('frontend.thankyou');
         }
-        
+
     }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------

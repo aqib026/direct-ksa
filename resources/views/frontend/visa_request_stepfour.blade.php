@@ -2,11 +2,11 @@
 @section('content')
 	<section class="section border-0 bg-quaternary m-0 p-0 border-1">
 		<div class="steps w-100 text-center">
-			<a class="col-lg-3 col-xs-3 step"><span class="badge rounded-pill bg-success p-2">{{__('steps.s1')}}: <strong>{{__('steps.s1i')}}</strong>&nbsp;<i class="fa fa-check-circle"></i></span></a> 
-			<a class="col-lg-3 col-xs-3 step"><span class="badge rounded-pill bg-success p-2">{{__('steps.s2')}}: <strong>{{__('steps.s2i')}}</strong></span></a> 
+			<a class="col-lg-3 col-xs-3 step"><span class="badge rounded-pill bg-success p-2">{{__('steps.s1')}}: <strong>{{__('steps.s1i')}}</strong>&nbsp;<i class="fa fa-check-circle"></i></span></a>
+			<a class="col-lg-3 col-xs-3 step"><span class="badge rounded-pill bg-success p-2">{{__('steps.s2')}}: <strong>{{__('steps.s2i')}}</strong></span></a>
 			<a class="col-lg-3 col-xs-3 step"><span class="badge rounded-pill bg-success p-2">{{__('steps.s3')}}: <strong>{{__('steps.s3i')}}</strong></span></a>
 			<a class="col-lg-3 col-xs-3 step step-last active"><span>{{__('steps.s4')}}: <strong>{{__('steps.s4i')}}</strong></span></a>
-		</div> 
+		</div>
 	</section>
 	<section class="section border-0 bg-quaternary m-0">
 		<div class="container py-5">
@@ -53,7 +53,7 @@
 											<p>{{__('steps.not')}}</p>
 											<h6><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;{{ $form_data['adult_count'] }}</h6>
 										</td>
-									</tr>	
+									</tr>
 									@endif
 									@if(isset($form_data['child_count']) && $form_data['child_count'] > 0)
 									<tr>
@@ -61,7 +61,7 @@
 											<p>{{__('steps.noct')}}</p>
 											<h6><i class="fa fa-child"></i>&nbsp;&nbsp;&nbsp;{{ $form_data['child_count'] }}</h6>
 										</td>
-									</tr>	
+									</tr>
 									@endif
 									@if(isset($form_data['passport_count']) && $form_data['passport_count'] > 0)
 									<tr>
@@ -69,7 +69,7 @@
 											<p>{{__('steps.nop')}}</p>
 											<h6><i class="fa fa-book"></i>&nbsp;&nbsp;&nbsp;{{ $form_data['passport_count'] }}</h6>
 										</td>
-									</tr>	
+									</tr>
 									@endif
 								</tbody>
 							</table>
@@ -150,6 +150,10 @@
 											<th class="text-left"><i class="fa fa-bank"></i>&nbsp;&nbsp;&nbsp;Bank Transfer <span class="mx-5 badge badge-secondary px-3 py-2"><a class="popup-with-zoom-anim" href="#banks-dialog"  style="color: #FFF;">View Bank(s)</a></span></th>
 											<th class="text-right"><div class="form-check"><input class="form-check-input" type="radio" name="payment_method" value="bank"><label class="form-check-label"></label></div></th>
 										</tr>
+                                        <tr>
+                                            <th class="text-left"><i class="fa fa-dollar"></i>&nbsp;&nbsp;&nbsp;Online Pay <span class="mx-5 badge badge-secondary px-3 py-2"></span></th>
+                                            <th class="text-right"><div class="form-check"><input class="form-check-input" type="radio" name="payment_method" value="online_pay"><label class="form-check-label"></label></div></th>
+                                        </tr>
 									</thead>
 								</table>
 								<div class="text-center my-5">
@@ -190,7 +194,7 @@
 							</div>
 						</div>
 					</div>
-				</div>			
+				</div>
 			</div>
 		</div>
 	</section>
