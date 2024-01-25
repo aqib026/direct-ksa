@@ -1,5 +1,15 @@
 @extends('layouts.front-end')
 @section('content')
+    @if (session()->has('success'))
+        <div class="col-md-6 alert alert-success" role="alert">
+            {!! session()->get('success') !!}
+        </div>
+    @endif
+    @if (session()->has('error'))
+        <div class="col-md-6 alert alert-danger" role="alert">
+            {!! session()->get('error') !!}
+        </div>
+    @endif
 	<section class="section border-0 bg-quaternary m-0 p-0 border-1">
 		<div class="steps w-100 text-center">
 			<a class="col-lg-3 col-xs-3 step active"><span>{{__('steps.s1')}}: <strong>{{__('steps.s1i')}}</strong></span></a>

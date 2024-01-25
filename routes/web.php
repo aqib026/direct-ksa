@@ -67,8 +67,8 @@ Route::group(['prefix'=>'/admin'], function () {
     Route::get('/login', function () {
         return view('auth.admin_login');
     });
-  
-    
+
+
     Route::get('/dashboard', [HomeController::class, 'index']);
 
     Route::get('/content_pages/{page_type}', [ContentPageController::class, 'edit'])->name('content_pages');
@@ -125,7 +125,7 @@ Route::group(['prefix'=>'/admin'], function () {
     Route::get('/visa_requirement/delete/{id}', [VisaController::class, 'destroy'])->middleware(['auth','admin']);
     Route::get('/visa_form/edit/{id}', [VisaController::class, 'edit'])->middleware(['auth','admin']);
     Route::Post('/visa_form/update/{id}', [VisaController::class, 'update'])->middleware(['auth','admin']);
-    
+
     Route::get('/location_form', [LocationController::class, 'create'])->middleware(['auth','admin']);
     Route::Post('/location_form', [LocationController::class, 'store'])->middleware(['auth','admin']);
     Route::get('/contact', [LocationController::class, 'show'])->middleware(['auth','admin']);
@@ -156,14 +156,14 @@ Route::group(['prefix'=>'/admin'], function () {
     Route::Get('/contact_location/delete/{id}', [ContactController::class, 'destroy'])->middleware(['auth','admin']);
     Route::get('/contact_form/edit/{id}', [ContactController::class, 'edit'])->middleware(['auth','admin']);
     Route::post('/contact_form/update/{id}', [ContactController::class, 'update'])->middleware(['auth','admin']);
-    
+
     Route::get('/cash_form', [BranchController::class, 'create'])->middleware(['auth','admin']);
     Route::get('/cash_location', [BranchController::class, 'show'])->middleware(['auth','admin']);
     Route::post('cash_form', [BranchController::class, 'store'])->middleware(['auth', 'admin']);
     Route::Get('/cash_location/delete/{id}', [BranchController::class, 'destroy'])->middleware(['auth','admin']);
     Route::get('/cash_form/edit/{id}', [BranchController::class, 'edit'])->middleware(['auth','admin']);
     Route::post('/cash_form/update/{id}', [BranchController::class, 'update'])->middleware(['auth','admin']);
-    
+
     Route::get('/bank-form', [BankController::class, 'create'])->middleware(['auth','admin']);
     Route::Post('/bank-form', [BankController::class, 'store'])->middleware(['auth','admin']);
     Route::get('/bank', [BankController::class, 'show'])->middleware(['auth','admin']);
@@ -185,7 +185,7 @@ Route::group(['prefix'=>'/admin'], function () {
     Route::get('/categorie-form/edit/{id}', [CategorieController::class, 'edit'])->middleware(['auth','admin']);
     Route::Post('/categorie-form/update/{id}', [CategorieController::class, 'update'])->middleware(['auth','admin']);
 
-    
+
     Route::post('/notes', [NoteController::class, 'store'])->middleware(['auth', 'admin']);
     Route::post('/visa_notes', [NoteController::class, 'storevisa'])->middleware(['auth', 'admin']);
     Route::get('/notes/delete/{id}', [NoteController::class, 'destroy'])->middleware(['auth','admin']);
@@ -258,6 +258,7 @@ Route::get('/otp/verification/{user_id?}', [OtpController::class, 'verification'
 Route::Post('/otp/login', [OtpController::class, 'loginotp'])->name('otp.getlogin');
 // Route::get('/payment-req', [TestController::class, 'index'])->name('test-payment-request');
 Route::get('/fallback', [MyfatoorahController::class, 'callback'])->name('fallback');
+Route::any('fatoora-index', [MyfatoorahController::class, 'index'])->name('fatoora.index');
 // Route::get('/directPayment', [TestController::class, 'directPayment'])->name('direct-payment');
 
 Route::get('/checkout', [MyfatoorahController::class, 'checkout'])->name('payment-request');

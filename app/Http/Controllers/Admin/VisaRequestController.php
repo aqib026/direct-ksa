@@ -171,15 +171,16 @@ class VisaRequestController extends Controller
         } else {
             return redirect('visa_request');
         }
-        $VisaRequest = new UserVisaApplications();
 
-        $VisaRequest->user_id = auth()->user()->id;
-        $VisaRequest->content = serialize($data);
-        $VisaRequest->save();
         if($form_data['payment_method']=="online_pay"){
-            $data['visa_request_record_id']=$VisaRequest->id;
-            return redirect()->route('payment-request')->with('user_data', $data);
+            Session::put('user_data',$data);
+            return redirect()->route('payment-request');
         }else{
+            $VisaRequest = new UserVisaApplications();
+
+            $VisaRequest->user_id = auth()->user()->id;
+            $VisaRequest->content = serialize($data);
+            $VisaRequest->save();
             return view('frontend.thankyou');
         }
 
