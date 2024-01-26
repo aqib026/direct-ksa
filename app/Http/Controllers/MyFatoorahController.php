@@ -45,32 +45,35 @@ class MyFatoorahController extends Controller
      */
     public function index()
     {
-        try {
-            //For example: pmid=0 for MyFatoorah invoice or pmid=1 for Knet in test mode
-            $user_transaction_record=Transaction::where('session_id',request('sid'))->where('status','pending')->first();
-            if(isset($user_transaction_record)){
-            $paymentId = request('pmid') ?: 0;
-            $sessionId = $user_transaction_record->session_id;
-            $orderId  = $user_transaction_record->order_id;
-            $curlData = $this->getPayLoadData($orderId);
-            $curlData['CustomerName']=$user_transaction_record->user_name;
-            $curlData['CustomerEmail']=$user_transaction_record->user_email;
-            $curlData['CustomerReference']=$user_transaction_record->order_id;
-            $curlData['InvoiceValue']=$user_transaction_record->total_amount;
-            $mfObj   = new MyFatoorahPayment($this->mfConfig);
-            $payment = $mfObj->getInvoiceURL($curlData, $paymentId, $orderId, $sessionId);
-            return redirect($payment['invoiceURL']);
-            }else{
-                $message = "There is a problem with payment process ,try again later";
-                Session::flash('error', $message);
-                return view('frontend.thankyou');
-            }
+        if (Session::has('user_data') &&Session::has('fatoora_data') ) {
+            $fatoora_session_data=Session::get('fatoora_data');
+            $user_data=Session::get('user_data');
+            try {
 
-        } catch (Exception $ex) {
-            $exMessage = __('myfatoorah.' . $ex->getMessage());
-            Session::flash('error', $exMessage);
-            return view('frontend.thankyou');
+                    $paymentId = request('pmid') ?: 0;
+                    $sessionId = request('sid');
+                    $orderId  = $fatoora_session_data['order_id'];
+                    $curlData = $this->getPayLoadData($orderId);
+                    $curlData['CustomerName']=auth()->user()->name;
+                    $curlData['CustomerEmail']=auth()->user()->email;
+                    $curlData['CustomerReference']=$fatoora_session_data['order_id'];
+                    $curlData['InvoiceValue']=$user_data['passenger_total'];
+                    $mfObj   = new MyFatoorahPayment($this->mfConfig);
+                    $payment = $mfObj->getInvoiceURL($curlData, $paymentId, $orderId, $sessionId);
+                    return redirect($payment['invoiceURL']);
+
+
+            } catch (Exception $ex) {
+                $exMessage = __('myfatoorah.' . $ex->getMessage());
+                Session::flash('error', $exMessage);
+                return redirect()->route('visa_request_steptwo',["country"=>$user_data['country'],"visatype"=>$user_data['visa_type']]);
+            }
+        }else{
+            $message = "Processing error ! Try again after a while";
+            Session::flash('error', $message);
+            return redirect()->route('visa_request');
         }
+
     }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------
@@ -109,20 +112,33 @@ class MyFatoorahController extends Controller
      */
     public function callback()
     {
-        try {
-            $paymentId = request('paymentId');
-            $mfObj = new MyFatoorahPaymentStatus($this->mfConfig);
-            $data  = $mfObj->getPaymentStatus($paymentId, 'PaymentId');
-            $message = $this->getTestMessage($data->InvoiceStatus, $data->InvoiceError);
-            $response = ['IsSuccess' => true, 'Message' => $message, 'Data' => $data];
-        } catch (Exception $ex) {
-            $exMessage = __('myfatoorah.' . $ex->getMessage());
-            Session::flash('error', $exMessage);
-            return view('frontend.thankyou');
-        }
-        if($response['IsSuccess']==true){
-            $transaction_entry =Transaction::where('order_id',$response['Data']->CustomerReference)->first();
-            if(isset($transaction_entry)){
+
+        if (Session::has('user_data') &&Session::has('fatoora_data') ) {
+            $fatoora_session_data=Session::get('fatoora_data');
+            $user_data=Session::get('user_data');
+            try {
+                $order_id = request('paymentId');
+                $mfObj = new MyFatoorahPaymentStatus($this->mfConfig);
+                $data  = $mfObj->getPaymentStatus($order_id, 'PaymentId');
+                $message = $this->getTestMessage($data->InvoiceStatus, $data->InvoiceError);
+                $response = ['IsSuccess' => true, 'Message' => $message, 'Data' => $data];
+            } catch (Exception $ex) {
+                $exMessage = __('myfatoorah.' . $ex->getMessage());
+                Session::flash('error', $exMessage);
+                return redirect()->route('visa_request_steptwo',["country"=>$user_data['country'],"visatype"=>$user_data['visa_type']]);
+            }
+            if($response['IsSuccess']==true && $response['Data']->InvoiceStatus=='Paid' ){
+
+                //save current user session data into db
+                $transaction_entry = new Transaction();
+                $transaction_entry->user_id=auth()->user()->id;
+                $transaction_entry->order_id=$fatoora_session_data['order_id'];
+                $transaction_entry->total_amount=$user_data['passenger_total'];
+                $transaction_entry->adult_count=$user_data['adult_count'];
+                $transaction_entry->child_count=$user_data['child_count'];
+                $transaction_entry->session_id=$fatoora_session_data['session_id'];
+                $transaction_entry->user_name=auth()->user()->name;
+                $transaction_entry->user_email=auth()->user()->email;
                 $transaction_entry->status=$response['Data']->InvoiceStatus;
                 $transaction_entry->invoice_id=$response['Data']->InvoiceId;
                 $transaction_entry->transaction_id=$response['Data']->focusTransaction->TransactionId;
@@ -134,23 +150,24 @@ class MyFatoorahController extends Controller
                 $transaction_entry->invoice_value=$response['Data']->InvoiceValue;
                 $transaction_entry->message=$response['Message'];
                 $transaction_entry->card_type=$response['Data']->focusTransaction->PaymentGateway;
-                $transaction_entry->update();
-            }
-            $response_message="Payment transaction status: \n".$response['Message'];
-            if ($response['Data']->InvoiceStatus == 'Paid') {
+                $transaction_entry->save();
+                //save data in  user_visa_applications table
+                $VisaRequest = new UserVisaApplications();
+                $VisaRequest->user_id = auth()->user()->id;
+                $VisaRequest->content = serialize($user_data);
+                $VisaRequest->order_id = $fatoora_session_data['order_id'];
+                $VisaRequest->save();
+
+
+                $response_message="Payment transaction status: \n".$response['Message'];
+
                 Session::flash('success', $response_message);
                 return view('frontend.thankyou');
             }else{
+                $response_message=$response['Message'];
                 Session::flash('error', $response_message);
-                return view('frontend.thankyou');
+                return redirect()->route('visa_request_steptwo',["country"=>$user_data['country'],"visatype"=>$user_data['visa_type']]);
             }
-
-
-
-        }else{
-            $response_message="Payment transaction status: \n Processing error ,Try again after few seconds";
-            Session::flash('error', $response_message);
-            return view('frontend.thankyou');
         }
     }
 
@@ -165,12 +182,12 @@ class MyFatoorahController extends Controller
     public function checkout()
     {
         if (Session::has('user_data')) {
-
+            $data = Session::get('user_data');
             try {
-                $data = Session::get('user_data');
                 //You can get the data using the order object in your system
                 $orderId = auth()->user()->id.time();
-
+                $fatoora_data=[];
+                $fatoora_data['order_id']=$orderId;
                 $user_data=[
                     "passenger_total"=>$data['passenger_total'],
                     "name"=>auth()->user()->name,
@@ -180,36 +197,21 @@ class MyFatoorahController extends Controller
 
                 //You can replace this variable with customer Id in your system
                 $customerId = auth()->user()->id;
+                //Generate MyFatoorah session for embedded payment
 
                 //You can use the user defined field if you want to save card
                 $userDefinedField = config('myfatoorah.save_card') && $customerId ? "CK-$customerId" : '';
                 //Get the enabled gateways at your MyFatoorah acount to be displayed on checkout page
+
                 $mfObj          = new MyFatoorahPaymentEmbedded($this->mfConfig);
+                $mfSession = $mfObj->getEmbeddedSession($userDefinedField);
+                $fatoora_data['session_id']=$mfSession->SessionId;
                 $paymentMethods = $mfObj->getCheckoutGateways($order['total'], $order['currency'], config('myfatoorah.register_apple_pay'));
                 if (empty($paymentMethods['all'])) {
                     throw new Exception('noPaymentGateways');
                 }
-                //Generate MyFatoorah session for embedded payment
-                $mfSession = $mfObj->getEmbeddedSession($userDefinedField);
-                //save current user session data into db
-                $transaction_entry = new Transaction();
-                $transaction_entry->user_id=auth()->user()->id;
-                $transaction_entry->order_id=$orderId;
-                $transaction_entry->total_amount=$data['passenger_total'];
-                $transaction_entry->adult_count=$data['adult_count'];
-                $transaction_entry->child_count=$data['child_count'];
-                $transaction_entry->session_id=$mfSession->SessionId;
-                $transaction_entry->user_name=auth()->user()->name;
-                $transaction_entry->user_email=auth()->user()->email;
-                $transaction_entry->save();
-                //save order id in  user_visa_applications table
-                $record_id=$data['visa_request_record_id'];
-                $user_application_record=UserVisaApplications::find($record_id);
-                if(isset($user_application_record)){
-                    $user_application_record->order_id=$orderId;
-                    $user_application_record->update();
-                }
 
+                Session::put('fatoora_data',$fatoora_data);
                 //Get Environment url
                 $isTest = $this->mfConfig['isTest'];
                 $vcCode = $this->mfConfig['countryCode'];
@@ -220,12 +222,12 @@ class MyFatoorahController extends Controller
             } catch (Exception $ex) {
                 $exMessage = __('myfatoorah.' . $ex->getMessage());
                 Session::flash('error', $exMessage);
-                return view('frontend.thankyou');
+                return redirect()->route('visa_request_steptwo',["country"=>$data['country'],"visatype"=>$data['visa_type']]);
             }
         } else {
-            $message = "Found no data for online payment ! Try again after a while";
+            $message = "Processing error ! Try again after a while";
             Session::flash('error', $message);
-            return view('frontend.thankyou');
+            return redirect()->route('visa_request');
         }
 
     }

@@ -37,7 +37,7 @@ class AdminController extends Controller
 
         $validatedData = $request->validate([
             'name'                  => 'required',
-            'email'                 => 'required|email',
+            'email'                 => 'required|email|unique:users',
             'password'              => 'required|min:8',
             'password_confirmation' => 'required|same:password'
         ], [
@@ -64,16 +64,16 @@ class AdminController extends Controller
 
     public function show(request $request)
     {
-        
+
         $search = $request["search"] ?? "";
-        
+
         if ($search != "") {
             $users = Admin::where('usertype', '!=', 'customer')->where(function ($query) use ($search) {
                 $query->where('name', 'like', "%$search%")
-                        ->orWhere('email', 'like', "%$search%");                      
+                        ->orWhere('email', 'like', "%$search%");
             })->paginate(20);
         } else {
-             $users = Admin::where('usertype', '!=', 'customer')->paginate(20);     
+             $users = Admin::where('usertype', '!=', 'customer')->paginate(20);
         }
         $data = compact('users', 'search');
         return view('admin.users')->with($data);
@@ -81,16 +81,16 @@ class AdminController extends Controller
 
     public function customer(request $request)
     {
-        
+
         $search = $request["search"] ?? "";
-        
+
         if ($search != "") {
             $users = Admin::where('usertype', '=', 'customer')->where(function ($query) use ($search) {
                 $query->where('name', 'like', "%$search%")
-                        ->orWhere('email', 'like', "%$search%");                      
+                        ->orWhere('email', 'like', "%$search%");
             })->paginate(20);
         } else {
-             $users = Admin::where('usertype', '=', 'customer')->paginate(20);     
+             $users = Admin::where('usertype', '=', 'customer')->paginate(20);
         }
         $data = compact('users', 'search');
         return view('admin.customer.customer')->with($data);

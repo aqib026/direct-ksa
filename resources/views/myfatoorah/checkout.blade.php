@@ -72,7 +72,7 @@
             <script src="{{asset('vendor/myfatoorah/js/checkout.js')}}"></script>
             <script>
                 function mfCallback(response) {
-                    window.location.href = "{{url('myfatoorah')}}?sid=" + response.sessionId;
+                    window.location.href = "{{url('fatoora-index')}}?sid=" + response.sessionId;
                 }
             </script>
 

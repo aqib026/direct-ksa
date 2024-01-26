@@ -1,12 +1,19 @@
 @component('mail::message')
-# Customer Form Report
+    # Customer Form Report
 
-Here is the customer form report:
+    Here is the customer form report:
 
-@foreach ($formData as $field => $value)
-- {{ $field }}: {{ $value }}
-@endforeach
+    @foreach ($formData as $field => $value)
+        @if($field=="document")
+            @foreach ($value as $key => $document)
+                - {{ $field }}:  <img src=" . {{asset('image') . '/' . $document }} . " />
 
-Thanks,
+            @endforeach
+        @else
+            - {{ $field }}: {{ $value }}
+        @endif
+    @endforeach
+
+    Thanks,
 
 @endcomponent
