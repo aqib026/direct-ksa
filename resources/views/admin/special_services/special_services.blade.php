@@ -15,7 +15,7 @@
                             <div class="title_right">
                                 <div class="col-md-7 col-sm-7 form-group pull-right top_search">
                                     <div class="input-group">
-                                        <a href="{{ url('admin/special_services_form') }}" class="btn btn-dark"> Add </a>
+{{--                                        <a href="{{ url('admin/special_services_form') }}" class="btn btn-dark"> Add </a>--}}
                                         <input type="search" name="search" class="form-control" placeholder="Search for...">
                                         <span class="input-group-btn">
                                             <button class="btn btn-default" type="submit">Go!</button>
@@ -45,7 +45,7 @@
                                                 <td><img src="{{ asset($service->banner) }}" class="me-4 border my-image" width="80" alt="Flag-Pic"></td>
                                                 <td>
                                                     <a href="{{ url('admin/special_services_form/edit/') }}/{{ $service->id }}"><i class="btn btn-success fa fa-edit"></i></a>
-                                                    <a href="{{ url('admin/special_services/delete/') }}/{{ $service->id }}"><i class="btn btn-danger fa fa-trash"></i></a>                                          
+                                                    <a href="{{ url('admin/special_services/delete/') }}/{{ $service->id }}"><i class="btn btn-danger fa fa-trash"></i></a>
                                                 </td>
                                             </tr>
                                         @endforeach

@@ -101,7 +101,7 @@
                                         </tr>
                                         <tr>
                                             <td>Passport</td>
-                                            <td><img src="{{ asset($data['application_form_data']['adult_passport_'.$i]) }}" class="img-responsive" alt=""  style="margin: 5px 10px;" /></td>
+                                            <td><img src="{{ asset($data['application_form_data']['adult_passport_'.$i]) }}" class="img-responsive" alt=""  style="margin: 5px 10px; height:150px" /></td>
                                         </tr>
                                     @endfor
                                 </tbody>

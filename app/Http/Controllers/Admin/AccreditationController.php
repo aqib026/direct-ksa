@@ -81,6 +81,9 @@ class AccreditationController extends Controller
    {
       $accreditation = accreditation::find($id);
       if (!is_null($accreditation)) {
+          if(File::exists(public_path($accreditation->banner))){
+              File::delete(public_path($accreditation->banner));
+          }
          $accreditation->delete();
       }
 
@@ -126,6 +129,9 @@ class AccreditationController extends Controller
       $accreditation->name_ar = $request['name_ar'];
 
       if(isset($request) && !empty($request->file('banner'))){
+          if(File::exists(public_path($accreditation->banner))){
+              File::delete(public_path($accreditation->banner));
+          }
       $filename = time() . "acc." . $request->file('banner')->getClientOriginalExtension();
       $accreditation->banner = $request->file('banner')->storeas('banner', $filename);
       }
