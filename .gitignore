@@ -3,6 +3,8 @@
 /public/hot
 /public/passportpic
 /public/banner
+/public/coverpic
+/public/flagpic
 /public/image
 /public/storage
 /storage/*.key

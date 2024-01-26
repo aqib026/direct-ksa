@@ -6,6 +6,7 @@ use App\Models\Branch;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Countries;
+use Illuminate\Support\Facades\File;
 
 
 class CountryController extends Controller
@@ -66,7 +67,12 @@ class CountryController extends Controller
    {
       $countries = Countries::find($id);
       if (!is_null($countries)) {
-
+          if(File::exists(public_path($countries->flag_pic))){
+              File::delete(public_path($countries->flag_pic));
+          }
+          if(File::exists(public_path($countries->cover_pic))){
+              File::delete(public_path($countries->cover_pic));
+          }
          $countries->delete();
       }
 
@@ -104,19 +110,25 @@ class CountryController extends Controller
 
       ]);
       $countries = Countries::find($id);
-   
+
       $countries->name = $request['name'];
       $countries->name_ar = $request['name_ar'];
 
       if(isset($request) && !empty($request->file('flag_pic'))){
+          if(File::exists(public_path($countries->flag_pic))){
+              File::delete(public_path($countries->flag_pic));
+          }
          $filename = time() . "fp." . $request->file('flag_pic')->getClientOriginalExtension();
          $countries->flag_pic = $request->file('flag_pic')->storeas('flagpic', $filename);
       }
       if(isset($request) && !empty($request->file('cover_pic'))){
+          if(File::exists(public_path($countries->cover_pic))){
+              File::delete(public_path($countries->cover_pic));
+          }
          $countryname = time() . "cp." . $request->file('cover_pic')->getClientOriginalExtension();
          $countries->cover_pic = $request->file('cover_pic')->storeAs('coverpic', $countryname);
       }
-      
+
       $countries->status = $request['status'];
 
 
