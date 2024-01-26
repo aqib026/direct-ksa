@@ -107,6 +107,30 @@ class VisaRequestController extends Controller
             'redirect_url' => route('visa_request_stepfour')
         ]);
     }
+    public function forth(Request $request)
+    {
+        // Check if the user is authenticated via API authentication
+        if (Auth::check()) {
+            $form_data = $request->all();
+            
+            if (Session::has('form_data') && Session::has('application_form_data')) {
+                $data = Session::get('form_data');
+                $data['application_form_data'] = Session::get('application_form_data');
+                $data['payment_form_data'] = $form_data['payment_method'];
+            } else {
+                return response()->json(['error' => 'Form data not found'], 400);
+            }
+            
+            $visaRequest = new UserVisaApplications();
+            $visaRequest->user_id = auth()->user()->id;
+            $visaRequest->content = serialize($data);
+            $visaRequest->save();
+            
+            return response()->json(['message' => 'Payment form data saved successfully']);
+        } else {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+    }
     
     public function visa()
     {
