@@ -27,7 +27,7 @@
                     </h2>
                     <h3 class="font-weight-semi-bold text-uppercase positive-ls-3 pb-3 mb-3 text-4 line-height-2 line-height-sm-7 mb-0 appear-animation"
                         data-appear-animation="maskUp" data-appear-animation-delay="100">{{ __('thank.req') }}</h3>
-                    <a href="http://localhost:8000/visa_request" data-hash="" data-hash-offset="0"
+                    <a href="{{route('visa_request')}}" data-hash="" data-hash-offset="0"
                         data-hash-offset-lg="100"
                         class="btn btn-modern btn-primary btn-arrow-effect-1 text-capitalize text-3-5 px-5 py-3 anim-hover-translate-top-5px transition-2ms">{{ __('thank.rhs') }}
                         @if (app()->getlocale() == 'en')

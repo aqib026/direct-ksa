@@ -101,7 +101,7 @@
                                         </tr>
                                         <tr>
                                             <td>Passport</td>
-                                            <td><img src="{{ asset($data['application_form_data']['adult_passport_'.$i]) }}" class="img-responsive" alt="" width="75" height="75" style="margin: 5px 10px;" /></td>
+                                            <td><img src="{{ asset($data['application_form_data']['adult_passport_'.$i]) }}" class="img-responsive" alt=""  style="margin: 5px 10px;" /></td>
                                         </tr>
                                     @endfor
                                 </tbody>
@@ -220,5 +220,5 @@
             </div>
         </div>
     </div>
-</section>    
+</section>
 @endsection
