@@ -19,7 +19,7 @@ public function register(Request $request)
 
     $validator =Validator::make($request->all(),[
         'name'=>'required',
-        'email'=>'required|email',
+        'email'=>'required|email|unique:users',
         'password'=>'required',
         'password_confirmation'=>'required|same:password'
 
