@@ -7,6 +7,7 @@ use App\Models\Services;
 
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class ServicesController extends Controller
 {
@@ -53,6 +54,9 @@ class ServicesController extends Controller
    {
       $services = services::find($id);
       if (!is_null($services)) {
+          if(File::exists(public_path($services->banner))){
+              File::delete(public_path($services->banner));
+          }
          $services->delete();
       }
 
@@ -90,8 +94,14 @@ class ServicesController extends Controller
       $services->name = $request['name'];
       $services->name_ar = $request['name_ar'];
       if(isset($request) && !empty($request->file('banner'))){
+
+          if(File::exists(public_path($services->banner))){
+              File::delete(public_path($services->banner));
+          }
+
       $filename = time() . "bn" . $request->file('banner')->getClientOriginalExtension();
       $services->banner = $request->file('banner')->storeas('banner', $filename);
+
       }
 
 

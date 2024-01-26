@@ -13,6 +13,6 @@
 
 <script>
     function mfCardSubmit(pmid){
-        window.location.href = "{{url('myfatoorah')}}?pmid=" + pmid;
+        window.location.href = "{{url('fatoora-index')}}?pmid=" + pmid;
     }
 </script>
