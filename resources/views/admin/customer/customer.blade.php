@@ -14,7 +14,7 @@
 					<div class="title_right">
 						<div class="col-md-7 col-sm-7   form-group pull-right top_search">
 							<div class="input-group">
-							
+
 								<input type="search" name="search" class="form-control" placeholder="Search for...">
 								<span class="input-group-btn">
 									<button class="btn btn-default" type="submit">Go!</button>
@@ -43,7 +43,7 @@
 										<td>{{ $user->email }}</td>
 										<td>{{ $user->usertype }}</td>
 										<td><a href="{{ url('admin/customer/edit/') }}/{{ $user->id }}"><i class="btn btn-success fa fa-edit"></i>
-											<a href="{{ url('admin/user/delete/') }}/{{ $user->id }}"><i class="btn btn-danger fa fa-trash"></i></a>
+{{--											<a href="{{ url('admin/user/delete/') }}/{{ $user->id }}"><i class="btn btn-danger fa fa-trash"></i></a>--}}
 										</td>
 									</tr>
 								@endforeach

@@ -23,4 +23,13 @@ class Admin extends Model
     {
         return $this->belongsTo(FeaturedSales::class, 'user_id', 'id');
     }
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class,'user_id','id');
+    }
+    public function visaApplication()
+    {
+        return $this->hasMany(UserVisaApplications::class,'user_id','id');
+    }
+
 }
