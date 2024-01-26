@@ -21,7 +21,8 @@ public function register(Request $request)
         'name'=>'required',
         'email'=>'required|email',
         'password'=>'required',
-        'password_confirmation'=>'required|same:password'
+        'password_confirmation'=>'required|same:password',
+        'Number'=>'required'
 
     ]);
         if($validator->fails()){
@@ -35,10 +36,10 @@ public function register(Request $request)
         $input['usertype']='customer';
         $input['password']=bcrypt($input['password']);
         $user = User::create($input);
-        
+
         $success['token']=$user->createToken('MyApp')->plainTextToken;
         $success['name']=$user->name;
-        
+
         $response=[
             'success'=>true,
             'data'=> $success,
@@ -55,7 +56,7 @@ if(Auth::attempt(['email'=>$request->email,'password'=>$request->password])){
     $user=Auth::user();
     $success['token']=$user->createToken('MyApp')->plainTextToken;
     $success['name']=$user->name;
-    
+
     $response=[
         'success'=>true,
         'data'=> $success,
@@ -68,7 +69,7 @@ if(Auth::attempt(['email'=>$request->email,'password'=>$request->password])){
         'message'=>'unauthorised'
     ];
     return response()->json($response,);
-    
+
 }
 }
 }

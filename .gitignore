@@ -2,6 +2,8 @@
 /public/build
 /public/hot
 /public/passportpic
+/public/banner
+/public/image
 /public/storage
 /storage/*.key
 /vendor

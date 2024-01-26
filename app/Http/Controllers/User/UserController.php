@@ -75,7 +75,7 @@ class UserController extends Controller
         return redirect('otp/login');
     }
 
-    
+
     public function edit()
     {
         $url = url('user/profile/update');
@@ -94,7 +94,7 @@ class UserController extends Controller
            'number'                 => 'required'
         ], [
             'name.required'                     => 'Name is required',
-         
+
             'email.required'                    => 'Email is required',
             'email.email'                       => 'Enter a valid Email'
         ]);
@@ -196,12 +196,17 @@ class UserController extends Controller
             if ($usertype == 'customer') {
                 $country = '';
                 $accre = UserVisaApplications::find($id);
-                $data = array();
-                $data = unserialize($accre['content']);
-                $country = countries::where('id', $data['country'])->first();
-                $data['country_name'] =  $country;
-                $notes = VisaNote::where('visa_request_id', $id)->get();
-                return view('user.visarequestdetail', compact('data','notes'));
+                if(isset($accre)){
+                    $data = array();
+                    $data = unserialize($accre['content']);
+                    $country = countries::where('id', $data['country'])->first();
+                    $data['country_name'] =  $country;
+                    $notes = VisaNote::where('visa_request_id', $id)->get();
+                    return view('user.visarequestdetail', compact('data','notes'));
+                }else{
+                    return redirect()->back();
+                }
+
             } else {
                 return redirect()->back();
             }

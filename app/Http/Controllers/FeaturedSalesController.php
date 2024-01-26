@@ -76,7 +76,7 @@ class FeaturedSalesController extends Controller
      public function store(Request $request)
      {
          $user = null;
-     
+
          // Check if the user is logged in
          if (auth()->check()) {
              // User is logged in, set the user_id from the logged-in user
@@ -93,11 +93,11 @@ class FeaturedSalesController extends Controller
                     'password' => bcrypt('12345678'),
                     'usertype' => 'customer',
                 ]);
-            
+
             }
         }
-    
-     
+
+
          // Set the user_id in the featured sales or perform any other necessary actions
          $validatedData = $request->validate([
             'required_service'  => 'required',
@@ -110,9 +110,8 @@ class FeaturedSalesController extends Controller
             'mobile_number.required'    => 'Mobile No is required',
             'email.required'            => 'Email is required'
         ]);
-    
-        $input = $request->all();
 
+        $input = $request->except('documents', '_token');
         $images = array();
         if ($files = $request->file('documents')) {
             foreach ($files as $file) {
@@ -121,9 +120,8 @@ class FeaturedSalesController extends Controller
                 $images[] = $name;
             }
         }
-
+         $input['document']=$images;
         $FeaturedSales                              = new FeaturedSales();
-
         $FeaturedSales->required_service            = $request->required_service;
         $FeaturedSales->paper_quantity              = $request->paper_quantity;
         $FeaturedSales->documents                   = implode("|", $images);
@@ -150,16 +148,16 @@ class FeaturedSalesController extends Controller
 
         $FeaturedSales->save();
 
-        Mail::to('admin@directksa.com')->send(new CustomerFormReportMail($request->all()));
+        Mail::to('admin@directksa.com')->send(new CustomerFormReportMail($input ));
         if ($FeaturedSales) {
             return redirect(route('featured_sales_thankyou'))->with('success', 'FeaturedSales Added Successfuly.');
         }
-     
+
          // Redirect or return a response as needed
      }
-  
 
-    
+
+
 
     /**
      * Display the specified resource.

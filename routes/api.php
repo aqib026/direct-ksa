@@ -35,6 +35,7 @@ Route::get('/requirement/{country?}',[RequirementsController::class, 'index'])->
 Route::get('/visarequest',[VisaRequestController::class, 'index'])->name('visa-list');
 Route::get('/visa_request/{country_id?}/{visa_type?}',[VisaRequestController::class, 'second'])->name('visa-detail-page');
 Route::Post('/visa_request/application_form',[VisaRequestController::class,'third'])->name('visa_application_form');
+Route::Post('/visa_request/payment',[VisaRequestController::class,'forth'])->name('visa_payment_form');
 
 Route::get('/page/{slug?}', [PageController::class, 'index'])->name('contentpage');
 Route::get('/bank', [BankController::class, 'index'])->name('bank');
