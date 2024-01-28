@@ -12,6 +12,8 @@ use App\Mail\CustomerFormReportMail;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\FeaturedSalesResource;
 use App\Models\Note;
+use Exception;
+use Illuminate\Support\Facades\Log;
 
 class FeaturedController extends Controller
 {
@@ -57,7 +59,7 @@ class FeaturedController extends Controller
             'email.required'            => 'Email is required'
         ]);
         
-        $input = $request->all();
+        $input = $request->except('documents', '_token');
         
         $images = array();
         if ($request->hasFile('documents')) {
@@ -69,7 +71,7 @@ class FeaturedController extends Controller
                 $images[] = $name;
             }
         }
-        
+        $input['document']=$images;
         $featuredSales = new FeaturedSales();
         
         $featuredSales->required_service = $request->required_service;
@@ -97,8 +99,14 @@ class FeaturedController extends Controller
         $featuredSales->user_id = $user->id;
         
         $featuredSales->save();
-        
-        Mail::to('admin@directksa.com')->send(new CustomerFormReportMail($request->all()));
+        try {
+            Mail::to('admin@directksa.com')->send(new CustomerFormReportMail($input));
+        } catch (Exception $e) {
+            Log::build([
+                'driver' => 'single',
+                'path' => storage_path('logs/services-api-email-erros.log'),
+             ])->info('There is problem while sending email: '.print_r($e, true));
+        }
         
         if ($featuredSales) {
             return response()->json(['success' => true, 'message' => 'FeaturedSales added successfully']);
@@ -143,5 +151,4 @@ class FeaturedController extends Controller
             return response()->json(['message' => 'Unauthorized.'], 401);
         }
     }
-    
 }

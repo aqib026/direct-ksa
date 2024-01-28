@@ -6,11 +6,11 @@ use App\Mail\CustomerFormReportMail;
 use App\Models\FeaturedSales;
 use App\Models\Note;
 use App\Models\Admin;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
-
-
 
 class FeaturedSalesController extends Controller
 {
@@ -35,7 +35,6 @@ class FeaturedSalesController extends Controller
     public function thankyou()
     {
         return view('frontend.thankyou');
-
     }
 
 
@@ -82,20 +81,19 @@ class FeaturedSalesController extends Controller
              // User is logged in, set the user_id from the logged-in user
              $user = auth()->user();
          } else {
-            // User is not logged in, check if the email or mobile_number exists in the users table
-            $user = Admin::where('email', $request->input('email'))->first();
-            // If no user found, create a new user record
-            if (!$user) {
-                $user = Admin::create([
-                    'name' => $request->input('applicant_name'),
-                    'email' => $request->input('email'),
-                    'number' => $request->input('mobile_number'),
-                    'password' => bcrypt('12345678'),
-                    'usertype' => 'customer',
-                ]);
-
-            }
-        }
+             // User is not logged in, check if the email or mobile_number exists in the users table
+             $user = Admin::where('email', $request->input('email'))->first();
+             // If no user found, create a new user record
+             if (!$user) {
+                 $user = Admin::create([
+                     'name' => $request->input('applicant_name'),
+                     'email' => $request->input('email'),
+                     'number' => $request->input('mobile_number'),
+                     'password' => bcrypt('12345678'),
+                     'usertype' => 'customer',
+                 ]);
+             }
+         }
 
 
          // Set the user_id in the featured sales or perform any other necessary actions
@@ -111,47 +109,54 @@ class FeaturedSalesController extends Controller
             'email.required'            => 'Email is required'
         ]);
 
-        $input = $request->except('documents', '_token');
-        $images = array();
-        if ($files = $request->file('documents')) {
-            foreach ($files as $file) {
-                $name = $file->getClientOriginalName();
-                $file->move('image', $name);
-                $images[] = $name;
-            }
-        }
+         $input = $request->except('documents', '_token');
+         $images = array();
+         if ($files = $request->file('documents')) {
+             foreach ($files as $file) {
+                 $name = $file->getClientOriginalName();
+                 $file->move('image', $name);
+                 $images[] = $name;
+             }
+         }
          $input['document']=$images;
-        $FeaturedSales                              = new FeaturedSales();
-        $FeaturedSales->required_service            = $request->required_service;
-        $FeaturedSales->paper_quantity              = $request->paper_quantity;
-        $FeaturedSales->documents                   = implode("|", $images);
-        $FeaturedSales->translation_content         = $request->translation_content;
-        $FeaturedSales->idl_card_qty                = $request->idl_card_qty;
-        $FeaturedSales->lic_col_choice              = $request->lic_col_choice;
-        $FeaturedSales->idl_qty                     = $request->idl_qty;
-        $FeaturedSales->univ_adm_country            = $request->univ_adm_country;
-        $FeaturedSales->nationality                 = $request->nationality;
-        $FeaturedSales->mode_of_finance             = $request->mode_of_finance;
-        $FeaturedSales->major_of_study              = $request->major_of_study;
-        $FeaturedSales->current_qualification       = $request->current_qualification;
-        $FeaturedSales->last_qualification_grade    = $request->last_qualification_grade;
-        $FeaturedSales->certification               = $request->certification;
-        $FeaturedSales->call_time                   = $request->call_time;
-        $FeaturedSales->form_type                   = $request->form_type;
-        $FeaturedSales->passport_quantity           = $request->passport_quantity;
-        $FeaturedSales->country                     = $request->country;
-        $FeaturedSales->applicant_name              = $request->applicant_name;
-        $FeaturedSales->mobile_number               = $request->mobile_number;
-        $FeaturedSales->email                       = $request->email;
-        $FeaturedSales->service_cost                = $request->service_cost;
-        $FeaturedSales->user_id                     = $user->id;
+         $FeaturedSales                              = new FeaturedSales();
+         $FeaturedSales->required_service            = $request->required_service;
+         $FeaturedSales->paper_quantity              = $request->paper_quantity;
+         $FeaturedSales->documents                   = implode("|", $images);
+         $FeaturedSales->translation_content         = $request->translation_content;
+         $FeaturedSales->idl_card_qty                = $request->idl_card_qty;
+         $FeaturedSales->lic_col_choice              = $request->lic_col_choice;
+         $FeaturedSales->idl_qty                     = $request->idl_qty;
+         $FeaturedSales->univ_adm_country            = $request->univ_adm_country;
+         $FeaturedSales->nationality                 = $request->nationality;
+         $FeaturedSales->mode_of_finance             = $request->mode_of_finance;
+         $FeaturedSales->major_of_study              = $request->major_of_study;
+         $FeaturedSales->current_qualification       = $request->current_qualification;
+         $FeaturedSales->last_qualification_grade    = $request->last_qualification_grade;
+         $FeaturedSales->certification               = $request->certification;
+         $FeaturedSales->call_time                   = $request->call_time;
+         $FeaturedSales->form_type                   = $request->form_type;
+         $FeaturedSales->passport_quantity           = $request->passport_quantity;
+         $FeaturedSales->country                     = $request->country;
+         $FeaturedSales->applicant_name              = $request->applicant_name;
+         $FeaturedSales->mobile_number               = $request->mobile_number;
+         $FeaturedSales->email                       = $request->email;
+         $FeaturedSales->service_cost                = $request->service_cost;
+         $FeaturedSales->user_id                     = $user->id;
 
-        $FeaturedSales->save();
-
-        Mail::to('admin@directksa.com')->send(new CustomerFormReportMail($input ));
-        if ($FeaturedSales) {
-            return redirect(route('featured_sales_thankyou'))->with('success', 'FeaturedSales Added Successfuly.');
-        }
+         $FeaturedSales->save();
+         try {
+             Mail::to('admin@directksa.com')->send(new CustomerFormReportMail($input));
+         } catch (Exception $e) {
+             Log::build([
+                 'driver' => 'single',
+                 'path' => storage_path('logs/services-email-erros.log'),
+              ])->info('There is problem while sending email: '.print_r($e, true));
+         }
+        
+         if ($FeaturedSales) {
+             return redirect(route('featured_sales_thankyou'))->with('success', 'Your request for selected service has been submitted Successfuly.Our team will contact ASAP');
+         }
 
          // Redirect or return a response as needed
      }
@@ -167,9 +172,7 @@ class FeaturedSalesController extends Controller
      */
     public function show(FeaturedSales $id)
     {
-
         if ($id != "") {
-
             return view('admin.featured_sales.featured_sale_show')->with('featured_sale', $id);
         } else {
             return redirect('admin/featured_sales');
@@ -183,13 +186,13 @@ class FeaturedSalesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    { {
+    {
+        {
             $featured_sale = FeaturedSales::find($id);
 
             if (is_null($featured_sale)) {    //not found
                 return redirect('admin/featured_sales');
             } else {
-
                 $url = url('admin/featured_sale/update') . "/" . $id;
 
                 $note = Note::where('featured_id', $id)->get();
