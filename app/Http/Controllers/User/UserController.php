@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Note;
 use Illuminate\Http\Request;
 
-
 class UserController extends Controller
 {
     public function index()
@@ -21,7 +20,8 @@ class UserController extends Controller
         if (Auth::id()) {
             $user = Auth()->user();
             if ($user->usertype == 'customer') {
-                return view('user.layout.dashboard');
+                $user_requests=UserVisaApplications::where('user_id', auth()->user()->id)->count();
+                return view('user.user-dashboard', compact('user_requests'));
             }if ($user->usertype == 'admin') {
                 return redirect('/admin/dashboard');
             } else {
@@ -45,7 +45,6 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-
         $validatedData = $request->validate([
             'name'                  => 'required',
             'email'                 => 'required|email',
@@ -87,7 +86,6 @@ class UserController extends Controller
 
     public function update(request $request)
     {
-
         $validatedData = $request->validate([
             'name'                  => 'required',
             'email'                 => 'required|email',
@@ -111,16 +109,17 @@ class UserController extends Controller
     public function passwordedit()
     {
         $user = Auth::user();
-        if (is_null($user)) redirect('admin/users');
+        if (is_null($user)) {
+            redirect('admin/users');
+        }
         $url = url('user/password/update');
         $data = compact('url', 'user');
 
         return view('user.password')->with($data);
     }
 
-    public function passwordupdate( request $request)
+    public function passwordupdate(request $request)
     {
-
         $request->validate([
             'current_password' => 'required',
             'password' => 'required|string|min:6|confirmed',
@@ -142,7 +141,7 @@ class UserController extends Controller
             $user = Auth()->user();
             $usertype = $user->usertype;
             if ($usertype == 'customer') {
-                $accre = FeaturedSales::where('user_id',Auth::user()->id)->get();
+                $accre = FeaturedSales::where('user_id', Auth::user()->id)->get();
                 $data=compact('accre');
                 return view('user.services')->with($data);
             } else {
@@ -159,7 +158,7 @@ class UserController extends Controller
             if ($usertype == 'customer') {
                 $featured_sale = FeaturedSales::find($id);
                 $notes = Note::where('featured_id', $id)->get();
-                $data = compact('featured_sale','notes');
+                $data = compact('featured_sale', 'notes');
                 return view('user.servicesdetail')->with($data);
             } else {
                 return redirect()->back();
@@ -174,7 +173,7 @@ class UserController extends Controller
             $usertype = $user->usertype;
             if ($usertype == 'customer') {
                 $country = '';
-                $accre = UserVisaApplications::where('user_id',Auth::user()->id)->get();
+                $accre = UserVisaApplications::where('user_id', Auth::user()->id)->get();
                 $data = array();
                 foreach ($accre as $acc) {
                     $data[$acc['id']] = unserialize($acc['content']);
@@ -196,17 +195,16 @@ class UserController extends Controller
             if ($usertype == 'customer') {
                 $country = '';
                 $accre = UserVisaApplications::find($id);
-                if(isset($accre)){
+                if (isset($accre)) {
                     $data = array();
                     $data = unserialize($accre['content']);
                     $country = countries::where('id', $data['country'])->first();
                     $data['country_name'] =  $country;
                     $notes = VisaNote::where('visa_request_id', $id)->get();
-                    return view('user.visarequestdetail', compact('data','notes'));
-                }else{
+                    return view('user.visarequestdetail', compact('data', 'notes'));
+                } else {
                     return redirect()->back();
                 }
-
             } else {
                 return redirect()->back();
             }

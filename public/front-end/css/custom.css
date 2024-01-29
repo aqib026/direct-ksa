@@ -126,7 +126,7 @@ html .text-dark {
 
 .ex-navbar .navbar-nav .nav-link:hover,
 .ex-navbar .navbar-nav .nav-link.active {
-    color: var(--orange);
+    color: #0043a6;
 }
 
 .navbar-nav .dropdown-menu {

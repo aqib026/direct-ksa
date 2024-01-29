@@ -237,12 +237,12 @@ Route::group(['prefix'=>'/user'], function () {
     //Route::get('/register', [UserController::class,'create']);
     //Route::POST('/register', [UserController::class,'store']);
 
-    Route::get('/dashboard', [UserController::class,'index'])->middleware(['auth', 'user']);
+    Route::get('/dashboard', [UserController::class,'index'])->middleware(['auth', 'user'])->name('user-dashboard');
 
-    Route::get('/profile', [UserController::class, 'edit'])->middleware(['auth','user']);
+    Route::get('/profile', [UserController::class, 'edit'])->middleware(['auth','user'])->name('user-profile');
     Route::post('/profile/update', [UserController::class, 'update'])->middleware(['auth','user']);
 
-    Route::get('/password', [UserController::class, 'passwordedit'])->middleware(['auth','user']);
+    Route::get('/password', [UserController::class, 'passwordedit'])->middleware(['auth','user'])->name('user-password');
     Route::post('/password/update', [UserController::class, 'passwordupdate'])->middleware(['auth','user']);
 
     Route::get('/services', [UserController::class, 'services'])->name('services')->middleware(['auth','user']);
