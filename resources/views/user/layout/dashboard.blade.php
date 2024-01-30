@@ -93,7 +93,7 @@
             border-radius: 6px
         }
 
-        .alert-danger {
+        .alert {
             color: #161414;
             font-family: 'circular';
             font-size: 14px

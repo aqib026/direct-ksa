@@ -138,7 +138,7 @@
 					<div id="collapse1003" class="collapse show" aria-labelledby="collapse100Three" data-bs-parent="#accordion100">
 						<div class="card-body">
 							<h4 class="text-center m-4 mb-5">{{__('steps.bpt')}}</h4>
-							<form action="{{ route('visa_request_stepfour_post') }}" role="form" method="post" class="form-horizontal" enctype="multipart/form-data">
+							<form action="{{ route('visa_request_stepfour_post') }}" role="form" method="post" class="form-horizontal" enctype="multipart/form-data" id="visa_req_form">
         						@csrf
 								<table class="table">
 									<thead>
@@ -158,7 +158,16 @@
 								</table>
 								<div class="text-center my-5">
 									<button class="btn btn-modern btn-primary btn-arrow-effect-1 btn-xl mb-2" type="submit">Confirm</button>
+									<div class="d-none" id="loader">
+										<div class="d-flex justify-content-center">
+											<div class="spinner-border" role="status">
+											  <span class="visually-hidden">Loading...</span>
+											</div>
+										  </div>
+									</div>
+									
 								</div>
+								
 							</form>
 						</div>
 					</div>
@@ -198,4 +207,12 @@
 			</div>
 		</div>
 	</section>
+@endsection
+@section('custom-scripts')
+<script>
+$( "#visa_req_form" ).on( "submit", function( event ) {
+	$( "#loader" ).removeClass('d-none');
+  });
+</script>
+
 @endsection
