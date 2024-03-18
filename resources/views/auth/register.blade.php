@@ -52,7 +52,7 @@
                         <div class="mt-3">
                             <label class="form-label" for="form3Example3">Phone Number</label>
 
-                            <input id="number" type="text" class="form-control form-control-lg @error('number') is-invalid @enderror" name="number" value="{{ old('number') }}" placeholder="Enter Your Number" required autocomplete="number">
+                            <input id="number" type="text" class="form-control form-control-lg @error('number') is-invalid @enderror" name="number" value="{{ old('number') }}" placeholder="Enter Your Number" required autocomplete="number" required>
                             @error('number')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
