@@ -5,7 +5,6 @@
                 <a href="{{ route('home') }}" class="text-decoration-none">
                     <img src="{{ asset('img/ksa_logo.png') }} " width="107" height="30" class="img-fluid mb-4" alt="Direct" />
                 </a>
-                <p class="text-3-5 font-weight-medium pe-lg-2 text-white">{{ __('head.lid') }} </p>
 
                 <ul class="social-icons social-icons-clean social-icons-medium">
                     <li class="social-icons-facebook">
@@ -54,7 +53,7 @@
                         <ul class="list list-unstyled">
                             <li class="d-flex align-items-center mb-4">
                                 <i class="icon icon-envelope text-color-light text-5 font-weight-bold position-relative top-1 me-3-5"></i>
-                                <a href="mailto:company@business-consulting-4.com" class="d-inline-flex align-items-center text-decoration-none text-color-light text-color-hover-primary font-weight-regular fs-6">company@domain.com</a>
+                                <a href="mailto:company@business-consulting-4.com" class="d-inline-flex align-items-center text-decoration-none text-color-light text-color-hover-primary font-weight-regular fs-6">info@exvisas.com</a>
                             </li>
                             <li class="d-flex align-items-center mb-4">
                                 <i class="icon icon-phone text-color-light text-5 font-weight-bold position-relative top-1 me-3-5"></i>
