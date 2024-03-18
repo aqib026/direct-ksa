@@ -8,12 +8,11 @@ use App\Models\User;
 use App\Models\UserOtp;
 use Illuminate\Support\Facades\Auth;
 
-
 class OtpController extends Controller
 {
     public function login()
     {
-    return view('auth.otpmobile');
+        return view('auth.otpmobile');
     }
     
     public function generate(Request $request)

@@ -121,12 +121,12 @@
             @php
             $error_message='';
             @endphp
-            @if (!Auth::user()->phone_verified)
+            @if (Auth::user()->phone_verified==0)
             @php
             $error_message .= 'Please verify your phone number <a href="' . url('otp/login') . '" class="alert-link">Click here</a> to go to the verification page.<br>';
             @endphp
             @endif
-            @if (!Auth::user()->email_verified)
+            @if (is_null(Auth::user()->email_verified_at))
             @php
             $error_message.=' Please verify your email address. <a href="'. route('verification.notice') .'"
                         class="alert-link">Click here</a> to go to the verification page.';

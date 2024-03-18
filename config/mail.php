@@ -51,6 +51,8 @@ return [
 
         'mailgun' => [
             'transport' => 'mailgun',
+            'domain' => 'mail.exvisas.com',
+            'secret' => '501f7950f5b82993fb5c8c69a5df48ac-b7b36bc2-a72f591e',
         ],
 
         'postmark' => [

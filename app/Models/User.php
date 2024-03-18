@@ -8,7 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class User extends Authenticatable 
+class User extends Authenticatable  implements MustVerifyEmail
 {
     use Notifiable;
     use HasApiTokens;

@@ -146,12 +146,12 @@ class FeaturedSalesController extends Controller
 
          $FeaturedSales->save();
          try {
-             Mail::to('admin@directksa.com')->send(new CustomerFormReportMail($input));
+             Mail::to('info@exvisas.com')->send(new CustomerFormReportMail($input));
          } catch (Exception $e) {
              Log::build([
                  'driver' => 'single',
                  'path' => storage_path('logs/services-email-erros.log'),
-              ])->info('There is problem while sending email: '.print_r($e, true));
+              ])->info('There is problem while sending email: '.print_r($e->getMessage(), true));
          }
         
          if ($FeaturedSales) {

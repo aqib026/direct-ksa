@@ -16,7 +16,7 @@ class EmailVerificationController extends Controller
     {
         $request->fulfill();
         
-        return redirect('/dashboard')->with('verified', true);
+        return redirect('/user/dashboard')->with('verified', true);
        
     
     }

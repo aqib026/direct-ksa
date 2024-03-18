@@ -45,35 +45,31 @@ class MyFatoorahController extends Controller
      */
     public function index()
     {
-        if (Session::has('user_data') &&Session::has('fatoora_data') ) {
+        if (Session::has('user_data') &&Session::has('fatoora_data')) {
             $fatoora_session_data=Session::get('fatoora_data');
             $user_data=Session::get('user_data');
             try {
-
-                    $paymentId = request('pmid') ?: 0;
-                    $sessionId = request('sid');
-                    $orderId  = $fatoora_session_data['order_id'];
-                    $curlData = $this->getPayLoadData($orderId);
-                    $curlData['CustomerName']=auth()->user()->name;
-                    $curlData['CustomerEmail']=auth()->user()->email;
-                    $curlData['CustomerReference']=$fatoora_session_data['order_id'];
-                    $curlData['InvoiceValue']=$user_data['passenger_total'];
-                    $mfObj   = new MyFatoorahPayment($this->mfConfig);
-                    $payment = $mfObj->getInvoiceURL($curlData, $paymentId, $orderId, $sessionId);
-                    return redirect($payment['invoiceURL']);
-
-
+                $paymentId = request('pmid') ?: 0;
+                $sessionId = request('sid');
+                $orderId  = $fatoora_session_data['order_id'];
+                $curlData = $this->getPayLoadData($orderId);
+                $curlData['CustomerName']=auth()->user()->name;
+                $curlData['CustomerEmail']=auth()->user()->email;
+                $curlData['CustomerReference']=$fatoora_session_data['order_id'];
+                $curlData['InvoiceValue']=$user_data['passenger_total'];
+                $mfObj   = new MyFatoorahPayment($this->mfConfig);
+                $payment = $mfObj->getInvoiceURL($curlData, $paymentId, $orderId, $sessionId);
+                return redirect($payment['invoiceURL']);
             } catch (Exception $ex) {
                 $exMessage = __('myfatoorah.' . $ex->getMessage());
                 Session::flash('error', $exMessage);
-                return redirect()->route('visa_request_steptwo',["country"=>$user_data['country'],"visatype"=>$user_data['visa_type']]);
+                return redirect()->route('visa_request_steptwo', ["country"=>$user_data['country'],"visatype"=>$user_data['visa_type']]);
             }
-        }else{
+        } else {
             $message = "Processing error ! Try again after a while";
             Session::flash('error', $message);
             return redirect()->route('visa_request');
         }
-
     }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------
@@ -112,8 +108,7 @@ class MyFatoorahController extends Controller
      */
     public function callback()
     {
-
-        if (Session::has('user_data') &&Session::has('fatoora_data') ) {
+        if (Session::has('user_data') &&Session::has('fatoora_data')) {
             $fatoora_session_data=Session::get('fatoora_data');
             $user_data=Session::get('user_data');
             try {
@@ -125,10 +120,9 @@ class MyFatoorahController extends Controller
             } catch (Exception $ex) {
                 $exMessage = __('myfatoorah.' . $ex->getMessage());
                 Session::flash('error', $exMessage);
-                return redirect()->route('visa_request_steptwo',["country"=>$user_data['country'],"visatype"=>$user_data['visa_type']]);
+                return redirect()->route('visa_request_steptwo', ["country"=>$user_data['country'],"visatype"=>$user_data['visa_type']]);
             }
-            if($response['IsSuccess']==true && $response['Data']->InvoiceStatus=='Paid' ){
-
+            if ($response['IsSuccess']==true && $response['Data']->InvoiceStatus=='Paid') {
                 //save current user session data into db
                 $transaction_entry = new Transaction();
                 $transaction_entry->user_id=auth()->user()->id;
@@ -163,10 +157,10 @@ class MyFatoorahController extends Controller
 
                 Session::flash('success', $response_message);
                 return view('frontend.thankyou');
-            }else{
+            } else {
                 $response_message=$response['Message'];
                 Session::flash('error', $response_message);
-                return redirect()->route('visa_request_steptwo',["country"=>$user_data['country'],"visatype"=>$user_data['visa_type']]);
+                return redirect()->route('visa_request_steptwo', ["country"=>$user_data['country'],"visatype"=>$user_data['visa_type']]);
             }
         }
     }
@@ -193,7 +187,7 @@ class MyFatoorahController extends Controller
                     "name"=>auth()->user()->name,
                     "email"=>auth()->user()->email
                 ];
-                $order   = $this->getTestOrderData($orderId,$user_data);
+                $order   = $this->getTestOrderData($orderId, $user_data);
 
                 //You can replace this variable with customer Id in your system
                 $customerId = auth()->user()->id;
@@ -211,25 +205,23 @@ class MyFatoorahController extends Controller
                     throw new Exception('noPaymentGateways');
                 }
 
-                Session::put('fatoora_data',$fatoora_data);
+                Session::put('fatoora_data', $fatoora_data);
                 //Get Environment url
                 $isTest = $this->mfConfig['isTest'];
                 $vcCode = $this->mfConfig['countryCode'];
-
                 $countries = MyFatoorah::getMFCountries();
                 $jsDomain  = ($isTest) ? $countries[$vcCode]['testPortal'] : $countries[$vcCode]['portal'];
                 return view('myfatoorah.checkout', compact('mfSession', 'paymentMethods', 'jsDomain', 'userDefinedField'));
             } catch (Exception $ex) {
                 $exMessage = __('myfatoorah.' . $ex->getMessage());
                 Session::flash('error', $exMessage);
-                return redirect()->route('visa_request_steptwo',["country"=>$data['country'],"visatype"=>$data['visa_type']]);
+                return redirect()->route('visa_request_steptwo', ["country"=>$data['country'],"visatype"=>$data['visa_type']]);
             }
         } else {
             $message = "Processing error ! Try again after a while";
             Session::flash('error', $message);
             return redirect()->route('visa_request');
         }
-
     }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------
@@ -302,7 +294,7 @@ class MyFatoorahController extends Controller
     }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------
-    private function getTestOrderData($orderId,$user_data=null)
+    private function getTestOrderData($orderId, $user_data=null)
     {
         return [
             'total'    => $user_data['passenger_total'],
