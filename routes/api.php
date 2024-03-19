@@ -13,6 +13,8 @@ use App\Http\Controllers\Api\FeaturedController;
 use App\Http\Controllers\Api\PageController;
 use App\Http\Controllers\Api\BankController;
 use App\Http\Controllers\Api\CashController;
+use App\Http\Controllers\Api\OtpController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -51,4 +53,7 @@ Route::POST('/featured-sales', [FeaturedController::class, 'store'])->name('feat
 
 Route::POST('register',[LoginController::class,'register'])->name('register-api');
 Route::POST('login',[LoginController::class,'login'])->name('login-api');
+
+Route::POST('otp-login',[OtpController::class,'loginOtp']);
+Route::POST('otp-verification',[OtpController::class,'otpVerification']);
 
