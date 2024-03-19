@@ -1,24 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Mail\SendOtp;
-use Illuminate\Http\Request;
 use App\Models\User;
 use DateTime;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class OtpController extends Controller
 {
-    public function login()
-    {
-        return view('auth.otpmobile');
-    }
-    
-    public function generate(Request $request)
+    //
+    public function loginOtp(Request $request)
     {
         $validator =Validator::make($request->all(),[
             'number' => 'exists:users,number|nullable',
@@ -28,7 +24,12 @@ class OtpController extends Controller
             "email"=>"Please enter valid registered email address"
         ]);
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+             $response=[
+                'success'=> false,
+                'message'=>$validator->errors()
+            ];
+            return response()->json($response, 400);
+
         }
         
         $mobile_number = $request->number??null;
@@ -55,14 +56,27 @@ class OtpController extends Controller
                     if (isset($userotp->email)) {
                         $data=["otp"=>$userotp->otp,"name"=>$userotp->name];
                         Mail::to($user->email)->send(new SendOtp($data));
-                        return redirect()->route('otp.verification', ["user_id"=>$userotp->id])->with('success', 'OTP has been sent to your registered email !');
+                        $response=[
+                            'success'=> true,
+                            'message'=>'OTP has been sent to your registered email !',
+                            'user_id'=>$userotp->id
+                        ];
+                        return response()->json($response, 200);
                     } else {
                         // Handle the case where $userotp is null
-                        return redirect()->back()->with('error', 'Somethings went wroing. Please try again later.');
+                        $response=[
+                            'success'=> false,
+                            'message'=>'Something went wrong. Please try again later.'
+                        ];
+                        return response()->json($response, 400);
                     }
                 } else {
                     // Handle the case where $userotp is null
-                    return redirect()->back()->with('error', 'Failed to generate OTP. Please try again.');
+                    $response=[
+                        'success'=> false,
+                        'message'=>'Failed to generate OTP. Please try again.'
+                    ];
+                    return response()->json($response, 500);
                 }
             } else {
                 $userotp=$user;
@@ -70,14 +84,27 @@ class OtpController extends Controller
                     if (isset($userotp->email)) {
                         $data=["otp"=>$userotp->otp,"name"=>$userotp->name];
                         Mail::to($user->email)->send(new SendOtp($data));
-                        return redirect()->route('otp.verification', ["user_id"=>$userotp->id])->with('success', 'OTP has been sent to your registered email !');
+                        $response=[
+                            'success'=> true,
+                            'message'=>'OTP has been sent to your registered email !',
+                            'user_id'=>$userotp->id
+                        ];
+                        return response()->json($response, 200);
                     } else {
                         // Handle the case where $userotp is null
-                        return redirect()->back()->with('error', 'Somethings went wroing. Please try again later.');
+                        $response=[
+                            'success'=> false,
+                            'message'=>'Something went wrong. Please try again later.'
+                        ];
+                        return response()->json($response, 400);
                     }
                 } else {
                     // Handle the case where $userotp is null
-                    return redirect()->back()->with('error', 'Failed to generate OTP. Please try again.');
+                    $response=[
+                        'success'=> false,
+                        'message'=>'Failed to generate OTP. Please try again.'
+                    ];
+                    return response()->json($response, 500);
                 }
             }
         } else {
@@ -87,19 +114,29 @@ class OtpController extends Controller
                 if (isset($userotp->email)) {
                     $data=["otp"=>$userotp->otp,"name"=>$userotp->name];
                     Mail::to($user->email)->send(new SendOtp($data));
-
-                    return redirect()->route('otp.verification', ["user_id"=>$userotp->id])->with('success', 'OTP has been sent to your registered email !');
+                    $response=[
+                        'success'=> true,
+                        'message'=>'OTP has been sent to your registered email !'
+                    ];
+                    return response()->json($response, 200);
                 } else {
                     // Handle the case where $userotp is null
-                    return redirect()->back()->with('error', 'Something went wrong. Please try again later.');
+                    $response=[
+                        'success'=> false,
+                        'message'=>'Something went wrong. Please try again later.'
+                    ];
+                    return response()->json($response, 400);
                 }
             } else {
                 // Handle the case where $userotp is null
-                return redirect()->back()->with('error', 'Failed to generate OTP. Please try again.');
+                $response=[
+                    'success'=> false,
+                    'message'=>'Failed to generate OTP. Please try again.'
+                ];
+                return response()->json($response, 500);
             }
         }
     }
-    
     public function generateotp($user_id)
     {
         $user = User::find($user_id);
@@ -110,24 +147,20 @@ class OtpController extends Controller
         
         return $user;
     }
-    
-    public function verification($user_id)
+    public function otpVerification(Request $request)
     {
-        $user=User::find($user_id);
-        if(isset( $user)){
-            return view('auth.verification',compact('user'));
-        }else{
-            return redirect()->back()->with('error', "Record not found!");
-        }
-        
-    }
-    
-    public function loginotp(Request $request)
-    {
-        $request->validate([
+        $validator =Validator::make($request->all(),[
             'otp' => 'required',
             'user_id' => 'required|exists:users,id',
         ]);
+        if ($validator->fails()) {
+             $response=[
+                'success'=> false,
+                'message'=>$validator->errors()
+            ];
+            return response()->json($response, 400);
+
+        }
         $user_id=$request->get('user_id');
         $otp=$request->get('otp');
         $userotp = User::find($user_id);
@@ -143,23 +176,42 @@ class OtpController extends Controller
 
            
             if ($interval->i > 10 || $interval->h > 0 || $interval->d > 0 || $interval->m > 0 || $interval->y > 0) {
-                return redirect()->back()->with('error', 'Your OTP has expired.Please Try again with new OTP');
+                $response=[
+                    'success'=> false,
+                    'message'=>'Your OTP has expired.Please Try again with new OTP'
+                ];
+                return response()->json($response, 419);
             } else{
                 if($userotp->otp==$otp){
 
-                    Auth::login($userotp);
+                    $data['token']=$userotp->createToken('MyApp')->plainTextToken;
+                    $data['name']=$userotp->name;
                     $userotp->otp=null;
                     $userotp->otp_expiration=null;
                     $userotp->update();
-                    return redirect('/user/dashboard')->with('success', 'OTP verification successful.');
+                    $response=[
+                        'success'=> true,
+                        'message'=>'OTP verification successful.',
+                        'data'=>$data
+                    ];
+                    return response()->json($response, 200);
                 }else{
-                    return redirect()->back()->with('error', 'Your OTP is incorrect.');
+                    $response=[
+                        'success'=> false,
+                        'message'=>'Your OTP is incorrect.',
+                    ];
+                    return response()->json($response, 400);
                 }
             }
 
         }else{
-            return redirect()->back()->with('error', 'Something went wrong try again later!');
+            $response=[
+                'success'=> false,
+                'message'=>'Something went wrong. try again later!',
+            ];
+            return response()->json($response, 500);
         }
     
     }
+    
 }
