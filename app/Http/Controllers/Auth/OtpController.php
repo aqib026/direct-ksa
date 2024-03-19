@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Mail\SendOtp;
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\UserOtp;
+use DateTime;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 
 class OtpController extends Controller
 {
@@ -17,44 +20,93 @@ class OtpController extends Controller
     
     public function generate(Request $request)
     {
-        $request->validate([
-            'number' => 'nullable|exists:users,number',
-            'login-mobile' => 'nullable|exists:users,number',
+        $validator =Validator::make($request->all(),[
+            'number' => 'exists:users,number|nullable',
+            'email' => 'exists:users,email|nullable',
+        ], [
+            "number"=>"Please enter valid registered mobile number",
+            "email"=>"Please enter valid registered email address"
         ]);
-        
-        //$request->input($this->username())
-        $mobile_number = $request->number == null ? $request->input('login-mobile') : $request->number;
-        $user = User::where('number', $mobile_number)->first();
-        $userotp = $this->generateotp($user->id);
-        
-        if ($userotp) {
-            $userotp->sendsms($mobile_number);
-            return redirect()->route('otp.verification', [$userotp->user_id])->with('success', 'OTP has been sent to your mobile number!');
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
         }
         
-        // Handle the case where $userotp is null
-        return redirect()->back()->with('error', 'Failed to generate OTP. Please try again.');
+        $mobile_number = $request->number??null;
+        $email=$request->input('email')??null; 
+        if(isset($mobile_number)){
+            $user = User::where('number', $mobile_number)->first();
+        }elseif(isset($email)){
+            $user = User::where('email',$email)->first();
+        }
+        $userotp=null;
+        if (isset($user->otp) && isset($user->otp_expiration)) {
+            $current_time = new DateTime();
+
+           
+            $other_time = new DateTime($user->otp_expiration);
+
+           
+            $interval = $current_time->diff($other_time);
+
+           
+            if ($interval->i > 10 || $interval->h > 0 || $interval->d > 0 || $interval->m > 0 || $interval->y > 0) {
+                $userotp = $this->generateotp($user->id);
+            } else {
+                $userotp=$user;
+                if ($userotp) {
+                    if (isset($user->email)) {
+                        $data=["otp"=>$user->otp,"name"=>$user->name];
+                        Mail::to($user->email)->send(new SendOtp($data));
+                        return redirect()->route('otp.verification', ["user_id"=>$userotp->id])->with('success', 'OTP has been sent to your registered email !');
+                    } else {
+                        // Handle the case where $userotp is null
+                        return redirect()->back()->with('error', 'Somethings went wroing. Please try again later.');
+                    }
+                } else {
+                    // Handle the case where $userotp is null
+                    return redirect()->back()->with('error', 'Failed to generate OTP. Please try again.');
+                }
+            }
+        } else {
+            $userotp = $this->generateotp($user->id);
+            
+            if ($userotp) {
+                if (isset($user->email)) {
+                    $data=["otp"=>$userotp->otp,"name"=>$userotp->name];
+                    Mail::to($user->email)->send(new SendOtp($data));
+
+                    return redirect()->route('otp.verification', ["user_id"=>$userotp->id])->with('success', 'OTP has been sent to your registered email !');
+                } else {
+                    // Handle the case where $userotp is null
+                    return redirect()->back()->with('error', 'Something went wrong. Please try again later.');
+                }
+            } else {
+                // Handle the case where $userotp is null
+                return redirect()->back()->with('error', 'Failed to generate OTP. Please try again.');
+            }
+        }
     }
     
     public function generateotp($user_id)
     {
         $user = User::find($user_id);
-        $now = now();
+        $current_time = new DateTime();
+        $user->otp=rand(12344, 99999);
+        $user->otp_expiration=$current_time;
+        $user->update();
         
-        $userotp = UserOtp::create([
-            'user_id' => $user->id,
-            'otp' => rand(12344, 99999),
-            'expire_at' => $now->addMinutes(59),
-        ]);
-   
-        return $userotp;
+        return $user;
     }
     
     public function verification($user_id)
     {
-        return view('auth.verification')->with([
-            'user_id'=>$user_id
-        ]);
+        $user=User::find($user_id);
+        if(isset( $user)){
+            return view('auth.verification',compact('user'));
+        }else{
+            return redirect()->back()->with('error', "Record not found!");
+        }
+        
     }
     
     public function loginotp(Request $request)
@@ -63,31 +115,38 @@ class OtpController extends Controller
             'otp' => 'required',
             'user_id' => 'required|exists:users,id',
         ]);
-        
-        $userotp = UserOtp::where('user_id', $request->user_id)->where('otp', $request->otp)->first();
-        $now = now();
-        
-        if (!$userotp) {
-            return redirect()->back()->with('error', 'Your OTP is incorrect.');
-        } elseif ($now->isAfter($userotp->expire_at)) {
-            return redirect()->back()->with('error', 'Your OTP has expired.');
+        $user_id=$request->get('user_id');
+        $otp=$request->get('otp');
+        $userotp = User::find($user_id);
+        if(isset($userotp->otp) && isset($userotp->otp_expiration) ){
+
+            $current_time = new DateTime();
+
+           
+            $other_time = new DateTime($userotp->otp_expiration);
+
+           
+            $interval = $current_time->diff($other_time);
+
+           
+            if ($interval->i > 10 || $interval->h > 0 || $interval->d > 0 || $interval->m > 0 || $interval->y > 0) {
+                return redirect()->back()->with('error', 'Your OTP has expired.Please Try again with new OTP');
+            } else{
+                if($userotp->otp==$otp){
+
+                    Auth::login($userotp);
+                    $userotp->otp=null;
+                    $userotp->otp_expiration=null;
+                    $userotp->update();
+                    return redirect('/user/dashboard')->with('success', 'OTP verification successful.');
+                }else{
+                    return redirect()->back()->with('error', 'Your OTP is incorrect.');
+                }
+            }
+
+        }else{
+            return redirect()->back()->with('error', 'Something went worng try again later!');
         }
-        
-        $userotp->update([
-            'expire_at' => now()
-        ]);
-        
-        $user = User::whereId($request->user_id)->first();
-        
-        if ($user) {
-            // Update the user's verification status
-            $user->phone_verified = true;
-            $user->save();
-            
-            Auth::login($user);
-            return redirect('/')->with('success', 'OTP verification successful.');
-        }
-        
-        return redirect()->route('otp.login')->with('error', 'Your OTP is not correct.');
+    
     }
 }
