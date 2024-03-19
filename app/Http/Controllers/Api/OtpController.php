@@ -116,7 +116,8 @@ class OtpController extends Controller
                     Mail::to($user->email)->send(new SendOtp($data));
                     $response=[
                         'success'=> true,
-                        'message'=>'OTP has been sent to your registered email !'
+                        'message'=>'OTP has been sent to your registered email !',
+                        'user_id'=>$userotp->id
                     ];
                     return response()->json($response, 200);
                 } else {
