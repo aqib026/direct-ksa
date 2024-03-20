@@ -13,6 +13,7 @@ use App\Http\Controllers\Api\FeaturedController;
 use App\Http\Controllers\Api\PageController;
 use App\Http\Controllers\Api\BankController;
 use App\Http\Controllers\Api\CashController;
+use App\Http\Controllers\Api\OnlinePaymentController;
 use App\Http\Controllers\Api\OtpController;
 
 /*
@@ -56,4 +57,6 @@ Route::POST('login',[LoginController::class,'login'])->name('login-api');
 
 Route::POST('otp-login',[OtpController::class,'loginOtp']);
 Route::POST('otp-verification',[OtpController::class,'otpVerification']);
+
+Route::middleware('auth:sanctum')->post('/payment-store', [OnlinePaymentController::class, 'storePaymentData']);
 
