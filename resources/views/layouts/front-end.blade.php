@@ -65,91 +65,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/solid.min.js" integrity="sha512-apZ8JDL5kA1iqvafDdTymV4FWUlJd8022mh46oEMMd/LokNx9uVAzhHk5gRll+JBE6h0alB2Upd3m+ZDAofbaQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     @stack('link')
-
+  
     <!-- Theme Custom CSS -->
     <link rel="stylesheet" href="{{ asset('front-end/css/custom.css') }}">
+    @yield('styles')
 </head>
 
 <body>
     
     @include('layouts.header')
-    <!-- <header id="header">
-        <div class="header-body border-top-0 h-auto box-shadow-none">
-            <div class="header-container header-container-height-sm container-fluid p-static">
-                <div class="header-row">
-                    <div class="header-column">
-                        <div class="header-row">
-                            <div class="header-logo d-block">
-                                <a href="{{ route('home') }}"><img alt="Direct" width="107" height="30" src="{{ asset('img/logo.svg') }}"></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="header-column justify-content-end">
-                        <div class="header-row">
-                            <div class="header-nav header-nav-links">
-                                <div class="header-nav-main header-nav-main-square header-nav-main-dropdown-no-borders header-nav-main-dropdown-border-radius header-nav-main-text-capitalize header-nav-main-text-size-4 header-nav-main-arrows header-nav-main-full-width-mega-menu header-nav-main-mega-menu-bg-hover header-nav-main-effect-2">
-                                    <nav class="collapse">
-                                        <ul class="nav nav-pills" id="mainNav">
-                                            <li class="dropdown">
-                                                <a href="{{ url('/') }}" class="nav-link active">
-                                                    {{ __('head.ho') }}
-                                                </a>
-                                            </li>
-                                            <li class="dropdown dropdown-mega">
-                                                <a class="dropdown-item" href="{{ route('visa_request') }}">
-                                                    {{ __('head.vi') }}
-                                                </a>
-                                            </li>
-                                            <li class="dropdown">
-                                                <a class="nav-link" href="">
-                                                    {{ __('head.sc') }}
-                                                </a>
-                                            </li>
-                                            <li class="dropdown" style="margin-top: 30px;">
-                                                <button class="btn btn-outline-dark " type="button" data-bs-toggle="dropdown" aria-expanded="">
-                                                    @if (session()->get('locale') == 'ar')
-                                                        {{ __('head.arb') }}
-                                                    @else
-                                                        {{ __('head.eng') }}
-                                                    @endif
-                                                    <i class="fas fa-chevron-down"></i>
-                                                </button>
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="min-width:80px; width: 80px;">
-                                                    <a class="dropdown-item" href="{{ url('/locale/en') }}"
-                                                        {{ session()->get('locale') == 'en' ? 'selected' : '' }}>{{ __('head.eng') }}</a>
-                                                    <a class="dropdown-item" href="{{ url('/locale/ar') }}"
-                                                        {{ session()->get('locale') == 'ar' ? 'selected' : '' }}>{{ __('head.arb') }}</a>
-                                                </div>
-                                            </li>
-                                            <li class="dropdown">
-                                                @if (Auth::check())
-                                                    <a href="{{url('user/dashboard')}}"><button class="btn btn-secondary" type="button">{{__('userdashboard.dashboard')}}</button></a>
-                                                    <button class="btn btn-secondary  dropdown-toggle-split" type="button" data-bs-toggle="dropdown" aria-expanded="" style="margin-top: -4px;"><i class="fas fa-chevron-down"></i></button>
-                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                        <a class="dropdown-item" href="{{ url('user/visa_requests') }}">{{__('userdashboard.visa')}}</a>
-                                                        <a class="dropdown-item" href="{{ url('user/services') }}">{{__('userdashboard.services')}}</a>
-                                                        <a class="dropdown-item" href="{{ url('/locale/en') }}">
-                                                            <form action="{{ route('logout') }}" method="POST">
-                                                            @csrf
-                                                                <button type="submit" class="btn btn-outline-primary">{{__('userdashboard.logout')}}</button>
-                                                            </form>
-                                                        </a>
-                                                    </div>
-                                                @else
-                                                    <div class="ml-2" style="margin-top: 30px;"><a href="{{url('login')}}"><button type="button" class="btn btn-outline-primary">Login</button></a></div>
-                                                @endif
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                                <button class="btn header-btn-collapse-nav" data-bs-toggle="collapse" data-bs-target=".header-nav-main nav" aria-expanded="true"><i class="fas fa-bars"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header> -->
+    
 
     <div role="main" class="main">@yield('content')</div>
 

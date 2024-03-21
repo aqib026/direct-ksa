@@ -11,9 +11,8 @@ return [
     "tc"=>"Terms & Conditions",
     "cu"=>"Contact Us",
     "faq"=>"FAQS",
-    "cp"=>"Company © 2023. All Rights Reserved.",
+    "cp"=>'Express Visa © '.date('Y').'. All Rights Reserved.',
     "lang"=>"Language",
     "eng"=>"English",
     "arb"=>"عربي",
-]
-?>
+];

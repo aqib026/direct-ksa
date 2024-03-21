@@ -56,7 +56,7 @@
                                                 <div id="collapsechild{{$question->id}}" class="collapse"
                                                     aria-labelledby="collapse1HeadingThree">
                                                     <div class="card-body">
-                                                        <p class="mb-0">{{ $question->answer }}</p>
+                                                        <p class="mb-0">{!! $question->answer !!}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -72,4 +72,18 @@
             @endforeach
         </div>
     </section>
+@endsection
+@section('styles')
+<style>
+    ul{
+        color: #777;
+    }
+    li {
+    line-height: 30px;
+    text-align: justify;
+}
+.accordion.accordion-modern-status > .card .card-header a{
+    padding: 20px 50px !important;
+}
+</style>
 @endsection

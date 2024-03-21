@@ -16,3 +16,10 @@
         </div>
     </section>
 @endsection
+@section('styles')
+<style>
+    li{
+        line-height: 35px !important
+    }
+</style>
+@endsection
