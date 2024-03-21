@@ -53,7 +53,7 @@
                         <ul class="list list-unstyled">
                             <li class="d-flex align-items-center mb-4">
                                 <i class="icon icon-envelope text-color-light text-5 font-weight-bold position-relative top-1 me-3-5"></i>
-                                <a href="mailto:company@business-consulting-4.com" class="d-inline-flex align-items-center text-decoration-none text-color-light text-color-hover-primary font-weight-regular fs-6">info@exvisas.com</a>
+                                <a href="mailto:info@exvisas.com" class="d-inline-flex align-items-center text-decoration-none text-color-light text-color-hover-primary font-weight-regular fs-6">info@exvisas.com</a>
                             </li>
                             <li class="d-flex align-items-center mb-4">
                                 <i class="icon icon-phone text-color-light text-5 font-weight-bold position-relative top-1 me-3-5"></i>
