@@ -196,7 +196,7 @@
 									<section @if($loop->first)class="toggle active" @else class="toggle" @endif>
 										<a class="toggle-title">{{ $cashBranch->name }}</a>
 										<div class="toggle-content" @if($loop->first) style="display: block;" @else style="display: none;" @endif>
-											<pre>{{ $cashBranch->address }}</pre>
+											<pre>{!! $cashBranch->address !!}</pre>
 										</div>
 									</section>
 								@endforeach
