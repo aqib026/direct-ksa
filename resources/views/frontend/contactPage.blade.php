@@ -176,7 +176,7 @@
                                         </div>
                                         <div class="mt-2">
                                             <button type="submit" class="btn btn-primary submit d-block w-100">
-                                                {{ __('register.register') }}
+                                                {{ __('contact.submit_btn') }}
                                             </button>
                                         </div>
                                         <div class="d-none" id="loader">
