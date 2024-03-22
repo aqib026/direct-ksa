@@ -49,9 +49,11 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        $data['number'] = strpos($data['number'], '+966') === 0 ? $data['number'] : '+966' . $data['number'];
+
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|org|net|edu|gov|mil|biz|info)$/i', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'regex:/^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$/', 'max:255', 'unique:users'],
             'number' => ['required', 'regex:/^(\+966)[0-9]{9}$/', 'unique:users'],
         ]);
     }

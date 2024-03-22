@@ -24,8 +24,9 @@ class OtpController extends Controller
 
         $validator =Validator::make($request->all(),[
             'number' => ['required', 'regex:/^(\+966)[0-9]{9}$/', 'exists:users'],
-            'email' => 'exists:users,email|nullable',
-        ], [
+            'email' => ['exists:users', 'regex:/^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$/'],
+        ],
+         [
             "number"=>"Please enter valid registered mobile number",
             "email"=>"Please enter valid registered email address"
         ]);

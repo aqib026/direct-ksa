@@ -30,7 +30,7 @@
                                 </div>
                                 <input id="mobile" autocomplete="new-password" name="number" type="tel"
                                        placeholder="5xxxxxxxx" class="form-control "
-                                       onkeypress="return (event.charCode >= 48 && event.charCode <= 57)"
+                                       onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" onpaste="return (event.charCode>=48 && event.charCode<=57)"
                                        @if ($errors->has('number')) data-error="true" @endif dir=""
                                        aria-invalid="true" maxlength="9">
 
