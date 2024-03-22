@@ -1,6 +1,7 @@
 @extends('layouts.front-end')
 
 @section('content')
+
     <section class="section border-0 bg-quaternary m-0 p-10 auth-card">
         <div class="container">
             <div class="row align-items-center justify-content-center">
@@ -14,29 +15,32 @@
                             <div class="mt-4">
                                 <label class="form-label" for="form3Example3">{{ __('register.name') }}</label>
                                 <input id="name" type="text" class="form-control form-control-lg @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="{{ __('register.enter_your_name') }}" autofocus>
-                                @error('name')
-                                <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
+                                
+                                @if ($errors->has('name'))
+                                <span class="invalid-feedback"  role="alert" style="display: block">
+                                <strong>{{ $errors->first('name') }}</strong>
                             </span>
-                                @enderror
+                                @endif
                             </div>
                             <div class="mt-3">
                                 <label class="form-label" for="form3Example3">{{ __('register.email_address') }}</label>
                                 <input id="email" type="email" class="form-control form-control-lg @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="{{ __('register.enter_your_email') }}" required autocomplete="email">
-                                @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
+                                
+                                @if ($errors->has('email'))
+                                <span class="invalid-feedback"  role="alert" style="display: block">
+                                <strong>{{ $errors->first('email') }}</strong>
                             </span>
-                                @enderror
+                                @endif
                             </div>
                             <div class="mt-3">
                                 <label class="form-label" for="form3Example3">{{ __('register.password') }}</label>
                                 <input id="password" type="password" class="form-control form-control-lg @error('password') is-invalid @enderror" name="password" placeholder="{{ __('register.enter_password') }}" required autocomplete="new-password">
-                                @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
+                                
+                                @if ($errors->has('password'))
+                                <span class="invalid-feedback"  role="alert" style="display: block">
+                                <strong>{{ $errors->first('password') }}</strong>
                             </span>
-                                @enderror
+                                @endif
                             </div>
                             <div class="mt-3">
                                 <label class="form-label" for="form3Example3">{{ __('register.confirm_password') }}</label>
@@ -44,16 +48,34 @@
                             </div>
                             <div class="mt-3">
                                 <label class="form-label" for="form3Example3">{{ __('register.phone_number') }}</label>
-                                <input id="mobile" autocomplete="new-password" name="number" type="tel"
-                                       placeholder="+966xxxxxxxxx" class="form-control "
-                                       onkeypress="return (event.charCode >= 48 && event.charCode <= 57)"
-                                       @if ($errors->has('number')) data-error="true" @endif dir=""
-                                       aria-invalid="true" maxlength="13">
-                                @error('number')
-                                <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
+                                <div role="group" class="input-group mt-3" id='phone_field'>
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <span>+966</span>
+                                        </div>
+                                    </div>
+                                    <input id="mobile" autocomplete="new-password" name="number" type="tel"
+                                           placeholder="5xxxxxxxx" class="form-control "
+                                           onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" onpaste="return (event.charCode>=48 && event.charCode<=57)"
+                                           @if ($errors->has('number')) data-error="true" @endif dir=""
+                                           aria-invalid="true" maxlength="9">
+
+                                    <div class="input-group-append">
+                                        <div class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="14px"
+                                                                           height="14px" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                                           stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                                           class="feather feather-smartphone">
+                                                <rect x="5" y="2" width="14" height="20" rx="2" ry="2">
+                                                </rect>
+                                                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    @if ($errors->has('number'))
+                                <span class="invalid-feedback"  role="alert" style="display: block">
+                                <strong>{{ $errors->first('number') }}</strong>
                             </span>
-                                @enderror
+                                @endif
                             </div>
                             <br>
                             <div class="mt-2">

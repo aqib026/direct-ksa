@@ -17,12 +17,12 @@
         </div>
         <div class="align-items-center d-flex justify-content-center text-dark m-1 pb-5 py-4 row">
             <div class="p-75 bg-white shadow rounded col-lg-8" style="padding: 50px 20px;">
-                <form action="{{ route('featured_sales_post') }}" role="form" method="post" class="form-horizontal" enctype="multipart/form-data">
+                <form action="{{ route('featured_sales_post') }}" role="form" method="post" class="form-horizontal" enctype="multipart/form-data" id="feature_sales_form">
                     @csrf
                     <div class="form-group">
                         <label for="required_service">{{__('fetsales.rs')}}</label>
                         <select class="form-control" name="required_service" id="required_service" required>
-                            <option disabled selected></option>    
+                            <option disabled selected></option>
                             <option value="translation" @if($service == 'translation') selected @endif>{{__('fetsales.tr')}}</option>
                             <option value="passport_renewals" @if($service == 'passport_renewals') selected @endif>{{__('fetsales.pr')}}</option>
                             <option value="intl_dl_card" @if($service == 'intl_dl_card') selected @endif>{{__('fetsales.idlc')}}</option>
@@ -59,7 +59,7 @@
                         <div class="form-group">
                             <label for="translation_content">{{__('fetsales.tc')}}</label>
                             <select class="form-control" name="translation_content" id="translation_content">
-                                <option disabled selected></option>    
+                                <option disabled selected></option>
                                 <option value="Job Letter">{{__('fetsales.jb')}}</option>
                                 <option value="Medical Report">{{{__('fetsales.mr')}}}</option>
                                 <option value="Legal Documents">{{__('fetsales.ld')}}</option>
@@ -96,7 +96,7 @@
                         <div class="form-group">
                             <label for="lic_col_choice">{{__('fetsales.lcc')}}</label>
                             <select class="form-control" name="lic_col_choice" id="lic_col_choice">
-                                <option disabled selected></option>    
+                                <option disabled selected></option>
                                 <option value="Riyadh (As Safarat) Branch">{{__('fetsales.rsb')}}</option>
                                 <option value="Riyadh (Umm Ul Hamam) Branch">{{__('fetsales.rhb')}}</option>
                                 <option value="Jaddah Branch">{{__('fetsales.jdb')}}</option>
@@ -111,7 +111,7 @@
                         <div class="form-group">
                             <label for="univ_adm_country">{{__('fetsales.cty')}}</label>
                             <select class="form-control" name="univ_adm_country" id="univ_adm_country">
-                                <option disabled selected></option>    
+                                <option disabled selected></option>
                                 <option value="United Kindom">{{__('fetsales.uk')}}</option>
                                 <option value="USA">{{__('fetsales.usa')}}</option>
                                 <option value="Canada">{{__('fetsales.cnd')}}</option>
@@ -125,7 +125,7 @@
                         <div class="form-group">
                             <label for="mode_of_finance">{{__('fetsales.mof')}}</label>
                             <select class="form-control" name="mode_of_finance" id="mode_of_finance">
-                                <option disabled selected></option>    
+                                <option disabled selected></option>
                                 <option value="Govt, Employer Scholarship">{{__('fetsales.ges')}}</option>
                                 <option value="Self-Finance">{{__('fetsales.sf')}}</option>
                             </select>
@@ -137,7 +137,7 @@
                         <div class="form-group">
                             <label for="current_qualification">{{__('fetsales.cq')}}</label>
                             <select class="form-control" name="current_qualification" id="current_qualification">
-                                <option disabled selected></option>    
+                                <option disabled selected></option>
                                 <option value="High School">{{__('fetsales.hs')}}</option>
                                 <option value="Bachelors">{{__('fetsales.bch')}}</option>
                                 <option value="Masters">{{__('fetsales.ms')}}</option>
@@ -146,7 +146,7 @@
                         <div class="form-group">
                             <label for="last_qualification_grade">{{__('fetsales.lqg')}}</label>
                             <select class="form-control" name="last_qualification_grade" id="last_qualification_grade">
-                                <option disabled selected></option>    
+                                <option disabled selected></option>
                                 <option value="Weak">{{__('fetsales.weak')}}</option>
                                 <option value="Fair/Acceptable">{{__('fetsales.fair')}}</option>
                                 <option value="Good">{{__('fetsales.good')}}</option>
@@ -157,7 +157,7 @@
                         <div class="form-group">
                             <label for="certification">{{__('fetsales.dhielts')}}</label>
                             <select class="form-control" name="certification" id="certification">
-                                <option disabled selected></option>    
+                                <option disabled selected></option>
                                 <option value="I Don't Have Certification">{{__('fetsales.idhc')}}</option>
                                 <option value="IELTS">{{__('fetsales.iet')}}</option>
                                 <option value="TOEFL">{{__('fetsales.toefl')}}</option>
@@ -166,7 +166,7 @@
                         <div class="form-group">
                             <label for="call_time">{{__('fetsales.stbt')}}</label>
                             <select class="form-control" name="call_time" id="call_time">
-                                <option disabled selected></option>    
+                                <option disabled selected></option>
                                 <option value="10:00 AM to 02:00 PM">{{__('fetsales.am')}}</option>
                                 <option value="03:00 PM to 06:00 PM">{{__('fetsales.pm')}}</option>
                                 <option value="06:00 PM to 09:00 PM">{{__('fetsales.ap')}}</option>
@@ -178,7 +178,7 @@
                         <div class="form-group">
                             <label for="form_type">{{__('fetsales.ft')}}</label>
                             <select class="form-control" name="form_type" id="form_type">
-                                <option disabled selected></option>    
+                                <option disabled selected></option>
                                 <option value="Singapore Entry Form">{{__('fetsales.sef')}}</option>
                                 <option value="Embassy Application">{{__('fetsales.ea')}}</option>
                                 <option value="Hotel Reservation">{{__('fetsales.hr')}}</option>
@@ -203,7 +203,7 @@
                         <div class="form-group">
                             <label for="country">{{__('fetsales.cty')}}</label>
                             <select class="form-control" name="country" id="country">
-                                <option disabled selected>{{__('fetsales.scfw')}}</option>    
+                                <option disabled selected>{{__('fetsales.scfw')}}</option>
                                 <option value="India">{{__('fetsales.in')}}</option>
                                 <option value="Indonesia">{{__('fetsales.ind')}}</option>
                                 <option value="Philippines">{{__('fetsales.phi')}}</option>
@@ -220,11 +220,28 @@
                     </div>
                     <div class="form-group">
                         <label for="mobile_number">{{__('fetsales.num')}}</label>
-                        <div class="input-group mb-3">
-                            
-                            <input type="text" name="mobile_number" id="mobile_number" class="form-control" aria-label="5xxxxxxxxx" value="{{ old('mobile_number', isset($user) ? $user->number : '') }}" placeholder="5xxxxxxxxx" required>
+                        <div role="group" class="input-group mt-3" id='phone_field'>
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <span>+966</span>
+                                </div>
+                            </div>
+                            <input id="mobile" autocomplete="new-password" name="mobile_number" type="tel" value="{{ old('mobile_number', isset($user) ? $user->mobile_number : '') }}"
+                                   placeholder="5xxxxxxxx" class="form-control "
+                                   onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" onpaste="return (event.charCode>=48 && event.charCode<=57)"
+                                   @if ($errors->has('number')) data-error="true" @endif dir=""
+                                   aria-invalid="true" maxlength="9">
+
                             <div class="input-group-append">
-                                <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="14px" height="14px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-smartphone"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg></span>
+                                <div class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="14px"
+                                                                   height="14px" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                                   stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                                   class="feather feather-smartphone">
+                                        <rect x="5" y="2" width="14" height="20" rx="2" ry="2">
+                                        </rect>
+                                        <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                                    </svg>
+                                </div>
                             </div>
                         </div>
                         @if ($errors->has('mobile_number'))
@@ -247,7 +264,7 @@
                         <div>
                             <label class="font-weight-bold"> {{__('fetsales.sc')}} </label>
                             <div class="text-primary">
-                                <span class="font-weight-bold service_cost_text_amount">--</span> 
+                                <span class="font-weight-bold service_cost_text_amount">--</span>
                                 <p class="text-primary service_cost_text_desc"></p>
                             </div>
                         </div>
@@ -255,6 +272,13 @@
                     <input type="hidden" name="service_cost" id="service_cost" value=""/>
                     <div class="b-overlay-wrap position-relative d-flex flex-column">
                         <button type="submit" class="btn w-100 btn-primary">{{__('fetsales.subn')}}</button>
+                    </div>
+                    <div class="d-none" id="loader">
+                        <div class="d-flex justify-content-center">
+                            <div class="spinner-border" role="status">
+                              <span class="visually-hidden">Loading...</span>
+                            </div>
+                          </div>
                     </div>
                 </form>
             </div>
@@ -267,59 +291,62 @@
     $(document).ready(function () {
         $('#required_service').trigger("change");
     });
+    $( "#feature_sales_form" ).on( "submit", function( event ) {
+	$( "#loader" ).removeClass('d-none');
+  });
     $('#required_service').change(function () {
         $('.d-block-custom').addClass('d-none');
         $("div").removeClass("d-block-custom");
         $('.' + $('#required_service').val()).addClass('d-block-custom').removeClass('d-none');
 
         var required_service = $('#required_service').val();
-        switch (required_service) { 
-            case 'translation': 
+        switch (required_service) {
+            case 'translation':
                 $('.service_cost_text_amount').text('');
                 $('.service_cost_text_desc').text(@json(__('fetsales.jcdr')));
                 $('#service_cost').val('');
                 break;
-            case 'passport_renewals': 
+            case 'passport_renewals':
                 var total = passport_calculation($('#passport_quantity').val(), 119);
                 $('.service_cost_text_amount').text(total + @json(__('fetsales.sar')));
                 $('#service_cost').val(total);
                 $('.service_cost_text_desc').text(@json(__('fetsales.coin')));
                 break;
-            case 'intl_dl_card': 
+            case 'intl_dl_card':
                 var total = passport_calculation($('#idl_card_qty').val(), 239);
                 $('.service_cost_text_amount').text(total + @json(__('fetsales.sar')));
                 $('#service_cost').val(total);
                 $('.service_cost_text_desc').text(@json(__('fetsales.coidl')));
-                break;      
-            case 'intl_dl_booklet': 
+                break;
+            case 'intl_dl_booklet':
                 var total = passport_calculation($('#idl_qty').val(), 119);
                 $('.service_cost_text_amount').text(total + @json(__('fetsales.sar')));
                 $('#service_cost').val(total);
                 $('.service_cost_text_desc').text(@json(__('fetsales.coidl')));
                 break;
-            case 'uni_adm': 
+            case 'uni_adm':
                 $('.service_cost_text_amount').text('');
                 $('.service_cost_text_desc').text(@json(__('fetsales.cwd')));
                 $('#service_cost').val('');
                 break;
-            case 'uae_visa': 
+            case 'uae_visa':
                 var total = passport_calculation($('#passport_quantity').val(), 499);
                 $('.service_cost_text_amount').text(total + @json(__('fetsales.sar')));
                 $('#service_cost').val(total);
                 $('.service_cost_text_desc').text(@json(__('fetsales.pivf')));
                 break;
-            case 'forms_filling': 
+            case 'forms_filling':
                 $('.service_cost_text_amount').text('');
                 $('.service_cost_text_desc').text(@json(__('fetsales.cwsg')));
                 $('#service_cost').val('');
-                break;  
-            case 'bahrain_visa': 
+                break;
+            case 'bahrain_visa':
                 var total = passport_calculation($('#passport_quantity').val(), 259);
                 $('.service_cost_text_amount').text(total + @json(__('fetsales.sar')));
                 $('#service_cost').val(total);
                 $('.service_cost_text_desc').text('');
-                break;  
-            case 'vip': 
+                break;
+            case 'vip':
                 var total = passport_calculation($('#passport_quantity').val(), 390);
                 $('.service_cost_text_amount').text(total + @json(__('fetsales.sar')));
                 $('#service_cost').val(total);
@@ -335,17 +362,17 @@
     $('#passport_quantity').change(function () {
         var required_service = $('#required_service').val();
         var amount = 0;
-        switch (required_service) { 
-            case 'passport_renewals': 
+        switch (required_service) {
+            case 'passport_renewals':
                 amount = 119;
                 break;
-            case 'uae_visa': 
+            case 'uae_visa':
                 amount = 499;
                 break;
-            case 'bahrain_visa': 
+            case 'bahrain_visa':
                 amount = 259;
-                break;      
-            case 'vip': 
+                break;
+            case 'vip':
                 amount = 390;
                 break;
             default:

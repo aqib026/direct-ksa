@@ -66,7 +66,7 @@
 						<div class="row">
 							<div class="form-group col">
 								<div class="form-check form-check-inline">
-									<label class="form-check-label form-check-label-custom">
+									<label class="form-check-label form-check-label-custom" style="margin-left: 28px">
 										<input class="form-check-input form-check-input-custom" type="radio" name="appointment_city" data-msg-required="Please select at least one option." value="Dhahran" @if(isset($form_data["appointment_city"]) && $form_data["appointment_city"] == "Dhahran") checked @endif required>{{__('steps.d')}}
 									</label>
 								</div>
@@ -75,13 +75,14 @@
 						<div class="row">
 							<div class="form-group col">
 								<div class="form-check form-check-inline">
-									<label class="form-check-label form-check-label-custom">
+									<label class="form-check-label form-check-label-custom" style="margin-left: 14px">
 										<input class="form-check-input form-check-input-custom" type="radio" name="appointment_city" data-msg-required="Please select at least one option." value="Jeddah" @if(isset($form_data['appointment_city']) && $form_data['appointment_city'] == 'Jeddah') checked @endif required>{{__('steps.j')}}
 									</label>
 								</div>
 							</div>
 						</div>
 					</div>
+					
 				</div>
 				<div class="row mt-5 py-5 appear-animation datepickercustom" data-appear-animation="fadeIn" data-appear-animation-delay="300">
 					<div class="overflow-hidden mb-5 text-center">
@@ -177,6 +178,19 @@
 			</div>
 		</form>
 	</section>
+@endsection
+@section('styles')
+<style>
+    .form-check-label-custom {
+        display: flex;
+        align-items: center;
+        cursor: pointer; /* Ensure cursor changes to pointer on hover */
+    }
+
+    .form-check-label-custom input[type="radio"] {
+        margin-right: 5px; /* Adjust margin between radio button and text */
+    }
+</style>
 @endsection
 @section('custom-scripts')
 <script src="{{ asset('front-end/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
