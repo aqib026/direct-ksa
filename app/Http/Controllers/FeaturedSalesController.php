@@ -139,7 +139,7 @@ class FeaturedSalesController extends Controller
          $FeaturedSales->passport_quantity           = $request->passport_quantity;
          $FeaturedSales->country                     = $request->country;
          $FeaturedSales->applicant_name              = $request->applicant_name;
-         $FeaturedSales->mobile_number               = $request->mobile_number;
+         $FeaturedSales->mobile_number               = '+96'.$request->mobile_number;
          $FeaturedSales->email                       = $request->email;
          $FeaturedSales->service_cost                = $request->service_cost;
          $FeaturedSales->user_id                     = $user->id;

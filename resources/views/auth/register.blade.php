@@ -1,6 +1,7 @@
 @extends('layouts.front-end')
 
 @section('content')
+
     <section class="section border-0 bg-quaternary m-0 p-10 auth-card">
         <div class="container">
             <div class="row align-items-center justify-content-center">
@@ -14,29 +15,32 @@
                             <div class="mt-4">
                                 <label class="form-label" for="form3Example3">{{ __('register.name') }}</label>
                                 <input id="name" type="text" class="form-control form-control-lg @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="{{ __('register.enter_your_name') }}" autofocus>
-                                @error('name')
-                                <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
+                                
+                                @if ($errors->has('name'))
+                                <span class="invalid-feedback"  role="alert" style="display: block">
+                                <strong>{{ $errors->first('name') }}</strong>
                             </span>
-                                @enderror
+                                @endif
                             </div>
                             <div class="mt-3">
                                 <label class="form-label" for="form3Example3">{{ __('register.email_address') }}</label>
                                 <input id="email" type="email" class="form-control form-control-lg @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="{{ __('register.enter_your_email') }}" required autocomplete="email">
-                                @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
+                                
+                                @if ($errors->has('email'))
+                                <span class="invalid-feedback"  role="alert" style="display: block">
+                                <strong>{{ $errors->first('email') }}</strong>
                             </span>
-                                @enderror
+                                @endif
                             </div>
                             <div class="mt-3">
                                 <label class="form-label" for="form3Example3">{{ __('register.password') }}</label>
                                 <input id="password" type="password" class="form-control form-control-lg @error('password') is-invalid @enderror" name="password" placeholder="{{ __('register.enter_password') }}" required autocomplete="new-password">
-                                @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
+                                
+                                @if ($errors->has('password'))
+                                <span class="invalid-feedback"  role="alert" style="display: block">
+                                <strong>{{ $errors->first('password') }}</strong>
                             </span>
-                                @enderror
+                                @endif
                             </div>
                             <div class="mt-3">
                                 <label class="form-label" for="form3Example3">{{ __('register.confirm_password') }}</label>
@@ -67,11 +71,11 @@
                                             </svg>
                                         </div>
                                     </div>
-                                @error('number')
-                                <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
+                                    @if ($errors->has('number'))
+                                <span class="invalid-feedback"  role="alert" style="display: block">
+                                <strong>{{ $errors->first('number') }}</strong>
                             </span>
-                                @enderror
+                                @endif
                             </div>
                             <br>
                             <div class="mt-2">
