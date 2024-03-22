@@ -98,10 +98,26 @@
             font-family: 'circular';
             font-size: 14px
         }
-        .alert-link{
+
+        .alert-link {
             color: #161414 !important;
         }
+
+        @media (min-width: 768px) {
+            .navbar-expand-md .navbar-nav .nav-link {
+                padding-right: 1.2rem !important;
+                padding-left: 1.2rem !important;
+            }
+        }
+
+        .btn {
+            font-size: 14px !important;
+            border-radius: 10px !important;
+            font-weight: 600 !important;
+            padding: 8px 16px 9px !important;
+        }
     </style>
+    @yield('styles')
 </head>
 
 <body>
@@ -119,24 +135,26 @@
                 </div>
             @endif
             @php
-            $error_message='';
+                $error_message = '';
             @endphp
-            {{-- @if (Auth::user()->phone_verified==0)
+            {{-- @if (Auth::user()->phone_verified == 0)
             @php
             $error_message .= 'Please verify your phone number <a href="' . url('otp/login') . '" class="alert-link">Click here</a> to go to the verification page.<br>';
             @endphp
             @endif --}}
             @if (is_null(Auth::user()->email_verified_at))
-            @php
-            $error_message.=' Please verify your email address. <a href="'. route('verification.notice') .'"
+                @php
+                    $error_message .=
+                        ' Please verify your email address. <a href="' .
+                        route('verification.notice') .
+                        '"
                         class="alert-link">Click here</a> to go to the verification page.';
-            @endphp
-                
+                @endphp
             @endif
-            @if(strlen($error_message)>0)
-            <div class="alert alert-danger " role="alert">
-                   {!!$error_message!!}
-            </div>
+            @if (strlen($error_message) > 0)
+                <div class="alert alert-danger " role="alert">
+                    {!! $error_message !!}
+                </div>
             @endif
         </div>
 

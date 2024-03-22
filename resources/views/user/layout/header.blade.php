@@ -15,17 +15,17 @@
                 <div class="offcanvas-body align-items-center justify-content-center d-flex">
                     <ul class="navbar-nav text-uppercase position-absolute top-50 start-50 translate-middle">
                         <li class="nav-item">
-                            <a href="{{ url('/') }}" class="nav-link active">
+                            <a href="{{ url('/') }}" class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}">
                                 {{ __('head.ho') }}
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('visa_request') }}" class="nav-link">
+                            <a href="{{ route('visa_request') }}" class="nav-link  {{ request()->routeIs('visa_request') ? 'active' : '' }}">
                                 {{ __('head.vi') }}
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="#" class="nav-link" onclick="alert('Coming Soon')">
                                 {{ __('head.sc') }}
                             </a>
                         </li>
