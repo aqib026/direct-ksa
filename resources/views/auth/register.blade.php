@@ -56,7 +56,7 @@
                                    placeholder="+966xxxxxxxxx" class="form-control "
                                    onkeypress="return (event.charCode >= 48 && event.charCode <= 57)"
                                    @if ($errors->has('number')) data-error="true" @endif dir=""
-                                   aria-invalid="true" maxlength="9">
+                                   aria-invalid="true" maxlength="13">
                             @error('number')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
