@@ -37,7 +37,7 @@
                             <li><a href="{{ route('home') }}" class="text-white text-color-hover-primary">{{ __('head.ho') }}</a></li>
                             <li><a href="{{ route('featured_sales') }}" class="text-white text-color-hover-primary">{{ __('head.os') }}</a></li>
                             <li><a href="{{ route('visa_request') }}" class="text-white text-color-hover-primary">{{ __('head.vi') }}</a></li>
-                            <li><a href="#" class="text-white text-color-hover-primary">{{ __('head.sc') }}</a></li>
+                            <li><a href="#" class="text-white text-color-hover-primary" onclick="alert('Coming Soon')">{{ __('head.sc') }}</a></li>
                         </ul>
                     </div>
                     <div class="col-lg-4 col-md-6 mt-4 mt-md-4 mt-sm-4 mt-lg-0">

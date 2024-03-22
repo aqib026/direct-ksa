@@ -30,6 +30,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Admin\BranchController;
 use App\Http\Controllers\Admin\BankController;
+use App\Http\Controllers\ContactUsRecordController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\MyFatoorahController;
 
@@ -251,7 +252,7 @@ Route::group(['prefix'=>'/user'], function () {
     Route::get('/visa_requests', [UserController::class, 'visarequests'])->name('visarequests')->middleware(['auth','user']);
     Route::get('/visa_request/{id}', [UserController::class, 'visarequest'])->name('visarequest')->middleware(['auth','user']);
 });
-
+Route::Post('/contact-us-post', [ContactUsRecordController::class, 'store'])->name('contact-query-post');
 Route::get('/otp/login/{id?}', [OtpController::class, 'login'])->name('otp.login');
 Route::Post('/otp/generate', [OtpController::class, 'generate'])->name('otp.generate');
 Route::get('/otp/verification/{user_id?}', [OtpController::class, 'verification'])->name('otp.verification');

@@ -17,7 +17,7 @@
         </div>
         <div class="align-items-center d-flex justify-content-center text-dark m-1 pb-5 py-4 row">
             <div class="p-75 bg-white shadow rounded col-lg-8" style="padding: 50px 20px;">
-                <form action="{{ route('featured_sales_post') }}" role="form" method="post" class="form-horizontal" enctype="multipart/form-data">
+                <form action="{{ route('featured_sales_post') }}" role="form" method="post" class="form-horizontal" enctype="multipart/form-data" id="feature_sales_form">
                     @csrf
                     <div class="form-group">
                         <label for="required_service">{{__('fetsales.rs')}}</label>
@@ -256,6 +256,13 @@
                     <div class="b-overlay-wrap position-relative d-flex flex-column">
                         <button type="submit" class="btn w-100 btn-primary">{{__('fetsales.subn')}}</button>
                     </div>
+                    <div class="d-none" id="loader">
+                        <div class="d-flex justify-content-center">
+                            <div class="spinner-border" role="status">
+                              <span class="visually-hidden">Loading...</span>
+                            </div>
+                          </div>
+                    </div>
                 </form>
             </div>
         </div>
@@ -267,6 +274,9 @@
     $(document).ready(function () {
         $('#required_service').trigger("change");
     });
+    $( "#feature_sales_form" ).on( "submit", function( event ) {
+	$( "#loader" ).removeClass('d-none');
+  });
     $('#required_service').change(function () {
         $('.d-block-custom').addClass('d-none');
         $("div").removeClass("d-block-custom");
