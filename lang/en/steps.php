@@ -33,6 +33,7 @@ return[
     "ot"=>"Others",
     "start"=>"Start Visa Request",
     "total"=>"Total Cost",
+    "ns2"=>"Continue to Step 2: Travel Information",
     "ns3"=>"Continue to Step 3: Application Forms",
     "ns4"=>"Continue to Step 4: Payment",
     "s3t"=>"Traveller's Information",
@@ -46,7 +47,7 @@ return[
     "noct"=>"No. of Child Traveler's",
     "nop"=>"No. of Passport's",
     "ps"=>"Payment Summary",
-    
+
 
 ]
 ?>
