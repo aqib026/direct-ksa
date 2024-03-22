@@ -52,7 +52,11 @@
                         <div class="mt-3">
                             <label class="form-label" for="form3Example3">Phone Number</label>
 
-                            <input id="number" type="text" class="form-control form-control-lg @error('number') is-invalid @enderror" name="number" value="{{ old('number') }}" placeholder="Enter Your Number" required autocomplete="number" required>
+                            <input id="mobile" autocomplete="new-password" name="number" type="tel"
+                                   placeholder="+966xxxxxxxxx" class="form-control "
+                                   onkeypress="return (event.charCode >= 48 && event.charCode <= 57)"
+                                   @if ($errors->has('number')) data-error="true" @endif dir=""
+                                   aria-invalid="true" maxlength="9">
                             @error('number')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

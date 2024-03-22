@@ -41,8 +41,9 @@
                                 </div>
                                 <input id="mobile" autocomplete="new-password" name="number" type="tel"
                                     placeholder="5xxxxxxxx" class="form-control "
+                                       onkeypress="return (event.charCode >= 48 && event.charCode <= 57)"
                                     @if ($errors->has('number')) data-error="true" @endif dir=""
-                                    aria-invalid="true">
+                                    aria-invalid="true" maxlength="9">
 
                                 <div class="input-group-append">
                                     <div class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="14px"
@@ -55,11 +56,11 @@
                                         </svg>
                                     </div>
                                 </div><!---->
-                                
+
                                 @if ($errors->has('number'))
                                 <span style="color: red;font-size:16px" role="alert">
                                     <strong>{{  $errors->first('number') }}</strong>
-                                </span> 
+                                </span>
                                 @endif
                             </div>
                             <!-- Phone Number For OTP !-->

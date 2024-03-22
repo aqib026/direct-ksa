@@ -17,11 +17,13 @@ class OtpController extends Controller
     {
         return view('auth.otpmobile');
     }
-    
+
     public function generate(Request $request)
     {
+        $request->merge(['number' => '+966' . $request->number]);
+
         $validator =Validator::make($request->all(),[
-            'number' => 'exists:users,number|nullable',
+            'number' => ['required', 'regex:/^(\+966)[0-9]{9}$/', 'exists:users'],
             'email' => 'exists:users,email|nullable',
         ], [
             "number"=>"Please enter valid registered mobile number",
@@ -30,9 +32,9 @@ class OtpController extends Controller
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-        
+
         $mobile_number = $request->number??null;
-        $email=$request->input('email')??null; 
+        $email=$request->input('email')??null;
         if(isset($mobile_number)){
             $user = User::where('number', $mobile_number)->first();
         }elseif(isset($email)){
@@ -42,13 +44,13 @@ class OtpController extends Controller
         if (isset($user->otp) && isset($user->otp_expiration)) {
             $current_time = new DateTime();
 
-           
+
             $other_time = new DateTime($user->otp_expiration);
 
-           
+
             $interval = $current_time->diff($other_time);
 
-           
+
             if ($interval->i > 10 || $interval->h > 0 || $interval->d > 0 || $interval->m > 0 || $interval->y > 0) {
                 $userotp = $this->generateotp($user->id);
                 if ($userotp) {
@@ -82,7 +84,7 @@ class OtpController extends Controller
             }
         } else {
             $userotp = $this->generateotp($user->id);
-            
+
             if ($userotp) {
                 if (isset($userotp->email)) {
                     $data=["otp"=>$userotp->otp,"name"=>$userotp->name];
@@ -99,7 +101,7 @@ class OtpController extends Controller
             }
         }
     }
-    
+
     public function generateotp($user_id)
     {
         $user = User::find($user_id);
@@ -107,10 +109,10 @@ class OtpController extends Controller
         $user->otp=rand(12344, 99999);
         $user->otp_expiration=$current_time;
         $user->update();
-        
+
         return $user;
     }
-    
+
     public function verification($user_id)
     {
         $user=User::find($user_id);
@@ -119,9 +121,9 @@ class OtpController extends Controller
         }else{
             return redirect()->back()->with('error', "Record not found!");
         }
-        
+
     }
-    
+
     public function loginotp(Request $request)
     {
         $request->validate([
@@ -135,13 +137,13 @@ class OtpController extends Controller
 
             $current_time = new DateTime();
 
-           
+
             $other_time = new DateTime($userotp->otp_expiration);
 
-           
+
             $interval = $current_time->diff($other_time);
 
-           
+
             if ($interval->i > 10 || $interval->h > 0 || $interval->d > 0 || $interval->m > 0 || $interval->y > 0) {
                 return redirect()->back()->with('error', 'Your OTP has expired.Please Try again with new OTP');
             } else{
@@ -160,6 +162,6 @@ class OtpController extends Controller
         }else{
             return redirect()->back()->with('error', 'Something went wrong try again later!');
         }
-    
+
     }
 }

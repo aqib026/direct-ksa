@@ -90,16 +90,33 @@
 					<div class="col col-lg-12 text-center py-3">
 						<table class="table table-bordered">
 							<tbody>
-								<tr class="{{ $VisaRequest->adult_price ?? 'd-none' }}">
-									<td  width="30%">{{__('steps.ad')}}</td>
-									<td  width="40%"><button class="btn btn-secondary" id="adult_counter_minus"><i class="fa fa-minus"></i></button><span class="adult_counter"> @if(isset($form_data['adult_count'])) {{ $form_data['adult_count'] }} @else 0 @endif</span><button class="btn btn-secondary" id="adult_counter_plus"><i class="fa fa-plus"></i></button></td>
-									<td  width="30%"><span class="adult_counter_sum"><span class="adult_price_total">@if(isset($form_data['adult_counter_sum'])) {{ $form_data['adult_counter_sum'] }} @else 0 @endif</span> {{__('steps.s')}}</span></td>
-								</tr>
-								<tr class="{{ $VisaRequest->child_price ?? 'd-none' }}">
-									<td  width="30%">{{__('steps.ch')}}</td>
-									<td  width="40%"><button class="btn btn-secondary" id="child_counter_minus"><i class="fa fa-minus"></i></button><span class="child_counter"> @if(isset($form_data['child_count'])) {{ $form_data['child_count'] }} @else 0 @endif</span><button class="btn btn-secondary" id="child_counter_plus"><i class="fa fa-plus"></i></button></td>
-									<td  width="30%"><span class="child_counter_sum"><span class="child_price_total">@if(isset($form_data['child_counter_sum'])) {{ $form_data['child_counter_sum'] }} @else 0 @endif</span> {{__('steps.s')}}</span></td>
-								</tr>
+                            <tr class="{{ $VisaRequest->adult_price ?? 'd-none' }}">
+                                <td  width="30%">{{__('steps.ad')}}</td>
+                                <td  width="40%">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <button class="btn btn-secondary" id="adult_counter_minus"><i class="fa fa-minus"></i></button>
+                                        <span class="adult_counter"> @if(isset($form_data['adult_count'])) {{ $form_data['adult_count'] }} @else 0 @endif</span>
+                                        <button class="btn btn-secondary" id="adult_counter_plus"><i class="fa fa-plus"></i></button>
+                                    </div>
+                                </td>
+                                <td  width="30%"><span class="adult_counter_sum"><span class="adult_price_total">@if(isset($form_data['adult_counter_sum'])) {{ $form_data['adult_counter_sum'] }} @else 0 @endif</span> {{__('steps.s')}}</span></td>
+                                @if ($errors->has('adult_count') || $errors->has('child_count'))
+                                    <div class="alert alert-danger">
+                                        At least one of Adult Count or Child Count must be greater than zero.
+                                    </div>
+                                @endif
+                            </tr>
+                            <tr class="{{ $VisaRequest->child_price ?? 'd-none' }}">
+                                <td  width="30%">{{__('steps.ch')}}</td>
+                                <td  width="40%">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <button class="btn btn-secondary" id="child_counter_minus"><i class="fa fa-minus"></i></button>
+                                        <span class="child_counter"> @if(isset($form_data['child_count'])) {{ $form_data['child_count'] }} @else 0 @endif</span>
+                                        <button class="btn btn-secondary" id="child_counter_plus"><i class="fa fa-plus"></i></button>
+                                    </div>
+                                </td>
+                                <td  width="30%"><span class="child_counter_sum"><span class="child_price_total">@if(isset($form_data['child_counter_sum'])) {{ $form_data['child_counter_sum'] }} @else 0 @endif</span> {{__('steps.s')}}</span></td>
+                            </tr>
 								@if ($VisaRequest->adult_price == 0 && $VisaRequest->passport_price > 0)
 									<tr class="{{ $VisaRequest->passport_price ?? 'd-none' }}">
 										<td  width="30%">{{__('steps.pas')}}</td>
@@ -154,7 +171,7 @@
 
 				<div class="row py-5 appear-animation datepickercustom" data-appear-animation="fadeIn" data-appear-animation-delay="300">
 					<div class="col col-lg-12 text-center">
-						<button class="btn btn-modern btn-primary btn-arrow-effect-1 btn-xl mb-2" type="submit">{{__('steps.ns3')}}</button>
+						<button class="btn btn-modern btn-primary btn-arrow-effect-1 btn-xl mb-2" type="submit">{{__('steps.ns2')}}</button>
 					</div>
 				</div>
 			</div>
