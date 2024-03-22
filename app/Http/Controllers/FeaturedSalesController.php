@@ -100,8 +100,8 @@ class FeaturedSalesController extends Controller
          $validatedData = $request->validate([
             'required_service'  => 'required',
             'applicant_name'    => 'required',
-            'mobile_number'     => 'required',
-            'email'             => 'required'
+            'mobile_number'     => ['required', 'regex:/^[0-9]{9}$/'],
+            'email' => ['required', 'string', 'regex:/^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$/', 'max:255']
         ], [
             'required_service.required' => 'Required Service is required',
             'applicant_name.required'   => 'Applicant Name is required',
@@ -153,7 +153,7 @@ class FeaturedSalesController extends Controller
                  'path' => storage_path('logs/services-email-erros.log'),
               ])->info('There is problem while sending email: '.print_r($e->getMessage(), true));
          }
-        
+
          if ($FeaturedSales) {
              return redirect(route('featured_sales_thankyou'))->with('success', 'Your request for selected service has been submitted Successfuly.Our team will contact ASAP');
          }

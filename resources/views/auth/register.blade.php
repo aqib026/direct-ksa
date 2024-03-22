@@ -44,11 +44,29 @@
                             </div>
                             <div class="mt-3">
                                 <label class="form-label" for="form3Example3">{{ __('register.phone_number') }}</label>
-                                <input id="mobile" autocomplete="new-password" name="number" type="tel"
-                                       placeholder="+966xxxxxxxxx" class="form-control "
-                                       onkeypress="return (event.charCode >= 48 && event.charCode <= 57)"
-                                       @if ($errors->has('number')) data-error="true" @endif dir=""
-                                       aria-invalid="true" maxlength="13">
+                                <div role="group" class="input-group mt-3" id='phone_field'>
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <span>+966</span>
+                                        </div>
+                                    </div>
+                                    <input id="mobile" autocomplete="new-password" name="number" type="tel"
+                                           placeholder="5xxxxxxxx" class="form-control "
+                                           onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" onpaste="return (event.charCode>=48 && event.charCode<=57)"
+                                           @if ($errors->has('number')) data-error="true" @endif dir=""
+                                           aria-invalid="true" maxlength="9">
+
+                                    <div class="input-group-append">
+                                        <div class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="14px"
+                                                                           height="14px" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                                           stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                                           class="feather feather-smartphone">
+                                                <rect x="5" y="2" width="14" height="20" rx="2" ry="2">
+                                                </rect>
+                                                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                                            </svg>
+                                        </div>
+                                    </div>
                                 @error('number')
                                 <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
