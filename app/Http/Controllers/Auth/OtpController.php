@@ -22,14 +22,22 @@ class OtpController extends Controller
     {
         $request->merge(['number' => '+966' . $request->number]);
 
-        $validator =Validator::make($request->all(),[
-            'number' => ['required', 'regex:/^(\+966)[0-9]{9}$/', 'exists:users'],
-            'email' => ['exists:users', 'regex:/^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$/'],
-        ],
-         [
-            "number"=>"Please enter valid registered mobile number",
-            "email"=>"Please enter valid registered email address"
-        ]);
+
+        $rules = [];
+        $messages = [];
+
+        if ($request->has('number') && $request->input('email') === null) {
+            $rules['number'] = ['required', 'regex:/^(\+966)[0-9]{9,14}$/', 'exists:users'];
+            $messages['number'] = "Please enter valid registered mobile number";
+        }
+
+        if ($request->has('email') && $request->input('number') === null) {
+            $rules['email'] = ['exists:users', 'regex:/^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$/'];
+            $messages['email'] = "Please enter valid registered email address";
+        }
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }

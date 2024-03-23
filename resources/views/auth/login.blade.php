@@ -29,11 +29,12 @@
                                     </div>
                                 </div>
                                 <input id="mobile" autocomplete="new-password" name="number" type="tel"
-                                       placeholder="5xxxxxxxx" class="form-control "
-                                       onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" onpaste="return (event.charCode>=48 && event.charCode<=57)"
-                                       @if ($errors->has('number')) data-error="true" @endif dir=""
-                                       aria-invalid="true" maxlength="9">
-
+                                placeholder="5xxxxxxxx" class="form-control"
+                                onkeypress="return (event.charCode >= 48 && event.charCode <= 57)"
+                                onpaste="return (event.charCode>=48 && event.charCode<=57)"
+                                oninput="validateInputLength(this)"
+                                @if ($errors->has('number')) data-error="true" @endif dir=""
+                                aria-invalid="true" maxlength="10">
                                 <div class="input-group-append">
                                     <div class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="14px"
                                                                        height="14px" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -44,6 +45,7 @@
                                             <line x1="12" y1="18" x2="12.01" y2="18"></line>
                                         </svg>
                                     </div>
+
                                 </div>
 
                                 @if ($errors->has('number'))
@@ -52,7 +54,7 @@
                                 </span>
                                 @endif
                             </div>
-
+                            <small id="numberError" role="alert" style="color: red;"></small>
                             <div style="display: none;" id='email_field' class="mt-3">
                                 <label class="form-label" for="form3Example4">{{ __('login.email') }}</label>
                                 <input id="email" autocomplete="new-password" type="email"
@@ -124,13 +126,14 @@
 
 @section('custom-scripts')
     <script>
+
         $(document).ready(function() {
-            if ($('input[name="email"]').data('error')) {
-                // Email field has an error, open email tab
-                showFields('email');
-            } else if ($('input[name="number"]').data('error')) {
+            if ($('input[name="number"]').data('error')) {
                 // Mobile field has an error, open mobile tab
                 showFields('phone');
+            } else if ($('input[name="email"]').data('error')) {
+                // Email field has an error, open email tab
+                showFields('email');
             }
             $('#login_with_OTP').click(function() {
                 var password = $('#password').val();
@@ -159,15 +162,14 @@
                 var mobile = $('#mobile').val();
                 var email = $('#email').val();
 
-                if ($('#email_field').css('display') == 'none' && mobile == '') {
+                if ($('#phone_field').css('display') != 'none' && mobile == '') {
                     alert('Mobile Field is Empty');
                     $('#mobile').focus()
                     return false;
-
                 }
-                if ($('#phone_field').css('display') == 'none' && email == '') {
-                    alert('Mobile Field is Empty');
-                    $('#mobile').focus()
+                if ($('#email_field').css('display') != 'none' && email == '') {
+                    alert('Email Field is Empty');
+                    $('#email').focus()
                     return false;
                 }
 
@@ -183,7 +185,8 @@
         });
 
         function showFields(type) {
-            if (type == 'phone') {
+            console.log(type)
+            if (type === 'phone') {
                 $('#email_field').hide();
                 $('#phone_field').show();
                 $('#login_field').show();
@@ -196,7 +199,7 @@
                 $('#email_btn').removeClass('btn-primary');
 
 
-            } else if (type == 'email') {
+            } else if (type === 'email') {
                 $('#email_field').show();
                 $('#phone_field').hide();
 
@@ -214,4 +217,17 @@
             }
         }
     </script>
+   <script>
+     function validateInputLength(input) {
+        var len = input.value.length;
+        var errorDiv = document.getElementById('numberError');
+        if (len === 0) {
+            errorDiv.textContent = 'Mobile is required';
+        } else if (len < 9 || len > 9) {
+            errorDiv.textContent = 'Please enter a valid Saudi mobile number containing 9 digits';
+        } else {
+            errorDiv.textContent = '';
+        }
+    }
+</script>
 @endsection
