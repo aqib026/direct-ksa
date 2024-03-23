@@ -100,7 +100,7 @@ class FeaturedSalesController extends Controller
          $validatedData = $request->validate([
             'required_service'  => 'required',
             'applicant_name'    => 'required',
-            'mobile_number'     => ['required', 'regex:/^[0-9]{9}$/'],
+            'mobile_number'     => ['required', 'regex:/^[0-9]{9,14}$/'],
             'email' => ['required', 'string', 'regex:/^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$/', 'max:255']
         ], [
             'required_service.required' => 'Required Service is required',
