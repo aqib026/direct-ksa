@@ -60,16 +60,12 @@
                                 </select>
                             </div>
                             <div class="form-group">
+
                                 <label for="documents">{{ __('fetsales.upd') }}</label>
-                                <div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" name="documents[]" accept=".jpeg, .jpg, .png, .pdf"
-                                            multiple="multiple" class="custom-file-input" id="documents"
-                                            aria-describedby="inputGroupFileAddon04">
-                                        <label class="custom-file-label" for="documents">{{ __('fetsales.cf') }}</label>
-                                    </div>
-                                </div>
+                                <input type="file" name="documents[]" accept=".jpeg, .jpg, .png, .pdf"
+                                    multiple="multiple" class="form-control" id="documents" style='line-height: 2.5;' />
                             </div>
+
                             <div class="form-group">
                                 <label for="translation_content">{{ __('fetsales.tc') }}</label>
                                 <select class="form-control" name="translation_content" id="translation_content">
@@ -249,10 +245,9 @@
                                     value="{{ isset($user) ? substr($user->number, 4):old('mobile_number') }}"
                                     placeholder="5xxxxxxxx" class="form-control "
                                     onkeypress="return (event.charCode >= 48 && event.charCode <= 57)"
-                                    onpaste="return (event.charCode>=48 && event.charCode<=57)" @if ($errors->has('number'))
-                                data-error="true"
-                                @endif dir="ltr"
-                                aria-invalid="true" maxlength="14">
+                                    onpaste="return (event.charCode>=48 && event.charCode<=57)" 
+                                    @if ($errors->has('number')) data-error="true" @endif dir="ltr"
+                                aria-invalid="true" minlength="9" maxlength="9" />
 
                                 <div class="input-group-append">
                                     <div class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="14px"
