@@ -335,11 +335,11 @@
                 }
                 $('.adult_counter').text(adult_counter_current_value);
                 $('#adult_count').val(adult_counter_current_value);
-                $('.adult_price_total').text(adult_price_total);
+                $('.adult_price_total').text(formatNumber(adult_price_total));
                 $('#adult_counter_sum').val(adult_price_total);
                 var child_price_total = parseInt($('.child_price_total').text());
                 $('.passenger_total').text(formatNumber(adult_price_total + child_price_total));
-                $('#passenger_total').val(formatNumber(adult_price_total + child_price_total));
+                $('#passenger_total').val(adult_price_total + child_price_total);
                 return false;
 
             });
@@ -353,13 +353,13 @@
                 } else {
                     adult_counter_current_value = 0;
                 }
-                $('.adult_counter').text(adult_counter_current_value);
+                $('.adult_counter').text(formatNumber(adult_counter_current_value));
                 $('#adult_count').val(adult_counter_current_value);
-                $('.adult_price_total').text(adult_price_total);
+                $('.adult_price_total').text(formatNumber(adult_price_total));
                 $('#adult_counter_sum').val(adult_price_total);
                 var child_price_total = parseInt($('.child_price_total').text());
                 $('.passenger_total').text(formatNumber(adult_price_total + child_price_total));
-                $('#passenger_total').val(formatNumber(adult_price_total + child_price_total));
+                $('#passenger_total').val(adult_price_total + child_price_total);
                 return false;
 
             });
@@ -375,11 +375,11 @@
                 }
                 $('.child_counter').text(child_counter_current_value);
                 $('#child_count').val(child_counter_current_value);
-                $('.child_price_total').text(child_price_total);
+                $('.child_price_total').text(formatNumber(child_price_total));
                 $('#child_counter_sum').val(child_price_total);
                 var adult_price_total = parseInt($('.adult_price_total').text());
                 $('.passenger_total').text(formatNumber(adult_price_total + child_price_total));
-                $('#passenger_total').val(formatNumber(adult_price_total + child_price_total));
+                $('#passenger_total').val(adult_price_total + child_price_total);
                 return false;
 
             });
@@ -396,12 +396,12 @@
                 }
                 $('.child_counter').text(child_counter_current_value);
                 $('#child_count').val(child_counter_current_value);
-                $('.child_price_total').text(child_price_total);
+                $('.child_price_total').text(formatNumber(child_price_total));
                 $('#child_counter_sum').val(child_price_total);
                 var adult_price_total = parseInt($('.adult_price_total').text());
 
                 $('.passenger_total').text(formatNumber(adult_price_total + child_price_total));
-                $('#passenger_total').val(formatNumber(adult_price_total + child_price_total));
+                $('#passenger_total').val(adult_price_total + child_price_total);
                 return false;
 
             });
