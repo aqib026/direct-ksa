@@ -74,31 +74,7 @@ class FeaturedSalesController extends Controller
 
      public function store(Request $request)
      {
-         $user = null;
-
-         // Check if the user is logged in
-         if (auth()->check()) {
-             // User is logged in, set the user_id from the logged-in user
-             $user = auth()->user();
-         } else {
-             // User is not logged in, check if the email or mobile_number exists in the users table
-             $user = Admin::where('email', $request->input('email'))->first();
-             // If no user found, create a new user record
-             if (!$user) {
-                 $user = Admin::create([
-                     'name' => $request->input('applicant_name'),
-                     'email' => $request->input('email'),
-                     'number' => $request->input('mobile_number'),
-                     'password' => bcrypt('12345678'),
-                     'usertype' => 'customer',
-                 ]);
-             }
-         }
-
-         if($request->mobile_number){
-            $request->merge(['mobile_number' => '+966' . $request->mobile_number]);
-        };
-         // Set the user_id in the featured sales or perform any other necessary actions
+         
          $validatedData = $request->validate([
             'required_service'  => 'required',
             'applicant_name'    => 'required',
@@ -110,7 +86,9 @@ class FeaturedSalesController extends Controller
             'mobile_number.required'    => 'Mobile No is required',
             'email.required'            => 'Email is required'
         ]);
-
+        if($request->mobile_number){
+            $request->merge(['mobile_number' => '+966' . $request->mobile_number]);
+        };
          $input = $request->except('documents', '_token');
          $images = array();
          if ($files = $request->file('documents')) {
@@ -141,10 +119,9 @@ class FeaturedSalesController extends Controller
          $FeaturedSales->passport_quantity           = $request->passport_quantity;
          $FeaturedSales->country                     = $request->country;
          $FeaturedSales->applicant_name              = $request->applicant_name;
-         $FeaturedSales->mobile_number               = '+96'.$request->mobile_number;
+         $FeaturedSales->mobile_number               = $request->mobile_number;
          $FeaturedSales->email                       = $request->email;
          $FeaturedSales->service_cost                = $request->service_cost;
-         $FeaturedSales->user_id                     = $user->id;
 
          $FeaturedSales->save();
          try {
