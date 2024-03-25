@@ -58,7 +58,7 @@
                                            placeholder="5xxxxxxxx" class="form-control "
                                            onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" onpaste="return (event.charCode>=48 && event.charCode<=57)"
                                            @if ($errors->has('number')) data-error="true" @endif dir=""
-                                           aria-invalid="true"  max="10">
+                                           aria-invalid="true"  maxlenght="10">
                                     <div class="input-group-append">
                                         <div class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="14px"
                                                                            height="14px" viewBox="0 0 24 24" fill="none" stroke="currentColor"

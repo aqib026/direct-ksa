@@ -108,7 +108,6 @@ class LoginController extends Controller
     protected function attemptLogin(Request $request)
     {
         $data=$this->credentials($request);
-        dd($data);
         $keys=array_keys($data);
         $field=$keys[0]??'number';
         $result=$this->guard()->attempt(
@@ -117,7 +116,7 @@ class LoginController extends Controller
         );
         // If the authentication attempt fails, throw a ValidationException
         if (!$result) {
-            
+
             throw ValidationException::withMessages([
                 $field => [trans('auth.failed')],
             ]);
@@ -149,7 +148,7 @@ class LoginController extends Controller
      */
     protected function sendLoginResponse(Request $request)
     {
-        dd($request);
+
         $request->session()->regenerate();
 
         $this->clearLoginAttempts($request);
