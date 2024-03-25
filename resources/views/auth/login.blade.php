@@ -13,7 +13,7 @@
                             <input autocomplete="off" name="hidden" type="text" style="display: none;">
                             @csrf
 
-                            <div class='row'>
+                            <div class='row' dir="ltr">
                                 <div role="group" class="mb-1 btn-group btn-group-sm">
                                     <button type="button" class="btn shadow-none btn-primary py-2" id='phone_btn'
                                         onclick="showFields('phone')">{{ __('login.mobile_no') }} </button>
@@ -22,7 +22,7 @@
                                 </div>
                             </div>
 
-                            <div role="group" class="input-group mt-3" id='phone_field'>
+                            <div role="group" class="input-group mt-3" id='phone_field' dir="ltr">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">
                                         <span>+966</span>
@@ -35,10 +35,10 @@
                                     oninput="validateInputLength(this)" @if ($errors->has('number'))
                                 data-error="true"
                                 @endif dir=""
-                                aria-invalid="true" maxlength="10">
+                                aria-invalid="true" maxlength="14">
                                 <div class="input-group-append">
                                     <div class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="14px"
-                                            height="14px" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            height="25px" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                             class="feather feather-smartphone">
                                             <rect x="5" y="2" width="14" height="20" rx="2" ry="2">

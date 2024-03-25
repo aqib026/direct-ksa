@@ -33,6 +33,7 @@
 			</div>
 			<div class="row py-5 appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="300">
 				@foreach ($countries as $country)
+                    @if($country->status ==1)
 					<div class="col-md-4 mb-4">
 						<div class="card card-border card-border-top card-border-hover bg-color-light border-0 box-shadow-6 box-shadow-hover anim-hover-translate-top-10px transition-3ms anim-hover-inner-wrapper">
 							<div class="card-body p-relative zindex-1 p-5 text-center">
@@ -53,6 +54,7 @@
 							</div>
 						</div>
 					</div>
+                    @endif
 				@endforeach
 			</div>
 		</div>
