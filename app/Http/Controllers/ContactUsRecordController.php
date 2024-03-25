@@ -14,8 +14,11 @@ class ContactUsRecordController extends Controller
             'name'  => 'required',
             'email' => 'required',
             'category' => 'required',
-            'message' => 'required'
-        ], );
+            'message' => 'required',
+            'number' => 'regex:/^[0-9]{9,14}$/',
+        ],[
+            'number.regex'    => 'Enter valid  mobile number',
+        ] );
      
         ContactUsRecord::create([
             'name'  => $request->get('name'),

@@ -54,7 +54,7 @@ class RegisterController extends Controller
             'email' => 'required|email:rfc,dns|unique:users',
             'number' => 'required|regex:/^[0-9]{9,14}$/ |unique:users',
         ], [
-            'number.regex'    => 'Enter valid KSA mobile number',
+            'number.regex'    => 'Enter valid  mobile number',
             'number.unique'    => 'Mobile number already exists',
             'email.unique'    => 'Email already exists',
             'email.email'    => 'Enter valid email address',
