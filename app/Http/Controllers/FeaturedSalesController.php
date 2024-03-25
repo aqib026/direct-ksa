@@ -95,13 +95,15 @@ class FeaturedSalesController extends Controller
              }
          }
 
-
+         if($request->mobile_number){
+            $request->merge(['mobile_number' => '+966' . $request->mobile_number]);
+        };
          // Set the user_id in the featured sales or perform any other necessary actions
          $validatedData = $request->validate([
             'required_service'  => 'required',
             'applicant_name'    => 'required',
-            'mobile_number'     => ['required', 'regex:/^[0-9]{9,14}$/'],
-            'email' => ['required', 'string', 'regex:/^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$/', 'max:255']
+            'mobile_number'     => 'required', 'regex:/^[0-9]{9,14}$/',
+            'email' => 'required|email:rfc,dns|unique:users'
         ], [
             'required_service.required' => 'Required Service is required',
             'applicant_name.required'   => 'Applicant Name is required',

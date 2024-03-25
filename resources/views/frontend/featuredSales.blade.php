@@ -42,7 +42,7 @@
                         <div class="form-group">
                             <label for="paper_quantity">{{__('fetsales.pq')}}</label>
                             <select class="form-control" name="paper_quantity" id="paper_quantity">
-                                @for ($i = 0; $i <= 19; $i++)
+                                @for ($i = 1; $i <= 19; $i++)
                                     <option value="{{ $i }}">{{ $i }}</option>
                                 @endfor
                             </select>
@@ -74,7 +74,7 @@
                         <div class="form-group">
                             <label for="idl_card_qty">{{__('fetsales.idlcq')}}</label>
                             <select class="form-control" name="idl_card_qty" id="idl_card_qty">
-                                @for ($i = 0; $i <= 19; $i++)
+                                @for ($i = 1; $i <= 19; $i++)
                                     <option value="{{ $i }}">{{ $i }}</option>
                                 @endfor
                             </select>
@@ -85,7 +85,7 @@
                         <div class="form-group">
                             <label for="idl_qty">{{__('fetsales.idlq')}}</label>
                             <select class="form-control" name="idl_qty" id="idl_qty">
-                                @for ($i = 0; $i <= 19; $i++)
+                                @for ($i = 1; $i <= 19; $i++)
                                     <option value="{{ $i }}">{{ $i }}</option>
                                 @endfor
                             </select>
@@ -192,7 +192,7 @@
                         <div class="form-group">
                             <label for="passport_quantity">{{__('fetsales.pasq')}}</label>
                             <select class="form-control" name="passport_quantity" id="passport_quantity">
-                                @for ($i = 0; $i <= 19; $i++)
+                                @for ($i = 1; $i <= 19; $i++)
                                     <option value="{{ $i }}">{{ $i }}</option>
                                 @endfor
                             </select>
