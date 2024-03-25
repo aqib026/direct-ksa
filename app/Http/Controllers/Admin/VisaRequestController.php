@@ -60,6 +60,7 @@ class VisaRequestController extends Controller
             $form_data = array('country' => $country, 'visa_type' => $visatype);
         }
         $VisaRequest = VisaRequest::where('countries_id', $country)->where('visa_type', $visatype)->first();
+
         return view('frontend.visa_request_steptwo', compact('VisaRequest', 'form_data'));
     }
 

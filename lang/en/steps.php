@@ -14,7 +14,7 @@ return[
     "wte"=>"WHAT IS YOUR EXPECTED TRAVEL DATE?",
     "edt"=>"EXPECTED TRAVEL DATE",
     "wwa"=>"WHERE DO YOU WANT YOUR APPOINTMENT?",
-    "eqi"=>"U.S EMBASSY REQUIRES INTERVIEW WITH ALL THE APPLICANTS.",
+    "eqi"=>" EMBASSY REQUIRES INTERVIEW WITH ALL THE APPLICANTS.",
     "r"=>"Riyadh",
     "d"=>"Dhahran",
     "j"=>"Jeddah",
