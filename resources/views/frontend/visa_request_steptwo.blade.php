@@ -226,9 +226,9 @@
                             <h1 class="font-weight-semi-bold text-5 line-height-2 line-height-sm-7 mb-5 selectedpersons">
                                 <span class="passenger_total">
                                     @if (isset($form_data['passenger_total']) && $form_data['passenger_total'] > 0)
-                                        {!! number_format($form_data['passenger_total']) !!}
+                                        {!! number_format( (float) $form_data['passenger_total']) !!}
                                     @elseif(isset($form_data['passport_counter_sum']) && $form_data['passport_counter_sum'] > 0)
-                                        {!! number_format($form_data['passport_counter_sum']) !!}
+                                        {!! number_format( (float) $form_data['passport_counter_sum']) !!}
                                     @else
                                         0
                                     @endif
