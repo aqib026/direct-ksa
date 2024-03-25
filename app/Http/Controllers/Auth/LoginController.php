@@ -92,7 +92,11 @@ class LoginController extends Controller
     {
         $request->validate([
             'password' => 'required|string',
+
         ]);
+        if($request->number){
+            $request->merge(['number' => '+966' . $request->number]);
+        }
     }
 
     /**
@@ -103,9 +107,22 @@ class LoginController extends Controller
      */
     protected function attemptLogin(Request $request)
     {
-        return $this->guard()->attempt(
-            $this->credentials($request), $request->boolean('remember')
+        $data=$this->credentials($request);
+        dd($data);
+        $keys=array_keys($data);
+        $field=$keys[0]??'number';
+        $result=$this->guard()->attempt(
+            $data,
+            $request->boolean('remember')
         );
+        // If the authentication attempt fails, throw a ValidationException
+        if (!$result) {
+            
+            throw ValidationException::withMessages([
+                $field => [trans('auth.failed')],
+            ]);
+        }
+        return $result;
     }
 
     /**
@@ -116,14 +133,12 @@ class LoginController extends Controller
      */
     protected function credentials(Request $request)
     {
-        $login = $request->input($this->username()) == null ? $request->input('login-mobile') : $request->input($this->username());
-        
+        $login = $request->input('email') == null ? $request->input('number') : $request->input($this->username());
         $field = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'number';
         return [
             $field => $login,
             'password' => $request->input('password'),
-        ];        
-        return $request->only($this->username(), 'password');
+        ];
     }
 
     /**
@@ -134,6 +149,7 @@ class LoginController extends Controller
      */
     protected function sendLoginResponse(Request $request)
     {
+        dd($request);
         $request->session()->regenerate();
 
         $this->clearLoginAttempts($request);
@@ -156,6 +172,4 @@ class LoginController extends Controller
     {
         //
     }
-
-
 }
