@@ -140,12 +140,15 @@
                                                     </div>
                                                 </div>
 
-                                                @if ($errors->has('number'))
-                                                    <span style="color: red;font-size:16px" role="alert">
-                                                    <strong>{{  $errors->first('number') }}</strong>
-                                                </span>
-                                                @endif
+                                               
                                             </div>
+                                            @if ($errors->has('number'))
+                                               
+                                            <span style="color: red;font-size:16px" role="alert">
+                                                <strong>{{  $errors->first('number') }}</strong>
+                                            
+                                        </span>
+                                        @endif
                                         </div>
 
 

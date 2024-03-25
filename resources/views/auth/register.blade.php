@@ -48,7 +48,7 @@
                             </div>
                             <div class="mt-3">
                                 <label class="form-label" for="form3Example3">{{ __('register.phone_number') }}</label>
-                                <div role="group" class="input-group mt-3" id='phone_field'>
+                                <div role="group" class="input-group mt-3" id='phone_field' dir="ltr">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
                                             <span>+966</span>
@@ -61,7 +61,7 @@
                                            aria-invalid="true"  maxlength="14">
                                     <div class="input-group-append">
                                         <div class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="14px"
-                                                                           height="14px" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                                           height="25px" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                                                            class="feather feather-smartphone">
                                                 <rect x="5" y="2" width="14" height="20" rx="2" ry="2">

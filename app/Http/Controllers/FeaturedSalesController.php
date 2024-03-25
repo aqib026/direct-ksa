@@ -6,9 +6,11 @@ use App\Mail\CustomerFormReportMail;
 use App\Models\FeaturedSales;
 use App\Models\Note;
 use App\Models\Admin;
+use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
@@ -88,6 +90,22 @@ class FeaturedSalesController extends Controller
             'mobile_number.regex'    => 'Enter valid mobile number',
 
         ]);
+        $new_user_message="";
+        if(auth()->check()){
+            $user=User::where('email', $request->email)->first();
+        }
+        elseif($request->email){
+            $user=User::where('email', $request->email)->first();
+            if(!$user){
+                $user=User::create([
+                    "name"=>$request->applicant_name,
+                    "number"=>"+966".$request->mobile_number,
+                    "email"=>$request->email,
+                    "password"=>Hash::make('12345678')
+                ]);
+                $new_user_message="The email is  registered in our system .You can use this email to login via OTP and you can update your password by using forget password link.";
+            }
+        }
         if($request->mobile_number){
             $request->merge(['mobile_number' => '+966' . $request->mobile_number]);
         };
@@ -120,10 +138,11 @@ class FeaturedSalesController extends Controller
          $FeaturedSales->form_type                   = $request->form_type;
          $FeaturedSales->passport_quantity           = $request->passport_quantity;
          $FeaturedSales->country                     = $request->country;
-         $FeaturedSales->applicant_name              = $request->applicant_name;
-         $FeaturedSales->mobile_number               = $request->mobile_number;
-         $FeaturedSales->email                       = $request->email;
-         $FeaturedSales->service_cost                = $request->service_cost;
+         $FeaturedSales->applicant_name              = $user->name;
+         $FeaturedSales->mobile_number               = $user->number;
+         $FeaturedSales->email                       = $user->email;
+         $FeaturedSales->service_cost            = $request->service_cost;
+         $FeaturedSales->user_id                = $user->id;
 
          $FeaturedSales->save();
          try {
@@ -136,7 +155,8 @@ class FeaturedSalesController extends Controller
          }
 
          if ($FeaturedSales) {
-             return redirect(route('featured_sales_thankyou'))->with('success', 'Your request for selected service has been submitted Successfuly.Our team will contact ASAP');
+            $success_message='Your request for selected service has been submitted Successfuly.Our team will contact ASAP <br> '.$new_user_message;
+             return redirect(route('featured_sales_thankyou'))->with('success',$success_message );
          }
 
          // Redirect or return a response as needed
