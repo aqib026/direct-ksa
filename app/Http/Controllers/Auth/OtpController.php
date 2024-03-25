@@ -128,6 +128,7 @@ class OtpController extends Controller
 
     public function verification($user_id)
     {
+
         $user=User::find($user_id);
         if(isset( $user)){
             return view('auth.verification',compact('user'));
