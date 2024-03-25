@@ -15,7 +15,7 @@
                             <div class="mt-4">
                                 <label class="form-label" for="form3Example3">{{ __('register.name') }}</label>
                                 <input id="name" type="text" class="form-control form-control-lg @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="{{ __('register.enter_your_name') }}" autofocus>
-                                
+
                                 @if ($errors->has('name'))
                                 <span class="invalid-feedback"  role="alert" style="display: block">
                                 <strong>{{ $errors->first('name') }}</strong>
@@ -25,7 +25,7 @@
                             <div class="mt-3">
                                 <label class="form-label" for="form3Example3">{{ __('register.email_address') }}</label>
                                 <input id="email" type="email" class="form-control form-control-lg @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="{{ __('register.enter_your_email') }}" required autocomplete="email">
-                                
+
                                 @if ($errors->has('email'))
                                 <span class="invalid-feedback"  role="alert" style="display: block">
                                 <strong>{{ $errors->first('email') }}</strong>
@@ -35,7 +35,7 @@
                             <div class="mt-3">
                                 <label class="form-label" for="form3Example3">{{ __('register.password') }}</label>
                                 <input id="password" type="password" class="form-control form-control-lg @error('password') is-invalid @enderror" name="password" placeholder="{{ __('register.enter_password') }}" required autocomplete="new-password">
-                                
+
                                 @if ($errors->has('password'))
                                 <span class="invalid-feedback"  role="alert" style="display: block">
                                 <strong>{{ $errors->first('password') }}</strong>
@@ -58,8 +58,7 @@
                                            placeholder="5xxxxxxxx" class="form-control "
                                            onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" onpaste="return (event.charCode>=48 && event.charCode<=57)"
                                            @if ($errors->has('number')) data-error="true" @endif dir=""
-                                           aria-invalid="true" maxlength="9">
-
+                                           aria-invalid="true"  maxlength="14">
                                     <div class="input-group-append">
                                         <div class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="14px"
                                                                            height="14px" viewBox="0 0 24 24" fill="none" stroke="currentColor"

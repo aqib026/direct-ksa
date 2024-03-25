@@ -14,4 +14,5 @@ return [
     'sign_in_with_password' => 'تسجيل الدخول باستخدام كلمة المرور',
     'dont_have_account' => 'ليس لديك حساب؟',
     'register' => 'تسجيل',
+    'general_error'=>'خطأ في المعالجة! حاول مرة أخرى في وقت لاحق'
 ];
