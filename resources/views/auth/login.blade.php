@@ -62,12 +62,13 @@
                                        @if ($errors->has('email')) data-error="true" @endif
                                        placeholder="{{ __('login.enter_your_email') }}" name="email" value="{{ old('email') }}" required
                                        autocomplete="email" autofocus>
+                                       @if ($errors->has('email'))
+                                       <span style="color: red;font-size:16px" role="alert">
+                                       <strong>{{  $errors->first('email') }}</strong>
+                                   </span>
+                                   @endif
                             </div>
-                            @if ($errors->has('email'))
-                                <span style="color: red;font-size:16px" role="alert">
-                                <strong>{{  $errors->first('email') }}</strong>
-                            </span>
-                            @endif
+                           
 
                             <div style="display: none;" id='password_field' class="mt-3">
                                 <label class="form-label" for="form3Example4">{{ __('login.password') }}</label>
