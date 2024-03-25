@@ -72,7 +72,7 @@
                     <div class="overflow-hidden mb-5 text-center">
                         <h3 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-1 text-4 line-height-2 line-height-sm-7 mb-0 appear-animation"
                             data-appear-animation="maskUp" data-appear-animation-delay="100"><i
-                                class="fa fa-info-circle"></i>&nbsp;{{ __('steps.eqi') }}</h3>
+                                class="fa fa-info-circle"></i>&nbsp;{{ $VisaRequest->country->name }} {{ __('steps.eqi') }}</h3>
                     </div>
                     <div class="col col-lg-12 text-center py-3">
                         <div class="row">
@@ -87,7 +87,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="form-group col">
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label form-check-label-custom" style="margin-left: 28px">
@@ -98,7 +98,7 @@
                                     </label>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="row">
                             <div class="form-group col">
                                 <div class="form-check form-check-inline">
