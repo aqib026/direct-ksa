@@ -14,4 +14,5 @@ return [
     'sign_in_with_password' => 'Sign In With Password',
     'dont_have_account' => "Don't have an account?",
     'register' => 'Register',
+    'general_error'=>'Processing error! Try again later'
 ];

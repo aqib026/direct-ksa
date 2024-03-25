@@ -20,24 +20,26 @@ class OtpController extends Controller
 
     public function generate(Request $request)
     {
-        $request->merge(['number' => '+966' . $request->number]);
+        
 
-
+        if($request->number){
+            $request->merge(['number' => '+966' . $request->number]);
+        };
         $rules = [];
         $messages = [];
 
         if ($request->has('number') && $request->input('email') === null) {
-            $rules['number'] = ['required', 'regex:/^(\+966)[0-9]{9,14}$/', 'exists:users'];
-            $messages['number'] = "Please enter valid registered mobile number";
-        }
-
-        if ($request->has('email') && $request->input('number') === null) {
-            $rules['email'] = ['exists:users', 'regex:/^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$/'];
-            $messages['email'] = "Please enter valid registered email address";
+            $rules = ['number'=>'required|exists:users,number'];
+            $messages=["number" =>"Please enter valid registered mobile number"];
+        }else if ($request->has('email') && $request->input('number') === null) {
+            $rules = ['email'=>'required|exists:users'];
+            $messages= ["email"=>"Please enter valid registered email address"];
+        }else{
+            return redirect()->back()->with('general-error',trans('login.general_error'));
         }
 
         $validator = Validator::make($request->all(), $rules, $messages);
-
+     
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
@@ -91,7 +93,7 @@ class OtpController extends Controller
                     return redirect()->back()->with('error', 'Failed to generate OTP. Please try again.');
                 }
             }
-        } else {
+        } elseif(isset($user)) {
             $userotp = $this->generateotp($user->id);
 
             if ($userotp) {
@@ -108,6 +110,8 @@ class OtpController extends Controller
                 // Handle the case where $userotp is null
                 return redirect()->back()->with('error', 'Failed to generate OTP. Please try again.');
             }
+        }else{
+            return redirect()->back()->with('error', 'Failed to generate OTP. Invalid User');
         }
     }
 
