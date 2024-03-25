@@ -116,7 +116,7 @@
                                             for="form3Example3">{{ __('register.phone_number') }}</label>
 
                                             <div role="group" class="input-group " id='phone_field' dir="ltr" >
-                                               
+
                                                 <div class="input-group-prepend">
                                                     <div class=" input-group-text">
                                                         <span>+966</span>
@@ -126,8 +126,8 @@
                                                        placeholder="5xxxxxxxx" class="form-control "
                                                        onkeypress="return (event.charCode >= 48 && event.charCode <= 57)"
                                                        @if ($errors->has('number')) data-error="true" @endif dir="ltr"
-                                                       aria-invalid="true" maxlength="9">
-                
+                                                       aria-invalid="true" maxlength="14">
+
                                                 <div class="input-group-append">
                                                     <div class="{{app()->getLocale() == 'ar'? 'block-class':'input-group-text'}}"><svg xmlns="http://www.w3.org/2000/svg" width="14px"
                                                                                        height="14px" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -139,7 +139,7 @@
                                                         </svg>
                                                     </div>
                                                 </div>
-                
+
                                                 @if ($errors->has('number'))
                                                     <span style="color: red;font-size:16px" role="alert">
                                                     <strong>{{  $errors->first('number') }}</strong>
@@ -147,8 +147,8 @@
                                                 @endif
                                             </div>
                                         </div>
-                                       
-                                       
+
+
                                         <div class="mt-3">
                                             <label class="form-label"
                                                 for="form3Example3">{{ __('contact.contact_type_label') }}</label>

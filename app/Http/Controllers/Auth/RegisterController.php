@@ -54,7 +54,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'regex:/^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$/', 'max:255', 'unique:users'],
-            'number' => ['required', 'regex:/^(\+966)[0-9]{9}$/', 'unique:users'],
+            'number' => ['required', 'regex:/^(\+966)[0-9]{9,14}$/', 'unique:users'],
         ]);
     }
 

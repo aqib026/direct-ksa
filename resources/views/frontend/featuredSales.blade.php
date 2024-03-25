@@ -220,7 +220,7 @@
                     </div>
                     <div class="form-group">
                         <label for="mobile_number">{{__('fetsales.num')}}</label>
-                        <div role="group" class="input-group mt-3" id='phone_field'>
+                        <div role="group" class="input-group mt-3" id='phone_field' dir="ltr">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
                                     <span>+966</span>
@@ -229,12 +229,12 @@
                             <input id="mobile" autocomplete="new-password" name="mobile_number" type="tel" value="{{ old('mobile_number', isset($user) ? $user->mobile_number : '') }}"
                                    placeholder="5xxxxxxxx" class="form-control "
                                    onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" onpaste="return (event.charCode>=48 && event.charCode<=57)"
-                                   @if ($errors->has('number')) data-error="true" @endif dir=""
-                                   aria-invalid="true"  maxlength="10">
+                                   @if ($errors->has('number')) data-error="true" @endif dir="ltr"
+                                   aria-invalid="true"  maxlength="14">
 
                             <div class="input-group-append">
                                 <div class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="14px"
-                                                                   height="14px" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                                   height="25px" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                                                    class="feather feather-smartphone">
                                         <rect x="5" y="2" width="14" height="20" rx="2" ry="2">
@@ -250,10 +250,10 @@
                     </div>
                     <div class="form-group">
                         <label for="email">{{__('fetsales.email')}}</label>
-                        <div class="input-group mb-3">
-                            <input type="text" name="email" id="email" class="form-control" aria-label="Email e.g. abc@xyz.com" value="{{ old('email', isset($user) ? $user->email : '') }}" placeholder="Email e.g. abc@xyz.com" required>
+                        <div class="input-group mb-3" dir="ltr">
+                            <input type="text" name="email"  id="email" class="form-control" aria-label="Email e.g. abc@xyz.com" value="{{ old('email', isset($user) ? $user->email : '') }}" placeholder="Email e.g. abc@xyz.com" required>
                             <div class="input-group-append">
-                                <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="14px" height="14px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></span>
+                                <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="14px" height="25px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></span>
                             </div>
                         </div>
                         @if ($errors->has('email'))
