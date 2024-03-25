@@ -19,7 +19,7 @@ class UserController extends Controller
     {
         if (Auth::id()) {
             $user = Auth()->user();
-            if ($user->usertype == 'customer') {
+            if ($user->usertype == 'customer' || $user->usertype == 'users') {
                 $user_requests=UserVisaApplications::where('user_id', auth()->user()->id)->count();
                 return view('user.user-dashboard', compact('user_requests'));
             }if ($user->usertype == 'admin') {
