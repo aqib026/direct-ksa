@@ -245,10 +245,9 @@
                                     value="{{ old('mobile_number', isset($user) ? $user->mobile_number : '') }}"
                                     placeholder="5xxxxxxxx" class="form-control "
                                     onkeypress="return (event.charCode >= 48 && event.charCode <= 57)"
-                                    onpaste="return (event.charCode>=48 && event.charCode<=57)" @if ($errors->has('number'))
-                                data-error="true"
-                                @endif dir="ltr"
-                                aria-invalid="true" maxlength="14">
+                                    onpaste="return (event.charCode>=48 && event.charCode<=57)" 
+                                    @if ($errors->has('number')) data-error="true" @endif dir="ltr"
+                                aria-invalid="true" minlength="9" maxlength="9" />
 
                                 <div class="input-group-append">
                                     <div class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="14px"

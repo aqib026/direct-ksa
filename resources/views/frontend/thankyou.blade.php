@@ -3,7 +3,7 @@
 @section('content')
     <section class="section border-0 m-0 bg-color-quaternary">
         @if (session()->has('success'))
-            <div class="col-md-6 alert alert-success" role="alert">
+            <div class="offset-md-3 col-md-6 alert alert-success" role="alert">
                 {!! session()->get('success') !!}
             </div>
         @endif
