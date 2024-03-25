@@ -78,13 +78,15 @@ class FeaturedSalesController extends Controller
          $validatedData = $request->validate([
             'required_service'  => 'required',
             'applicant_name'    => 'required',
-            'mobile_number'     => 'required', 'regex:/^[0-9]{9,14}$/',
-            'email' => 'required|email:rfc,dns|unique:users'
+            'mobile_number'     => 'required|regex:/^[0-9]{9,14}$/',
+            'email' => 'required|email:rfc,dns'
         ], [
             'required_service.required' => 'Required Service is required',
             'applicant_name.required'   => 'Applicant Name is required',
             'mobile_number.required'    => 'Mobile No is required',
-            'email.required'            => 'Email is required'
+            'email.required'            => 'Email is required',
+            'mobile_number.regex'    => 'Enter valid mobile number',
+
         ]);
         if($request->mobile_number){
             $request->merge(['mobile_number' => '+966' . $request->mobile_number]);

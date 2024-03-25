@@ -52,7 +52,9 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|email:rfc,dns|unique:users',
-            'number' => 'required', 'regex:/^(\+966)[0-9]{9,14}$/', 'unique:users',
+            'number' => 'required|regex:/^(\+966)[0-9]{9,14}$/ |unique:users',
+        ], [
+            'mobile_number.regex'    => 'Enter valid mobile number',
         ]);
     }
 
