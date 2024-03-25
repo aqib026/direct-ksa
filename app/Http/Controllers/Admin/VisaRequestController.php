@@ -103,11 +103,15 @@ class VisaRequestController extends Controller
             'appointment_city' => 'required',
             'adult_count' => 'nullable|numeric|min:0',
             'child_count' => 'nullable|numeric|min:0',
+            'passport_count' => 'nullable|numeric|min:0',
             'relation' => 'required',
         ]);
-        if ($request->adult_count <= 0 && $request->child_count <= 0) return back()->withErrors([
+        
+
+        if ($request->adult_count <= 0 && $request->child_count <= 0 && $request->passport_count <= 0) return back()->withErrors([
             'adult_count' => 'Please enter at least one Adult or Child',
             'child_count' => 'Please enter at least one Adult or Child',
+            'passport_count' => 'Please enter at least one Passport',
         ]);
         $form_data = $request->all();
         Session::put('form_data', $form_data);

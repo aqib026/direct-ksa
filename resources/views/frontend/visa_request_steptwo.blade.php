@@ -152,10 +152,10 @@
                                                     @endif
                                                 </span> {{ __('steps.s') }}</span></div>
                                     </td>
-                                    @if ($errors->has('adult_count') || $errors->has('child_count'))
+                                    @if ($errors->has('adult_count') || $errors->has('child_count') || $errors->has('passport_count') )
                                         <div class="alert alert-danger">
-                                            At least one of Adult Count or Child Count must be greater than zero.
-                                        </div>
+                                            Count Should be Greater than 0 
+                                            </div>
                                     @endif
                                 </tr>
                                 <tr class="{{ $VisaRequest->child_price ?? 'd-none' }}">
@@ -226,9 +226,11 @@
                             <h1 class="font-weight-semi-bold text-5 line-height-2 line-height-sm-7 mb-5 selectedpersons">
                                 <span class="passenger_total">
                                     @if (isset($form_data['passenger_total']) && $form_data['passenger_total'] > 0)
-                                        {!! number_format( (float) $form_data['passenger_total']) !!}
+                                        @php $temp_passenger_total = (float) $form_data['passenger_total']; @endphp
+                                        {!! @number_format($temp_passenger_total) !!}
                                     @elseif(isset($form_data['passport_counter_sum']) && $form_data['passport_counter_sum'] > 0)
-                                        {!! number_format( (float) $form_data['passport_counter_sum']) !!}
+                                        @php $temp_passport_counter_sum = (float) $form_data['passport_counter_sum']; @endphp
+                                        {!! @number_format($temp_passport_counter_sum) !!}
                                     @else
                                         0
                                     @endif
