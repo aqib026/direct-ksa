@@ -13,8 +13,14 @@
 				</div>
 				<h1 class="text-color-dark text-9 font-weight-semi-bold pb-2 mb-4 appear-animation mx-auto mt-2 mt-md-0" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">{{__('home.in')}}</h1>
 				<div class="d-block appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">
-					<a href="{{ route('visa_request') }}" data-hash data-hash-offset="0" data-hash-offset-lg="100" class="btn btn-modern btn-primary btn-arrow-effect-1 text-capitalize text-3-5 py-3 anim-hover-translate-top-5px transition-2ms">{{__('home.bu')}}<i class="fas fa-arrow-right ms-2"></i></a>
-				</div>
+                    <a href="{{ route('visa_request') }}" data-hash data-hash-offset="0" data-hash-offset-lg="100" class="btn btn-modern btn-primary btn-arrow-effect-1 text-capitalize text-3-5 py-3 anim-hover-translate-top-5px transition-2ms">
+                        {{__('home.bu')}}
+                        @if(app()->getLocale() == 'ar')
+                            <i class="fas fa-arrow-left ms-2"></i>
+                        @else
+                            <i class="fas fa-arrow-right ms-2"></i>
+                        @endif
+                    </a>				</div>
 			</div>
 		</div>
 	</div>
@@ -235,11 +241,11 @@
 			<div class="col-lg-6 text-center p-relative pt-5">
 
 				<div class="appear-animation custom-element-wrapper custom-element-9" data-appear-animation="expandIn" data-appear-animation-delay="1000">
-					<div class="bg-color-primary particle particle-dots w-100 h-100 opacity-3"></div>	
+					<div class="bg-color-primary particle particle-dots w-100 h-100 opacity-3"></div>
 				</div>
 
 				<div class="appear-animation custom-element-wrapper custom-element-10" data-appear-animation="expandIn" data-appear-animation-delay="1200">
-					<div class="bg-color-primary particle particle-dots w-100 h-100 opacity-3"></div>	
+					<div class="bg-color-primary particle particle-dots w-100 h-100 opacity-3"></div>
 				</div>
 
 				<div class="appear-animation custom-element-wrapper custom-element-11 p-relative rotate-r-45" data-appear-animation="fadeIn" data-appear-animation-delay="300">
