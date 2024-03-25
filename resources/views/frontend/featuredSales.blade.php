@@ -231,7 +231,7 @@
                         <div class="form-group">
                             <label for="applicant_name">{{ __('fetsales.apn') }}</label>
                             <input type="text" class="form-control" name="applicant_name" id="applicant_name"
-                                value="{{ old('applicant_name', isset($user) ? $user->name : '') }}"
+                                value="{{ isset($user) ? $user->name:old('applicant_name') }}"
                                 placeholder="e.g. Ahmed, Abdullah" required>
                             @if ($errors->has('applicant_name'))
                                 <span class="text-danger">{{ $errors->first('applicant_name') }}</span>
@@ -246,7 +246,7 @@
                                     </div>
                                 </div>
                                 <input id="mobile" autocomplete="new-password" name="mobile_number" type="tel"
-                                    value="{{ old('mobile_number', isset($user) ? $user->mobile_number : '') }}"
+                                    value="{{ isset($user) ? substr($user->number, 4):old('mobile_number') }}"
                                     placeholder="5xxxxxxxx" class="form-control "
                                     onkeypress="return (event.charCode >= 48 && event.charCode <= 57)"
                                     onpaste="return (event.charCode>=48 && event.charCode<=57)" @if ($errors->has('number'))
@@ -276,7 +276,7 @@
                             <div class="input-group mb-3" dir="ltr">
                                 <input type="text" name="email" id="email" class="form-control"
                                     aria-label="Email e.g. abc@xyz.com"
-                                    value="{{ old('email', isset($user) ? $user->email : '') }}"
+                                    value="{{ isset($user) ? $user->email:old('email') }}"
                                     placeholder="Email e.g. abc@xyz.com" required>
                                 <div class="input-group-append">
                                     <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="14px"
