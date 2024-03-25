@@ -217,17 +217,5 @@
             }
         }
     </script>
-   <script>
-     function validateInputLength(input) {
-        var len = input.value.length;
-        var errorDiv = document.getElementById('numberError');
-        if (len === 0) {
-            errorDiv.textContent = 'Mobile is required';
-        } else if (len < 9 || len > 9) {
-            errorDiv.textContent = 'Please enter a valid Saudi mobile number containing 9 digits';
-        } else {
-            errorDiv.textContent = '';
-        }
-    }
-</script>
+
 @endsection

@@ -39,8 +39,8 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \Illuminate\Session\Middleware\AuthenticateSession::class,
             \App\Http\Middleware\Localization::class
-            
-        
+
+
         ],
 
         'api' => [
@@ -72,5 +72,6 @@ class Kernel extends HttpKernel
         'admin'=> \App\Http\Middleware\Admin::class,
         'user'=> \App\Http\Middleware\User::class,
         'verify'=>\App\Http\Middleware\VerifyMobile::class,
+        'prevent-back-history'=>\App\Http\Middleware\PreventBackHistory::class,
     ];
 }
