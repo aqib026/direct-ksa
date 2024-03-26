@@ -47,6 +47,7 @@ return[
     "noct"=>"No. of Child Traveler's",
     "nop"=>"No. of Passport's",
     "ps"=>"Payment Summary",
+    "count" => "Count should be greater than zero",
 
 
 ]
