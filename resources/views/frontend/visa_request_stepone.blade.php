@@ -44,8 +44,8 @@
 									@foreach ($country->visatype as $visatype)
 										@php
 											$url = route('visa_request_steptwo', [$visatype->countries_id, $visatype->visa_type]);
-
-											$content .= "<a href='". $url ."' class='btn btn-popover-custom btn-lg btn-primary'>$visatype->visa_type</a>";
+											$text=session()->get('locale') == 'en'?$visatype->visa_type:$visatype->visa_type_ar??$visatype->visa_type;
+											$content .= "<a href='$url' class='btn btn-popover-custom btn-lg btn-primary'>$text</a>";
 										@endphp
 									@endforeach
 									@php $content .= "</div>"; @endphp
