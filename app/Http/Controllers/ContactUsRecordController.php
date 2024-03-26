@@ -17,8 +17,13 @@ class ContactUsRecordController extends Controller
             'message' => 'required',
             'number' => 'regex:/^[0-9]{9,20}$/',
         ],[
-            'number.regex'    => 'Enter valid  mobile number',
+            'number.regex'    => __('register.number_regex_validation'),
+            'name.required'    => __('contact.name_required_validation'),
+            'email.required'    => __('contact.email_required_validation'),
+            'category.required'    => __('contact.category_required_validation'),
+            'message.required'    => __('contact.message_required_validation'),
         ] );
+        
      
         ContactUsRecord::create([
             'name'  => $request->get('name'),
@@ -28,6 +33,6 @@ class ContactUsRecordController extends Controller
             'email' => $request->get('email')
         ]);
 
-        return redirect()->back()->with('success', 'Your query is submitted successfully,our team will contact as soon as possible');
+        return redirect()->back()->with('success', __('contact.success_message'));
     }
 }
