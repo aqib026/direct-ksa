@@ -68,6 +68,11 @@
   
     <!-- Theme Custom CSS -->
     <link rel="stylesheet" href="{{ asset('front-end/css/custom.css') }}">
+    <style>
+        .div-center-rtl{
+        margin-right: 25%;
+    }
+    </style>
     @yield('styles')
 </head>
 

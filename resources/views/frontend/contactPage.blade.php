@@ -3,12 +3,12 @@
 @section('content')
     <section class="section border-0 bg-transparent m-0" dir="{{ app()->getlocale() == 'en' ? 'ltr' : 'rtl' }}">
         @if (session()->has('success'))
-            <div class="col-md-6 alert alert-success" role="alert">
+        <div class="{{session()->get('locale') == 'en'?'offset-md-3 ':'div-center-rtl'}} col-md-6 alert alert-success" role="alert" @if(session()->get('locale') == 'ar') dir="rtl"  @endif>
                 {!! session()->get('success') !!}
             </div>
         @endif
         @if (session()->has('error'))
-            <div class="col-md-6 alert alert-danger" role="alert">
+        <div class="{{session()->get('locale') == 'en'?'offset-md-3 ':'div-center-rtl'}} col-md-6 alert alert-danger" role="alert" @if(session()->get('locale') == 'ar') dir="rtl"  @endif>
                 {!! session()->get('error') !!}
             </div>
         @endif
@@ -157,9 +157,9 @@
                                                 for="form3Example3">{{ __('contact.contact_type_label') }}</label>
                                             <select class="form-select" name="category"
                                                 aria-label="Default select example" required>
-                                                <option value="suggestion">Suggestion</option>
-                                                <option value="complaint">Complaint</option>
-                                                <option value="other">Other</option>
+                                                <option value="suggestion">{{ __('contact.select_suggestion_option') }}</option>
+                                                <option value="complaint">{{ __('contact.select_complaint_option') }}</option>
+                                                <option value="other">{{ __('contact.select_other_option') }}</option>
                                             </select>
                                             @error('category')
                                                 <span class="invalid-feedback" role="alert">
