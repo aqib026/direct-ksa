@@ -76,7 +76,7 @@ class FeaturedSalesController extends Controller
 
      public function store(Request $request)
      {
-         
+
          $validatedData = $request->validate([
             'required_service'  => 'required',
             'applicant_name'    => 'required',
@@ -87,7 +87,7 @@ class FeaturedSalesController extends Controller
             'applicant_name.required'   => 'Applicant Name is required',
             'mobile_number.required'    => 'Mobile No is required',
             'email.required'            => 'Email is required',
-            'mobile_number.regex'    => 'Enter valid mobile number',
+            'mobile_number.regex'    => 'Mobile number must be at least 9 digits',
 
         ]);
         $new_user_message="";
