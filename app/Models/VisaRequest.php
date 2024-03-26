@@ -16,9 +16,6 @@ class VisaRequest extends Model
     {
         return $this->belongsTo(Countries::class, 'countries_id', 'id');
     }
-    public function getVisaTypeAttribute($value) {
-        return session()->has('locale') && session()->get('locale') == 'ar' && !request()->is('admin*') ? $this->{'visa_type_ar'} : $value;  
-    }
     
     public function visatype()
     {

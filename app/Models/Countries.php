@@ -14,9 +14,7 @@ class Countries extends Model
     protected $table = "countries";
     protected $primarykey = "id";
 
-    public function getNameAttribute($value) {
-        return session()->has('locale') && session()->get('locale') == 'ar' && !request()->is('admin*') ? $this->{'name_ar'} : $value;  
-    }
+   
 
     public function visa()
     {
