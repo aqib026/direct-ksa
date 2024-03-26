@@ -1,6 +1,6 @@
 @extends('layouts.front-end')
 @section('content')
-	<section class="section border-0 bg-quaternary m-0 p-0 border-1">
+	<section class="section border-0 bg-quaternary m-0 p-0 border-1" >
 		<div class="steps w-100 text-center">
 			<a class="col-lg-3 col-xs-3 step"><span class="badge rounded-pill bg-success p-2">{{__('steps.s1')}}: <strong>{{__('steps.s1i')}}</strong>&nbsp;<i class="fa fa-check-circle"></i></span></a>
 			<a class="col-lg-3 col-xs-3 step"><span class="badge rounded-pill bg-success p-2">{{__('steps.s2')}}: <strong>{{__('steps.s2i')}}</strong></span></a>
@@ -8,7 +8,7 @@
 			<a class="col-lg-3 col-xs-3 step step-last"><span>{{__('steps.s4')}}: <strong>{{__('steps.s4i')}}</strong></span></a>
 		</div>
 	</section>
-	<h5 class="text-center mt-2 p-3">Please Fill all the information of Travelers!</h5>
+	<h5 class="text-center mt-2 p-3">{{__('step3.PleaseFill')}}</h5>
 	<section class="section border-0 bg-quaternary m-0">
 		<form action="{{ route('visa_request_application_form') }}" role="form" method="post" class="form-horizontal" enctype="multipart/form-data">
         @csrf
@@ -19,7 +19,7 @@
 							<ul class="nav nav-tabs" role="tablist">
 								@for ($i = 1; $i <= $form_data['adult_count']; $i++)
 									<li class="nav-item @if ($i == 1) active @endif" role="presentation">
-										<a class="nav-link @if ($i == 1) active @endif" href="#adult{{ $i }}" data-bs-toggle="tab" aria-selected="@if ($i == 1) true @else false @endif" role="tab" >Adult Traveler - {{ $i }}</a>
+										<a class="nav-link @if ($i == 1) active @endif" href="#adult{{ $i }}" data-bs-toggle="tab" aria-selected="@if ($i == 1) true @else false @endif" role="tab" >{{__('step3.AdultTraveler') }} - {{ $i }}</a>
 									</li>
 								@endfor
 							</ul>
@@ -27,38 +27,38 @@
 								@for ($i = 1; $i <= $form_data['adult_count']; $i++)
 									<div id="adult{{ $i }}" class="tab-pane @if ($i == 1) active show @endif" role="tabpanel">
 										<div class="tab-pane tab-pane-navigation active show" role="tabpanel">
-											<h4 class="mb-3">Personal Information</h4>
+											<h4 class="mb-3">{{__('step3.PersonalInformation')}}</h4>
 											<div class="card mb-4">
 												<div class="card-body">
 													<div class="row">
 														<div class="col-lg-6">
-															<div class="input-group input-group-default">
-																<span class="input-group-text">First Name</span>
-																<input type="text" name="adult_first_name_{{ $i }}" placeholder="First Name" class="form-control h-auto" required>
+															<div class="input-group input-group-default" dir="">
+																<span class="input-group-text">{{__('step3.FirstName')}}</span>
+																<input dir="" type="text" name="adult_first_name_{{ $i }}" placeholder="First Name" class="form-control h-auto" required>
 															</div>
 														</div>
 														<div class="col-lg-6">
 															<div class="input-group input-group-default">
-																<span class="input-group-text">Family Name</span>
+																<span class="input-group-text">{{__('step3.FamilyName')}}</span>
 																<input type="text" name="adult_family_name_{{ $i }}" placeholder="Family Name" class="form-control h-auto" required>
 															</div>
 														</div>
 													</div>
 												</div>
 											</div>
-											<h4 class="mb-3">Mother's Information</h4>
+											<h4 class="mb-3">{{__('step3.MotherInformation')}}</h4>
 											<div class="card mb-4">
 												<div class="card-body">
 													<div class="row">
 														<div class="col-lg-6">
 															<div class="input-group input-group-default">
-																<span class="input-group-text">First Name</span>
+																<span class="input-group-text">{{__('step3.FirstName')}}</span>
 																<input type="text" name="adult_mother_first_name_{{ $i }}" placeholder="First Name" class="form-control h-auto" required>
 															</div>
 														</div>
 														<div class="col-lg-6">
 															<div class="input-group input-group-default">
-																<span class="input-group-text">Family Name</span>
+																<span class="input-group-text">{{__('step3.FamilyName')}}</span>
 																<input type="text" name="adult_mother_family_name_{{ $i }}" placeholder="Family Name" class="form-control h-auto" required>
 															</div>
 														</div>
@@ -70,8 +70,8 @@
 													<div class="row">
 														<div class="col">
 															<div class="input-group input-group-default">
-																<span class="input-group-text">Upload Passport Copy of Traveler</span>
-																<input name="adult_passport_{{ $i }}" type="file" class="form-control h-auto" required>
+																<span class="input-group-text">{{__('step3.UploadPassport')}}</span>
+																<input dir="ltr" name="adult_passport_{{ $i }}" type="file" class="form-control h-auto" required>
 															</div>
 														</div>
 													</div>
@@ -96,38 +96,38 @@
 								@for ($i = 1; $i <= $form_data['child_count']; $i++)
 									<div id="child{{ $i }}" class="tab-pane @if ($i == 1) active show @endif" role="tabpanel">
 										<div class="tab-pane tab-pane-navigation active show" role="tabpanel">
-											<h4 class="mb-3">Personal Information</h4>
+											<h4 class="mb-3">{{__('step3.PersonalInformation')}}</h4>
 											<div class="card mb-4">
 												<div class="card-body">
 													<div class="row">
 														<div class="col-lg-6">
 															<div class="input-group input-group-default">
-																<span class="input-group-text">First Name</span>
+																<span class="input-group-text">{{__('step3.FirstName')}}</span>
 																<input type="text" name="child_first_name_{{ $i }}" placeholder="First Name" class="form-control h-auto" required>
 															</div>
 														</div>
 														<div class="col-lg-6">
 															<div class="input-group input-group-default">
-																<span class="input-group-text">Family Name</span>
+																<span class="input-group-text">{{__('Step3.FamilyName')}}</span>
 																<input type="text" name="child_family_name_{{ $i }}" placeholder="Family Name" class="form-control h-auto" required>
 															</div>
 														</div>
 													</div>
 												</div>
 											</div>
-											<h4 class="mb-3">Mother's Information</h4>
+											<h4 class="mb-3">{{__('step3.MotherInformation')}}</h4>
 											<div class="card mb-4">
 												<div class="card-body">
 													<div class="row">
 														<div class="col-lg-6">
 															<div class="input-group input-group-default">
-																<span class="input-group-text">First Name</span>
+																<span class="input-group-text">{{__('step3.FirstName')}}</span>
 																<input type="text" name="child_mother_first_name_{{ $i }}" placeholder="First Name" class="form-control h-auto" required>
 															</div>
 														</div>
 														<div class="col-lg-6">
 															<div class="input-group input-group-default">
-																<span class="input-group-text">Family Name</span>
+																<span class="input-group-text">{{__('step3.FamilyName')}}</span>
 																<input type="text" name="child_mother_family_name_{{ $i }}" placeholder="Family Name" class="form-control h-auto" required>
 															</div>
 														</div>
@@ -139,7 +139,7 @@
 													<div class="row">
 														<div class="col">
 															<div class="input-group input-group-default">
-																<span class="input-group-text">Upload Passport Copy of Traveler</span>
+																<span class="input-group-text">{{__('step3.UploadPassport')}}</span>
 																<input name="child_passport_{{ $i }}" type="file" class="form-control h-auto" required>
 															</div>
 														</div>
@@ -170,7 +170,7 @@
 													<div class="row">
 														<div class="col">
 															<div class="input-group input-group-default">
-																<span class="input-group-text">Upload Passport Copy of Traveler</span>
+																<span class="input-group-text">{{__('step3.UploadPassport')}}</span>
 																<input name="passport_{{ $i }}" type="file" class="form-control h-auto" required>
 															</div>
 														</div>
