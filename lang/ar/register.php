@@ -12,4 +12,11 @@ return [
     'register' => 'تسجيل',
     'already_member' => 'هل أنت عضو بالفعل؟',
     'log_in' => 'تسجيل الدخول',
+    'number_regex_validation'=>"رقم الجوال يجب أن لا يقل عن 9 أرقام",
+    "number_unique_validation"=>"رقم الجوال موجود بالفعل",
+    "email_unique_validation"=>"البريد الالكتروني موجود بالفعل",
+    "email_regix_validation"=>"أدخل عنوان بريد إلكتروني صالح",
+    "email_required_validation"=>"البريد الالكتروني مطلوب",
+    "name_required_validation"=>"مطلوب اسم",
+    "number_required_validation"=>"رقم الجوال مطلوب",
 ];

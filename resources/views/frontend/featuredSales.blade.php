@@ -60,10 +60,9 @@
                                 </select>
                             </div>
                             <div class="form-group">
-
                                 <label for="documents">{{ __('fetsales.upd') }}</label>
-                                <input type="file" name="documents[]" accept=".jpeg, .jpg, .png, .pdf"
-                                    multiple="multiple" class="form-control" id="documents" style='line-height: 2.5;' />
+                                <input type="file" name="documents[]" accept=".jpeg, .jpg, .png, .pdf" multiple="multiple" class="form-control" id="documents" style='line-height: 2.5;' />
+                                <span id="file-names"></span>
                             </div>
 
                             <div class="form-group">
@@ -228,7 +227,7 @@
                             <label for="applicant_name">{{ __('fetsales.apn') }}</label>
                             <input type="text" class="form-control" name="applicant_name" id="applicant_name"
                                 value="{{ isset($user) ? $user->name:old('applicant_name') }}"
-                                placeholder="e.g. Ahmed, Abdullah" required>
+                                placeholder="e.g. Ahmed, Abdullah" {{auth()->check()?'readonly':''}} required>
                             @if ($errors->has('applicant_name'))
                                 <span class="text-danger">{{ $errors->first('applicant_name') }}</span>
                             @endif
@@ -245,9 +244,9 @@
                                     value="{{ isset($user) ? substr($user->number, 4):old('mobile_number') }}"
                                     placeholder="5xxxxxxxx" class="form-control "
                                     onkeypress="return (event.charCode >= 48 && event.charCode <= 57)"
-                                    onpaste="return (event.charCode>=48 && event.charCode<=57)" 
+                                    onpaste="return (event.charCode>=48 && event.charCode<=57)"
                                     @if ($errors->has('number')) data-error="true" @endif dir="ltr"
-                                aria-invalid="true" minlength="9" maxlength="9" />
+                                aria-invalid="true" minlength="9"  maxlength="20" {{auth()->check()?'readonly':''}} />
 
                                 <div class="input-group-append">
                                     <div class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="14px"
@@ -272,7 +271,7 @@
                                 <input type="text" name="email" id="email" class="form-control"
                                     aria-label="Email e.g. abc@xyz.com"
                                     value="{{ isset($user) ? $user->email:old('email') }}"
-                                    placeholder="Email e.g. abc@xyz.com" required>
+                                    placeholder="Email e.g. abc@xyz.com" {{auth()->check()?'readonly':''}} required>
                                 <div class="input-group-append">
                                     <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="14px"
                                             height="25px" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -318,6 +317,7 @@
 @section('custom-scripts')
     <script type="text/javascript">
         $(document).ready(function() {
+
             $('#required_service').trigger("change");
         });
         $("#feature_sales_form").on("submit", function(event) {
@@ -333,7 +333,7 @@
             $('select').each(function() {
                 $(this).removeAttr('required');
             });
-            
+
             $('.d-block-custom').addClass('d-none');
             $("div").removeClass("d-block-custom");
             $('.' + $('#required_service').val()).addClass('d-block-custom').removeClass('d-none');
@@ -348,7 +348,7 @@
             $('.' + $('#required_service').val()).find('input[type="tel"]').each(function() {
                 $(this).prop('required', true)
             });
-           
+
 
             $('.' + $('#required_service').val()).find('select').each(function() {
                 $(this).prop('required', true)
@@ -451,5 +451,19 @@
         function passport_calculation(passport_qty = 0, amount) {
             return passport_qty * amount;
         }
+        $(document).ready(function() {
+            $('#documents').on('change', function() {
+                var files = $(this)[0].files;
+                var names = '';
+                for (var i = 0; i < files.length; i++) {
+                    names += files[i].name;
+                    if (i < files.length - 1) {
+                        names += ', ';
+                    }
+                }
+                $('#file-names').text(names);
+            });
+        });
+
     </script>
 @endsection

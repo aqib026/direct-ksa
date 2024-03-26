@@ -15,7 +15,7 @@ class ContactUsRecordController extends Controller
             'email' => 'required',
             'category' => 'required',
             'message' => 'required',
-            'number' => 'regex:/^[0-9]{9,14}$/',
+            'number' => 'regex:/^[0-9]{9,20}$/',
         ],[
             'number.regex'    => 'Enter valid  mobile number',
         ] );

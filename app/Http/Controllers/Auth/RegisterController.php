@@ -52,15 +52,15 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|email:rfc,dns|unique:users',
-            'number' => 'required|regex:/^[0-9]{9,14}$/ |unique:users',
+            'number' => 'required|regex:/^[0-9]{9,20}$/ |unique:users',
         ], [
-            'number.regex'    => 'Enter valid  mobile number',
-            'number.unique'    => 'Mobile number already exists',
-            'email.unique'    => 'Email already exists',
-            'email.email'    => 'Enter valid email address',
-            'email.required'    => 'Email is required',
-            'name.required'    => 'Name is required',
-            'number.required'    => 'Mobile number is required',
+            'number.regex'      => __('register.number_regex_validation'),
+            'number.unique'    => __('register.number_unique_validation'),
+            'email.unique'    => __('register.email_unique_validation'),
+            'email.email'    => __('register.email_regix_validation'),
+            'email.required'    => __('register.email_required_validation'),
+            'name.required'    => __('register.name_required_validation'),
+            'number.required'    => __('register.number_required_validation'),
         ]);
     }
 

@@ -65,7 +65,7 @@
                         </a>
                     </div>
                     @else
-                    <div class="ml-md-2 ml-0"><a href="{{url('login')}}" class="d-block"><button type="button" class="btn btn-primary text-uppercase">Login</button></a></div>
+                    <div class="ml-md-2 ml-0"><a href="{{url('login')}}" class="d-block"><button type="button" class="btn btn-primary text-uppercase">{{__('userdashboard.login')}}</button></a></div>
                     @endif
                 </li>
             </ul>
