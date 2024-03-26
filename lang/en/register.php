@@ -13,4 +13,11 @@ return [
     'register' => 'Register',
     'already_member' => 'Already a member?',
     'log_in' => 'Log in',
+    'number_regex_validation'=>"Mobile number must be at least 9 digits",
+    "number_unique_validation"=>"Mobile number already exists",
+    "email_unique_validation"=>"Email already exists",
+    "email_regix_validation"=>"Enter valid email address",
+    "email_required_validation"=>"Email is required",
+    "name_required_validation"=>"Name is required",
+    "number_required_validation"=>"Mobile number is required",
 ];

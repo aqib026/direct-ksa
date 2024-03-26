@@ -116,6 +116,9 @@
             font-weight: 600 !important;
             padding: 8px 16px 9px !important;
         }
+        .div-center-rtl{
+        margin-right: 25%;
+    }
     </style>
     @yield('styles')
 </head>
@@ -123,7 +126,7 @@
 <body>
     <div class="body">
         @include('user.layout.header')
-        <div class="offset-md-3 col-md-6 mt-2 ">
+        <div class="{{session()->get('locale') == 'en'?'offset-md-3 ':'div-center-rtl'}} col-md-6 mt-2 ">
             @if (session('success'))
                 <div class="alert alert-success" role="alert">
                     {{ session('success') }}
@@ -145,10 +148,7 @@
             @if (is_null(Auth::user()->email_verified_at))
                 @php
                     $error_message .=
-                        ' Please verify your email address. <a href="' .
-                        route('verification.notice') .
-                        '"
-                        class="alert-link">Click here</a> to go to the verification page.';
+                    __('userdashboard.verify_email_address_1') . ' <a href="' . route('verification.notice') . '" class="alert-link">' . __('userdashboard.verify_email_address_2') . '</a> ' . __('userdashboard.verify_email_address_3');
                 @endphp
             @endif
             @if (strlen($error_message) > 0)

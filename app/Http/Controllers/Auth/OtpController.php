@@ -30,10 +30,10 @@ class OtpController extends Controller
 
         if ($request->has('number') && $request->input('email') === null) {
             $rules = ['number'=>'required|exists:users,number'];
-            $messages=["number" =>"Please enter valid registered mobile number"];
+            $messages=["number" =>__('otp.number_validation')];
         }else if ($request->has('email') && $request->input('number') === null) {
             $rules = ['email'=>'required|exists:users'];
-            $messages= ["email"=>"Please enter valid registered email address"];
+            $messages= ["email"=>__('otp.email_validation')];
         }else{
             return redirect()->back()->with('general-error',trans('login.general_error'));
         }
@@ -68,14 +68,14 @@ class OtpController extends Controller
                     if (isset($userotp->email)) {
                         $data=["otp"=>$userotp->otp,"name"=>$userotp->name];
                         Mail::to($user->email)->send(new SendOtp($data));
-                        return redirect()->route('otp.verification', ["user_id"=>$userotp->id])->with('success', 'OTP has been sent to your registered email !');
+                        return redirect()->route('otp.verification', ["user_id"=>$userotp->id])->with('success', __('otp.opt_success_message'));
                     } else {
                         // Handle the case where $userotp is null
-                        return redirect()->back()->with('error', 'Somethings went wroing. Please try again later.');
+                        return redirect()->back()->with('error', __('otp.otp_error_message'));
                     }
                 } else {
                     // Handle the case where $userotp is null
-                    return redirect()->back()->with('error', 'Failed to generate OTP. Please try again.');
+                    return redirect()->back()->with('error', __('otp.otp_failed_message'));
                 }
             } else {
                 $userotp=$user;
@@ -83,14 +83,14 @@ class OtpController extends Controller
                     if (isset($userotp->email)) {
                         $data=["otp"=>$userotp->otp,"name"=>$userotp->name];
                         Mail::to($user->email)->send(new SendOtp($data));
-                        return redirect()->route('otp.verification', ["user_id"=>$userotp->id])->with('success', 'OTP has been sent to your registered email !');
+                        return redirect()->route('otp.verification', ["user_id"=>$userotp->id])->with('success',__('otp.opt_success_message'));
                     } else {
                         // Handle the case where $userotp is null
-                        return redirect()->back()->with('error', 'Somethings went wroing. Please try again later.');
+                        return redirect()->back()->with('error', __('otp.otp_error_message'));
                     }
                 } else {
                     // Handle the case where $userotp is null
-                    return redirect()->back()->with('error', 'Failed to generate OTP. Please try again.');
+                    return redirect()->back()->with('error', __('otp.otp_failed_message'));
                 }
             }
         } elseif(isset($user)) {
@@ -101,17 +101,17 @@ class OtpController extends Controller
                     $data=["otp"=>$userotp->otp,"name"=>$userotp->name];
                     Mail::to($user->email)->send(new SendOtp($data));
 
-                    return redirect()->route('otp.verification', ["user_id"=>$userotp->id])->with('success', 'OTP has been sent to your registered email !');
+                    return redirect()->route('otp.verification', ["user_id"=>$userotp->id])->with('success', __('otp.opt_success_message'));
                 } else {
                     // Handle the case where $userotp is null
-                    return redirect()->back()->with('error', 'Something went wrong. Please try again later.');
+                    return redirect()->back()->with('error',  __('otp.otp_error_message'));
                 }
             } else {
                 // Handle the case where $userotp is null
-                return redirect()->back()->with('error', 'Failed to generate OTP. Please try again.');
+                return redirect()->back()->with('error', __('otp.otp_failed_message'));
             }
         }else{
-            return redirect()->back()->with('error', 'Failed to generate OTP. Invalid User');
+            return redirect()->back()->with('error', __('otp.invalid_user_message'));
         }
     }
 
@@ -133,7 +133,7 @@ class OtpController extends Controller
         if(isset( $user)){
             return view('auth.verification',compact('user'));
         }else{
-            return redirect()->back()->with('error', "Record not found!");
+            return redirect()->back()->with('error', __('otp.record_not_found'));
         }
 
     }
@@ -159,7 +159,7 @@ class OtpController extends Controller
 
 
             if ($interval->i > 10 || $interval->h > 0 || $interval->d > 0 || $interval->m > 0 || $interval->y > 0) {
-                return redirect()->back()->with('error', 'Your OTP has expired.Please Try again with new OTP');
+                return redirect()->back()->with('error', __('otp.otp_expiration_message'));
             } else{
                 if($userotp->otp==$otp){
 
@@ -167,14 +167,14 @@ class OtpController extends Controller
                     $userotp->otp=null;
                     $userotp->otp_expiration=null;
                     $userotp->update();
-                    return redirect('/user/dashboard')->with('success', 'OTP verification successful.');
+                    return redirect('/user/dashboard')->with('success', __('otp.otp_verification_message'));
                 }else{
-                    return redirect()->back()->with('error', 'Your OTP is incorrect.');
+                    return redirect()->back()->with('error', __('otp.opt_incorrect_message'));
                 }
             }
 
         }else{
-            return redirect()->back()->with('error', 'Something went wrong try again later!');
+            return redirect()->back()->with('error', __('otp.otp_error_message'));
         }
 
     }

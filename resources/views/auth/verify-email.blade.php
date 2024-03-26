@@ -11,12 +11,12 @@
 
 
                         <div class="my-4 text-sm text-gray-600">
-                            {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
+                            {{ __('emailverify.thnx_text') }}
                         </div>
 
                         @if (session('status') == 'verification-link-sent')
                             <div class="my-4 font-medium text-sm text-green-600">
-                                {{ __('A new verification link has been sent to the email address you provided during registration.') }}
+                                {{ __('emailverify.verification_text') }}
                             </div>
                         @endif
 
@@ -25,7 +25,7 @@
                                 @csrf
 
                                 <button type="submit" class="btn btn-primary ">
-                                    {{ __('Resend Verification Email') }}
+                                    {{__('emailverify.resend_verification_btn') }}
                                 </button>
                             </form>
                             <div class="d-flex">
@@ -34,14 +34,14 @@
                                 @csrf
 
                                 <button type="submit" class="btn btn-outline-primary mt-2">
-                                    {{ __('Log Out') }}
+                                    {{__('emailverify.logout_btn') }}
                                 </button>
                             </form>
                             </div>
                                 <div class="float-right mr-5" style="margin-left: 75%;">
 
                                 <a href="{{url('user/dashboard')}}">    <button  class="btn btn-outline-primary mt-2">
-                                        SKIP FOR NOW
+                                    {{__('emailverify.skip_btn')}}
                                     </button></a>
 
                                 </div>

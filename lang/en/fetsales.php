@@ -101,5 +101,12 @@ return[
     "pivf"=>"Price Includes: Visa Fees",
     "cwsg"=>"Cost will decided after one of our support agents contact you.",
     "sar"=>"SAR",
+    "service_required_validation"=>"Required Service is required",
+    "name_required_validation"=>"Applicant Name is required",
+    "number_required_validation"=>"Mobile number is required",
+    "email_required_validation"=>"Email is required",
+    'number_regex_validation'=>"Mobile number must be at least 9 digits",
+    "new_user_message"=>"The email is  registered in our system .You can use this email to login via OTP and you can update your password by using forget password link.",
+    "success_message"=>"Your request for selected service has been submitted Successfuly.Our team will contact ASAP"
 ]
 ?>

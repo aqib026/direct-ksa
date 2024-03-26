@@ -83,11 +83,11 @@ class FeaturedSalesController extends Controller
             'mobile_number'     => 'required|regex:/^[0-9]{9,20}$/',
             'email' => 'required|email:rfc,dns'
         ], [
-            'required_service.required' => 'Required Service is required',
-            'applicant_name.required'   => 'Applicant Name is required',
-            'mobile_number.required'    => 'Mobile No is required',
-            'email.required'            => 'Email is required',
-            'mobile_number.regex'    => 'Mobile number must be at least 9 digits',
+            'required_service.required' => __('fetsales.service_required_validation'),
+            'applicant_name.required'   => __('fetsales.name_required_validation'),
+            'mobile_number.required'    => __('fetsales.number_required_validation'),
+            'email.required'            => __('fetsales.email_required_validation'),
+            'mobile_number.regex'    =>  __('fetsales.number_regex_validation'),
 
         ]);
         $new_user_message="";
@@ -104,7 +104,7 @@ class FeaturedSalesController extends Controller
                     "password"=>Hash::make('12345678'),
                     'usertype'=>'customer',
                 ]);
-                $new_user_message="The email is  registered in our system .You can use this email to login via OTP and you can update your password by using forget password link.";
+                $new_user_message=__('fetsales.new_user_message');
             }
         }
         if($request->mobile_number){
@@ -156,7 +156,7 @@ class FeaturedSalesController extends Controller
          }
 
          if ($FeaturedSales) {
-            $success_message='Your request for selected service has been submitted Successfuly.Our team will contact ASAP <br> '.$new_user_message;
+            $success_message=__('fetsales.success_message').' <br> '.$new_user_message;
              return redirect(route('featured_sales_thankyou'))->with('success',$success_message );
          }
 
