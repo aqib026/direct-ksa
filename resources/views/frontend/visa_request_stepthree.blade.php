@@ -186,7 +186,7 @@
 				</div>
 				<div class="row py-5 appear-animation datepickercustom" data-appear-animation="fadeIn" data-appear-animation-delay="300">
 					<div class="col col-lg-12 text-center">
-						<button class="btn btn-modern btn-primary btn-arrow-effect-1 btn-xl mb-2" type="submit">{{__('steps.ns3')}}</button>
+						<button class="btn btn-modern btn-primary btn-arrow-effect-1 btn-xl mb-2" type="submit">{{__('steps.ns4')}}</button>
 					</div>
 				</div>
 			</div>
