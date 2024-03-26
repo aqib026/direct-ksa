@@ -126,7 +126,7 @@
                                                        placeholder="5xxxxxxxx" class="form-control "
                                                        onkeypress="return (event.charCode >= 48 && event.charCode <= 57)"
                                                        @if ($errors->has('number')) data-error="true" @endif dir="ltr"
-                                                       aria-invalid="true" maxlength="14">
+                                                       aria-invalid="true" minlength="9"  maxlength="20">
 
                                                 <div class="input-group-append">
                                                     <div class="{{app()->getLocale() == 'ar'? 'block-class':'input-group-text'}}"><svg xmlns="http://www.w3.org/2000/svg" width="14px"
@@ -140,13 +140,13 @@
                                                     </div>
                                                 </div>
 
-                                               
+
                                             </div>
                                             @if ($errors->has('number'))
-                                               
+
                                             <span style="color: red;font-size:16px" role="alert">
                                                 <strong>{{  $errors->first('number') }}</strong>
-                                            
+
                                         </span>
                                         @endif
                                         </div>

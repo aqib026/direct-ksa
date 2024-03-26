@@ -35,7 +35,7 @@
                                     oninput="validateInputLength(this)" @if ($errors->has('number'))
                                 data-error="true"
                                 @endif dir=""
-                                aria-invalid="true" maxlength="14">
+                                aria-invalid="true" minlength="9"  maxlength="20">
                                 <div class="input-group-append">
                                     <div class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="14px"
                                             height="25px" viewBox="0 0 24 24" fill="none" stroke="currentColor"

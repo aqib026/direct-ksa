@@ -245,9 +245,9 @@
                                     value="{{ isset($user) ? substr($user->number, 4):old('mobile_number') }}"
                                     placeholder="5xxxxxxxx" class="form-control "
                                     onkeypress="return (event.charCode >= 48 && event.charCode <= 57)"
-                                    onpaste="return (event.charCode>=48 && event.charCode<=57)" 
+                                    onpaste="return (event.charCode>=48 && event.charCode<=57)"
                                     @if ($errors->has('number')) data-error="true" @endif dir="ltr"
-                                aria-invalid="true" minlength="9" maxlength="9" />
+                                aria-invalid="true" minlength="9"  maxlength="20" />
 
                                 <div class="input-group-append">
                                     <div class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="14px"
@@ -333,7 +333,7 @@
             $('select').each(function() {
                 $(this).removeAttr('required');
             });
-            
+
             $('.d-block-custom').addClass('d-none');
             $("div").removeClass("d-block-custom");
             $('.' + $('#required_service').val()).addClass('d-block-custom').removeClass('d-none');
@@ -348,7 +348,7 @@
             $('.' + $('#required_service').val()).find('input[type="tel"]').each(function() {
                 $(this).prop('required', true)
             });
-           
+
 
             $('.' + $('#required_service').val()).find('select').each(function() {
                 $(this).prop('required', true)
