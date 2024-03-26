@@ -80,7 +80,7 @@ class FeaturedSalesController extends Controller
          $validatedData = $request->validate([
             'required_service'  => 'required',
             'applicant_name'    => 'required',
-            'mobile_number'     => 'required|regex:/^[0-9]{9,14}$/',
+            'mobile_number'     => 'required|regex:/^[0-9]{9,20}$/',
             'email' => 'required|email:rfc,dns'
         ], [
             'required_service.required' => 'Required Service is required',

@@ -60,10 +60,9 @@
                                 </select>
                             </div>
                             <div class="form-group">
-
                                 <label for="documents">{{ __('fetsales.upd') }}</label>
-                                <input type="file" name="documents[]" accept=".jpeg, .jpg, .png, .pdf"
-                                    multiple="multiple" class="form-control" id="documents" style='line-height: 2.5;' />
+                                <input type="file" name="documents[]" accept=".jpeg, .jpg, .png, .pdf" multiple="multiple" class="form-control" id="documents" style='line-height: 2.5;' />
+                                <span id="file-names"></span>
                             </div>
 
                             <div class="form-group">
@@ -318,6 +317,7 @@
 @section('custom-scripts')
     <script type="text/javascript">
         $(document).ready(function() {
+
             $('#required_service').trigger("change");
         });
         $("#feature_sales_form").on("submit", function(event) {
@@ -451,5 +451,19 @@
         function passport_calculation(passport_qty = 0, amount) {
             return passport_qty * amount;
         }
+        $(document).ready(function() {
+            $('#documents').on('change', function() {
+                var files = $(this)[0].files;
+                var names = '';
+                for (var i = 0; i < files.length; i++) {
+                    names += files[i].name;
+                    if (i < files.length - 1) {
+                        names += ', ';
+                    }
+                }
+                $('#file-names').text(names);
+            });
+        });
+
     </script>
 @endsection
