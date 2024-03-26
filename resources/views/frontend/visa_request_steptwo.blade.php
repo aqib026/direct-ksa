@@ -293,7 +293,7 @@
                     data-appear-animation-delay="300">
                     <div class="col col-lg-12 text-center">
                         <button class="btn btn-modern btn-primary btn-arrow-effect-1 btn-xl mb-2"
-                            type="submit">{{ __('steps.ns2') }}</button>
+                            type="submit">{{ __('steps.ns3') }}</button>
                     </div>
                 </div>
             </div>
@@ -470,13 +470,7 @@
                     return true;
             }
         }).on("changeDate", function(e) {
-            let a = [{
-                day: 'numeric'
-            }, {
-                month: 'numeric'
-            }, {
-                year: 'numeric'
-            }];
+            let a = [{day: 'numeric'}, {month: 'numeric'}, {year: '2-digit'}];
             let s = join(e.date, a, '-');
 
             $(".selecteddatediv").html(s);
