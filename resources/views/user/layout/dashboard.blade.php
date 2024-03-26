@@ -123,14 +123,14 @@
 <body>
     <div class="body">
         @include('user.layout.header')
-        <div class="col-md-5 mt-2 ">
+        <div class="offset-md-3 col-md-6 mt-2 ">
             @if (session('success'))
-                <div class="alert alert-success">
+                <div class="alert alert-success" role="alert">
                     {{ session('success') }}
                 </div>
             @endif
-            @if (session('error'))
-                <div class="alert alert-danger">
+            @if (session('error')) 
+                <div class="alert alert-danger" role="alert">
                     {{ session('error') }}
                 </div>
             @endif

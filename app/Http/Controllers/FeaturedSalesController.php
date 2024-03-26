@@ -101,7 +101,8 @@ class FeaturedSalesController extends Controller
                     "name"=>$request->applicant_name,
                     "number"=>"+966".$request->mobile_number,
                     "email"=>$request->email,
-                    "password"=>Hash::make('12345678')
+                    "password"=>Hash::make('12345678'),
+                    'usertype'=>'customer',
                 ]);
                 $new_user_message="The email is  registered in our system .You can use this email to login via OTP and you can update your password by using forget password link.";
             }
