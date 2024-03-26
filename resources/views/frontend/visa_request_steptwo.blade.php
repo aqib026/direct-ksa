@@ -154,7 +154,7 @@
                                     </td>
                                     @if ($errors->has('adult_count') || $errors->has('child_count') || $errors->has('passport_count') )
                                         <div class="alert alert-danger">
-                                            Count Should be Greater than 0 
+                                            {{ __('steps.count')}}
                                             </div>
                                     @endif
                                 </tr>
@@ -383,7 +383,7 @@
                 return false;
 
             });
-            
+
             $('#child_counter_plus').on('click', function() {
                 var child_counter_current_value = parseInt($('.child_counter').text());
                 var child_price_total = 0;
