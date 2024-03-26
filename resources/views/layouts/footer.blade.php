@@ -7,6 +7,7 @@
                 </a>
 
                 <ul class="social-icons social-icons-clean social-icons-medium">
+
                     <li class="social-icons-facebook">
                         <a href="http://www.facebook.com/" target="_blank" title="Facebook">
                             <i class="fab fa-facebook-f text-color-light"></i>
@@ -49,7 +50,7 @@
                             <li><a href="{{ route('content_page') }}/terms_conditions" class="text-white text-color-hover-primary">{{ __('head.tc') }}</a></li>
                         </ul>
                     </div>
-                    <div class="col-lg-4 col-md-6 mt-4 mt-md-4 mt-sm-4 mt-lg-0">
+                    <div class="col-lg-4 col-md-6 mt-4 mt-md-4 mt-sm-4 mt-lg-0" dir="ltr">
                         <ul class="list list-unstyled">
                             <li class="d-flex align-items-center mb-4">
                                 <i class="icon icon-envelope text-color-light text-5 font-weight-bold position-relative top-1 me-3-5"></i>
