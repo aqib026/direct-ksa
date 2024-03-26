@@ -78,8 +78,8 @@
                         <div class="row">
                             <div class="form-group col">
                                 <div class="form-check form-check-inline">
-                                    <label class="form-check-label form-check-label-custom">
-                                        <input class="form-check-input form-check-input-custom" type="radio"
+                                    <label class="form-check-label form-check-label-custom {{session()->get('locale') == 'ar'?'label_rtl_style':''}}" >
+                                        <input class="form-check-input form-check-input-custom {{session()->get('locale') == 'ar'?'radio_rtl_style ':''}} " type="radio"
                                             name="appointment_city" data-msg-required="Please select at least one option."
                                             value="Riyadh" @if (isset($form_data['appointment_city']) && $form_data['appointment_city'] == 'Riyadh') checked @endif
                                             required>{{ __('steps.r') }}
@@ -103,7 +103,7 @@
                             <div class="form-group col">
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label form-check-label-custom" style="margin-left: 14px">
-                                        <input class="form-check-input form-check-input-custom" type="radio"
+                                        <input class="form-check-input form-check-input-custom {{session()->get('locale') == 'ar'?'radio_rtl_style ':''}}" type="radio"
                                             name="appointment_city" data-msg-required="Please select at least one option."
                                             value="Jeddah" @if (isset($form_data['appointment_city']) && $form_data['appointment_city'] == 'Jeddah') checked @endif
                                             required>{{ __('steps.j') }}
@@ -312,6 +312,12 @@
         .form-check-label-custom input[type="radio"] {
             margin-right: 5px;
             /* Adjust margin between radio button and text */
+        }
+        .radio_rtl_style{
+            margin-left: 0.5em !important;
+        }
+        .label_rtl_style{
+            margin-right: 31px !important;
         }
     </style>
 @endsection
