@@ -50,19 +50,19 @@
                             <li><a href="{{ route('content_page') }}/terms_conditions" class="text-white text-color-hover-primary">{{ __('head.tc') }}</a></li>
                         </ul>
                     </div>
-                    <div class="col-lg-4 col-md-6 mt-4 mt-md-4 mt-sm-4 mt-lg-0" dir="ltr">
-                        <ul class="list list-unstyled">
+                    <div class="col-lg-4 col-md-6 mt-4 mt-md-4 mt-sm-4 mt-lg-0" >
+                        <ul class="list list-unstyled" @if (session()->get('locale') == 'en')dir="ltr" @else dir="rtl" @endif>
                             <li class="d-flex align-items-center mb-4">
-                                <i class="icon icon-envelope text-color-light text-5 font-weight-bold position-relative top-1 me-3-5"></i>
+                                <i class="icon icon-envelope text-color-light text-5 font-weight-bold position-relative top-1 {{session()->get('locale') == 'en'?'me-3':'ms-3'}} "></i>
                                 <a href="mailto:info@exvisas.com" class="d-inline-flex align-items-center text-decoration-none text-color-light text-color-hover-primary font-weight-regular fs-6">info@exvisas.com</a>
                             </li>
                             <li class="d-flex align-items-center mb-4">
-                                <i class="icon icon-phone text-color-light text-5 font-weight-bold position-relative top-1 me-3-5"></i>
-                                <a href="tel:+966562818980" class="d-inline-flex align-items-center text-decoration-none text-color-light text-color-hover-primary font-weight-regular fs-6">Jeddah : +966562818980</a>
+                                <i class="icon icon-phone text-color-light text-5 font-weight-bold position-relative top-1 {{session()->get('locale') == 'en'?'me-3':'ms-3'}}"></i>
+                                <a href="tel:+966562818980" class="d-inline-flex align-items-center text-decoration-none text-color-light text-color-hover-primary font-weight-regular fs-6">@if (session()->get('locale') == 'en'){{ __('head.jeddah') }} : +966562818980 @else {{  __('head.jeddah') }} :  966562818980+  @endif   </a>
                             </li>
                             <li class="d-flex align-items-center mb-4">
-                                <i class="icon icon-phone text-color-light text-5 font-weight-bold position-relative top-1 me-3-5"></i>
-                                <a href="tel:+966569978030" class="d-inline-flex align-items-center text-decoration-none text-color-light text-color-hover-primary font-weight-regular fs-6">Riyadh : +966569978030</a>
+                                <i class="icon icon-phone text-color-light text-5 font-weight-bold position-relative top-1 {{session()->get('locale') == 'en'?'me-3':'ms-3'}}"></i>
+                                <a href="tel:+966569978030" class="d-inline-flex align-items-center text-decoration-none text-color-light text-color-hover-primary font-weight-regular fs-6"> @if (session()->get('locale') == 'en'){{ __('head.riyadh') }} : +966569978030 @else {{  __('head.riyadh') }} :  966569978030+  @endif </a>
                             </li>
                         </ul>
                     </div>

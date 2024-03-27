@@ -15,4 +15,6 @@ return [
     "lang"=>"Language",
     "eng"=>"English",
     "arb"=>"عربي",
+    "jeddah"=>"Jeddah",
+    "riyadh"=>"Riyadh"
 ];
