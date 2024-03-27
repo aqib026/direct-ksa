@@ -12,7 +12,9 @@ use App\Mail\CustomerFormReportMail;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\FeaturedSalesResource;
 use App\Models\Note;
+use App\Models\User;
 use Exception;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 
 class FeaturedController extends Controller
@@ -26,32 +28,11 @@ class FeaturedController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-
-        // Check if the user is logged in
-        if (auth()->check()) {
-            // User is logged in, set the user_id from the logged-in user
-            $user = auth()->user();
-        } else {
-            // User is not logged in, check if the email or mobile_number exists in the users table
-            $user = Admin::where('email', $request->input('email'))->first();
-            // If no user found, create a new user record
-            if (!$user) {
-                $user = Admin::create([
-                    'name' => $input['applicant_name'],
-                    'email' => $input['email'],
-                    'number' => $input['mobile_number'],
-                    'password' => bcrypt('12345678'),
-                    'usertype' => 'customer',
-                ]);
-            }
-        }
-        
-        // Set the user_id in the featured sales or perform any other necessary actions
         $validatedData = $request->validate([
             'required_service'  => 'required',
             'applicant_name'    => 'required',
-            'mobile_number'     => 'required',
-            'email'             => 'required'
+            'mobile_number'     => 'required|regex:/^[0-9]{9,20}$/',
+            'email'             => 'required|email:rfc,dns'
         ], [
             'required_service.required' => 'Required Service is required',
             'applicant_name.required'   => 'Applicant Name is required',
@@ -59,11 +40,31 @@ class FeaturedController extends Controller
             'email.required'            => 'Email is required'
         ]);
         
+        $new_user_message="";
+        if($request->email || $request->mobile_number ){
+            $user=User::where('email', $request->email)->first();
+
+            if(!$user){
+                $user=User::where('number', $request->mobile_number)->first();
+                if(!$user){
+                    $user=User::create([
+                        "name"=>$request->applicant_name,
+                        "number"=>$request->mobile_number,
+                        "email"=>$request->email,
+                        "password"=>Hash::make('12345678'),
+                        'usertype'=>'customer',
+                    ]);
+                    $new_user_message="The email is  registered in our system .You can use this email to login via OTP and you can update your password by using forget password link.";
+                }
+                
+            }
+        }
+
+
         $input = $request->except('documents', '_token');
         
         $images = array();
         if ($request->hasFile('documents')) {
-            dd('am i here');
             $files = $request->file('documents');
             foreach ($files as $file) {
                 $name = $file->getClientOriginalName();
@@ -100,7 +101,7 @@ class FeaturedController extends Controller
         
         $featuredSales->save();
         try {
-            Mail::to('admin@directksa.com')->send(new CustomerFormReportMail($input));
+            Mail::to('info@exvisas.com')->send(new CustomerFormReportMail($input));
         } catch (Exception $e) {
             Log::build([
                 'driver' => 'single',
@@ -109,7 +110,7 @@ class FeaturedController extends Controller
         }
         
         if ($featuredSales) {
-            return response()->json(['success' => true, 'message' => 'FeaturedSales added successfully']);
+            return response()->json(['success' => true, 'message' => 'FeaturedSales added successfully',"new_user_message"=>$new_user_message]);
         } else {
             return response()->json(['success' => false, 'message' => 'Failed to add FeaturedSales']);
         }
