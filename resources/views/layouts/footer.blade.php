@@ -58,7 +58,11 @@
                             </li>
                             <li class="d-flex align-items-center mb-4">
                                 <i class="icon icon-phone text-color-light text-5 font-weight-bold position-relative top-1 me-3-5"></i>
-                                <a href="tel:8001234567" class="d-inline-flex align-items-center text-decoration-none text-color-light text-color-hover-primary font-weight-regular fs-6">800-123-4567</a>
+                                <a href="tel:+966562818980" class="d-inline-flex align-items-center text-decoration-none text-color-light text-color-hover-primary font-weight-regular fs-6">Jeddah : +966562818980</a>
+                            </li>
+                            <li class="d-flex align-items-center mb-4">
+                                <i class="icon icon-phone text-color-light text-5 font-weight-bold position-relative top-1 me-3-5"></i>
+                                <a href="tel:+966569978030" class="d-inline-flex align-items-center text-decoration-none text-color-light text-color-hover-primary font-weight-regular fs-6">Riyadh : +966569978030</a>
                             </li>
                         </ul>
                     </div>

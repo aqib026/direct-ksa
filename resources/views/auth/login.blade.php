@@ -15,8 +15,9 @@
 
                             <div class='row' dir="ltr">
                                 <div role="group" class="mb-1 btn-group btn-group-sm">
-                                    <button type="button" class="btn shadow-none btn-primary py-2" id='phone_btn'
+                                   <!--  <button type="button" class="btn shadow-none btn-primary py-2" id='phone_btn'
                                         onclick="showFields('phone')">{{ __('login.mobile_no') }} </button>
+                                        -->
                                     <button type="button" class="btn shadow-none btn-outline-primary py-2" id='email_btn'
                                         onclick="showFields('email')">{{ __('login.email') }}</button>
                                 </div>
@@ -137,6 +138,7 @@
 @section('custom-scripts')
     <script>
         $(document).ready(function() {
+            showFields('email');
             if ($('input[name="number"]').data('error')) {
                 // Mobile field has an error, open mobile tab
                 showFields('phone');
@@ -201,7 +203,7 @@
         });
 
         function showFields(type) {
-            console.log(type)
+
             if (type === 'phone') {
                 $('#email_field').hide();
                 $('#phone_field').show();
