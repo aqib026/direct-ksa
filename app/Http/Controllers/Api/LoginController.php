@@ -15,10 +15,10 @@ class LoginController extends Controller
     {
         $validator =Validator::make($request->all(), [
             'name'=>'required',
-            'email'=>'required|email|unique:users',
+            'email'=>'required|email:rfc,dns|unique:users',
             'password'=>'required',
             'password_confirmation'=>'required|same:password',
-            'Number'=>'required'
+            'Number'=>'required|regex:/^[0-9]{9,20}$/ |unique:users'
 
         ]);
         if ($validator->fails()) {

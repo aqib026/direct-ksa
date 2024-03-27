@@ -226,10 +226,10 @@
                             <h1 class="font-weight-semi-bold text-5 line-height-2 line-height-sm-7 mb-5 selectedpersons">
                                 <span class="passenger_total">
                                     @if (isset($form_data['passenger_total']) && $form_data['passenger_total'] > 0)
-                                        @php $temp_passenger_total = (int) $form_data['passenger_total']; @endphp
+                                        @php $temp_passenger_total = (float) $form_data['passenger_total']; @endphp
                                         {!! @number_format($temp_passenger_total) !!}
                                     @elseif(isset($form_data['passport_counter_sum']) && $form_data['passport_counter_sum'] > 0)
-                                        @php $temp_passport_counter_sum = (int) $form_data['passport_counter_sum']; @endphp
+                                        @php $temp_passport_counter_sum = (float) $form_data['passport_counter_sum']; @endphp
                                         {!! @number_format($temp_passport_counter_sum) !!}
                                     @else
                                         0
@@ -331,8 +331,8 @@
             }
             $('#adult_counter_minus').on('click', function() {
                 var adult_counter_current_value = parseInt($('.adult_counter').text());
-                var adult_price_total = 0;
                 var adult_price = parseInt($('#adult_price').val());
+                var adult_price_total = 0;
                 if (adult_counter_current_value > 0) {
                     adult_counter_current_value--;
                     adult_price_total = adult_counter_current_value * adult_price;
@@ -343,31 +343,30 @@
                 $('#adult_count').val(adult_counter_current_value);
                 $('.adult_price_total').text(formatNumber(adult_price_total));
                 $('#adult_counter_sum').val(adult_price_total);
-                var child_price_total = parseInt($('.child_price_total').text());
+                var child_price_total = parseInt($('.child_price_total').text().replace(/,/g, '')); // Parse child price total as integer
                 $('.passenger_total').text(formatNumber(adult_price_total + child_price_total));
                 $('#passenger_total').val(adult_price_total + child_price_total);
                 return false;
-
             });
+
             $('#adult_counter_plus').on('click', function() {
                 var adult_counter_current_value = parseInt($('.adult_counter').text());
-                var adult_price_total = 0;
                 var adult_price = parseInt($('#adult_price').val());
+                var adult_price_total = 0;
                 if (adult_counter_current_value >= 0) {
                     adult_counter_current_value++;
                     adult_price_total = adult_counter_current_value * adult_price;
                 } else {
                     adult_counter_current_value = 0;
                 }
-                $('.adult_counter').text(formatNumber(adult_counter_current_value));
+                $('.adult_counter').text(adult_counter_current_value);
                 $('#adult_count').val(adult_counter_current_value);
                 $('.adult_price_total').text(formatNumber(adult_price_total));
                 $('#adult_counter_sum').val(adult_price_total);
-                var child_price_total = parseInt($('.child_price_total').text());
+                var child_price_total = parseInt($('.child_price_total').text().replace(/,/g, '')); // Parse child price total as integer
                 $('.passenger_total').text(formatNumber(adult_price_total + child_price_total));
                 $('#passenger_total').val(adult_price_total + child_price_total);
                 return false;
-
             });
             $('#child_counter_minus').on('click', function() {
                 var child_counter_current_value = parseInt($('.child_counter').text());

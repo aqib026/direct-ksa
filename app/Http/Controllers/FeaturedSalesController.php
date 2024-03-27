@@ -90,26 +90,31 @@ class FeaturedSalesController extends Controller
             'mobile_number.regex'    =>  __('fetsales.number_regex_validation'),
 
         ]);
+        if($request->mobile_number){
+            $request->merge(['mobile_number' => '+966' . $request->mobile_number]);
+        };
         $new_user_message="";
         if(auth()->check()){
             $user=User::where('email', $request->email)->first();
         }
-        elseif($request->email){
+        elseif($request->email || $request->mobile_number ){
             $user=User::where('email', $request->email)->first();
+
             if(!$user){
-                $user=User::create([
-                    "name"=>$request->applicant_name,
-                    "number"=>"+966".$request->mobile_number,
-                    "email"=>$request->email,
-                    "password"=>Hash::make('12345678'),
-                    'usertype'=>'customer',
-                ]);
-                $new_user_message=__('fetsales.new_user_message');
+                $user=User::where('number', $request->mobile_number)->first();
+                if(!$user){
+                    $user=User::create([
+                        "name"=>$request->applicant_name,
+                        "number"=>$request->mobile_number,
+                        "email"=>$request->email,
+                        "password"=>Hash::make('12345678'),
+                        'usertype'=>'customer',
+                    ]);
+                    $new_user_message=__('fetsales.new_user_message');
+                }
+                
             }
         }
-        if($request->mobile_number){
-            $request->merge(['mobile_number' => '+966' . $request->mobile_number]);
-        };
          $input = $request->except('documents', '_token');
          $images = array();
          if ($files = $request->file('documents')) {
