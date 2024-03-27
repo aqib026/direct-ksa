@@ -2,11 +2,12 @@
     <div class="container pt-5">
         <div class="row">
             <div class="col-lg-4 col-12">
-                <a href="{{ route('home') }}" class="text-decoration-none d-flex justify-content-center">
+                <a href="{{ route('home') }}" class="text-decoration-none">
                     <img src="{{ asset('img/ksa_logo.png') }} " width="107" height="30" class="img-fluid mb-4" alt="Direct" />
                 </a>
 
                 <ul class="social-icons social-icons-clean social-icons-medium">
+
                     <li class="social-icons-facebook">
                         <a href="http://www.facebook.com/" target="_blank" title="Facebook">
                             <i class="fab fa-facebook-f text-color-light"></i>
@@ -37,7 +38,7 @@
                             <li><a href="{{ route('home') }}" class="text-white text-color-hover-primary">{{ __('head.ho') }}</a></li>
                             <li><a href="{{ route('featured_sales') }}" class="text-white text-color-hover-primary">{{ __('head.os') }}</a></li>
                             <li><a href="{{ route('visa_request') }}" class="text-white text-color-hover-primary">{{ __('head.vi') }}</a></li>
-                            <li><a href="#" class="text-white text-color-hover-primary">{{ __('head.sc') }}</a></li>
+                            <li><a href="#" class="text-white text-color-hover-primary" onclick="alert('Coming Soon')">{{ __('head.sc') }}</a></li>
                         </ul>
                     </div>
                     <div class="col-lg-4 col-md-6 mt-4 mt-md-4 mt-sm-4 mt-lg-0">
@@ -49,38 +50,23 @@
                             <li><a href="{{ route('content_page') }}/terms_conditions" class="text-white text-color-hover-primary">{{ __('head.tc') }}</a></li>
                         </ul>
                     </div>
-                    <div class="col-lg-4 col-md-6 mt-4 mt-md-4 mt-sm-4 mt-lg-0">
+                    <div class="col-lg-4 col-md-6 mt-4 mt-md-4 mt-sm-4 mt-lg-0" dir="ltr">
                         <ul class="list list-unstyled">
                             <li class="d-flex align-items-center mb-4">
                                 <i class="icon icon-envelope text-color-light text-5 font-weight-bold position-relative top-1 me-3-5"></i>
-                                <a href="mailto:company@business-consulting-4.com" class="d-inline-flex align-items-center text-decoration-none text-color-light text-color-hover-primary font-weight-regular fs-6">info@exvisas.com</a>
+                                <a href="mailto:info@exvisas.com" class="d-inline-flex align-items-center text-decoration-none text-color-light text-color-hover-primary font-weight-regular fs-6">info@exvisas.com</a>
                             </li>
                             <li class="d-flex align-items-center mb-4">
                                 <i class="icon icon-phone text-color-light text-5 font-weight-bold position-relative top-1 me-3-5"></i>
-                                <a href="tel:8001234567" class="d-inline-flex align-items-center text-decoration-none text-color-light text-color-hover-primary font-weight-regular fs-6">800-123-4567</a>
+                                <a href="tel:+966562818980" class="d-inline-flex align-items-center text-decoration-none text-color-light text-color-hover-primary font-weight-regular fs-6">Jeddah : +966562818980</a>
+                            </li>
+                            <li class="d-flex align-items-center mb-4">
+                                <i class="icon icon-phone text-color-light text-5 font-weight-bold position-relative top-1 me-3-5"></i>
+                                <a href="tel:+966569978030" class="d-inline-flex align-items-center text-decoration-none text-color-light text-color-hover-primary font-weight-regular fs-6">Riyadh : +966569978030</a>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <!-- <div class="row">
-                    <div class="col">
-                        <div class="alert alert-success d-none" id="newsletterSuccess">
-                            <strong>Success!</strong> You've been added to our email list.
-                        </div>
-                        <div class="alert alert-danger d-none" id="newsletterError"></div>
-                        <div class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center">
-                            <h4 class="text-color-light ws-nowrap me-3 mb-3 mb-lg-0">Subscribe to Newsletter:</h4>
-                            <form id="newsletterForm" class="form-style-3 w-100" action="php/newsletter-subscribe.php" method="POST">
-                                <div class="d-flex">
-                                    <input class="form-control bg-color-light border-0 box-shadow-none" placeholder="Email Address" name="newsletterEmail" id="newsletterEmail" type="text" />
-                                    <button class="btn btn-primary ms-2 btn-px-3 btn-py-2 font-weight-bold" type="submit">
-                                    Go
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div> -->
             </div>
         </div>
     </div>

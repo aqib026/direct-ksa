@@ -295,7 +295,7 @@ html .text-dark {
 
 /* Footer */
 .dk-footer .text-color-hover-primary:hover {
-    color: var(--orange) !important;
+    color: var(--blue) !important;
 }
 
 .dk-footer .icon.icon-envelope,

@@ -107,7 +107,7 @@ class OtpController extends Controller
                     return response()->json($response, 500);
                 }
             }
-        } else {
+        } elseif(isset($user)) {
             $userotp = $this->generateotp($user->id);
             
             if ($userotp) {
@@ -136,6 +136,12 @@ class OtpController extends Controller
                 ];
                 return response()->json($response, 500);
             }
+        }else{
+            $response=[
+                'success'=> false,
+                'message'=>'Failed to generate OTP. Invalid User'
+            ];
+            return response()->json($response, 404);
         }
     }
     public function generateotp($user_id)
