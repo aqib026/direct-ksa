@@ -31,9 +31,9 @@ class OtpController extends Controller
             return response()->json($response, 400);
 
         }
-        
+
         $mobile_number = $request->number??null;
-        $email=$request->input('email')??null; 
+        $email=$request->input('email')??null;
         if(isset($mobile_number)){
             $user = User::where('number', $mobile_number)->first();
         }elseif(isset($email)){
@@ -43,13 +43,13 @@ class OtpController extends Controller
         if (isset($user->otp) && isset($user->otp_expiration)) {
             $current_time = new DateTime();
 
-           
+
             $other_time = new DateTime($user->otp_expiration);
 
-           
+
             $interval = $current_time->diff($other_time);
 
-           
+
             if ($interval->i > 10 || $interval->h > 0 || $interval->d > 0 || $interval->m > 0 || $interval->y > 0) {
                 $userotp = $this->generateotp($user->id);
                 if ($userotp) {
@@ -109,7 +109,7 @@ class OtpController extends Controller
             }
         } elseif(isset($user)) {
             $userotp = $this->generateotp($user->id);
-            
+
             if ($userotp) {
                 if (isset($userotp->email)) {
                     $data=["otp"=>$userotp->otp,"name"=>$userotp->name];
@@ -151,74 +151,66 @@ class OtpController extends Controller
         $user->otp=rand(12344, 99999);
         $user->otp_expiration=$current_time;
         $user->update();
-        
+
         return $user;
     }
     public function otpVerification(Request $request)
     {
-        $validator =Validator::make($request->all(),[
+        $validator = Validator::make($request->all(), [
             'otp' => 'required',
-            'user_id' => 'required|exists:users,id',
         ]);
+
         if ($validator->fails()) {
-             $response=[
-                'success'=> false,
-                'message'=>$validator->errors()
+            $response = [
+                'success' => false,
+                'message' => $validator->errors()
             ];
             return response()->json($response, 400);
-
         }
-        $user_id=$request->get('user_id');
-        $otp=$request->get('otp');
-        $userotp = User::find($user_id);
-        if(isset($userotp->otp) && isset($userotp->otp_expiration) ){
 
+
+        $otp = $request->get('otp');
+        $userotp = User::where('otp', $otp)->first();
+
+        if (isset($userotp->otp) && isset($userotp->otp_expiration)) {
             $current_time = new DateTime();
-
-           
             $other_time = new DateTime($userotp->otp_expiration);
-
-           
             $interval = $current_time->diff($other_time);
 
-           
             if ($interval->i > 10 || $interval->h > 0 || $interval->d > 0 || $interval->m > 0 || $interval->y > 0) {
-                $response=[
-                    'success'=> false,
-                    'message'=>'Your OTP has expired.Please Try again with new OTP'
+                $response = [
+                    'success' => false,
+                    'message' => 'Your OTP has expired. Please try again with a new OTP'
                 ];
                 return response()->json($response, 419);
-            } else{
-                if($userotp->otp==$otp){
-
-                    $data['token']=$userotp->createToken('MyApp')->plainTextToken;
-                    $data['name']=$userotp->name;
-                    $userotp->otp=null;
-                    $userotp->otp_expiration=null;
+            } else {
+                if ($userotp->otp == $otp) {
+                    $data['token'] = $userotp->createToken('MyApp')->plainTextToken;
+                    $data['name'] = $userotp->name;
+                    $userotp->otp = null;
+                    $userotp->otp_expiration = null;
                     $userotp->update();
-                    $response=[
-                        'success'=> true,
-                        'message'=>'OTP verification successful.',
-                        'data'=>$data
+                    $response = [
+                        'success' => true,
+                        'message' => 'OTP verification successful.',
+                        'data' => $data
                     ];
                     return response()->json($response, 200);
-                }else{
-                    $response=[
-                        'success'=> false,
-                        'message'=>'Your OTP is incorrect.',
+                } else {
+                    $response = [
+                        'success' => false,
+                        'message' => 'Your OTP is incorrect.',
                     ];
                     return response()->json($response, 400);
                 }
             }
-
-        }else{
-            $response=[
-                'success'=> false,
-                'message'=>'Something went wrong. try again later!',
+        } else {
+            $response = [
+                'success' => false,
+                'message' => 'Something went wrong. Please try again later!',
             ];
             return response()->json($response, 500);
         }
-    
     }
-    
+
 }
