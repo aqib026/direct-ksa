@@ -59,7 +59,7 @@ Route::POST('login',[LoginController::class,'login'])->name('login-api');
 Route::POST('otp-login',[OtpController::class,'loginOtp']);
 Route::POST('otp-verification',[OtpController::class,'otpVerification']);
 
-Route::middleware('auth:sanctum')->POST('store-visa-request',[VisaProcessController::class,'storeVisaRequest']);
+Route::middleware('auth:sanctum')->post('store-visa-request',[VisaProcessController::class,'storeVisaRequest']);
 
 Route::middleware('auth:sanctum')->post('/payment-store', [OnlinePaymentController::class, 'storePaymentData']);
 
