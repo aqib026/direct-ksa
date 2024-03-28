@@ -88,7 +88,6 @@ class LoginController extends Controller
 
             $validator = Validator::make($request->all(), [
                 'otp' => 'required',
-                'email' => 'required|email',
             ]);
 
             if ($validator->fails()) {
@@ -99,9 +98,8 @@ class LoginController extends Controller
                 return response()->json($response, 400);
             }
 
-            $email = $request->get('email');
             $otp = $request->get('otp');
-            $userotp = User::where('email', $email)->first();
+            $userotp = User::where('email', $otp)->first();
 
             if (isset($userotp->otp) && isset($userotp->otp_expiration)) {
                 $current_time = new DateTime();
