@@ -50,7 +50,7 @@ Route::middleware('auth:sanctum')->get('/user/visarequest', [VisaRequestControll
 Route::middleware('auth:sanctum')->get('/user/visarequest/{id}', [VisaRequestController::class, 'visarequest']);
 Route::POST('/featured-sales', [FeaturedController::class, 'store'])->name('featured-store');
 
-
+Route::POST('verify-email',[LoginController::class,'verifyEmail'])->name('verify-email');
 
 Route::POST('register',[LoginController::class,'register'])->name('register-api');
 Route::POST('login',[LoginController::class,'login'])->name('login-api');
