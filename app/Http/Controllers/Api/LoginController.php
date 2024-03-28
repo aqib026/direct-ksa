@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Mail\SendOtp;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,9 +20,7 @@ class LoginController extends Controller
             'email'=>'required|email:rfc,dns|unique:users',
             'password'=>'required',
             'password_confirmation'=>'required|same:password',
-            'Number'=>'required|regex:/^[0-9]{9,20}$/ |unique:users'
-
-        ]);
+            'number'=>'required|regex:/^\+966[0-9]{9,20}$/|unique:users'        ]);
         if ($validator->fails()) {
             $response=[
                 'success'=> false,
@@ -34,6 +34,20 @@ class LoginController extends Controller
         $user = User::create($input);
         $success['token']=$user->createToken('MyApp')->plainTextToken;
         $success['name']=$user->name;
+
+
+        $otp = rand(100000, 999999);
+        $user->otp = $otp;
+        $user->save();
+
+
+        $data = [
+            'otp' => $otp,
+            'name' => $user->name,
+        ];
+
+
+        Mail::to($user->email)->send(new SendOtp($data));
 
         $response=[
             'success'=>true,
