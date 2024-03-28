@@ -16,7 +16,6 @@ class VisaTypeResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'countries_id' => $this->countries_id,
             'flag_pic'=> asset($this->flag_pic),
             'country_name' => $this->name,
             'country__name_ar' => $this->name_ar,
