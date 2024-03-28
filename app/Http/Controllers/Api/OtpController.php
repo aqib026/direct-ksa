@@ -158,6 +158,7 @@ class OtpController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'otp' => 'required',
+            'user_id'=>'required|exists:users'
         ]);
 
         if ($validator->fails()) {
@@ -170,8 +171,8 @@ class OtpController extends Controller
 
 
         $otp = $request->get('otp');
-        $userotp = User::where('otp', $otp)->first();
-
+        $user_id= $request->get('user_id');
+        $userotp = User::find($user_id);
         if (isset($userotp->otp) && isset($userotp->otp_expiration)) {
             $current_time = new DateTime();
             $other_time = new DateTime($userotp->otp_expiration);
