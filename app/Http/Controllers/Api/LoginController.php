@@ -21,7 +21,11 @@ class LoginController extends Controller
             'email'=>'required|email:rfc,dns|unique:users',
             'password'=>'required',
             'password_confirmation'=>'required|same:password',
-            'number'=>'required|regex:/^\+966[0-9]{9,20}$/|unique:users'        ]);
+            'number'=>'required|regex:/^\+966[0-9]{9,20}$/|unique:users' ],[
+            'number.regex'      => "Mobile number must be at least 9 digits",
+            'number.unique'    => "Mobile number already exists",
+            'number.required'    =>"Mobile number is required",
+            ]);
         if ($validator->fails()) {
             $response=[
                 'success'=> false,
