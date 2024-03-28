@@ -36,7 +36,7 @@ class LoginController extends Controller
         $success['name']=$user->name;
 
 
-        $otp = rand(100000, 999999);
+        $otp = rand(12344, 99999);
         $user->otp = $otp;
         $user->save();
 
@@ -52,7 +52,7 @@ class LoginController extends Controller
         $response=[
             'success'=>true,
             'data'=> $success,
-            'message'=>'User Register Successfully'
+            'message'=>'User Register Successfully,Otp is send to the given email'
         ];
         return response()->json($response, 200);
     }
