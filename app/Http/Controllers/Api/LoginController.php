@@ -33,6 +33,9 @@ class LoginController extends Controller
             ];
             return response()->json($response, 400);
         }
+        if($request->number){
+            $request->merge(['number' => '+966' . $request->number]);
+        };
         $input=$request->all();
         $input['usertype']='customer';
         $input['password']=bcrypt($input['password']);
