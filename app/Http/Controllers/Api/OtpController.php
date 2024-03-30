@@ -158,7 +158,7 @@ class OtpController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'otp' => 'required',
-            'user_id'=>'required|exists:users'
+            'user_id'=>'required|exists:users,id'
         ]);
 
         if ($validator->fails()) {

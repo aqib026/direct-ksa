@@ -9,16 +9,21 @@ use Illuminate\Support\Facades\Log;
 class VisaProcessController extends Controller
 {
     //
-    public function storeVisaRequest(Request $request){
-
+    public function storeVisaRequest(Request $request)
+    {
         Log::build([
             'driver' => 'single',
             'path' => storage_path('logs/visa-request-store-api.log'),
          ])->info('request input: /n '.print_r($request->input(), true));
 
-         Log::build([
-            'driver' => 'single',
-            'path' => storage_path('logs/visa-request-store-api.log'),
-         ])->info('request json:  /n'.print_r($request->json(), true));
+        Log::build([
+           'driver' => 'single',
+           'path' => storage_path('logs/visa-request-store-api.log'),
+        ])->info('request json:  /n'.print_r($request->json(), true));
+        $response = [
+           'success' => true,
+           'message' => 'thnkyou you request is in process'
+        ];
+        return response()->json($response, 200);
     }
 }
