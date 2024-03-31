@@ -9,22 +9,22 @@
                 <ul class="social-icons social-icons-clean social-icons-medium">
 
                     <li class="social-icons-facebook">
-                        <a href="http://www.facebook.com/" target="_blank" title="Facebook">
+                        <a href="http://www.facebook.com/expressvisaksa" target="_blank" title="Facebook">
                             <i class="fab fa-facebook-f text-color-light"></i>
                         </a>
                     </li>
                     <li class="social-icons-twitter">
-                        <a href="http://www.twitter.com/" target="_blank" title="Twitter">
+                        <a href="http://twitter.com/expressvisaksa" target="_blank" title="Twitter">
                             <i class="fab fa-twitter text-color-light"></i>
                         </a>
                     </li>
                     <li class="social-icons-instagram">
-                        <a href="http://www.instagram.com/" target="_blank" title="Instagram">
+                        <a href="http://www.instagram.com/expressvisaksa" target="_blank" title="Instagram">
                             <i class="fab fa-instagram text-color-light"></i>
                         </a>
                     </li>
                     <li class="social-icons-linkedin">
-                        <a href="http://www.linkedin.com/" target="_blank" title="Linkedin">
+                        <a href="http://www.linkedin.com/in/expressvisaksa" target="_blank" title="Linkedin">
                             <i class="fab fa-linkedin text-color-light"></i>
                         </a>
                     </li>
