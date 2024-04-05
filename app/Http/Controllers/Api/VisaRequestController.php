@@ -168,9 +168,9 @@ class VisaRequestController extends Controller
                         foreach($accre as $key =>$value){
                         $content = unserialize($value->content);
                         $data[$key]['content']=$content;
-                        if(isset($data['country'])){
+                        if(isset($data[$key]['country'])){
                             $country = Countries::where('id', $data['country'])->first();
-                        }elseif(isset($data['country_id'])){
+                        }elseif(isset($data[$key]['country_id'])){
                             $country = Countries::where('id',['country_id'])->first();
                         }
                         $data[$key]['country_name'] = $country->name;
