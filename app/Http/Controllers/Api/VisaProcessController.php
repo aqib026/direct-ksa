@@ -9,7 +9,9 @@ use App\Models\UserVisaApplications;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class VisaProcessController extends Controller
 {
@@ -28,6 +30,30 @@ class VisaProcessController extends Controller
                         'message'=>$validator->errors()
                     ];
                     return response()->json($response, 400);
+                }
+                if (isset($data['personal_information']['adult']) && count($data['personal_information']['adult'])>0) {
+                    foreach ($data['personal_information']['adult'] as $key=>$adult_record) {
+                        if (isset($adult_record['adult_passport'])) {
+                            $filename=$this->uploadPhoto($adult_record['adult_passport'], 'passportpic');
+                            $data['personal_information']['adult'][$key]['adult_passport_filename']= $filename;
+                        }
+                        if (isset($adult_record['adult_personal_photo'])) {
+                            $filename=$this->uploadPhoto($adult_record['adult_personal_photo'], 'personalpic');
+                            $data['personal_information']['adult'][$key]['adult_avatar_filename']= $filename;
+                        }
+                    }
+                }
+                if (isset($data['personal_information']['child']) && count($data['personal_information']['child'])>0) {
+                    foreach ($data['personal_information']['child'] as $key=>$child_record) {
+                        if (isset($child_record['child_passport'])) {
+                            $filename=$this->uploadPhoto($child_record['child_passport'], 'passportpic');
+                            $data['personal_information']['child'][$key]['child_passport_filename']= $filename;
+                        }
+                        if (isset($child_record['child_personal_photo'])) {
+                            $filename=$this->uploadPhoto($child_record['child_personal_photo'], 'personalpic');
+                            $data['personal_information']['child'][$key]['child_avatar_filename']= $filename;
+                        }
+                    }
                 }
                 $user_id=$data["user_id"];
                 $user_record=User::find($user_id);
@@ -95,5 +121,25 @@ class VisaProcessController extends Controller
             ];
             return response()->json($response, 400);
         }
+    }
+
+    public function uploadPhoto($image, $img_type)
+    {
+        // Decode the base64-encoded image data
+        $imageBinary = base64_decode($image);
+        $imageFormat = 'jpg'; // Default to jpg if format cannot be determined
+        if (strpos($imageBinary, "\xFF\xD8") === 0) {
+            $imageFormat = 'jpg'; // JPEG format
+        } elseif (strpos($imageBinary, "\x89\x50\x4E\x47\x0D\x0A\x1A\x0A") === 0) {
+            $imageFormat = 'png'; // PNG format
+        } elseif (strpos($imageBinary, "\x47\x49\x46\x38") === 0) {
+            $imageFormat = 'gif'; // GIF format
+        } elseif (strpos($imageBinary, "II\x2A\x00") === 0 || strpos($imageBinary, "MM\x00\x2A") === 0) {
+            $imageFormat = 'tiff'; // TIFF format
+        }
+        
+        $filename = $img_type."/".Str::uuid().".".$imageFormat;
+        Storage::put($filename, $imageBinary);
+        return $filename;
     }
 }

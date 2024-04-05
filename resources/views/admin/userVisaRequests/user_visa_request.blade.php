@@ -31,15 +31,15 @@
                                     </tr>
                                     <tr>
                                         <td>Country</td>
-                                        <td>{{ $data['country_name']->name ?? $data['country']??'' }}</td>
+                                        <td>{{ $data['country_name']->name ?? ($data['country'] ?? '') }}</td>
                                     </tr>
                                     <tr>
                                         <td>Appointment City</td>
-                                        <td>{{ $data['appointment_city'] ?? $data['biometrics_location'] ?? '' }}</td>
+                                        <td>{{ $data['appointment_city'] ?? ($data['biometrics_location'] ?? '') }}</td>
                                     </tr>
                                     <tr>
                                         <td>Travel Date</td>
-                                        <td>{{ $data['travel_date'] ?? $data['travel_Date'] ?? '' }}</td>
+                                        <td>{{ $data['travel_date'] ?? ($data['travel_Date'] ?? '') }}</td>
                                     </tr>
                                     @if ($data['adult_count'] > 0)
                                         <tr>
@@ -61,7 +61,7 @@
                                     @endif
                                     <tr>
                                         <td>Relation</td>
-                                        <td>{{ $data['relation'] ?? $data['traveller_relation'] ?? '' }}</td>
+                                        <td>{{ $data['relation'] ?? ($data['traveller_relation'] ?? '') }}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -92,7 +92,8 @@
                                                 </tr>
                                                 <tr>
                                                     <td>Family Name</td>
-                                                    <td>{{ $data['application_form_data']['adult_family_name_' . $i] }}</td>
+                                                    <td>{{ $data['application_form_data']['adult_family_name_' . $i] }}
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Mother First Name</td>
@@ -119,24 +120,45 @@
                                                 </tr>
                                                 <tr>
                                                     <td>First Name</td>
-                                                    <td>{{ $adult_info['adult_first_name']??'' }}</td>
+                                                    <td>{{ $adult_info['adult_first_name'] ?? '' }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Last Name</td>
-                                                    <td>{{ $adult_info['adult_last_name']??'' }}</td>
+                                                    <td>{{ $adult_info['adult_last_name'] ?? '' }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Marital Status</td>
-                                                    <td>{{ $adult_info['adult_marital_status']??'' }}</td>
+                                                    <td>{{ $adult_info['adult_marital_status'] ?? '' }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Mother First Name</td>
-                                                    <td>{{ $adult_info['adult_mother_first_name']??'' }}</td>
+                                                    <td>{{ $adult_info['adult_mother_first_name'] ?? '' }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Mother Last Name</td>
-                                                    <td>{{ $adult_info['adult_mother_last_name']??'' }}</td>
+                                                    <td>{{ $adult_info['adult_mother_last_name'] ?? '' }}</td>
                                                 </tr>
+                                                <tr>
+                                                    <td>Passport</td>
+                                                <td>
+                                                    @if (isset($adult_info['adult_passport_filename']))
+                                                        <img src="{{ asset($adult_info['adult_passport_filename']) }}"
+                                                            class="img-responsive" alt="" width="75"
+                                                            height="75" style="margin: 5px 10px;" />
+                                                    @endif
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Avatar</td>
+                                                <td>
+                                                    @if (isset($adult_info['adult_avatar_filename']))
+                                                        <img src="{{ asset($adult_info['adult_avatar_filename']) }}"
+                                                            class="img-responsive" alt="" width="75"
+                                                            height="75" style="margin: 5px 10px;" />
+                                                    @endif
+                                                </td>
+                                                </tr>
+                                                
                                             @endforeach
                                         @endif
                                     </tbody>
@@ -164,7 +186,8 @@
                                                 </tr>
                                                 <tr>
                                                     <td>Family Name</td>
-                                                    <td>{{ $data['application_form_data']['child_family_name_' . $i] }}</td>
+                                                    <td>{{ $data['application_form_data']['child_family_name_' . $i] }}
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Mother First Name</td>
@@ -191,24 +214,45 @@
                                                 </tr>
                                                 <tr>
                                                     <td>First Name</td>
-                                                    <td>{{ $child_info['child_first_name']??'' }}</td>
+                                                    <td>{{ $child_info['child_first_name'] ?? '' }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Last Name</td>
-                                                    <td>{{ $child_info['child_last_name']??'' }}</td>
+                                                    <td>{{ $child_info['child_last_name'] ?? '' }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Marital Status</td>
-                                                    <td>{{ $child_info['child_marital_status']??'' }}</td>
+                                                    <td>{{ $child_info['child_marital_status'] ?? '' }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Mother First Name</td>
-                                                    <td>{{ $child_info['child_mother_first_name']??'' }}</td>
+                                                    <td>{{ $child_info['child_mother_first_name'] ?? '' }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Mother Last Name</td>
-                                                    <td>{{ $child_info['child_mother_last_name']??'' }}</td>
+                                                    <td>{{ $child_info['child_mother_last_name'] ?? '' }}</td>
                                                 </tr>
+                                                <tr>
+                                                    <td>Passport</td>
+                                                <td>
+                                                    @if (isset($child_info['child_passport_filename']))
+                                                        <img src="{{ asset($child_info['child_passport_filename']) }}"
+                                                            class="img-responsive" alt="" width="75"
+                                                            height="75" style="margin: 5px 10px;" />
+                                                    @endif
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Avatar</td>
+                                                <td>
+                                                    @if (isset($child_info['child_avatar_filename']))
+                                                        <img src="{{ asset($child_info['child_avatar_filename']) }}"
+                                                            class="img-responsive" alt="" width="75"
+                                                            height="75" style="margin: 5px 10px;" />
+                                                    @endif
+                                                </td>
+                                                </tr>
+                                                
                                             @endforeach
                                         @endif
 
@@ -258,21 +302,20 @@
                                         <td>Payment Method</td>
                                         <td>
                                             @if (isset($data['payment_form_data']))
-                                            {{ $data['payment_form_data'] }}
-                                        @elseif(isset($data['payment_method']))
-                                            {{$data['payment_method']['payment_method']}}
-                                        
-                                        @endif
+                                                {{ $data['payment_form_data'] }}
+                                            @elseif(isset($data['payment_method']))
+                                                {{ $data['payment_method']['payment_method'] }}
+                                            @endif
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Total Amount</td>
                                         <td>
-                                            @if (isset($data['passenger_total']) &&  $data['passenger_total']> 0)
+                                            @if (isset($data['passenger_total']) && $data['passenger_total'] > 0)
                                                 {{ $data['passenger_total'] }}.00 SAR
                                             @elseif(isset($data['total_cost']))
-                                            {{$data['total_cost']}}
-                                            @elseif(isset($data['passport_counter_sum']) && $data['passport_counter_sum']>0)
+                                                {{ $data['total_cost'] }}
+                                            @elseif(isset($data['passport_counter_sum']) && $data['passport_counter_sum'] > 0)
                                                 {{ $data['passport_counter_sum'] }}.00 SAR
                                             @endif
                                         </td>
