@@ -150,6 +150,7 @@ class MyFatoorahController extends Controller
                 $VisaRequest->user_id = auth()->user()->id;
                 $VisaRequest->content = serialize($user_data);
                 $VisaRequest->order_id = $fatoora_session_data['order_id'];
+                $VisaRequest->payment_id = $response['Data']->focusTransaction->PaymentId;
                 $VisaRequest->save();
 
 

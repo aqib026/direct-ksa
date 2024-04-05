@@ -40,12 +40,12 @@
             <div class="">
                 <div class="">
                     <button type="submit" class="btn btn-dark submit">
-                        {{ __('Login') }}
+                        {{ __('login.login') }}
                     </button>
 
                     @if (Route::has('password.request'))
                         <a class="reset_pass" href="{{ route('password.request') }}">
-                            {{ __('Forgot Your Password?') }}
+                            {{ __('login.forgot_password') }}
                         </a>
                     @endif
                 </div>
