@@ -1,7 +1,7 @@
 <footer id="footer" class="position-relative dk-footer bg-dark border-top-0 pt-0 pt-md-4">
     <div class="container pt-5">
         <div class="row">
-            <div class="col-lg-4 col-12">
+            <div class="col-lg-3 col-12">
                 <a href="{{ route('home') }}" class="text-decoration-none">
                     <img src="{{ asset('img/ksa_logo.png') }} " width="107" height="30" class="img-fluid mb-4" alt="Direct" />
                 </a>
@@ -30,7 +30,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-lg-8 col-12">
+            <div class="col-lg-9 col-12">
                 <div class="row mb-5-5">
                     <div class="col-lg-4 col-md-6 mt-4 mt-md-4 mt-sm-4 mt-lg-0">
                         <h4 class="text-color-light fs-5 font-weight-bold mb-3">{{ __('head.nav') }}</h4>
@@ -63,6 +63,10 @@
                             <li class="d-flex align-items-center mb-4">
                                 <i class="icon icon-phone text-color-light text-5 font-weight-bold position-relative top-1 {{session()->get('locale') == 'en'?'me-3':'ms-3'}}"></i>
                                 <a href="tel:+966569978030" class="d-inline-flex align-items-center text-decoration-none text-color-light text-color-hover-primary font-weight-regular fs-6"> @if (session()->get('locale') == 'en'){{ __('head.riyadh') }} : +966569978030 @else {{  __('head.riyadh') }} :  966569978030+  @endif </a>
+                            </li>
+                            <li class="d-flex align-items-center mb-4">
+                                <i class="icon icon-phone text-color-light text-5 font-weight-bold position-relative top-1 {{session()->get('locale') == 'en'?'me-3':'ms-3'}}"></i>
+                                <a href="tel:+966569978030" class="d-inline-flex align-items-center text-decoration-none text-color-light text-color-hover-primary font-weight-regular fs-6"> @if (session()->get('locale') == 'en'){{ __('head.kohbar') }} : +9660595230321 @else {{  __('head.kohbar') }} :  9660595230321+  @endif </a>
                             </li>
                         </ul>
                     </div>

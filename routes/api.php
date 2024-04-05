@@ -61,5 +61,3 @@ Route::POST('otp-verification',[OtpController::class,'otpVerification']);
 
 Route::middleware('auth:sanctum')->post('store-visa-request',[VisaProcessController::class,'storeVisaRequest']);
 
-Route::middleware('auth:sanctum')->post('/payment-store', [OnlinePaymentController::class, 'storePaymentData']);
-

@@ -338,9 +338,13 @@ class VisaRequestController extends Controller
             $accre = UserVisaApplications::orderBy('id', 'DESC')->paginate(20);
         }
         $data = array();
-        foreach ($accre as $acc) {
+        foreach ($accre as $key=> $acc) {
             $data[$acc['id']] = unserialize($acc['content']);
-            $country = countries::where('id', $data[$acc['id']]['country'])->first();
+            if(isset($data[$acc['id']]['country'])){
+                $country = countries::where('id', $data[$acc['id']]['country'])->first();
+            }elseif(isset($data[$acc['id']]['country_id'])){
+                $country = countries::where('id', $data[$acc['id']]['country_id'])->first();
+            }
             $data[$acc['id']]['country_name'] =  $country;
         }
         return view('admin.userVisaRequests.user_visa_requests', compact('data', 'search', 'accre'));
@@ -355,7 +359,11 @@ class VisaRequestController extends Controller
         } else {
             $data = array();
             $data = unserialize($accre['content']);
-            $country = countries::where('id', $data['country'])->first();
+            if(isset($data['country'])){
+                $country = countries::where('id', $data['country'])->first();
+            }elseif(isset($data['country_id'])){
+                $country = countries::where('id',['country_id'])->first();
+            }
             $data['country_name'] =  $country;
             $notes = VisaNote::where('visa_request_id', $id)->get();
             return view('admin.userVisaRequests.user_visa_request', compact('data', 'id', 'notes'));

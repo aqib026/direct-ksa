@@ -111,6 +111,19 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="row">
+                            <div class="form-group col">
+                                <div class="form-check form-check-inline">
+                                    <label class="form-check-label form-check-label-custom" style="{{session()->get('locale') == 'ar'?"margin-left: 7px":"margin-left: 50px"}}">
+                                        <input class="form-check-input form-check-input-custom {{session()->get('locale') == 'ar'?'radio_rtl_style ':''}}" type="radio"
+                                            name="appointment_city" data-msg-required="Please select at least one option."
+                                            value="alkohbar" @if (isset($form_data['appointment_city']) && $form_data['appointment_city'] == 'alkohbar') checked @endif
+                                            required>{{ __('steps.kohbar') }}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
