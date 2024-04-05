@@ -22,6 +22,8 @@ class VisaProcessController extends Controller
         ])->info('request json:  /n'.print_r($request->json(), true));
         $response = [
            'success' => true,
+           'json_data'=>$request->json(),
+           'form_data'=>$request->input(),
            'message' => 'thnkyou you request is in process'
         ];
         return response()->json($response, 200);

@@ -8,6 +8,7 @@ use App\Models\Countries;
 use App\Models\VisaRequest;
 use Illuminate\Http\Request;
 use App\Http\Resources\VisaTypeResource;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Models\UserVisaApplications;
 use App\Models\VisaNote;
@@ -157,25 +158,35 @@ class VisaRequestController extends Controller
     
     public function visarequest($id)
     {
-        if (Auth::id()) {
-            $user = Auth()->user();
-            $usertype = $user->usertype;
-            if ($usertype == 'customer') {
-                $accre = UserVisaApplications::find($id);
-                if ($accre) {
-                    $data = unserialize($accre->content);
-                    $country = Countries::where('id', $data['country'])->first();
-                    $data['country_name'] = $country->name;
-                    $notes = VisaNote::where('visa_request_id', $id)->get();
-                    return response()->json(['data' => $data, 'notes' => $notes], 200);
+        if (isset($id)) {
+            $user = User::find($id);
+            if(isset($user)){
+                if ($user->usertype == 'customer' || $user->usertype == 'user') {
+                    $accre = UserVisaApplications::where('user_id',$user->id)->get();
+                    if (count($accre)>0) {
+                        $data=[];
+                        foreach($accre as $key =>$value){
+                        $content = unserialize($value->content);
+                        $data[$key]['content']=$content;
+                        $country = Countries::where('id', $content['country'])->first();
+                        $data[$key]['country_name'] = $country->name;
+                        $notes = VisaNote::where('visa_request_id', $value->id)->get();
+                        $data[$key]['visa_notes']=$notes;
+                        }
+                        
+                        return response()->json(['success'=>true,'data' => $data], 200);
+                    } else {
+                        return response()->json(["success"=>false,'message' => 'Visa Request not found.'], 404);
+                    }
                 } else {
-                    return response()->json(['message' => 'Visa Request not found.'], 404);
+                    return response()->json(["success"=>false,'message' => 'Unauthorized.'], 401);
                 }
-            } else {
-                return response()->json(['message' => 'Unauthorized.'], 401);
+            }
+            else{
+                return response()->json(["success"=>false,'message' => 'User is not found against given id'], 404);
             }
         } else {
-            return response()->json(['message' => 'Unauthorized.'], 401);
+            return response()->json(["success"=>false,'message' => 'Id of the user is not found'], 500);
         }
     }
 

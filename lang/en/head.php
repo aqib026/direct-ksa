@@ -16,5 +16,6 @@ return [
     "eng"=>"English",
     "arb"=>"عربي",
     "jeddah"=>"Jeddah",
-    "riyadh"=>"Riyadh"
+    "riyadh"=>"Riyadh",
+    "kohbar"=>"Al Khobar"
 ];
