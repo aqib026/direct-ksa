@@ -28,7 +28,7 @@
                                     <td>Required Service</td>
                                     <td>
                                         @switch($featured_sale->required_service)
-                                            @case('translation')
+                                            @case('translation' || 'Translation')
                                                 Translation
                                             @break
 

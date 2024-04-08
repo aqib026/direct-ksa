@@ -47,7 +47,7 @@
                                         <td scope="row">{{ $loop->iteration }}</td>
                                         <td>
                                             @switch($accre->required_service)
-                                                @case('translation')
+                                                @case('translation' || 'Translation')
                                                     Translation
                                                 @break
 

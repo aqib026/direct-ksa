@@ -17,4 +17,7 @@ return[
     "ViewBranch"=>"View Branche(s)",
     "ViewBank" => "View Bank(s)",
     "confirm" => "Confirm",
+    "account_title"=>"Account Title",
+    "account_number"=>"Account Number",
+    "iban"=>"IBAN"
 ];

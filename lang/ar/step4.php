@@ -18,4 +18,7 @@ return[
     "ViewBranch"=>"عرض الفروع",
     "ViewBank" => "عرض البنوك",
     "confirm" => "تأكيد",
+    "account_title"=>"عنوان الحساب",
+    "account_number"=>"رقم حساب",
+    "iban"=>"رقم الحساب المصرفي الدولي"
 ];

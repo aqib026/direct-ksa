@@ -180,9 +180,9 @@
 									<section @if($loop->first)class="toggle active" @else class="toggle" @endif>
 										<a class="toggle-title">{{ $bankBranch->name }}</a>
 										<div class="toggle-content" @if($loop->first) style="display: block;" @else style="display: none;" @endif>
-											<pre> Account Title : {{ $bankBranch->account_title }}</pre>
-											<pre> IBAN : {{ $bankBranch->iban }}</pre>
-											<pre>Account # :{{ $bankBranch->account_number }}</pre>
+											<pre> {{__('step4.account_title')}}: {{ $bankBranch->account_title }}</pre>
+											<pre> {{__('step4.iban')}} : {{ $bankBranch->iban }}</pre>
+											<pre> {{__('step4.account_number')}}:{{ $bankBranch->account_number }}</pre>
 										</div>
 									</section>
 								@endforeach

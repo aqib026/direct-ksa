@@ -82,6 +82,9 @@ class BankController extends Controller
     {
         $bank = Bank::find($id);
         if (!is_null($bank)) {
+            if (isset($bank->banner)) {
+                @unlink($bank->banner);
+            }
             $bank->delete();
         }
         
@@ -134,7 +137,7 @@ class BankController extends Controller
         $bank->account_title = $request['account_title'];
         $bank->account_title_ar = $request['account_title_ar'];
         if ($request->hasFile('banner')) {
-            if($bank->banner){
+            if ($bank->banner) {
                 @unlink($bank->banner);
             }
             $filename = time() . "bank." . $request->file('banner')->getClientOriginalExtension();

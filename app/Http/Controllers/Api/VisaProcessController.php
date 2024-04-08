@@ -149,6 +149,8 @@ class VisaProcessController extends Controller
             $imageFormat = 'gif'; // GIF format
         } elseif (strpos($imageBinary, "II\x2A\x00") === 0 || strpos($imageBinary, "MM\x00\x2A") === 0) {
             $imageFormat = 'tiff'; // TIFF format
+        }else if (strpos($imageBinary, "%PDF") === 0) {
+            $imageFormat = 'pdf'; // PDF format
         }
         
         $filename = $img_type."/".Str::uuid().".".$imageFormat;

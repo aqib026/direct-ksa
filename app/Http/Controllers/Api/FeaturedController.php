@@ -16,6 +16,8 @@ use App\Models\User;
 use Exception;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class FeaturedController extends Controller
 {
@@ -28,18 +30,6 @@ class FeaturedController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        Log::build([
-            'driver' => 'single',
-            'path' => storage_path('logs/services-api-email-erros.log'),
-         ])->info('request all /n '.print_r($request->all()));
-         Log::build([
-            'driver' => 'single',
-            'path' => storage_path('logs/services-api-email-erros.log'),
-         ])->info('request input /n '.print_r($request->input()));
-         Log::build([
-            'driver' => 'single',
-            'path' => storage_path('logs/services-api-email-erros.log'),
-         ])->info('request json /n '.print_r($request->json()));
         $validatedData = $request->validate([
             'required_service'  => 'required',
             'applicant_name'    => 'required',
@@ -73,23 +63,15 @@ class FeaturedController extends Controller
         }
 
 
-        $input = $request->except('documents', '_token');
-        
-        $images = array();
-        if ($request->hasFile('documents')) {
-            $files = $request->file('documents');
-            foreach ($files as $file) {
-                $name = $file->getClientOriginalName();
-                $file->move('image', $name);
-                $images[] = $name;
-            }
+        $input = $request->input();
+        if (isset($input['file_content'])) {
+            $filename=$this->uploadPhoto($input['file_content'], 'image');
         }
-        $input['document']=$images;
         $featuredSales = new FeaturedSales();
         
         $featuredSales->required_service = $request->required_service;
         $featuredSales->paper_quantity = $request->paper_quantity;
-        $featuredSales->documents = implode("|", $images);
+        $featuredSales->documents = $filename;
         $featuredSales->translation_content = $request->translation_content;
         $featuredSales->idl_card_qty = $request->idl_card_qty;
         $featuredSales->lic_col_choice = $request->lic_col_choice;
@@ -163,5 +145,26 @@ class FeaturedController extends Controller
         } else {
             return response()->json(['message' => 'Unauthorized.'], 401);
         }
+    }
+    public function uploadPhoto($image, $img_type)
+    {
+        // Decode the base64-encoded image data
+        $imageBinary = base64_decode($image);
+        $imageFormat = 'jpg'; // Default to jpg if format cannot be determined
+        if (strpos($imageBinary, "\xFF\xD8") === 0) {
+            $imageFormat = 'jpg'; // JPEG format
+        } elseif (strpos($imageBinary, "\x89\x50\x4E\x47\x0D\x0A\x1A\x0A") === 0) {
+            $imageFormat = 'png'; // PNG format
+        } elseif (strpos($imageBinary, "\x47\x49\x46\x38") === 0) {
+            $imageFormat = 'gif'; // GIF format
+        } elseif (strpos($imageBinary, "II\x2A\x00") === 0 || strpos($imageBinary, "MM\x00\x2A") === 0) {
+            $imageFormat = 'tiff'; // TIFF format
+        }else if (strpos($imageBinary, "%PDF") === 0) {
+            $imageFormat = 'pdf'; // PDF format
+        }
+        
+        $filename = $img_type."/".Str::uuid().".".$imageFormat;
+        Storage::put($filename, $imageBinary);
+        return $filename;
     }
 }
