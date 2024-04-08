@@ -146,20 +146,25 @@ class VisaRequestController extends Controller
                 $country = Countries::where('id', $content['country'])->first();
                 if (isset($country)) {
                     $visa_types_records=VisaRequest::where('countries_id', $country->id)->where('visa_type', $content['visa_type'])->first();
+                    if (isset($visa_types_records)) {
+                        $content['visa_type_id']=$visa_types_records->id;
+                    } else {
+                        $content['visa_type_id']=null;
+                    }
                     $content['country_name'] = $country;
                 } else {
                     $country = Countries::where('id', $content['country_id'])->first();
                     if (isset($country)) {
                         $visa_types_records=VisaRequest::where('countries_id', $country->id)->where('visa_type', $content['visa_type'])->first();
+                        if (isset($visa_types_records)) {
+                            $content['visa_type_id']=$visa_types_records->id;
+                        } else {
+                            $content['visa_type_id']=null;
+                        }
                         $content['country_name'] = $country;
                     }
                 }
 
-                if (isset($visa_types_records)) {
-                    $content['visa_type_id']=$visa_types_records->id;
-                } else {
-                    $content['visa_type_id']=null;
-                }
                 $data[] = $content;
             }
             return response()->json(["success"=>true,'data' => $data], 200);
