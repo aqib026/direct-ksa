@@ -31,7 +31,7 @@
                                     <input id="name" type="text"
                                         class="form-control @error('name') is-invalid @enderror" name="name"
                                         value="{{ old('name', isset($bank) ? $bank->name : '') }}"
-                                        required autocomplete="name" placeholder="Enter Name" autofocus>
+                                        required autocomplete="name" placeholder="Enter Name" autofocus >
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -55,28 +55,63 @@
                                     @enderror
                                 </div>
                             </div>
+
                             <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Address
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Account Number
+                                    <span class="required"></span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <input id="account_number" type="text"
+                                        class="form-control @error('account_number') is-invalid @enderror" name="account_number"
+                                        value="{{ old('account_number', isset($bank) ? $bank->account_number : '') }}"
+                                        required autocomplete="name" placeholder="Account Number" autofocus >
+                                    @error('account_number')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">IBAN
+                                    <span class="required"></span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <input id="iban" type="text"
+                                        class="form-control @error('iban') is-invalid @enderror" name="iban"
+                                        value="{{ old('iban', isset($bank) ? $bank->iban : '') }}"
+                                        required autocomplete="name" placeholder="Enter IBAN" autofocus>
+                                    @error('iban')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Account Title
                                 <span class="required"></span>
                             </label>
                             <div class="col-md-6 col-sm-6 ">
-                                <textarea class="form-control @error('address') is-invalid @enderror" name="address" id="" cols="10"
-                                    rows="5">{{ old('address', isset($bank) ? $bank->address : '') }}</textarea>
+                                <textarea class="form-control @error('account_title') is-invalid @enderror" name="account_title" id="" cols="10"
+                                    rows="5" required>{{ old('account_title', isset($bank) ? $bank->account_title : '') }}</textarea>
                             </div>
-                            @error('address')
+                            @error('account_title')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                        </div> <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Address (Arabic)
+                        </div> 
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Account Title (Arabic)
                                 <span class="required"></span>
                             </label>
                             <div class="col-md-6 col-sm-6 ">
-                                <textarea class="form-control @error('address_ar') is-invalid @enderror" name="address_ar" id="" cols="10"
-                                    rows="5">{{ old('address_ar', isset($bank) ? $bank->address_ar : '') }}</textarea>
+                                <textarea class="form-control @error('account_title_ar') is-invalid @enderror" name="account_title_ar" id="" cols="10"
+                                    rows="5" required>{{ old('account_title_ar', isset($bank) ? $bank->account_title_ar : '') }}</textarea>
                             </div>
-                            @error('address_ar')
+                            @error('account_title_ar')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -84,11 +119,10 @@
                         </div>
                             <div class="item form-group">
                                 <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">Banner
-                                    <span class="required"></span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 ">
                                     <input id="avatar" type="file" class="form-control" name="banner" value=""
-                                        placeholder=""  {{ isset($bank->banner ) ? '' : 'required' }} autocomplete="">
+                                        placeholder=""  autocomplete="">
                                     <input type="hidden" name="previous_avatar" value="{{ old('banner', isset($bank) ? $bank->banner : '') }}">
                                     @if (old('banner', isset($bank) ? $bank->banner : ''))
                                         <p> Image: <span id="previous-image">{{ old('banner', isset($bank) ? $bank->banner : '') }}</span></p>

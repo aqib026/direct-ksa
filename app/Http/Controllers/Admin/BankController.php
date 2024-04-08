@@ -8,8 +8,6 @@ use App\Models\Bank;
 
 class BankController extends Controller
 {
-
-
     /**
      * Show the form for creating a new resource.
      *
@@ -34,24 +32,25 @@ class BankController extends Controller
         $request->validate([
             'name' => 'required',
             'name_ar' => 'required',
-            'address' => 'required',
-            'address_ar' => 'required',
-        
-        
+            'account_number' => 'required',
+            'iban' => 'required',
+            'account_title'=>'required',
+            'account_title_ar'=>'required'
         ]);
         
         
         $bank = new Bank;
         $bank->name = $request['name'];
         $bank->name_ar = $request['name_ar'];
-        $bank->address = $request['address'];
-        $bank->address_ar = $request['address_ar'];
-        
-        $filename = time() . "bank." . $request->file('banner')->getClientOriginalExtension();
-        $bank->banner = $request->file('banner')->storeas('bank', $filename);
-        
+        $bank->account_number = $request['account_number'];
+        $bank->iban = $request['iban'];
+        $bank->account_title = $request['account_title'];
+        $bank->account_title_ar = $request['account_title_ar'];
+        if ($request->hasFile('banner')) {
+            $filename = time() . "bank." . $request->file('banner')->getClientOriginalExtension();
+            $bank->banner = $request->file('banner')->storeas('bank', $filename);
+        }
         $bank->status = $request['status'];
-        
         $bank->save();
         return redirect('admin/bank');
     }
@@ -121,26 +120,28 @@ class BankController extends Controller
         $request->validate([
             'name' => 'required',
             'name_ar' => 'required',
-            'address' => 'required',
-            'address_ar' => 'required',
+            'account_number' => 'required',
+            'iban' => 'required',
+            'account_title'=>'required',
+            'account_title_ar'=>'required'
         ]);
         $bank = Bank::find($id);
         
         $bank->name = $request['name'];
         $bank->name_ar = $request['name_ar'];
-        $bank->address = $request['address'];
-        $bank->address_ar = $request['address_ar'];
-        
-        if(isset($request) && !empty($request->file('banner'))){
+        $bank->account_number = $request['account_number'];
+        $bank->iban = $request['iban'];
+        $bank->account_title = $request['account_title'];
+        $bank->account_title_ar = $request['account_title_ar'];
+        if ($request->hasFile('banner')) {
+            if($bank->banner){
+                @unlink($bank->banner);
+            }
             $filename = time() . "bank." . $request->file('banner')->getClientOriginalExtension();
             $bank->banner = $request->file('banner')->storeas('bank', $filename);
         }
         $bank->status = $request['status'];
-        
-        
         $bank->save();
         return redirect('admin/bank');
     }
-
-    
 }

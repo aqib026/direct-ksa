@@ -16,4 +16,7 @@ class Bank extends Model
     public function getAddressAttribute($value) {
         return session()->has('locale') && session()->get('locale') == 'ar' && !request()->is('admin*') ? $this->{'address_ar'} : $value;
     }
+    public function getAccountTitleAttribute($value) {
+        return session()->has('locale') && session()->get('locale') == 'ar' && !request()->is('admin*') ? $this->{'account_title_ar'} : $value;
+    }
 }

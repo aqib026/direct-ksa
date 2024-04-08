@@ -39,8 +39,8 @@
                                 <tr class="headings">
                                     <th>Name</th>
                                     <th>Name (Arabic)</th>
-                                    <th>Address</th>
-                                    <th>Address (Arabic)</th>
+                                    <th>Account Title</th>
+                                    <th>Account Title (Arabic)</th>
                                     <th>Banner</th>
                                     <th>Status</th>
                                     <th>Action</th>
@@ -51,8 +51,8 @@
                                     @foreach ($bank as $accre)
                                         <td scope="row">{{ $accre->name }}</td>
                                         <td scope="row">{{ $accre->name_ar }}</td> 
-                                        <td scope="row">{{ $accre->address }}</td>
-                                        <td scope="row">{{ $accre->address_ar }}</td>
+                                        <td scope="row">{{ $accre->account_title }}</td>
+                                        <td scope="row">{{ $accre->account_title_ar }}</td>
                                         <td><img src="{{ asset($accre->banner) }}" class="me-4 border my-image"
                                                 style="width:130px;height:80px" alt="Flag-Pic"></td>
                                         <td>
