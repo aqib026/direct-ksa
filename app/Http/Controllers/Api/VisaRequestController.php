@@ -22,7 +22,7 @@ class VisaRequestController extends Controller
     public function index(Request $request)
     {
         //$visaRequests = VisaRequest::all();
-        $countries = Countries::orderBy('created_at', 'desc')->get();
+        $countries = Countries::all();
         if ($countries) {
             $data = [
                 'visaRequests' => VisaTypeResource::collection($countries),
@@ -179,7 +179,7 @@ class VisaRequestController extends Controller
             $user = User::find($id);
             if (isset($user)) {
                 if ($user->usertype == 'customer' || $user->usertype == 'user') {
-                    $accre = UserVisaApplications::where('user_id', $user->id)->get();
+                    $accre = UserVisaApplications::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
                     if (count($accre)>0) {
                         $data=[];
                         foreach ($accre as $key =>$value) {
