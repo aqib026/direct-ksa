@@ -145,12 +145,12 @@ class VisaRequestController extends Controller
                 $content = unserialize($acc['content']);
                 $country = Countries::where('id', $content['country'])->first();
                 if (isset($country)) {
-                    $visa_types_records=VisaRequest::where('countries_id', $content['country'])->where('visa_type', $content['visa_type'])->first();
+                    $visa_types_records=VisaRequest::where('countries_id', $country->id)->where('visa_type', $content['visa_type'])->first();
                     $content['country_name'] = $country;
                 } else {
                     $country = Countries::where('id', $content['country_id'])->first();
                     if (isset($country)) {
-                        $visa_types_records=VisaRequest::where('countries_id', $content['country_id'])->where('visa_type', $content['visa_type'])->first();
+                        $visa_types_records=VisaRequest::where('countries_id', $country->id)->where('visa_type', $content['visa_type'])->first();
                         $content['country_name'] = $country;
                     }
                 }
