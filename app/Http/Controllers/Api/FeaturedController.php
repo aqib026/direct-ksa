@@ -28,6 +28,18 @@ class FeaturedController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
+        Log::build([
+            'driver' => 'single',
+            'path' => storage_path('logs/services-api-email-erros.log'),
+         ])->info('request all /n '.print_r($request->all()));
+         Log::build([
+            'driver' => 'single',
+            'path' => storage_path('logs/services-api-email-erros.log'),
+         ])->info('request input /n '.print_r($request->input()));
+         Log::build([
+            'driver' => 'single',
+            'path' => storage_path('logs/services-api-email-erros.log'),
+         ])->info('request json /n '.print_r($request->json()));
         $validatedData = $request->validate([
             'required_service'  => 'required',
             'applicant_name'    => 'required',
