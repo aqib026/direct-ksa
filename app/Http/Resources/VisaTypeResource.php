@@ -36,6 +36,7 @@ class VisaTypeResource extends JsonResource
         $visas_list = [];
         foreach($this->visatype as $visatype){
             $visas_list[] = [
+                'visa_type_id'=>$visatype->id,
                 'visa_type'      => $visatype->visa_type,
                 'visa_type_ar'   => $visatype->visa_type_ar,
                 'adult_price'    => $visatype->adult_price,
