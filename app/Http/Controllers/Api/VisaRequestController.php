@@ -22,7 +22,7 @@ class VisaRequestController extends Controller
     public function index(Request $request)
     {
         //$visaRequests = VisaRequest::all();
-        $countries = Countries::all();
+        $countries = Countries::orderBy('created_at', 'desc')->get();
         if ($countries) {
             $data = [
                 'visaRequests' => VisaTypeResource::collection($countries),
