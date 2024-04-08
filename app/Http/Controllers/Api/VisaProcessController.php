@@ -59,6 +59,11 @@ class VisaProcessController extends Controller
                 $user_record=User::find($user_id);
                 if (isset($data["payment_method"])) {
                     $payment_data=$data["payment_method"];
+                    $tracking_number=uniqid();
+                    $visa_records=UserVisaApplications::where('tracking_number', $tracking_number)->get();
+                    if (count($visa_records)>0) {
+                        $tracking_number=uniqid();
+                    }
                     if ($payment_data["payment_method"]=="online_payment" && $payment_data['response']["IsSuccess"]==true && $payment_data['response']['Data']["InvoiceStatus"]=='Paid') {
                         //save  user  data into transaction record
                         $transaction_entry = new Transaction();
@@ -86,6 +91,7 @@ class VisaProcessController extends Controller
                         $VisaRequest->user_id = $user_record->id;
                         $VisaRequest->content = serialize($data);
                         $VisaRequest->payment_id = $payment_data["response"]['Data']["InvoiceTransactions"][0]["PaymentId"];
+                        $VisaRequest->tracking_number = $tracking_number;
                         $VisaRequest->save();
                         $response = [
                             'success' => true,
@@ -97,6 +103,7 @@ class VisaProcessController extends Controller
                         $VisaRequest = new UserVisaApplications();
                         $VisaRequest->user_id = $user_record->id;
                         $VisaRequest->content = serialize($data);
+                        $VisaRequest->tracking_number =  $tracking_number;
                         $VisaRequest->save();
                 
                         $response = [
@@ -105,6 +112,12 @@ class VisaProcessController extends Controller
                          ];
                         return response()->json($response, 201);
                     }
+                } else {
+                    $response = [
+                        'success' => false,
+                        'message' => 'There is an issue with the payload.Missing payment information'
+                     ];
+                    return response()->json($response, 400);
                 }
             } else {
                 $errorCode = json_last_error_msg();

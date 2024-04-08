@@ -14,6 +14,9 @@ use App\Models\UserVisaApplications;
 use App\Models\VisaNote;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\JsonResponse;
+
+use function PHPUnit\Framework\isNull;
+
 class VisaRequestController extends Controller
 {
     public function index(Request $request)
@@ -135,24 +138,33 @@ class VisaRequestController extends Controller
     
     public function visa()
     {
-        if (Auth::id()) {
-            $user = Auth()->user();
-            $usertype = $user->usertype;
-            if ($usertype == 'customer') {
-                $accre = UserVisaApplications::where('user_id', Auth::user()->id)->get();
-                $data = array();
-                foreach ($accre as $acc) {
-                    $content = unserialize($acc['content']);
-                    $country = Countries::where('id', $content['country'])->first();
+        $accre = UserVisaApplications::all();
+        if (count($accre)>0) {
+            $data = array();
+            foreach ($accre as $acc) {
+                $content = unserialize($acc['content']);
+                $country = Countries::where('id', $content['country'])->first();
+                if (isset($country)) {
+                    $visa_types_records=VisaRequest::where('countries_id', $content['country'])->where('visa_type', $content['visa_type'])->first();
                     $content['country_name'] = $country;
-                    $data[] = $content;
+                } else {
+                    $country = Countries::where('id', $content['country_id'])->first();
+                    if (isset($country)) {
+                        $visa_types_records=VisaRequest::where('countries_id', $content['country_id'])->where('visa_type', $content['visa_type'])->first();
+                        $content['country_name'] = $country;
+                    }
                 }
-                return response()->json(['data' => $data], 200);
-            } else {
-                return response()->json(['message' => 'Unauthorized.'], 401);
+
+                if (isset($visa_types_records)) {
+                    $content['visa_type_id']=$visa_types_records->id;
+                } else {
+                    $content['visa_type_id']=null;
+                }
+                $data[] = $content;
             }
-        } else {
-            return response()->json(['message' => 'Unauthorized.'], 401);
+            return response()->json(["success"=>true,'data' => $data], 200);
+        }else{
+            return response()->json(["success"=>false,"data" => null,"message","Data not found"], 200);
         }
     }
     
@@ -160,22 +172,25 @@ class VisaRequestController extends Controller
     {
         if (isset($id)) {
             $user = User::find($id);
-            if(isset($user)){
+            if (isset($user)) {
                 if ($user->usertype == 'customer' || $user->usertype == 'user') {
-                    $accre = UserVisaApplications::where('user_id',$user->id)->get();
+                    $accre = UserVisaApplications::where('user_id', $user->id)->get();
                     if (count($accre)>0) {
                         $data=[];
-                        foreach($accre as $key =>$value){
-                        $content = unserialize($value->content);
-                        $data[$key]['content']=$content;
-                        if(isset($content ['country_id'])){
-                            $country = Countries::where('id', $content ['country_id'])->first();
-                        }elseif(isset($content ['country_id'])){
-                            $country = Countries::where('id',$content ['country_id'])->first();
-                        }
-                        $data[$key]['country_name'] = $country->name;
-                        $notes = VisaNote::where('visa_request_id', $value->id)->get();
-                        $data[$key]['visa_notes']=$notes;
+                        foreach ($accre as $key =>$value) {
+                            $content = unserialize($value->content);
+                            $data[$key]['content']=$content;
+                            if (isset($content ['country_id'])) {
+                                $country = Countries::where('id', $content ['country_id'])->first();
+                            } elseif (isset($content ['country_id'])) {
+                                $country = Countries::where('id', $content ['country_id'])->first();
+                            }
+                            $data[$key]['country_name'] = $country->name;
+                            $data[$key]['country_flag_pic'] = url($country->flag_pic);
+                            $data[$key]['country_cover_pic'] = url($country->cover_pic);
+                            $data[$key]['tracking_number'] = $country->tracking_number;
+                            $notes = VisaNote::where('visa_request_id', $value->id)->get();
+                            $data[$key]['visa_notes']=$notes;
                         }
                         
                         return response()->json(['success'=>true,'data' => $data], 200);
@@ -185,13 +200,11 @@ class VisaRequestController extends Controller
                 } else {
                     return response()->json(["success"=>false,'message' => 'Unauthorized.'], 401);
                 }
-            }
-            else{
+            } else {
                 return response()->json(["success"=>false,'message' => 'User is not found against given id'], 404);
             }
         } else {
             return response()->json(["success"=>false,'message' => 'Id of the user is not found'], 500);
         }
     }
-
 }
