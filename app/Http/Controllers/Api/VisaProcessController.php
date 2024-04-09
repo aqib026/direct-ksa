@@ -95,7 +95,8 @@ class VisaProcessController extends Controller
                         $VisaRequest->save();
                         $response = [
                             'success' => true,
-                            'message' => 'Data is successfully stored in visa request and transaction records'
+                            'message' => 'Data is successfully stored in visa request and transaction records',
+                            'tracking_id'=>$VisaRequest->tracking_number
                          ];
                         return response()->json($response, 201);
                     } else {
@@ -108,7 +109,8 @@ class VisaProcessController extends Controller
                 
                         $response = [
                             'success' => true,
-                            'message' => 'Data is successfully stored in visa request record'
+                            'message' => 'Data is successfully stored in visa request record',
+                            'tracking_id'=>$VisaRequest->tracking_number
                          ];
                         return response()->json($response, 201);
                     }

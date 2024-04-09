@@ -185,15 +185,14 @@ class VisaRequestController extends Controller
                         foreach ($accre as $key =>$value) {
                             $content = unserialize($value->content);
                             $data[$key]['content']=$content;
-                            if (isset($content ['country_id'])) {
-                                $country = Countries::where('id', $content ['country_id'])->first();
-                            } elseif (isset($content ['country_id'])) {
+                            $country = Countries::where('id', $content ['country'])->first();
+                            if (!$country) {
                                 $country = Countries::where('id', $content ['country_id'])->first();
                             }
                             $data[$key]['country_name'] = $country->name;
                             $data[$key]['country_flag_pic'] = url($country->flag_pic);
                             $data[$key]['country_cover_pic'] = url($country->cover_pic);
-                            $data[$key]['tracking_number'] = $country->tracking_number;
+                            $data[$key]['tracking_number'] = $value->tracking_number;
                             $notes = VisaNote::where('visa_request_id', $value->id)->get();
                             $data[$key]['visa_notes']=$notes;
                         }
