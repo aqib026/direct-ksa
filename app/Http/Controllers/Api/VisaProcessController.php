@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use PDO;
 
 class VisaProcessController extends Controller
 {
@@ -55,6 +56,15 @@ class VisaProcessController extends Controller
                         }
                     }
                 }
+                if($data['sponsors_of_expenses']['bank_statement_image']){
+                    $filename=$this->uploadPhoto($data['sponsors_of_expenses']['bank_statement_image'], 'sponser-documents');
+                    $data['sponsors_of_expenses']['sponsors_bank_img_filename']= $filename;
+                }
+                if($data['sponsors_of_expenses']['job_letter_image']){
+                    $filename=$this->uploadPhoto($data['sponsors_of_expenses']['job_letter_image'], 'sponser-documents');
+                    $data['sponsors_of_expenses']['sponsors_job_img_filename']= $filename;
+                }
+
                 $user_id=$data["user_id"];
                 $user_record=User::find($user_id);
                 if (isset($data["payment_method"])) {
@@ -136,6 +146,23 @@ class VisaProcessController extends Controller
             ];
             return response()->json($response, 400);
         }
+    }
+
+    public function storeAdditionalImages(Request $request){
+        Log::build([
+            'driver' => 'single',
+            'path' => storage_path('logs/addiitiona-data.log'),
+         ])->info('$request->input(): '.print_r($request->input(), true));
+         Log::build([
+            'driver' => 'single',
+            'path' => storage_path('logs/addiitiona-data.log'),
+         ])->info('$request->input(): '.print_r($request->json(), true));
+         $response=[
+            'success'=> true,
+            'message'=>"request is logged successfully"
+        ];
+        return response()->json($response, 200);
+
     }
 
     public function uploadPhoto($image, $img_type)

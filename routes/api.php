@@ -60,4 +60,5 @@ Route::POST('otp-login',[OtpController::class,'loginOtp']);
 Route::POST('otp-verification',[OtpController::class,'otpVerification']);
 
 Route::middleware('auth:sanctum')->post('store-visa-request',[VisaProcessController::class,'storeVisaRequest']);
+Route::middleware('auth:sanctum')->post('store-additional-images',[VisaProcessController::class,'storeAdditionalImages']);
 
