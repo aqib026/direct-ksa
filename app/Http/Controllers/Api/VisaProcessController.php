@@ -56,11 +56,11 @@ class VisaProcessController extends Controller
                         }
                     }
                 }
-                if($data['sponsors_of_expenses']['bank_statement_image']){
+                if ($data['sponsors_of_expenses']['bank_statement_image']) {
                     $filename=$this->uploadPhoto($data['sponsors_of_expenses']['bank_statement_image'], 'sponser-documents');
                     $data['sponsors_of_expenses']['sponsors_bank_img_filename']= $filename;
                 }
-                if($data['sponsors_of_expenses']['job_letter_image']){
+                if ($data['sponsors_of_expenses']['job_letter_image']) {
                     $filename=$this->uploadPhoto($data['sponsors_of_expenses']['job_letter_image'], 'sponser-documents');
                     $data['sponsors_of_expenses']['sponsors_job_img_filename']= $filename;
                 }
@@ -144,25 +144,80 @@ class VisaProcessController extends Controller
                 'success'=> false,
                 'message'=>$e->getMessage()
             ];
-            return response()->json($response, 400);
+            return response()->json($response, 500);
         }
     }
 
-    public function storeAdditionalImages(Request $request){
-        Log::build([
-            'driver' => 'single',
-            'path' => storage_path('logs/addiitiona-data.log'),
-         ])->info('$request->input(): '.print_r($request->input(), true));
-         Log::build([
-            'driver' => 'single',
-            'path' => storage_path('logs/addiitiona-data.log'),
-         ])->info('$request->input(): '.print_r($request->json(), true));
-         $response=[
-            'success'=> true,
-            'message'=>"request is logged successfully"
-        ];
-        return response()->json($response, 200);
+    public function storeAdditionalImages(Request $request)
+    {
+        try {
+            $input=$request->input();
+            $validator =Validator::make($input, [
+                'user_id'=>'required|exists:users,id',]);
+            if ($validator->fails()) {
+                $response=[
+                    'success'=> false,
+                    'message'=>$validator->errors()
+                ];
+                return response()->json($response, 400);
+            }
+            $user_id=$input['user_id'];
+            $tracking_id=$input['tracking_id'];
+            $user=UserVisaApplications::where('user_id', $user_id)->where('tracking_number', $tracking_id)->first();
+            if (isset($user)) {
+                $content = unserialize($user->content);
+                $user_content=$content;
 
+                if (isset($input['additional_documents'])) {
+                    if(isset($content['sponsors_of_expenses']['sponsors_additional_img_filename'])){
+                        @unlink($content['sponsors_of_expenses']['sponsors_additional_img_filename']);
+                    }
+                    $filename=$this->uploadPhoto($input['additional_documents'], 'sponser-documents');
+                    $user_content['sponsors_of_expenses']['sponsors_additional_img_filename']= $filename;
+                    $user->content = serialize($user_content);
+                    $user->update();
+                }
+                if (isset($input['bank_statement_image'])) {
+                    if(isset($content['sponsors_of_expenses']['sponsors_bank_img_filename'])){
+                        @unlink($content['sponsors_of_expenses']['sponsors_bank_img_filename']);
+                    }
+                    $filename=$this->uploadPhoto($input['bank_statement_image'], 'sponser-documents');
+                    $user_content['sponsors_of_expenses']['sponsors_bank_img_filename']= $filename;
+                    $user_content['sponsors_of_expenses']['i_will_prepare_later_bank']=null;
+                    $user_content['sponsors_of_expenses']['bank_statement_image']=$input['bank_statement_image'];
+                    $user->content = serialize($user_content);
+                    $user->update();
+                }
+                if (isset($input['job_letter_image'])) {
+                    if(isset($content['sponsors_of_expenses']['sponsors_job_img_filename'])){
+                        @unlink($content['sponsors_of_expenses']['sponsors_job_img_filename']);
+                    }
+                    $filename=$this->uploadPhoto($input['job_letter_image'], 'sponser-documents');
+                    $user_content['sponsors_of_expenses']['sponsors_job_img_filename']= $filename;
+                    $user_content['sponsors_of_expenses']['i_will_prepare_later_job']=null;
+                    $user_content['sponsors_of_expenses']['job_letter_image']=$input['job_letter_image'];
+                    $user->content = serialize($user_content);
+                    $user->update();
+                }
+                $response=[
+                    'success'=> true,
+                    'message'=>"Uploaded document successfully"
+                ];
+                return response()->json($response, 200);
+            } else {
+                $response=[
+                    'success'=> false,
+                    'message'=>"Cannot find record !"
+                ];
+                return response()->json($response, 400);
+            }
+        } catch(Exception $e) {
+            $response=[
+                'success'=> false,
+                'message'=>$e->getMessage()
+            ];
+            return response()->json($response, 500);
+        }
     }
 
     public function uploadPhoto($image, $img_type)
@@ -178,7 +233,7 @@ class VisaProcessController extends Controller
             $imageFormat = 'gif'; // GIF format
         } elseif (strpos($imageBinary, "II\x2A\x00") === 0 || strpos($imageBinary, "MM\x00\x2A") === 0) {
             $imageFormat = 'tiff'; // TIFF format
-        }else if (strpos($imageBinary, "%PDF") === 0) {
+        } elseif (strpos($imageBinary, "%PDF") === 0) {
             $imageFormat = 'pdf'; // PDF format
         }
         
