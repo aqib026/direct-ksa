@@ -37,10 +37,12 @@ class VisaProcessController extends Controller
                         if (isset($adult_record['adult_passport'])) {
                             $filename=$this->uploadPhoto($adult_record['adult_passport'], 'passportpic');
                             $data['personal_information']['adult'][$key]['adult_passport_filename']= $filename;
+                            $data['personal_information']['adult'][$key]['adult_passport']=null;
                         }
                         if (isset($adult_record['adult_personal_photo'])) {
                             $filename=$this->uploadPhoto($adult_record['adult_personal_photo'], 'personalpic');
                             $data['personal_information']['adult'][$key]['adult_avatar_filename']= $filename;
+                            $data['personal_information']['adult'][$key]['adult_personal_photo']=null;
                         }
                     }
                 }
@@ -49,20 +51,24 @@ class VisaProcessController extends Controller
                         if (isset($child_record['child_passport'])) {
                             $filename=$this->uploadPhoto($child_record['child_passport'], 'passportpic');
                             $data['personal_information']['child'][$key]['child_passport_filename']= $filename;
+                            $data['personal_information']['child'][$key]['child_passport']=null;
                         }
                         if (isset($child_record['child_personal_photo'])) {
                             $filename=$this->uploadPhoto($child_record['child_personal_photo'], 'personalpic');
                             $data['personal_information']['child'][$key]['child_avatar_filename']= $filename;
+                            $data['personal_information']['child'][$key]['child_personal_photo']=null;
                         }
                     }
                 }
                 if ($data['sponsors_of_expenses']['bank_statement_image']) {
                     $filename=$this->uploadPhoto($data['sponsors_of_expenses']['bank_statement_image'], 'sponser-documents');
                     $data['sponsors_of_expenses']['sponsors_bank_img_filename']= $filename;
+                    $data['sponsors_of_expenses']['bank_statement_image']=null;
                 }
                 if ($data['sponsors_of_expenses']['job_letter_image']) {
                     $filename=$this->uploadPhoto($data['sponsors_of_expenses']['job_letter_image'], 'sponser-documents');
                     $data['sponsors_of_expenses']['sponsors_job_img_filename']= $filename;
+                    $data['sponsors_of_expenses']['job_letter_image']=null;
                 }
 
                 $user_id=$data["user_id"];
@@ -174,6 +180,7 @@ class VisaProcessController extends Controller
                     }
                     $filename=$this->uploadPhoto($input['additional_documents'], 'sponser-documents');
                     $user_content['sponsors_of_expenses']['sponsors_additional_img_filename']= $filename;
+                    $input['additional_documents']=null;
                     $user->content = serialize($user_content);
                     $user->update();
                 }
@@ -184,7 +191,7 @@ class VisaProcessController extends Controller
                     $filename=$this->uploadPhoto($input['bank_statement_image'], 'sponser-documents');
                     $user_content['sponsors_of_expenses']['sponsors_bank_img_filename']= $filename;
                     $user_content['sponsors_of_expenses']['i_will_prepare_later_bank']=null;
-                    $user_content['sponsors_of_expenses']['bank_statement_image']=$input['bank_statement_image'];
+                    $user_content['sponsors_of_expenses']['bank_statement_image']=null;
                     $user->content = serialize($user_content);
                     $user->update();
                 }
@@ -195,7 +202,7 @@ class VisaProcessController extends Controller
                     $filename=$this->uploadPhoto($input['job_letter_image'], 'sponser-documents');
                     $user_content['sponsors_of_expenses']['sponsors_job_img_filename']= $filename;
                     $user_content['sponsors_of_expenses']['i_will_prepare_later_job']=null;
-                    $user_content['sponsors_of_expenses']['job_letter_image']=$input['job_letter_image'];
+                    $user_content['sponsors_of_expenses']['job_letter_image']=null;
                     $user->content = serialize($user_content);
                     $user->update();
                 }
