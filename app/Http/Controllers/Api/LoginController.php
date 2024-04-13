@@ -74,6 +74,7 @@ class LoginController extends Controller
             $user=Auth::user();
             $success['token']=$user->createToken('MyApp')->plainTextToken;
             $success['name']=$user->name;
+            $success['user_id']=$user->id;
 
             $response=[
                 'success'=>true,

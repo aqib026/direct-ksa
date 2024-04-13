@@ -15,6 +15,7 @@ use App\Http\Controllers\Api\BankController;
 use App\Http\Controllers\Api\CashController;
 use App\Http\Controllers\Api\OnlinePaymentController;
 use App\Http\Controllers\Api\OtpController;
+use App\Http\Controllers\Api\VisaPriceController;
 use App\Http\Controllers\Api\VisaProcessController;
 
 /*
@@ -61,4 +62,5 @@ Route::POST('otp-verification',[OtpController::class,'otpVerification']);
 
 Route::middleware('auth:sanctum')->post('store-visa-request',[VisaProcessController::class,'storeVisaRequest']);
 Route::middleware('auth:sanctum')->post('store-additional-images',[VisaProcessController::class,'storeAdditionalImages']);
+Route::POST('price-list',[VisaPriceController::class,'priceList']);
 
