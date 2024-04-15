@@ -15,9 +15,9 @@
 
                             <div class='row' dir="ltr">
                                 <div role="group" class="mb-1 btn-group btn-group-sm">
-                                   <!--  <button type="button" class="btn shadow-none btn-primary py-2" id='phone_btn'
+                                     <button type="button" class="btn shadow-none btn-primary py-2" id='phone_btn'
                                         onclick="showFields('phone')">{{ __('login.mobile_no') }} </button>
-                                        -->
+                                        
                                     <button type="button" class="btn shadow-none btn-outline-primary py-2" id='email_btn'
                                         onclick="showFields('email')">{{ __('login.email') }}</button>
                                 </div>
@@ -104,6 +104,11 @@
                                     <strong>{{ session()->get('general-error') }}</strong>
                                 </span>
                             @endif
+                            @if (session()->has('error'))
+                            <span style="color: red;font-size:16px" role="alert">
+                                <strong>{{ session()->get('error') }}</strong>
+                            </span>
+                        @endif
                             <div class="text-center text-lg-start mt-4 pt-2" id='login_filed'>
                                 <button type="button" id='login_with_OTP'
                                     class="btn btn-primary btn-lg submit d-block w-100">
@@ -138,7 +143,7 @@
 @section('custom-scripts')
     <script>
         $(document).ready(function() {
-            showFields('email');
+            // showFields('email');
             if ($('input[name="number"]').data('error')) {
                 // Mobile field has an error, open mobile tab
                 showFields('phone');

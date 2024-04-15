@@ -34,14 +34,38 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
+                            @if ($errors->has('number'))
+                                <span style="color: red;font-size:16px" role="alert">
+                                    <strong>{{ $errors->first('number') }}</strong>
+                                </span>
+                            @endif
+                            @if ($errors->has('email'))
+                                <span style="color: red;font-size:16px" role="alert">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </span>
+                            @endif
                         </div>
 
                         <!-- Password input -->
                         <div class="text-center text-lg-start mt-4 pt-2">
+                            @php
+                                $content =
+                                    " <div class='visa-type-btn-div'>
+                                    <a  class='btn btn-popover-custom btn-lg btn-primary resend_otp_btn' id='resend_otp_btn_mobile' >" .
+                                    __('otp.select_mobile') .
+                                    "</a>
+                                    <a  class='btn btn-popover-custom btn-lg btn-primary resend_otp_btn' id='resend_otp_btn_email' >" .
+                                    __('otp.select_email') .
+                                    '</a>
+                                    </div>';
+                            @endphp
 
-                            <a  class="btn btn-primary" id="resend_otp_btn" style="color: #fff">{{__('otp.resend_opt')}}</a>
+                            <a tabindex="0" class="btn  btn-primary" role="button" data-bs-sanitize="false"
+                                data-bs-placement="bottom" data-bs-toggle="popover"
+                                data-bs-title="{{ __('otp.select_medium') }}" data-bs-html="true"
+                                data-bs-content="{!! $content !!}">{{ __('otp.resend_opt') }}</a>
                             <button type="submit" class="btn btn-primary">
-                                {{__('otp.enter')}}
+                                {{ __('otp.enter') }}
                             </button>
 
                         </div>
@@ -49,7 +73,10 @@
                     </form>
                     <form method="POST" action="{{ route('otp.generate') }}" id="resend_otp">
                         @csrf
-                        <input type="hidden" name="number" value="{{ $user->number }}" />
+    
+                        <input type="hidden" name="number" id="number_field"  />
+                        <input type="hidden" name="email" id="email_field"   />
+                        <input type="hidden" name="merge_number" value=false   />
 
                     </form>
 
@@ -59,12 +86,28 @@
 
     </section>
 @endsection
+@section('styles')
+    <style>
+        a:not([href]):not([tabindex]) {
+            color: #fff;
+        }
+    </style>
+@endsection
 @section('custom-scripts')
     <script>
         $(document).ready(function() {
-           
-            $("#resend_otp_btn").click(function() {
+
+            $(document).on("click", ".resend_otp_btn", function() {
+                if ($(this).attr('id') == "resend_otp_btn_mobile") {
+                    var user_mobile='<?php echo $user->number ;?>';
+                    $('#number_field').val(user_mobile);
+                }
+                if ($(this).attr('id') == "resend_otp_btn_email") {
+                    var user_email='<?php echo $user->email ;?>';
+                    $('#email_field').val(user_email);
+                }
                 $("#resend_otp").submit();
+
             });
         });
     </script>
