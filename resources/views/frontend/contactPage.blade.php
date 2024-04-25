@@ -60,8 +60,8 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-8 col-sm-12">
-                                                <iframe
-                                                    src="https://www.google.com/maps/embed/v1/place?key=&q={{ $contact->latitude }},{{ $contact->longitude }}"></iframe>
+                                                <iframe style='height: 380px; width:100%;'
+                                                    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA7QMOcF7V6jClrDvIv3fHWkvqsxxXxlRY&q={{ $contact->latitude }},{{ $contact->longitude }}&&zoom=9"></iframe>
                                             </div>
                                         </div>
                                     </div>
