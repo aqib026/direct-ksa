@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use Exception;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -72,7 +74,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user=User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'number' => '+966'.$data['number'],
@@ -80,7 +82,15 @@ class RegisterController extends Controller
             'usertype'=>'customer',
 
         ]);
-        $user->sendEmailVerificationNotification();
+        try {
+            $user->sendEmailVerificationNotification();
+        } catch(Exception $e) {
+            Log::build([
+                'driver' => 'single',
+                'path' => storage_path('logs/user-verify-email-send.log'),
+             ])->info('There is problem while sending email: /n '.print_r($e->getMessage(), true));
+        }
+       
 
         return $user;
     }

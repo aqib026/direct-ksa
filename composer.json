@@ -19,6 +19,7 @@
         "symfony/http-client": "^6.0",
         "symfony/mailgun-mailer": "^6.0",
         "twilio/sdk": "^7.5",
+        "vonage/client": "^4.0",
         "zircote/swagger-php": "^4.7"
     },
     "require-dev": {
