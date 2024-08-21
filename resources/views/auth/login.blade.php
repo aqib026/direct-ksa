@@ -110,10 +110,11 @@
                             </span>
                         @endif
                             <div class="text-center text-lg-start mt-4 pt-2" id='login_filed'>
+                                {{-- here we coomented line out beciase twilio acoount is not functional --}}
                                 {{-- <button type="button" id='login_with_OTP'
                                     class="btn btn-primary btn-lg submit d-block w-100">
                                     {{ __('login.login_with_otp') }}
-                                </button> --}}
+                                </button> --}}    
 
                                 <button type="button" id='login_with_Pass' style='display:none'
                                     class="btn btn-primary btn-lg submit w-100 mt-3">
