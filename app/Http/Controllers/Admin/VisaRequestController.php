@@ -102,18 +102,21 @@ class VisaRequestController extends Controller
         $request->validate([
             'travel_date' => 'required',
             'appointment_city' => 'required',
-            'adult_count' => 'nullable|numeric|min:0',
-            'child_count' => 'nullable|numeric|min:0',
-            'passport_count' => 'nullable|numeric|min:0',
-            'relation' => 'required',
-        ]);
+            'relation'=>'required'
+        ], [
+            'travel_date'=>__('steps.date'),
+            'realtion'=>__('steps.realtion')
 
-
-        if ($request->adult_count <= 0 && $request->child_count <= 0 && $request->passport_count <= 0) return back()->withErrors([
-            'adult_count' => __('steps.count'),
-            'child_count' => __('steps.count'),
-            'passport_count' => __('steps.count'),
         ]);
+        if (isset($request['passport_count']) && $request['passport_count']<1) {
+            return back()->withErrors([
+                'passport_count' => __('steps.count'),
+            ]);
+        } elseif (isset($request['adult_count']) && $request['adult_count']<1) {
+            return back()->withErrors([
+                'adult_count' => __('steps.count'),
+            ]);
+        }
         $form_data = $request->all();
         Session::put('form_data', $form_data);
         if (auth()->check()) {
@@ -183,17 +186,16 @@ class VisaRequestController extends Controller
             return redirect('visa_request');
         }
 
-        if($form_data['payment_method']=="online_pay"){
-            Session::put('user_data',$data);
+        if ($form_data['payment_method']=="online_pay") {
+            Session::put('user_data', $data);
             return redirect()->route('payment-request');
-        }else{
+        } else {
             $VisaRequest = new UserVisaApplications();
             $VisaRequest->user_id = auth()->user()->id;
             $VisaRequest->content = serialize($data);
             $VisaRequest->save();
             return view('frontend.thankyou');
         }
-
     }
 
     public function stepfour()
@@ -340,9 +342,9 @@ class VisaRequestController extends Controller
         $data = array();
         foreach ($accre as $key=> $acc) {
             $data[$acc['id']] = unserialize($acc['content']);
-            if(isset($data[$acc['id']]['country'])){
+            if (isset($data[$acc['id']]['country'])) {
                 $country = countries::where('id', $data[$acc['id']]['country'])->first();
-            }elseif(isset($data[$acc['id']]['country_id'])){
+            } elseif (isset($data[$acc['id']]['country_id'])) {
                 $country = countries::where('id', $data[$acc['id']]['country_id'])->first();
             }
             $data[$acc['id']]['country_name'] =  $country;
@@ -359,10 +361,10 @@ class VisaRequestController extends Controller
         } else {
             $data = array();
             $data = unserialize($accre['content']);
-            if(isset($data['country'])){
+            if (isset($data['country'])) {
                 $country = countries::where('id', $data['country'])->first();
-            }elseif(isset($data['country_id'])){
-                $country = countries::where('id',['country_id'])->first();
+            } elseif (isset($data['country_id'])) {
+                $country = countries::where('id', ['country_id'])->first();
             }
             $data['country_name'] =  $country;
             $notes = VisaNote::where('visa_request_id', $id)->get();

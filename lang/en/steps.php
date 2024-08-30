@@ -47,10 +47,12 @@ return[
     "noct"=>"No. of Child Traveler's",
     "nop"=>"No. of Passport's",
     "ps"=>"Payment Summary",
-    "count" => "Count should be greater than zero",
-    "kohbar"=>"Al Khobar"
+    "count" => "No of Passport or Adult Count should be greater than zero",
+    "kohbar"=>"Al Khobar",
+    "date"=>"Travel date is required",
+    'relation'=>'Relation is required if 1 traveller please select other option',
+    'appointment_city'=>'Please select appointment city'
 
 
 
-]
-?>
+];

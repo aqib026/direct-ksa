@@ -246,7 +246,7 @@
                                     onkeypress="return (event.charCode >= 48 && event.charCode <= 57)"
                                     onpaste="return (event.charCode>=48 && event.charCode<=57)"
                                     @if ($errors->has('number')) data-error="true" @endif dir="ltr"
-                                aria-invalid="true" minlength="9"  maxlength="20" {{auth()->check()?'readonly':''}} />
+                                aria-invalid="true" minlength="9"  maxlength="14" {{auth()->check()?'readonly':''}} />
 
                                 <div class="input-group-append">
                                     <div class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="14px"
@@ -271,7 +271,7 @@
                                 <input type="text" name="email" id="email" class="form-control"
                                     aria-label="Email e.g. abc@xyz.com"
                                     value="{{ isset($user) ? $user->email:old('email') }}"
-                                    placeholder="Email e.g. abc@xyz.com" {{auth()->check()?'readonly':''}} required>
+                                    placeholder="Email e.g. abc@xyz.com" {{auth()->check()?'readonly':''}} required >
                                 <div class="input-group-append">
                                     <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="14px"
                                             height="25px" viewBox="0 0 24 24" fill="none" stroke="currentColor"

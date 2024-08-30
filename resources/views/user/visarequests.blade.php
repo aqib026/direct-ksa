@@ -21,15 +21,15 @@
                         <tbody>
                             @foreach ($data as $key=> $ac )
                                 <tr class="even pointer">
-                                    <td>{{ $ac['visa_type'] }}</td>
-                                    <td>{{ $ac['country_name']->name }}</td>
-                                    <td>{{ $ac['travel_date'] }}</td>
-                                    <td>{{ $ac['appointment_city'] }}</td>
-                                    <td>{{ $ac['relation'] }}</td>
+                                    <td>{{ $ac['visa_type']??'' }}</td>
+                                    <td>{{ $ac['country_name']->name??'' }}</td>
+                                    <td>{{ $ac['travel_date']??'' }}</td>
+                                    <td>{{ $ac['appointment_city']??'' }}</td>
+                                    <td>{{ $ac['relation']??'' }}</td>
                                     <td>
-                                        @if($ac['passenger_total'] > 0) {{ $ac['passenger_total'] }}.00 SAR @else {{ $ac['passport_counter_sum'] }}.00 SAR @endif
+                                        @if(isset($ac['passenger_total']) && $ac['passenger_total'] > 0) {{ $ac['passenger_total'] }}.00 SAR @else {{ $ac['passport_counter_sum']??'' }}.00 SAR @endif
                                     </td>
-                                    <td>{{ $ac['payment_form_data'] }}</td>
+                                    <td>{{ $ac['payment_form_data']??'' }}</td>
                                     <td>
                                         <a href="{{ url('user/visa_request') }}/{{ $key }}"><i class="btn btn-success fa fa-eye"></i></a>
                                     </td>

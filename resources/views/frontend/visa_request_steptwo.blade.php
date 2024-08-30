@@ -42,8 +42,15 @@
                         </h2>
                     </div>
                 </div>
+                @if ($errors->has('travel_date'))
+                    <div class="col-md-4 alert alert-danger">
+                        {{ __('steps.date') }}
+                    </div>
+                @endif
                 <div class="row py-5 appear-animation datepickercustom" data-appear-animation="fadeIn"
                     data-appear-animation-delay="300">
+
+
                     <div class="overflow-hidden mb-3 text-center ">
                         <h2 class="text-color-dark font-weight-bold text-8 pb-2 mb-0 appear-animation"
                             data-appear-animation="maskUp" data-appear-animation-delay="100">{{ __('steps.wte') }}</h2>
@@ -63,6 +70,12 @@
                         </div>
                     </div>
                 </div>
+
+                @if ($errors->has('appointment_city'))
+                    <div class="col-md-4 alert alert-danger">
+                        {{ __('steps.appointment_city') }}
+                    </div>
+                @endif
                 <div class="row mt-5 py-5 appear-animation datepickercustom" data-appear-animation="fadeIn"
                     data-appear-animation-delay="300">
                     <div class="overflow-hidden mb-1 text-center">
@@ -72,41 +85,46 @@
                     <div class="overflow-hidden mb-5 text-center">
                         <h3 class="font-weight-semi-bold text-color-grey text-uppercase positive-ls-1 text-4 line-height-2 line-height-sm-7 mb-0 appear-animation"
                             data-appear-animation="maskUp" data-appear-animation-delay="100"><i
-                                class="fa fa-info-circle"></i>&nbsp;{{ $VisaRequest->country->name }} {{ __('steps.eqi') }}</h3>
+                                class="fa fa-info-circle"></i>&nbsp;{{ $VisaRequest->country->name }}
+                            {{ __('steps.eqi') }}</h3>
                     </div>
                     <div class="col col-lg-12 text-center py-3">
+
                         <div class="row">
                             <div class="form-group col">
                                 <div class="form-check form-check-inline">
-                                    <label class="form-check-label form-check-label-custom {{session()->get('locale') == 'ar'?'label_rtl_style':''}}" >
-                                        <input class="form-check-input form-check-input-custom {{session()->get('locale') == 'ar'?'radio_rtl_style ':''}} " type="radio"
-                                            name="appointment_city" data-msg-required="Please select at least one option."
-                                            value="Riyadh" @if (isset($form_data['appointment_city']) && $form_data['appointment_city'] == 'Riyadh') checked @endif
-                                            required>{{ __('steps.r') }}
+                                    <label
+                                        class="form-check-label form-check-label-custom {{ session()->get('locale') == 'ar' ? 'label_rtl_style' : '' }}">
+                                        <input
+                                            class="form-check-input form-check-input-custom {{ session()->get('locale') == 'ar' ? 'radio_rtl_style ' : '' }} "
+                                            type="radio" name="appointment_city"
+                                            data-msg-required="Please select at least one option." value="Riyadh"
+                                            @if (isset($form_data['appointment_city']) && $form_data['appointment_city'] == 'Riyadh') checked @endif required>{{ __('steps.r') }}
                                     </label>
                                 </div>
                             </div>
                         </div>
                         <!-- <div class="row">
-                            <div class="form-group col">
-                                <div class="form-check form-check-inline">
-                                    <label class="form-check-label form-check-label-custom" style="margin-left: 28px">
-                                        <input class="form-check-input form-check-input-custom" type="radio"
-                                            name="appointment_city" data-msg-required="Please select at least one option."
-                                            value="Dhahran" @if (isset($form_data['appointment_city']) && $form_data['appointment_city'] == 'Dhahran') checked @endif
-                                            required>{{ __('steps.d') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div> -->
+                                                        <div class="form-group col">
+                                                            <div class="form-check form-check-inline">
+                                                                <label class="form-check-label form-check-label-custom" style="margin-left: 28px">
+                                                                    <input class="form-check-input form-check-input-custom" type="radio"
+                                                                        name="appointment_city" data-msg-required="Please select at least one option."
+                                                                        value="Dhahran" @if (isset($form_data['appointment_city']) && $form_data['appointment_city'] == 'Dhahran') checked @endif
+                                                                        required>{{ __('steps.d') }}
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div> -->
                         <div class="row">
                             <div class="form-group col">
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label form-check-label-custom" style="margin-left: 14px">
-                                        <input class="form-check-input form-check-input-custom {{session()->get('locale') == 'ar'?'radio_rtl_style ':''}}" type="radio"
-                                            name="appointment_city" data-msg-required="Please select at least one option."
-                                            value="Jeddah" @if (isset($form_data['appointment_city']) && $form_data['appointment_city'] == 'Jeddah') checked @endif
-                                            required>{{ __('steps.j') }}
+                                        <input
+                                            class="form-check-input form-check-input-custom {{ session()->get('locale') == 'ar' ? 'radio_rtl_style ' : '' }}"
+                                            type="radio" name="appointment_city"
+                                            data-msg-required="Please select at least one option." value="Jeddah"
+                                            @if (isset($form_data['appointment_city']) && $form_data['appointment_city'] == 'Jeddah') checked @endif required>{{ __('steps.j') }}
                                     </label>
                                 </div>
                             </div>
@@ -115,10 +133,13 @@
                         <div class="row">
                             <div class="form-group col">
                                 <div class="form-check form-check-inline">
-                                    <label class="form-check-label form-check-label-custom" style="{{session()->get('locale') == 'ar'?"margin-left: 7px":"margin-left: 50px"}}">
-                                        <input class="form-check-input form-check-input-custom {{session()->get('locale') == 'ar'?'radio_rtl_style ':''}}" type="radio"
-                                            name="appointment_city" data-msg-required="Please select at least one option."
-                                            value="alkohbar" @if (isset($form_data['appointment_city']) && $form_data['appointment_city'] == 'alkohbar') checked @endif
+                                    <label class="form-check-label form-check-label-custom"
+                                        style="{{ session()->get('locale') == 'ar' ? 'margin-left: 7px' : 'margin-left: 50px' }}">
+                                        <input
+                                            class="form-check-input form-check-input-custom {{ session()->get('locale') == 'ar' ? 'radio_rtl_style ' : '' }}"
+                                            type="radio" name="appointment_city"
+                                            data-msg-required="Please select at least one option." value="alkohbar"
+                                            @if (isset($form_data['appointment_city']) && $form_data['appointment_city'] == 'alkohbar') checked @endif
                                             required>{{ __('steps.kohbar') }}
                                     </label>
                                 </div>
@@ -165,10 +186,10 @@
                                                     @endif
                                                 </span> {{ __('steps.s') }}</span></div>
                                     </td>
-                                    @if ($errors->has('adult_count') || $errors->has('child_count') || $errors->has('passport_count') )
+                                    @if ($errors->has('adult_count') || $errors->has('child_count') || $errors->has('passport_count'))
                                         <div class="alert alert-danger">
-                                            {{ __('steps.count')}}
-                                            </div>
+                                            {{ __('steps.count') }}
+                                        </div>
                                     @endif
                                 </tr>
                                 <tr class="{{ $VisaRequest->child_price ?? 'd-none' }}">
@@ -247,12 +268,19 @@
                                     @else
                                         0
                                     @endif
-                                </span> {{ __('steps.s') }}</h1>
+                                </span> {{ __('steps.s') }}
+                            </h1>
                         </div>
                     </div>
                 </div>
+                @if ($errors->has('relation'))
+                    <div class="col-md-4 alert alert-danger">
+                        {{ __('steps.relation') }}
+                    </div>
+                @endif
                 <div class="row mt-5 py-5 appear-animation datepickercustom" data-appear-animation="fadeIn"
-                    data-appear-animation-delay="300">
+                    data-appear-animation-delay="300" id="relation">
+
                     <div class="overflow-hidden mb-5 text-center">
                         <h2 class="text-color-dark font-weight-bold text-8 pb-2 mb-0 appear-animation"
                             data-appear-animation="maskUp" data-appear-animation-delay="100">{{ __('steps.trt') }}</h2>
@@ -326,10 +354,12 @@
             margin-right: 5px;
             /* Adjust margin between radio button and text */
         }
-        .radio_rtl_style{
+
+        .radio_rtl_style {
             margin-left: 0.5em !important;
         }
-        .label_rtl_style{
+
+        .label_rtl_style {
             margin-right: 31px !important;
         }
     </style>
@@ -338,7 +368,7 @@
     <script src="{{ asset('front-end/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
     <script>
         $(document).ready(function() {
-			// Function to format the number
+            // Function to format the number
             function formatNumber(number) {
                 return new Intl.NumberFormat('en-US').format(number);
             }
@@ -347,6 +377,7 @@
                 var adult_price = parseInt($('#adult_price').val());
                 var adult_price_total = 0;
                 if (adult_counter_current_value > 0) {
+
                     adult_counter_current_value--;
                     adult_price_total = adult_counter_current_value * adult_price;
                 } else {
@@ -356,7 +387,8 @@
                 $('#adult_count').val(adult_counter_current_value);
                 $('.adult_price_total').text(formatNumber(adult_price_total));
                 $('#adult_counter_sum').val(adult_price_total);
-                var child_price_total = parseInt($('.child_price_total').text().replace(/,/g, '')); // Parse child price total as integer
+                var child_price_total = parseInt($('.child_price_total').text().replace(/,/g,
+                    '')); // Parse child price total as integer
                 $('.passenger_total').text(formatNumber(adult_price_total + child_price_total));
                 $('#passenger_total').val(adult_price_total + child_price_total);
                 return false;
@@ -367,6 +399,7 @@
                 var adult_price = parseInt($('#adult_price').val());
                 var adult_price_total = 0;
                 if (adult_counter_current_value >= 0) {
+
                     adult_counter_current_value++;
                     adult_price_total = adult_counter_current_value * adult_price;
                 } else {
@@ -376,7 +409,8 @@
                 $('#adult_count').val(adult_counter_current_value);
                 $('.adult_price_total').text(formatNumber(adult_price_total));
                 $('#adult_counter_sum').val(adult_price_total);
-                var child_price_total = parseInt($('.child_price_total').text().replace(/,/g, '')); // Parse child price total as integer
+                var child_price_total = parseInt($('.child_price_total').text().replace(/,/g,
+                    '')); // Parse child price total as integer
                 $('.passenger_total').text(formatNumber(adult_price_total + child_price_total));
                 $('#passenger_total').val(adult_price_total + child_price_total);
                 return false;
@@ -395,7 +429,8 @@
                 $('#child_count').val(child_counter_current_value);
                 $('.child_price_total').text(formatNumber(child_price_total));
                 $('#child_counter_sum').val(child_price_total);
-                var adult_price_total = parseInt($('.adult_price_total').text().replace(/,/g, '')); // Parse adult price total as integer
+                var adult_price_total = parseInt($('.adult_price_total').text().replace(/,/g,
+                    '')); // Parse adult price total as integer
                 $('.passenger_total').text(formatNumber(adult_price_total + child_price_total));
                 $('#passenger_total').val(adult_price_total + child_price_total);
                 return false;
@@ -415,7 +450,8 @@
                 $('#child_count').val(child_counter_current_value);
                 $('.child_price_total').text(formatNumber(child_price_total));
                 $('#child_counter_sum').val(child_price_total);
-                var adult_price_total = parseInt($('.adult_price_total').text().replace(/,/g, '')); // Parse adult price total as integer
+                var adult_price_total = parseInt($('.adult_price_total').text().replace(/,/g,
+                    '')); // Parse adult price total as integer
                 $('.passenger_total').text(formatNumber(adult_price_total + child_price_total));
                 $('#passenger_total').val(adult_price_total + child_price_total);
                 return false;
@@ -444,6 +480,7 @@
                 var passport_price_total = 0;
                 var passport_price = parseInt($('#passport_price').val());
                 if (passport_counter_current_value >= 0) {
+
                     passport_counter_current_value++;
                     passport_price_total = passport_counter_current_value * passport_price;
                 } else {
@@ -479,7 +516,13 @@
                     return true;
             }
         }).on("changeDate", function(e) {
-            let a = [{day: 'numeric'}, {month: 'numeric'}, {year: '2-digit'}];
+            let a = [{
+                day: 'numeric'
+            }, {
+                month: 'numeric'
+            }, {
+                year: '2-digit'
+            }];
             let s = join(e.date, a, '-');
 
             $(".selecteddatediv").html(s);
