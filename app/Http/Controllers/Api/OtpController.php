@@ -19,7 +19,7 @@ class OtpController extends Controller
     //
     public function loginOtp(Request $request)
     {
-        $validator =Validator::make($request->all(),[
+        $validator =Validator::make($request->all(), [
             'number' => 'exists:users,number|nullable',
             'email' => 'exists:users,email|nullable',
         ], [
@@ -27,20 +27,19 @@ class OtpController extends Controller
             "email"=>"Please enter valid registered email address"
         ]);
         if ($validator->fails()) {
-             $response=[
-                'success'=> false,
-                'message'=>$validator->errors()
+            $response=[
+               'success'=> false,
+               'message'=>$validator->errors()
             ];
             return response()->json($response, 400);
-
         }
 
         $mobile_number = $request->number??null;
         $email=$request->input('email')??null;
-        if(isset($mobile_number)){
+        if (isset($mobile_number)) {
             $user = User::where('number', $mobile_number)->first();
-        }elseif(isset($email)){
-            $user = User::where('email',$email)->first();
+        } elseif (isset($email)) {
+            $user = User::where('email', $email)->first();
         }
         $userotp=null;
         if (isset($user->otp) && isset($user->otp_expiration)) {
@@ -60,32 +59,31 @@ class OtpController extends Controller
                     if (isset($email)) {
                         $data["email"]=$email;
                         $reponse=$this->sendEmail($data);
-                        if ($reponse["success"==true]) {
+                        if ($reponse["success"]==true) {
                             $json_response=[
                                 'success'=> true,
                                 'message'=>'OTP has been sent to your registered email !',
                                 'user_id'=>$userotp->id
                             ];
                             return response()->json($json_response, 200);
-                        }else{
+                        } else {
                             $response=[
                                 'success'=> false,
                                 'message'=>'Something went wrong. Please try again later.'
                             ];
                             return response()->json($response, 400);
                         }
-
-                    }else if($mobile_number){
+                    } elseif ($mobile_number) {
                         $data["phone"]=$mobile_number;
                         $reponse=$this->sendSMS($data);
-                        if ($reponse["success"==true]) {
+                        if ($reponse["success"]==true) {
                             $json_response=[
                                 'success'=> true,
                                 'message'=>'OTP has been sent to your registered phone number !',
                                 'user_id'=>$userotp->id
                             ];
                             return response()->json($json_response, 200);
-                        }else{
+                        } else {
                             $response=[
                                 'success'=> false,
                                 'message'=>'Something went wrong. Please try again later.'
@@ -100,7 +98,6 @@ class OtpController extends Controller
                         ];
                         return response()->json($response, 400);
                     }
-
                 } else {
                     // Handle the case where $userotp is null
                     $response=[
@@ -116,32 +113,31 @@ class OtpController extends Controller
                     if (isset($email)) {
                         $data["email"]=$email;
                         $reponse=$this->sendEmail($data);
-                        if ($reponse["success"==true]) {
+                        if ($reponse["success"]==true) {
                             $json_response=[
                                 'success'=> true,
                                 'message'=>'OTP has been sent to your registered email !',
                                 'user_id'=>$userotp->id
                             ];
                             return response()->json($json_response, 200);
-                        }else{
+                        } else {
                             $response=[
                                 'success'=> false,
                                 'message'=>'Something went wrong. Please try again later.'
                             ];
                             return response()->json($response, 400);
                         }
-
-                    }else if($mobile_number){
+                    } elseif ($mobile_number) {
                         $data["phone"]=$mobile_number;
                         $reponse=$this->sendSMS($data);
-                        if ($reponse["success"==true]) {
+                        if ($reponse["success"]==true) {
                             $json_response=[
                                 'success'=> true,
                                 'message'=>'OTP has been sent to your registered phone number !',
                                 'user_id'=>$userotp->id
                             ];
                             return response()->json($json_response, 200);
-                        }else{
+                        } else {
                             $response=[
                                 'success'=> false,
                                 'message'=>'Something went wrong. Please try again later.'
@@ -165,54 +161,53 @@ class OtpController extends Controller
                     return response()->json($response, 500);
                 }
             }
-        } elseif(isset($user)) {
+        } elseif (isset($user)) {
             $userotp = $this->generateotp($user->id);
 
             if ($userotp) {
                 $data=["otp"=>$userotp->otp,"name"=>$userotp->name];
-                    if (isset($email)) {
-                        $data["email"]=$email;
-                        $reponse=$this->sendEmail($data);
-                        if ($reponse["success"==true]) {
-                            $json_response=[
-                                'success'=> true,
-                                'message'=>'OTP has been sent to your registered email !',
-                                'user_id'=>$userotp->id
-                            ];
-                            return response()->json($json_response, 200);
-                        }else{
-                            $response=[
-                                'success'=> false,
-                                'message'=>'Something went wrong. Please try again later.'
-                            ];
-                            return response()->json($response, 400);
-                        }
-
-                    }else if($mobile_number){
-                        $data["phone"]=$mobile_number;
-                        $reponse=$this->sendSMS($data);
-                        if ($reponse["success"==true]) {
-                            $json_response=[
-                                'success'=> true,
-                                'message'=>'OTP has been sent to your registered phone number !',
-                                'user_id'=>$userotp->id
-                            ];
-                            return response()->json($json_response, 200);
-                        }else{
-                            $response=[
-                                'success'=> false,
-                                'message'=>'Something went wrong. Please try again later.'
-                            ];
-                            return response()->json($response, 400);
-                        }
+                if (isset($email)) {
+                    $data["email"]=$email;
+                    $reponse=$this->sendEmail($data);
+                    if ($reponse["success"]==true) {
+                        $json_response=[
+                            'success'=> true,
+                            'message'=>'OTP has been sent to your registered email !',
+                            'user_id'=>$userotp->id
+                        ];
+                        return response()->json($json_response, 200);
                     } else {
-                        // Handle the case where $userotp is null
                         $response=[
                             'success'=> false,
                             'message'=>'Something went wrong. Please try again later.'
                         ];
                         return response()->json($response, 400);
                     }
+                } elseif ($mobile_number) {
+                    $data["phone"]=$mobile_number;
+                    $reponse=$this->sendSMS($data);
+                    if ($reponse["success"]==true) {
+                        $json_response=[
+                            'success'=> true,
+                            'message'=>'OTP has been sent to your registered phone number !',
+                            'user_id'=>$userotp->id
+                        ];
+                        return response()->json($json_response, 200);
+                    } else {
+                        $response=[
+                            'success'=> false,
+                            'message'=>'Something went wrong. Please try again later.'
+                        ];
+                        return response()->json($response, 400);
+                    }
+                } else {
+                    // Handle the case where $userotp is null
+                    $response=[
+                        'success'=> false,
+                        'message'=>'Something went wrong. Please try again later.'
+                    ];
+                    return response()->json($response, 400);
+                }
             } else {
                 // Handle the case where $userotp is null
                 $response=[
@@ -221,7 +216,7 @@ class OtpController extends Controller
                 ];
                 return response()->json($response, 500);
             }
-        }else{
+        } else {
             $response=[
                 'success'=> false,
                 'message'=>'Failed to generate OTP. Invalid User'
@@ -336,5 +331,4 @@ class OtpController extends Controller
             return ["success"=>false,"error"=>$e->getMessage()];
         }
     }
-
 }
