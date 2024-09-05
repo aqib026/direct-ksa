@@ -10,7 +10,12 @@ class BankController extends Controller
 {public function index(){
         
         $bank = Bank::all();
-    return response()->json(['data' => $bank]);
+        if(count($bank)>0){
+            return response()->json(['success'=>true,'data' => $bank],200);
+        }else{
+            return response()->json(['success'=>true,'data' => $bank],404);
+        }
+       
     
     }
 }

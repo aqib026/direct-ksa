@@ -17,6 +17,7 @@ use Exception;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
 class FeaturedController extends Controller
@@ -30,7 +31,8 @@ class FeaturedController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        $validatedData = $request->validate([
+       
+        $validator =Validator::make($request->all(), [
             'required_service'  => 'required',
             'applicant_name'    => 'required',
             'mobile_number'     => 'required|regex:/^[0-9]{9,20}$/',
@@ -41,14 +43,21 @@ class FeaturedController extends Controller
             'mobile_number.required'    => 'Mobile No is required',
             'email.required'            => 'Email is required'
         ]);
+        if ($validator->fails()) {
+            $response=[
+               'success'=> false,
+               'message'=>$validator->errors()
+            ];
+            return response()->json($response, 400);
+        }
         
         $new_user_message="";
-        if($request->email || $request->mobile_number ){
+        if ($request->email || $request->mobile_number) {
             $user=User::where('email', $request->email)->first();
 
-            if(!$user){
+            if (!$user) {
                 $user=User::where('number', $request->mobile_number)->first();
-                if(!$user){
+                if (!$user) {
                     $user=User::create([
                         "name"=>$request->applicant_name,
                         "number"=>$request->mobile_number,
@@ -58,7 +67,6 @@ class FeaturedController extends Controller
                     ]);
                     $new_user_message="The email is  registered in our system .You can use this email to login via OTP and you can update your password by using forget password link.";
                 }
-                
             }
         }
 
@@ -71,7 +79,7 @@ class FeaturedController extends Controller
         
         $featuredSales->required_service = $request->required_service;
         $featuredSales->paper_quantity = $request->paper_quantity;
-        $featuredSales->documents = $filename;
+        $featuredSales->documents = $filename??null;
         $featuredSales->translation_content = $request->translation_content;
         $featuredSales->idl_card_qty = $request->idl_card_qty;
         $featuredSales->lic_col_choice = $request->lic_col_choice;
@@ -100,7 +108,7 @@ class FeaturedController extends Controller
             Log::build([
                 'driver' => 'single',
                 'path' => storage_path('logs/services-api-email-erros.log'),
-             ])->info('There is problem while sending email: '.print_r($e, true));
+             ])->info('There is problem while sending email: '.print_r($e->getMessage(), true));
         }
         
         if ($featuredSales) {
@@ -159,7 +167,7 @@ class FeaturedController extends Controller
             $imageFormat = 'gif'; // GIF format
         } elseif (strpos($imageBinary, "II\x2A\x00") === 0 || strpos($imageBinary, "MM\x00\x2A") === 0) {
             $imageFormat = 'tiff'; // TIFF format
-        }else if (strpos($imageBinary, "%PDF") === 0) {
+        } elseif (strpos($imageBinary, "%PDF") === 0) {
             $imageFormat = 'pdf'; // PDF format
         }
         

@@ -11,7 +11,12 @@ class CashController extends Controller
 public function index(){
     
     $cash = Branch::all();
-    return response()->json(['data' => $cash]);
+    if(count($cash)>0){
+        return response()->json(['success'=>true,'data' => $cash],200);
+    }else{
+        return response()->json(['success'=>true,'data' => $cash],404);
+    }
+    
     
 }
 }

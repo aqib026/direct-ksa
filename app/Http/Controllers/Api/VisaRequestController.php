@@ -23,17 +23,17 @@ class VisaRequestController extends Controller
     {
         //$visaRequests = VisaRequest::all();
         $countries = Countries::all();
-        if ($countries) {
+        if (count($countries)>0) {
             $data = [
                 'visaRequests' => VisaTypeResource::collection($countries),
             ];
+            return response()->json(['success'=>true,'data' => $data],200);
         } else {
             $data = [
                 'error' => 'No visa requests found',
             ];
+            return response()->json(['success'=>true,'data' => $data],404);
         }
-        
-        return $data;
     }
     public function second(Request $request, $country, $visatype)
     {
